@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace UI
+namespace GUI
 {
     public class PointerManager : MonoBehaviour
     {

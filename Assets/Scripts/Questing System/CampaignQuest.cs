@@ -1,14 +1,15 @@
 namespace Questing_System
 {
-    public class CampaignQuest : Quest
+    [System.Serializable]
+    public class CampaignQuest
     {
-        public Quest mainQuest;
-        public Quest badQuest, goodQuest;
+        public Campaign campaign;
+        
+        public Quest currentQuest;
+        public Quest mainQuest, badQuest, goodQuest;
 
-        public override void OnceQuestIsCompleted() { }
+        public void StartQuest() => (currentQuest = mainQuest).StartQuest();
 
-        public override void OnceQuestIsFailed() { }
-
-        public override void OnceQuestStarted() => mainQuest.StartQuest();
+        public void CompleteCampaignQuest() => campaign.UpdateCampaign();
     }
 }

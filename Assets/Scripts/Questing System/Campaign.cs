@@ -1,9 +1,9 @@
 using System.Collections.Generic;
-using UnityEngine;
 
 namespace Questing_System
 {
-    public class Campaign : MonoBehaviour
+    [System.Serializable]
+    public class Campaign
     {
         public List<CampaignQuest> campaignQuests;
         private int m_CurrentQuestIndex;
@@ -12,21 +12,20 @@ namespace Questing_System
         public bool isCompleted => m_CurrentQuestIndex >= campaignQuests.Count;
         public bool isOnGoing => started && !isCompleted;
 
-        public void StartCampaignQuest() => campaignQuests[m_CurrentQuestIndex].StartQuest();
+        public void StartCampaignQuest(int index) => campaignQuests[index].StartQuest();
 
         //Maybe call this by an quest completed event
         public void UpdateCampaign()
-        {
-            Quest currentQuest = campaignQuests[m_CurrentQuestIndex];
-
-            if (!currentQuest.isCompleted) return;
+        { 
             m_CurrentQuestIndex++;
 
-            if (m_CurrentQuestIndex < campaignQuests.Count) StartCampaignQuest();
+            if (m_CurrentQuestIndex < campaignQuests.Count) StartCampaignQuest(m_CurrentQuestIndex);
             else CompleteCampaign();
         }
 
         public void CompleteCampaign() { }
+
+        public Quest GetCurrentQuest() => campaignQuests[m_CurrentQuestIndex].currentQuest;
     }
 
 }
