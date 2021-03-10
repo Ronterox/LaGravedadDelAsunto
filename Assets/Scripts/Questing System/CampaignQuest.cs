@@ -1,14 +1,26 @@
+using UnityEngine;
+
 namespace Questing_System
 {
-    public class CampaignQuest : Quest
+    [System.Serializable]
+    public class CampaignQuest
     {
-        public Quest mainQuest;
-        public Quest badQuest, goodQuest;
+        [HideInInspector] public Campaign campaign;
+        
+        public Quest currentQuest;
+        
+        [Header("Required")]
+        public Quest mainQuest, badQuest, goodQuest;
 
-        public override void OnceQuestIsCompleted() { }
+        public void StartQuest()
+        {
+            mainQuest.parentQuest = this;
+            if(badQuest) badQuest.parentQuest = this;
+            if(goodQuest) goodQuest.parentQuest = this;
+            
+            (currentQuest = mainQuest).StartQuest();
+        } 
 
-        public override void OnceQuestIsFailed() { }
-
-        public override void OnceQuestStarted() => mainQuest.StartQuest();
+        public void CompleteCampaignQuest() => campaign.UpdateCampaign();
     }
 }

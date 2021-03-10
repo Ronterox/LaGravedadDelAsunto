@@ -112,8 +112,6 @@ namespace Plugins.Tools
             List<MMEventListenerBase> subscriberList = m_SubscribersList[eventType].ToList();
             var listenerFound = false;
 
-            if (listenerFound) { }
-
             for (var i = 0; i < subscriberList.Count; i++)
             {
                 if (subscriberList[i] != listener) continue;
