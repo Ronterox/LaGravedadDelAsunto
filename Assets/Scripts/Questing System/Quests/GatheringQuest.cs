@@ -1,12 +1,12 @@
 using NPCs;
 using Plugins.Tools;
-using Quest = Questing_System.Quest;
-using QuestState = Questing_System.QuestState;
+using UnityEngine;
 
-namespace Questing_System::Quests
+namespace Questing_System.Quests
 {
     public class GatheringQuest : Quest
     {
+        [Header("Gathering Quest Settings")]
         public int toGetGatheringQuantity;
         protected int m_TotalDestroyed;
         

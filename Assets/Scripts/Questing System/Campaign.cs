@@ -12,7 +12,11 @@ namespace Questing_System
         public bool isCompleted => m_CurrentQuestIndex >= campaignQuests.Count;
         public bool isOnGoing => started && !isCompleted;
 
-        public void StartCampaignQuest(int index) => campaignQuests[index].StartQuest();
+        public void StartCampaignQuest(int index)
+        {
+            campaignQuests.ForEach(x => x.campaign = this);
+            campaignQuests[index].StartQuest();
+        }
 
         //Maybe call this by an quest completed event
         public void UpdateCampaign()

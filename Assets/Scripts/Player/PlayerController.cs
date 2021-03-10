@@ -26,8 +26,8 @@ namespace Player
 
         private bool m_IsGrounded, m_CanJump;
 
-        private const float GROUND_ACCELERATION = 5;
-        private const float GROUND_DECELERATION = 4;
+        private const float GROUND_ACCELERATION = 10;
+        private const float GROUND_DECELERATION = 10;
 
         private const float STICKING_GRAVITY_PROPORTION = 3;
         private const float JUMP_ABORT_SPEED = 3;

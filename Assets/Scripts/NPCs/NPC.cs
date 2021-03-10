@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using Plugins.Tools;
 using Questing_System;
 using UnityEngine;
@@ -20,18 +19,20 @@ namespace NPCs
 
     public abstract class NPC : MonoBehaviour, MMEventListener<NPCRequestCompleted>
     {
-        private string m_Name, m_Description;
-        public Campaign campaign;
+        [Header("NPC")] public string m_Name;
+        [Space][TextArea] public string m_Description;
+        
+        [Space] public Campaign campaign;
 
-        public UnityEvent onCampaignCompleted;
+        [Space] public UnityEvent onCampaignCompleted;
 
-        private NPCRequestCompleted lastQuest;
+        protected NPCRequestCompleted lastQuest;
 
         public void StartCampaign() => campaign.StartCampaignQuest(0);
 
         protected abstract void OnCampaignCompleted();
 
-        public void Interact()
+        public virtual void Interact()
         {
             if (campaign.isCompleted)
             {

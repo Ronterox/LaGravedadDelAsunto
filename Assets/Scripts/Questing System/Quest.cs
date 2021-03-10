@@ -9,7 +9,8 @@ namespace Questing_System
     {
         Completed,
         OnGoing,
-        Failed
+        Failed,
+        NotStarted
     }
 
     public readonly struct QuestCompleted
@@ -25,14 +26,17 @@ namespace Questing_System
     
     public abstract class Quest : MonoBehaviour, MMEventListener<QuestCompleted>
     {
-        public CampaignQuest parentQuest;
-        public QuestState questState;
+        [HideInInspector] public CampaignQuest parentQuest;
+        public QuestState questState = QuestState.NotStarted;
         
+        [Header("Unity Events")]
         public UnityEvent onQuestStart;
         public UnityEvent onQuestCompleted;
         public UnityEvent onQuestFailed;
 
-        public int karmaWon, karmaLost;
+        [Header("Quest Settings")]
+        public int karmaWon;
+        public int karmaLost;
         
         public bool isFinalQuest;
         public bool isCompleted => questState == QuestState.Completed;
