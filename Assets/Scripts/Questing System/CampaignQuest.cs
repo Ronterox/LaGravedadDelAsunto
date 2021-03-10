@@ -15,8 +15,8 @@ namespace Questing_System
         public void StartQuest()
         {
             mainQuest.parentQuest = this;
-            badQuest.parentQuest = this;
-            goodQuest.parentQuest = this;
+            if(badQuest) badQuest.parentQuest = this;
+            if(goodQuest) goodQuest.parentQuest = this;
             
             (currentQuest = mainQuest).StartQuest();
         } 

@@ -19,7 +19,7 @@ namespace NPCs
 
     public abstract class NPC : MonoBehaviour, MMEventListener<NPCRequestCompleted>
     {
-        [Header("NPC")] public string m_Name;
+        [Header("NPC")] public string m_NpcName;
         [Space][TextArea] public string m_Description;
         
         [Space] public Campaign campaign;
