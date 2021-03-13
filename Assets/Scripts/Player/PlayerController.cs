@@ -25,6 +25,8 @@ namespace Player
         private Quaternion m_TargetRotation;
 
         private bool m_IsGrounded, m_CanJump;
+       
+        public float zoomSpeed = 5f;       
 
         private const float GROUND_ACCELERATION = 10;
         private const float GROUND_DECELERATION = 10;
@@ -48,6 +50,7 @@ namespace Player
             CalculateVerticalMovement();
             SetTargetRotation();
             UpdateOrientation();
+            SetCameraZoom();
         }
 
         private void OnAnimatorMove()
@@ -119,6 +122,26 @@ namespace Player
             float actualTurnSpeed = m_IsGrounded ? groundedTurnSpeed : Vector3.Angle(transform.forward, localInput).ToRadians() * AIRBORNE_TURN_SPEED_PROPORTION * groundedTurnSpeed;
 
             transform.rotation = m_TargetRotation = Quaternion.RotateTowards(transform.rotation, m_TargetRotation, actualTurnSpeed * Time.deltaTime);
+        }
+
+        private void SetCameraZoom()
+        {
+            if (Input.GetAxis("Mouse ScrollWheel") > 0)
+            {
+                mainCamera.m_Lens.FieldOfView -= zoomSpeed;
+                if (mainCamera.m_Lens.FieldOfView <= 20)
+                {
+                    mainCamera.m_Lens.FieldOfView = 20;
+                }
+            }
+            if (Input.GetAxis("Mouse ScrollWheel") < 0)
+            {
+                mainCamera.m_Lens.FieldOfView += zoomSpeed;
+                if (mainCamera.m_Lens.FieldOfView >= 95)
+                {
+                    mainCamera.m_Lens.FieldOfView = 95;
+                }
+            }
         }
     }
 }
