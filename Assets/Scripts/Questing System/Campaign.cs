@@ -1,12 +1,14 @@
+using UnityEngine;
+
 namespace Questing_System
 {
     [System.Serializable]
     public class Campaign
     {
-        public CampaignQuest[] campaignQuests;
+        [Space] public CampaignQuest[] campaignQuests;
         private int m_CurrentQuestIndex;
 
-        public bool started;
+        [HideInInspector] public bool started;
         public bool IsCompleted => m_CurrentQuestIndex >= campaignQuests.Length;
         public bool IsOnGoing => started && !IsCompleted;
 
@@ -27,7 +29,7 @@ namespace Questing_System
 
         public void CompleteCampaign() { }
 
-        public Quest GetCurrentQuest() => campaignQuests[m_CurrentQuestIndex].currentQuest.quest;
+        public Quest GetCurrentQuest() => campaignQuests[m_CurrentQuestIndex].currentQuest;
     }
 
 }

@@ -66227,6 +66227,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8792325526232751511, guid: 6b204319c6bc7b1b19fbb704b483fa5d, type: 3}
+      propertyPath: onGoingCampaings.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8792325526232751511, guid: 6b204319c6bc7b1b19fbb704b483fa5d, type: 3}
+      propertyPath: onGoingCampaings.Array.data[0].id
+      value: GeorgeTest
+      objectReference: {fileID: 0}
+    - target: {fileID: 8792325526232751511, guid: 6b204319c6bc7b1b19fbb704b483fa5d, type: 3}
       propertyPath: campaigns.Array.data[0].campaignQuests.Array.size
       value: 1
       objectReference: {fileID: 0}

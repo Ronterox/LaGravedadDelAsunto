@@ -9,6 +9,6 @@ namespace NPCs
         [Header("NPC")] public string npcName;
         [Space] [TextArea] public string description;
 
-        public Campaign campaign;
+        public string campaignID;
     }
 }

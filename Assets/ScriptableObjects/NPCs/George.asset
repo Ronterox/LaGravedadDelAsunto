@@ -14,7 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   npcName: George
   description: A commoner testing npc...
-  campaign:
-    campaignQuests:
-    - {fileID: 11400000, guid: da89168e0a686134983f7d90b833ed7f, type: 2}
-    started: 0
+  campaignID: GeorgeTest
