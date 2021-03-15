@@ -2,25 +2,39 @@ using UnityEngine;
 
 namespace Questing_System
 {
-    [System.Serializable]
-    public class CampaignQuest
+    [CreateAssetMenu(fileName = "New Campaign Quest", menuName = "Penguins Mafia/Campaign Quest")]
+    public class CampaignQuest : ScriptableObject
     {
-        [HideInInspector] public Campaign campaign;
-        
-        public Quest currentQuest;
-        
+        [HideInInspector] public ScriptableQuest currentQuest;
+        [HideInInspector] public QuestState questState = QuestState.NotStarted;
+
         [Header("Required")]
-        public Quest mainQuest, badQuest, goodQuest;
+        public ScriptableQuest mainQuest;
+        
+        [Header("If you fail the quest yo go to...")]
+        public ScriptableQuest badQuest;
+        
+        [Header("If you complete the quest yo go to...")]
+        public ScriptableQuest goodQuest;
 
-        public void StartQuest()
+        public void UpdateState()
         {
-            mainQuest.parentQuest = this;
-            if(badQuest) badQuest.parentQuest = this;
-            if(goodQuest) goodQuest.parentQuest = this;
-            
-            (currentQuest = mainQuest).StartQuest();
-        } 
+            if (questState == QuestState.NotStarted || !currentQuest) return;
 
-        public void CompleteCampaignQuest() => campaign.UpdateCampaign();
+            if (!currentQuest.quest.isCompleted && !currentQuest.quest.isFailed) return;
+            
+            if (currentQuest.quest.isFinalQuest)
+            {
+                questState = QuestState.Completed;
+                currentQuest = null;   
+            }
+            else
+            {
+                currentQuest = currentQuest.quest.isCompleted ? goodQuest : badQuest;
+                currentQuest.quest.StartQuest();
+            }
+        }
+
+        public void StartQuest() => (currentQuest = mainQuest).quest.StartQuest();
     }
 }

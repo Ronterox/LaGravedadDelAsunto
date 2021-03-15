@@ -1,52 +1,33 @@
-using Plugins.Tools;
-using Questing_System;
+using System;
+using Managers;
 using UnityEngine;
 using UnityEngine.Events;
 
 namespace NPCs
 {
-    public struct NPCRequestCompleted
+    public abstract class NPC : MonoBehaviour
     {
-        public Quest quest;
-        public QuestState questState;
-
-        public NPCRequestCompleted(Quest quest, QuestState questState)
-        {
-            this.quest = quest;
-            this.questState = questState;
-        }
-    }
-
-    public abstract class NPC : MonoBehaviour, MMEventListener<NPCRequestCompleted>
-    {
-        [Header("NPC")] public string m_NpcName;
-        [Space][TextArea] public string m_Description;
-        
-        [Space] public Campaign campaign;
+        [Space] public ScriptableNPC npcScriptable;
 
         [Space] public UnityEvent onCampaignCompleted;
 
-        protected NPCRequestCompleted lastQuest;
+        protected void Awake()
+        {
+            if(!GameManager.Instance.campaigns.Contains(npcScriptable.campaign)) GameManager.Instance.campaigns.Add(npcScriptable.campaign);
+        }
 
-        public void StartCampaign() => campaign.StartCampaignQuest(0);
+        public void StartCampaign() => npcScriptable.campaign.StartCampaignQuest(0);
 
         protected abstract void OnCampaignCompleted();
 
         public virtual void Interact()
         {
-            if (campaign.isCompleted)
+            if (npcScriptable.campaign.IsCompleted)
             {
                 OnCampaignCompleted();
                 onCampaignCompleted.Invoke();
             }
-            else if (!campaign.started) StartCampaign();
-            else if (lastQuest.quest)
-            {
-                MMEventManager.TriggerEvent(new QuestCompleted(lastQuest.quest, lastQuest.questState));
-                lastQuest.quest = null;
-            }
+            else if (!npcScriptable.campaign.started) StartCampaign();
         }
-
-        public void OnMMEvent(NPCRequestCompleted eventType) => lastQuest = eventType;
     }
 }

@@ -1,5 +1,4 @@
-using NPCs;
-using Plugins.Tools;
+using Managers;
 using UnityEngine;
 
 namespace Questing_System.Quests
@@ -15,12 +14,12 @@ namespace Questing_System.Quests
 
         public void Gather()
         {
-            if (++m_TotalGathered == toGetGatheringQuantity) MMEventManager.TriggerEvent(new NPCRequestCompleted(this, QuestState.Completed));
+            if (++m_TotalGathered == toGetGatheringQuantity) GameManager.Instance.UpdateCampaigns();
         }
 
         public void DestroyGathered()
         {
-            if(--m_TotalDestroyed == toDestroyGatheringQuantity) MMEventManager.TriggerEvent(new NPCRequestCompleted(this, QuestState.Failed));
+            if(--m_TotalDestroyed == toDestroyGatheringQuantity) GameManager.Instance.UpdateCampaigns();
         }
 
         protected override void OnceQuestIsCompleted() { }
