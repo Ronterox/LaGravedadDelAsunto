@@ -5,12 +5,13 @@ namespace Questing_System
     [System.Serializable]
     public class Campaign
     {
+        public string id;
         [Space] public CampaignQuest[] campaignQuests;
         private int m_CurrentQuestIndex;
 
-        [HideInInspector] public bool started;
+        public bool Started => campaignQuests[m_CurrentQuestIndex].questState != QuestState.NotStarted;
         public bool IsCompleted => m_CurrentQuestIndex >= campaignQuests.Length;
-        public bool IsOnGoing => started && !IsCompleted;
+        public bool IsOnGoing => Started && !IsCompleted;
 
         public void StartCampaignQuest(int index) => campaignQuests[index].StartQuest();
 

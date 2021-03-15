@@ -24,6 +24,10 @@ namespace Questing_System
         public UnityEvent onQuestFailed;
         public UnityEvent onQuestStarted;
 
+        [Header("Quest Rewards")]
+        public int positiveKarma;
+        public int negativeKarma;
+
         protected abstract void OnceQuestIsCompleted();
 
         protected abstract void OnceQuestIsFailed();

@@ -19,7 +19,7 @@ namespace NPCs
                 OnCampaignCompleted();
                 onCampaignCompleted.Invoke();
             }
-            else if (GameManager.Instance.GetCampaign(npcScriptable.campaignID).started) GameManager.Instance.StartNewCampaign(npcScriptable.campaignID);
+            else if (!GameManager.Instance.GetCampaign(npcScriptable.campaignID).Started) GameManager.Instance.StartNewCampaign(npcScriptable.campaignID);
         }
     }
 }

@@ -35,6 +35,10 @@ namespace Questing_System
             }
         }
 
-        public void StartQuest() => (currentQuest = mainQuest).StartQuest();
+        public void StartQuest()
+        {
+            (currentQuest = mainQuest).StartQuest();
+            questState = QuestState.OnGoing;
+        }
     }
 }

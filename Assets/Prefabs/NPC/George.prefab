@@ -43,29 +43,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 549c4ef59df34dec9b1a3542a979609b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parentQuest:
-    campaign:
-      campaignQuests: []
-      started: 0
-    currentQuest: {fileID: 0}
-    mainQuest: {fileID: 0}
-    badQuest: {fileID: 0}
-    goodQuest: {fileID: 0}
-  questState: 3
-  onQuestStart:
-    m_PersistentCalls:
-      m_Calls: []
+  questState: 0
+  isFinalQuest: 0
   onQuestCompleted:
     m_PersistentCalls:
       m_Calls: []
   onQuestFailed:
     m_PersistentCalls:
       m_Calls: []
-  karmaWon: 5
-  karmaLost: 4
-  isFinalQuest: 0
-  toGetGatheringQuantity: 0
-  toDestroyGatheringQuantity: 0
+  onQuestStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  positiveKarma: 5
+  negativeKarma: 8
+  toGetGatheringQuantity: 3
+  toDestroyGatheringQuantity: 2
 --- !u!1 &6534829121999273146
 GameObject:
   m_ObjectHideFlags: 0
@@ -192,18 +184,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a80ce83968944090b554ecb99a685fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_NpcName: George
-  m_Description: A simple testing npc...
-  campaign:
-    campaignQuests:
-    - campaign:
-        campaignQuests: []
-        started: 0
-      currentQuest: {fileID: 0}
-      mainQuest: {fileID: 6534829121535509843}
-      badQuest: {fileID: 0}
-      goodQuest: {fileID: 0}
-    started: 0
+  npcScriptable: {fileID: 11400000, guid: 1290f9c6360d7233aa4f573b8d581d66, type: 2}
   onCampaignCompleted:
     m_PersistentCalls:
       m_Calls: []
