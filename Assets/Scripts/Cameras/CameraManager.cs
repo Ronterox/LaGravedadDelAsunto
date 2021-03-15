@@ -1,6 +1,7 @@
 using Cinemachine;
 using Player;
 using Plugins.Tools;
+using UnityEngine;
 
 namespace Cameras
 {
@@ -16,14 +17,12 @@ namespace Cameras
         {
             if (PlayerInput.Instance.IsScrollingUp)
             {
-                playerCamera.m_Lens.FieldOfView -= PlayerInput.Instance.zoomSpeed;
-                if (playerCamera.m_Lens.FieldOfView <= MIN_CAMERA_ZOOM) playerCamera.m_Lens.FieldOfView = MIN_CAMERA_ZOOM;
+                playerCamera.m_Lens.FieldOfView = Mathf.Lerp(playerCamera.m_Lens.FieldOfView, MIN_CAMERA_ZOOM, PlayerInput.Instance.zoomSpeed);
             }
             else if (PlayerInput.Instance.IsScrollingDown)
             {
-                playerCamera.m_Lens.FieldOfView += PlayerInput.Instance.zoomSpeed;
-                if (playerCamera.m_Lens.FieldOfView >= MAX_CAMERA_ZOOM) playerCamera.m_Lens.FieldOfView = MAX_CAMERA_ZOOM;
-            }
+                playerCamera.m_Lens.FieldOfView = Mathf.Lerp(playerCamera.m_Lens.FieldOfView, MAX_CAMERA_ZOOM, PlayerInput.Instance.zoomSpeed);
+            }           
         }
     }
 }
