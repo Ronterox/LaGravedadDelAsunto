@@ -66053,11 +66053,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5617871185371070069, guid: 881f5ea122226be93a0d47628b8a2826, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.0000000042820463
+      value: -0.0000000042820463
       objectReference: {fileID: 0}
     - target: {fileID: 5617871185371070069, guid: 881f5ea122226be93a0d47628b8a2826, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -4.096356e-10
+      value: 4.096356e-10
       objectReference: {fileID: 0}
     - target: {fileID: 5617871186237568712, guid: 881f5ea122226be93a0d47628b8a2826, type: 3}
       propertyPath: m_Follow
@@ -66117,11 +66117,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5617871187225851715, guid: 881f5ea122226be93a0d47628b8a2826, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000016953926
+      value: -0.000000016953926
       objectReference: {fileID: 0}
     - target: {fileID: 5617871187225851715, guid: 881f5ea122226be93a0d47628b8a2826, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000000029366534
+      value: 0.0000000029366534
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 881f5ea122226be93a0d47628b8a2826, type: 3}
@@ -66197,10 +66197,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 6729424279741692696, guid: c8d95a7a10c84826dbd1ad3caaa91898, type: 3}
+      propertyPath: showPointerKey
+      value: 308
+      objectReference: {fileID: 0}
     - target: {fileID: 6729424279741692700, guid: c8d95a7a10c84826dbd1ad3caaa91898, type: 3}
       propertyPath: cam
       value: 
       objectReference: {fileID: 409699650}
+    - target: {fileID: 6729424279741692700, guid: c8d95a7a10c84826dbd1ad3caaa91898, type: 3}
+      propertyPath: speed
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6729424279741692700, guid: c8d95a7a10c84826dbd1ad3caaa91898, type: 3}
       propertyPath: zoomSpeed
       value: 5

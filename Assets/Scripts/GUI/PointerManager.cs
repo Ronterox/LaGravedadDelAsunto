@@ -4,6 +4,8 @@ namespace GUI
 {
     public class PointerManager : MonoBehaviour
     {
+        public KeyCode showPointerKey;
+        
         private void Awake()
         {
             Cursor.visible = false;
@@ -12,14 +14,14 @@ namespace GUI
 
         private void LateUpdate()
         {
-            if (Input.GetKeyDown(KeyCode.LeftAlt)) SetCursorActive(false);
-            else if (Input.GetKeyUp(KeyCode.LeftAlt)) SetCursorActive();
+            if (Input.GetKeyDown(showPointerKey)) SetCursorActive();
+            else if (Input.GetKeyUp(showPointerKey)) SetCursorActive(false);
         }
 
-        private void SetCursorActive(bool confine = true)
+        private void SetCursorActive(bool active = true)
         {
-            Cursor.visible = !confine;
-            Cursor.lockState = confine ? CursorLockMode.Confined : CursorLockMode.None;
+            Cursor.visible = active;
+            Cursor.lockState = active ? CursorLockMode.None : CursorLockMode.Locked;
         }
     }
 }
