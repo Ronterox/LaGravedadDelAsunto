@@ -1,10 +1,10 @@
 using Cinemachine;
 using Player;
-using UnityEngine;
+using Plugins.Tools;
 
 namespace Cameras
 {
-    public class CameraManager : MonoBehaviour
+    public class CameraManager : PersistentSingleton<CameraManager>
     {
         public CinemachineFreeLook playerCamera;
 

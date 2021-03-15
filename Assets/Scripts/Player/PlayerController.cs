@@ -1,53 +1,50 @@
-using Cinemachine;
 using Plugins.Tools;
 using UnityEngine;
 
 namespace Player
 {
     [RequireComponent(typeof(CharacterController))]
-    public class PlayerController : Singleton<PlayerController>
+    public class PlayerController : MonoBehaviour
     {
-        public CinemachineFreeLook mainCamera;
-        
+        [Header("Requirements")]
+        public Transform mainCamera;
+
         private PlayerInput m_Input;
         private CharacterController m_CharCtrl;
-        
-        public Transform cam;
+
+        [Header("Movement")]
         public float speed = 6f;
         
-        public float turnSmoothTime = 0.1f;
-        private float m_TurnSmoothVelocity;
-
-        public float gravity;
-
         public float jumpForce;
         private float m_VerticalSpeed;
+        
+        public float gravity;
+
+        [Header("Rotation")]
+        public float turnSmoothTime = 0.1f;
+        private float m_TurnSmoothVelocity;
 
         private bool m_IsGrounded, m_CanJump;
 
         private const float STICKING_GRAVITY_PROPORTION = 3;
-        private const float JUMP_ABORT_SPEED = 3;
+        private const float JUMP_ABORT_SPEED = 10;
 
-        protected override void Awake()
+        private void Awake()
         {
-            base.Awake();
+            
             m_CharCtrl = GetComponent<CharacterController>();
             m_Input = GetComponent<PlayerInput>();
         }
 
         private void FixedUpdate()
         {
-            ForwardMovement();
+            CalculateForwardMovement();
             CalculateVerticalMovement();
         }
 
         private void OnAnimatorMove()
         {
-            Vector3 movement = transform.forward * Time.deltaTime;
-
-            movement += m_VerticalSpeed * Vector3.up * Time.deltaTime;
-
-            m_CharCtrl.Move(movement);
+            m_CharCtrl.Move(m_VerticalSpeed * Time.deltaTime * Vector3.up);
 
             m_IsGrounded = m_CharCtrl.isGrounded;
         }
@@ -75,18 +72,16 @@ namespace Player
             }
         }
 
-        private void ForwardMovement()
+        private void CalculateForwardMovement()
         {
-            var direction = new Vector3(m_Input.MoveInput.x, 0f, m_Input.MoveInput.y);
-            
-            if (!(direction.magnitude >= 0.1f)) return;
-            
-            float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
+            if (m_Input.MoveInput == Vector2.zero) return;
+
+            float targetAngle = Mathf.Atan2(m_Input.MoveInput.x, m_Input.MoveInput.y).ToRadians() + mainCamera.eulerAngles.y;
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref m_TurnSmoothVelocity, turnSmoothTime);
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
 
             Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
-            m_CharCtrl.Move(speed * Time.deltaTime * moveDir.normalized);
+            m_CharCtrl.Move(speed * Time.deltaTime * moveDir);
         }
     }
 }

@@ -5,12 +5,11 @@ namespace Player
 {
     public class PlayerInput : Singleton<PlayerInput>
     {
+        public float zoomSpeed = 5f;
         public bool playerControllerInputBlocked;
 
-        public float zoomSpeed = 5f;
-
         private float m_ScrollWheelMovement;
-        
+
         private Vector2 m_Movement;
         private Vector2 m_Camera;
 
