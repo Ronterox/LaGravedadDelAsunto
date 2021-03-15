@@ -33,8 +33,6 @@ namespace Player
 
         public bool Pause { get; private set; }
 
-        private const float k_InteractInputDuration = 0.03f;
-
         private void Update()
         {
             m_Movement.Set(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
