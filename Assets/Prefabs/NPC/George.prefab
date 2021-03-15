@@ -129,7 +129,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c883213a91d24d9ad933ecc089dda533, type: 2}
+  - {fileID: 2100000, guid: 508c618a03e7aaa43b48082774dd1733, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -200,7 +200,7 @@ MonoBehaviour:
         campaignQuests: []
         started: 0
       currentQuest: {fileID: 0}
-      mainQuest: {fileID: 0}
+      mainQuest: {fileID: 6534829121535509843}
       badQuest: {fileID: 0}
       goodQuest: {fileID: 0}
     started: 0
