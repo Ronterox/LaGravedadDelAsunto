@@ -1,76 +1,56 @@
-using Cinemachine;
 using Plugins.Tools;
 using UnityEngine;
 
 namespace Player
 {
     [RequireComponent(typeof(CharacterController))]
-    public class PlayerController : Singleton<PlayerController>
+    public class PlayerController : MonoBehaviour
     {
-        public CinemachineFreeLook mainCamera;
-        
+        [Header("Requirements")]
+        public Transform mainCamera;
+
         private PlayerInput m_Input;
         private CharacterController m_CharCtrl;
 
-        public float gravity;
-
-        public float maxForwardSpeed;
-        private float m_ForwardSpeed, m_DesiredForwardSpeed;
-
+        [Header("Movement")]
+        public float speed = 6f;
+        
         public float jumpForce;
         private float m_VerticalSpeed;
+        
+        public float gravity;
 
-        public float maxTurnSpeed, minTurnSpeed;
-
-        private Quaternion m_TargetRotation;
+        [Header("Rotation")]
+        public float turnSmoothTime = 0.1f;
+        private float m_TurnSmoothVelocity;
 
         private bool m_IsGrounded, m_CanJump;
 
-        private const float GROUND_ACCELERATION = 10;
-        private const float GROUND_DECELERATION = 10;
-
         private const float STICKING_GRAVITY_PROPORTION = 3;
-        private const float JUMP_ABORT_SPEED = 3;
+        private const float JUMP_ABORT_SPEED = 10;
 
-        private const float INVERSE_DIRECTION_TOLERANCE = -0.8f;
-        private const float AIRBORNE_TURN_SPEED_PROPORTION = 2f;
+        public bool IsMoving => m_Input.MoveInput != Vector2.zero;
 
-        protected override void Awake()
+        private void Awake()
         {
-            base.Awake();
             m_CharCtrl = GetComponent<CharacterController>();
             m_Input = GetComponent<PlayerInput>();
         }
 
         private void FixedUpdate()
         {
-            CalculateForwardMovement();
+            SetRotation();
             CalculateVerticalMovement();
-            SetTargetRotation();
-            UpdateOrientation();
         }
 
         private void OnAnimatorMove()
         {
-            Vector3 movement = m_ForwardSpeed * transform.forward * Time.deltaTime;
-
-            movement += m_VerticalSpeed * Vector3.up * Time.deltaTime;
-
+            Vector3 movement = IsMoving? Time.deltaTime * speed * transform.forward : Vector3.zero;
+            movement += m_VerticalSpeed * Time.deltaTime * Vector3.up;
+            
             m_CharCtrl.Move(movement);
 
             m_IsGrounded = m_CharCtrl.isGrounded;
-        }
-
-        private void CalculateForwardMovement()
-        {
-            Vector2 moveInput = m_Input.MoveInput;
-            if (moveInput.sqrMagnitude > 1f) moveInput.Normalize();
-
-            m_DesiredForwardSpeed = moveInput.magnitude * maxForwardSpeed;
-
-            float acceleration = moveInput != Vector2.zero ? GROUND_ACCELERATION : GROUND_DECELERATION;
-
-            m_ForwardSpeed = Mathf.MoveTowards(m_ForwardSpeed, m_DesiredForwardSpeed, acceleration * Time.deltaTime);
         }
 
         private void CalculateVerticalMovement()
@@ -88,37 +68,18 @@ namespace Player
             }
             else
             {
-                if (!m_Input.JumpInput && m_VerticalSpeed > 0.0f)
-                    // ... decrease Ellen's vertical speed.
-                    // This is what causes holding jump to jump higher that tapping jump.
-                    m_VerticalSpeed -= JUMP_ABORT_SPEED * Time.deltaTime;
-
-                if (Mathf.Approximately(m_VerticalSpeed, 0f)) m_VerticalSpeed = 0f;
-
+                if (!m_Input.JumpInput && m_VerticalSpeed > 0) m_VerticalSpeed -= JUMP_ABORT_SPEED * Time.deltaTime;
                 m_VerticalSpeed -= gravity * Time.deltaTime;
             }
         }
 
-        private void SetTargetRotation()
+        private void SetRotation()
         {
-            Vector2 moveInput = m_Input.MoveInput;
-            Vector3 localMovementDirection = new Vector3(moveInput.x, 0f, moveInput.y).normalized;
+            if (m_Input.MoveInput == Vector2.zero) return;
 
-            Vector3 forward = (Quaternion.Euler(0f, mainCamera.m_XAxis.Value, 0f) * Vector3.forward).normalized;
-            forward.y = 0f;
-
-            Quaternion targetRotation = Quaternion.LookRotation(Vector3.Dot(localMovementDirection, Vector3.forward) < INVERSE_DIRECTION_TOLERANCE ? -forward :
-                                                                    Quaternion.FromToRotation(Vector3.forward, localMovementDirection) * forward);
-            m_TargetRotation = targetRotation;
-        }
-
-        private void UpdateOrientation()
-        {
-            var localInput = new Vector3(m_Input.MoveInput.x, 0f, m_Input.MoveInput.y);
-            float groundedTurnSpeed = Mathf.Lerp(maxTurnSpeed, minTurnSpeed, m_ForwardSpeed / m_DesiredForwardSpeed);
-            float actualTurnSpeed = m_IsGrounded ? groundedTurnSpeed : Vector3.Angle(transform.forward, localInput).ToRadians() * AIRBORNE_TURN_SPEED_PROPORTION * groundedTurnSpeed;
-
-            transform.rotation = m_TargetRotation = Quaternion.RotateTowards(transform.rotation, m_TargetRotation, actualTurnSpeed * Time.deltaTime);
+            float targetAngle = Mathf.Atan2(m_Input.MoveInput.x, m_Input.MoveInput.y).ToRadians() + mainCamera.eulerAngles.y;
+            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref m_TurnSmoothVelocity, turnSmoothTime);
+            transform.rotation = Quaternion.Euler(0f, angle, 0f);
         }
     }
 }
