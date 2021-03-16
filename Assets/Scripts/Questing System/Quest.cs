@@ -1,3 +1,4 @@
+using Managers;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -36,25 +37,30 @@ namespace Questing_System
 
         public void StartQuest()
         {
+            gameObject.SetActive(true);
             questState = QuestState.OnGoing;
-            onQuestCompleted?.Invoke();
+            onQuestStarted?.Invoke();
             OnceQuestStarted();
         }
 
         public void CompleteQuest()
         {
             questState = QuestState.Completed;
-            onQuestFailed?.Invoke();
+            onQuestCompleted?.Invoke();
             OnceQuestIsCompleted();
             //increment karma, by event maybe
+            GameManager.Instance.UpdateCampaigns();
+            gameObject.SetActive(false);
         }
 
         public void FailQuest()
         {
             questState = QuestState.Failed;
-            onQuestStarted?.Invoke();
+            onQuestFailed?.Invoke();
             OnceQuestIsFailed();
             //decrement karma, by event maybe
+            GameManager.Instance.UpdateCampaigns();
+            gameObject.SetActive(false);
         }
     }
 }

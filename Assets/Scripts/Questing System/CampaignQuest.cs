@@ -25,7 +25,7 @@ namespace Questing_System
             
             if (currentQuest.isFinalQuest)
             {
-                questState = QuestState.Completed;
+                questState = currentQuest.isCompleted? QuestState.Completed : QuestState.Failed;
                 currentQuest = null;   
             }
             else

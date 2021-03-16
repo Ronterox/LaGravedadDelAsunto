@@ -1,3 +1,4 @@
+using Managers;
 using UnityEngine;
 
 namespace Questing_System
@@ -9,26 +10,35 @@ namespace Questing_System
         [Space] public CampaignQuest[] campaignQuests;
         private int m_CurrentQuestIndex;
 
+        public QuestState campaignResult;
+
+        //TODO: count failed missions and completed ones, to guess the result of the campaign
+        private int m_FailedCounter, m_CompletedCounter;
+
         public bool Started => campaignQuests[m_CurrentQuestIndex].questState != QuestState.NotStarted;
         public bool IsCompleted => m_CurrentQuestIndex >= campaignQuests.Length;
         public bool IsOnGoing => Started && !IsCompleted;
 
         public void StartCampaignQuest(int index) => campaignQuests[index].StartQuest();
 
-        //Maybe call this by an quest completed event
         public void UpdateCampaign()
         {
             CampaignQuest currentCampaignQuest = campaignQuests[m_CurrentQuestIndex];
             
             currentCampaignQuest.UpdateState();
             
-            if (currentCampaignQuest.questState != QuestState.Completed) return;
+            if (currentCampaignQuest.questState != QuestState.Completed && currentCampaignQuest.questState != QuestState.Failed) return;
 
             if (++m_CurrentQuestIndex < campaignQuests.Length) StartCampaignQuest(m_CurrentQuestIndex);
             else CompleteCampaign();
         }
 
-        public void CompleteCampaign() { }
+        public void CompleteCampaign()
+        {
+            //Read upper TODO to change this
+            //campaignResult = campaignQuests[m_CurrentQuestIndex].questState;
+            GameManager.Instance.onGoingCampaigns.Remove(this);
+        }
 
         public Quest GetCurrentQuest() => campaignQuests[m_CurrentQuestIndex].currentQuest;
     }
