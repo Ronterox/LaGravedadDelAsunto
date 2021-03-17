@@ -1,21 +1,17 @@
 using System.Collections.Generic;
-using Plugins.Tools;
 using Questing_System;
+using UnityEngine;
 
 namespace Managers
 {
     //TODO: Comment all methods of the quest system
-    public class QuestManager : Singleton<QuestManager>
+    public class QuestManager : MonoBehaviour
     {
         public Campaign[] allCampaigns;
         private readonly Dictionary<string, Campaign> m_Campaigns = new Dictionary<string, Campaign>();
         public List<Campaign> onGoingCampaigns;
 
-        protected override void Awake()
-        {
-            base.Awake();
-            foreach (Campaign campaign in allCampaigns) m_Campaigns.Add(campaign.id, campaign);
-        }
+        private void Awake() { foreach (Campaign campaign in allCampaigns) m_Campaigns.Add(campaign.id, campaign); }
 
         public void UpdateCampaigns()
         {
@@ -23,7 +19,7 @@ namespace Managers
             RemoveCompletedCampaigns();
         }
 
-        public void RemoveCompletedCampaigns()
+        private void RemoveCompletedCampaigns()
         {
             foreach (Campaign campaign in onGoingCampaigns.ToArray())
             {

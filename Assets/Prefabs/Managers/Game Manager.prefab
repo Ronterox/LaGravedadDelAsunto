@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 8792325526232751512}
   - component: {fileID: 8792325526232751511}
   - component: {fileID: 325547153588836211}
+  - component: {fileID: 1157012126}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -78,6 +79,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 585cdace672dccb68a0c61fcd6ac2b02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  karmaController: {fileID: 1157012126}
+  questManager: {fileID: 325547153588836211}
 --- !u!114 &325547153588836211
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -109,6 +112,21 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
   onGoingCampaigns: []
+--- !u!114 &1157012126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8792325526232751510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f904f4805a139aa4aa8497ca9da41191, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxKarmaValue: 20
+  karma: 0
+  karmaBar: {fileID: 0}
 --- !u!1001 &1129560760586659945
 PrefabInstance:
   m_ObjectHideFlags: 0

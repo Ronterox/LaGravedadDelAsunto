@@ -5,10 +5,17 @@ namespace Karma_System
 {
     public class KarmaController : MonoBehaviour
     {
-        public int karma = 50;
+        public int maxKarmaValue = 50;
+        
+        public int karma;
         public Slider karmaBar;
-
-        private void Start() => karmaBar.value = karma;
+        
+        private void Awake()
+        {
+            karmaBar.minValue = -maxKarmaValue;
+            karmaBar.maxValue = maxKarmaValue;
+            karmaBar.value = karma;
+        }
 
         //Only for test if works after implemented.
         private void Update()

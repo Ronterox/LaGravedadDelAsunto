@@ -25,7 +25,7 @@ namespace NPCs
 
         private void Interact()
         {
-            Campaign npcCampaign = QuestManager.Instance.GetCampaign(npcScriptable.campaignID);
+            Campaign npcCampaign = GameManager.Instance.questManager.GetCampaign(npcScriptable.campaignID);
             if (npcCampaign.IsCompleted)
             {
                 if (infiniteCompletedEventCall || !m_CalledCampaignEventOnce)
@@ -35,7 +35,7 @@ namespace NPCs
                     onCampaignCompletedInteraction?.Invoke();
                 }
             }
-            else if (!npcCampaign.Started) QuestManager.Instance.StartNewCampaign(npcScriptable.campaignID);
+            else if (!npcCampaign.Started) GameManager.Instance.questManager.StartNewCampaign(npcScriptable.campaignID);
             OnInteraction(npcCampaign);
         }
 

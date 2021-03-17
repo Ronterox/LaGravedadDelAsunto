@@ -56,8 +56,8 @@ namespace Questing_System
             questState = QuestState.Completed;
             events.onQuestCompleted?.Invoke();
             OnceQuestIsCompleted();
-            //increment karma, by event maybe
-            QuestManager.Instance.UpdateCampaigns();
+            GameManager.Instance.karmaController.ChangeKarma(questInfo.positiveKarma);
+            GameManager.Instance.questManager.UpdateCampaigns();
             gameObject.SetActive(false);
             m_JustStarted = false;
         }
@@ -67,8 +67,8 @@ namespace Questing_System
             questState = QuestState.Failed;
             events.onQuestFailed?.Invoke();
             OnceQuestIsFailed();
-            //decrement karma, by event maybe
-            QuestManager.Instance.UpdateCampaigns();
+            GameManager.Instance.karmaController.ChangeKarma(-questInfo.negativeKarma);
+            GameManager.Instance.questManager.UpdateCampaigns();
             gameObject.SetActive(false);
             m_JustStarted = false;
         }
