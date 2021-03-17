@@ -12,6 +12,14 @@ namespace Questing_System
         OnGoing,
         Failed
     }
+
+    [System.Serializable]
+    public struct QuestEvents
+    {
+        public UnityEvent onQuestCompleted;
+        public UnityEvent onQuestFailed;
+        public UnityEvent onQuestStarted;
+    }
     
     public abstract class Quest : MonoBehaviour
     {
@@ -26,10 +34,7 @@ namespace Questing_System
 
         private bool m_JustStarted;
 
-        [Header("Events")]
-        public UnityEvent onQuestCompleted;
-        public UnityEvent onQuestFailed;
-        public UnityEvent onQuestStarted;
+        public QuestEvents events;
 
         protected abstract void OnceQuestIsCompleted();
 
@@ -41,7 +46,7 @@ namespace Questing_System
         {
             gameObject.SetActive(true);
             questState = QuestState.OnGoing;
-            onQuestStarted?.Invoke();
+            events.onQuestStarted?.Invoke();
             OnceQuestStarted();
             m_JustStarted = true;
         }
@@ -49,7 +54,7 @@ namespace Questing_System
         public void CompleteQuest()
         {
             questState = QuestState.Completed;
-            onQuestCompleted?.Invoke();
+            events.onQuestCompleted?.Invoke();
             OnceQuestIsCompleted();
             //increment karma, by event maybe
             QuestManager.Instance.UpdateCampaigns();
@@ -60,7 +65,7 @@ namespace Questing_System
         public void FailQuest()
         {
             questState = QuestState.Failed;
-            onQuestFailed?.Invoke();
+            events.onQuestFailed?.Invoke();
             OnceQuestIsFailed();
             //decrement karma, by event maybe
             QuestManager.Instance.UpdateCampaigns();

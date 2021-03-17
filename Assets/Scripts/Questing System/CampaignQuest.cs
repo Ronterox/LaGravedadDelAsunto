@@ -21,29 +21,41 @@ namespace Questing_System
 
         public void UpdateState()
         {
-            if (questState != QuestState.NotStarted || questState != QuestState.OnGoing) return;
+            if (questState != QuestState.NotStarted && questState != QuestState.OnGoing) return;
 
             if (currentQuest.isFinalQuest)
             {
-                if (currentQuest.IsCompleted) m_CompletedCounter++;
-                else m_FailedCounter++;
-                
-                if (m_FailedCounter == m_CompletedCounter) questState = QuestState.NeutralEnding;
-                else questState = m_CompletedCounter > m_FailedCounter ? QuestState.Completed : QuestState.Failed;
-                return;
-            }
-
-            if (currentQuest.IsCompleted)
-            {
-                currentQuest = goodQuest;
-                m_CompletedCounter++;
+                if (currentQuest.IsCompleted)
+                {
+                    m_CompletedCounter++;
+                    UpdateStateQuest();
+                }
+                else if (currentQuest.IsFailed)
+                {
+                    m_FailedCounter++;
+                    UpdateStateQuest();
+                }
             }
             else
             {
-                currentQuest = badQuest;
-                m_FailedCounter++;
+                if (currentQuest.IsCompleted)
+                {
+                    currentQuest = goodQuest;
+                    m_CompletedCounter++;
+                }
+                else
+                {
+                    currentQuest = badQuest;
+                    m_FailedCounter++;
+                }
+                currentQuest.StartQuest();
             }
-            currentQuest.StartQuest();
+        }
+
+        private void UpdateStateQuest()
+        {
+            if (m_FailedCounter == m_CompletedCounter) questState = QuestState.NeutralEnding;
+            else questState = m_CompletedCounter > m_FailedCounter ? QuestState.Completed : QuestState.Failed;
         }
 
         public void StartQuest()

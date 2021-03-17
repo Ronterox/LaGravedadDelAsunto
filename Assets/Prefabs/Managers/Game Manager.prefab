@@ -99,6 +99,15 @@ MonoBehaviour:
       badQuest: {fileID: 1128256689153835977}
       goodQuest: {fileID: 1128256689109642966}
     campaignResult: 0
+    onCampaignCompleted:
+      m_PersistentCalls:
+        m_Calls: []
+    onCampaignFailed:
+      m_PersistentCalls:
+        m_Calls: []
+    onCampaignNeutralEnding:
+      m_PersistentCalls:
+        m_Calls: []
   onGoingCampaigns: []
 --- !u!1001 &1129560760586659945
 PrefabInstance:
