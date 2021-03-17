@@ -28,6 +28,10 @@ namespace Player
 
         private bool m_IsGrounded, m_CanJump;
 
+        private readonly int SPEED_ANIMATION_HASH = Animator.StringToHash("Speed");
+        private readonly int JUMP_ANIMATION_HASH = Animator.StringToHash("Jump");
+        private readonly int FALLING_ANIMATION_HASH = Animator.StringToHash("IsFalling");
+
         private const float STICKING_GRAVITY_PROPORTION = 3;
         private const float JUMP_ABORT_SPEED = 10;
 
@@ -44,7 +48,7 @@ namespace Player
         {
             AnimatePlayer();
             SetRotation();
-            CalculateVerticalMovement();            
+            CalculateVerticalMovement();
         }
 
         private void OnAnimatorMove()
@@ -86,13 +90,16 @@ namespace Player
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
         }
 
+        //TODO: Animate sprinting and running, when added, also walking only by ctrl press if not joystick
         private void AnimatePlayer()
         {
-            if (!IsMoving && m_IsGrounded) m_Animator.SetFloat("Speed", 0, 0.15f, Time.deltaTime);
-            if (IsMoving && m_IsGrounded) m_Animator.SetFloat("Speed", 0.5f, 0.15f, Time.deltaTime);
-            if (m_CanJump && m_Input.JumpInput) m_Animator.SetTrigger("Jump");            
-            if (m_IsGrounded) m_Animator.SetBool("IsFalling", false);
-            else m_Animator.SetBool("IsFalling", true);
+            if (m_IsGrounded)
+            {
+                if (!IsMoving) m_Animator.SetFloat(SPEED_ANIMATION_HASH, 0, 0.15f, Time.deltaTime);
+                else m_Animator.SetFloat(SPEED_ANIMATION_HASH, 0.5f, 0.15f, Time.deltaTime);
+                if (m_CanJump && m_Input.JumpInput) m_Animator.SetTrigger(JUMP_ANIMATION_HASH);    
+            }
+            m_Animator.SetBool(FALLING_ANIMATION_HASH, !m_IsGrounded);
         }
     }
 }
