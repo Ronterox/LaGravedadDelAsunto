@@ -37,5 +37,8 @@ namespace Plugins.Tools
         }
 #endif
         public static float ToRadians(this float degrees) => Mathf.Rad2Deg * degrees;
+
+        public static string ToColorString(this string sentence, string color) => $"<color={color}>{sentence}</color>";
+
     }
 }

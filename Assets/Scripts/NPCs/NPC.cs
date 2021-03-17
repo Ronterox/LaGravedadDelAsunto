@@ -1,52 +1,61 @@
-using Plugins.Tools;
+using Managers;
+using Player;
 using Questing_System;
 using UnityEngine;
 using UnityEngine.Events;
 
 namespace NPCs
 {
-    public struct NPCRequestCompleted
+    public abstract class NPC : MonoBehaviour
     {
-        public Quest quest;
-        public QuestState questState;
+        [Space] public ScriptableNPC npcScriptable;
 
-        public NPCRequestCompleted(Quest quest, QuestState questState)
+        [Space] public UnityEvent onCampaignCompletedInteraction;
+
+        public bool infiniteCompletedEventCall;
+        private bool m_PlayerOnRange, m_CalledCampaignEventOnce;
+
+        protected abstract void OnCampaignCompletedInteraction(Campaign campaign);
+
+        protected abstract void OnInteractionRangeEnter();
+
+        protected abstract void OnInteractionRangeExit();
+
+        protected abstract void OnInteraction(Campaign campaign);
+
+        private void Interact()
         {
-            this.quest = quest;
-            this.questState = questState;
-        }
-    }
-
-    public abstract class NPC : MonoBehaviour, MMEventListener<NPCRequestCompleted>
-    {
-        [Header("NPC")] public string m_NpcName;
-        [Space][TextArea] public string m_Description;
-        
-        [Space] public Campaign campaign;
-
-        [Space] public UnityEvent onCampaignCompleted;
-
-        protected NPCRequestCompleted lastQuest;
-
-        public void StartCampaign() => campaign.StartCampaignQuest(0);
-
-        protected abstract void OnCampaignCompleted();
-
-        public virtual void Interact()
-        {
-            if (campaign.isCompleted)
+            Campaign npcCampaign = QuestManager.Instance.GetCampaign(npcScriptable.campaignID);
+            if (npcCampaign.IsCompleted)
             {
-                OnCampaignCompleted();
-                onCampaignCompleted.Invoke();
+                if (infiniteCompletedEventCall || !m_CalledCampaignEventOnce)
+                {
+                    m_CalledCampaignEventOnce = true;
+                    OnCampaignCompletedInteraction(npcCampaign);
+                    onCampaignCompletedInteraction?.Invoke();
+                }
             }
-            else if (!campaign.started) StartCampaign();
-            else if (lastQuest.quest)
-            {
-                MMEventManager.TriggerEvent(new QuestCompleted(lastQuest.quest, lastQuest.questState));
-                lastQuest.quest = null;
-            }
+            else if (!npcCampaign.Started) QuestManager.Instance.StartNewCampaign(npcScriptable.campaignID);
+            OnInteraction(npcCampaign);
         }
 
-        public void OnMMEvent(NPCRequestCompleted eventType) => lastQuest = eventType;
+        private void Update()
+        {
+            if (m_PlayerOnRange && PlayerInput.Instance.Interact) Interact();
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (!other.CompareTag("Player")) return;
+            m_PlayerOnRange = true;
+            OnInteractionRangeEnter();
+        }
+
+        private void OnTriggerExit(Collider other)
+        {
+            if (!other.CompareTag("Player")) return;
+            m_PlayerOnRange = false;
+            OnInteractionRangeExit();
+        }
     }
 }

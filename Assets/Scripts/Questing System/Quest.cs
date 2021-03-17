@@ -1,46 +1,40 @@
-using Plugins.Tools;
+using Managers;
 using UnityEngine;
 using UnityEngine.Events;
 
 namespace Questing_System
 {
-    [System.Serializable]
     public enum QuestState
     {
+        NotStarted,
         Completed,
+        NeutralEnding,
         OnGoing,
-        Failed,
-        NotStarted
+        Failed
     }
 
-    public readonly struct QuestCompleted
+    [System.Serializable]
+    public struct QuestEvents
     {
-        public readonly Quest quest;
-        public readonly QuestState newQuestState;
-        public QuestCompleted(Quest quest, QuestState questState)
-        {
-            this.quest = quest;
-            newQuestState = questState;
-        }
-    }
-    
-    public abstract class Quest : MonoBehaviour, MMEventListener<QuestCompleted>
-    {
-        [HideInInspector] public CampaignQuest parentQuest;
-        public QuestState questState = QuestState.NotStarted;
-        
-        [Header("Unity Events")]
-        public UnityEvent onQuestStart;
         public UnityEvent onQuestCompleted;
         public UnityEvent onQuestFailed;
+        public UnityEvent onQuestStarted;
+    }
+    
+    public abstract class Quest : MonoBehaviour
+    {
+        public string questID;
+        public QuestInfo questInfo;
+        [Space] public QuestState questState = QuestState.NotStarted;
 
-        [Header("Quest Settings")]
-        public int karmaWon;
-        public int karmaLost;
-        
         public bool isFinalQuest;
-        public bool isCompleted => questState == QuestState.Completed;
-        public bool isFailed => questState == QuestState.Failed;
+        public bool IsCompleted => questState == QuestState.Completed;
+        public bool IsFailed => questState == QuestState.Failed;
+        public bool IsOnGoing => questState == QuestState.OnGoing;
+
+        private bool m_JustStarted;
+
+        public QuestEvents events;
 
         protected abstract void OnceQuestIsCompleted();
 
@@ -50,34 +44,40 @@ namespace Questing_System
 
         public void StartQuest()
         {
+            gameObject.SetActive(true);
             questState = QuestState.OnGoing;
-            onQuestStart.Invoke();
+            events.onQuestStarted?.Invoke();
             OnceQuestStarted();
+            m_JustStarted = true;
         }
 
         public void CompleteQuest()
         {
             questState = QuestState.Completed;
-            onQuestCompleted.Invoke();
+            events.onQuestCompleted?.Invoke();
             OnceQuestIsCompleted();
-            if(isFinalQuest) parentQuest?.CompleteCampaignQuest();
             //increment karma, by event maybe
+            QuestManager.Instance.UpdateCampaigns();
+            gameObject.SetActive(false);
+            m_JustStarted = false;
         }
 
         public void FailQuest()
         {
             questState = QuestState.Failed;
-            onQuestFailed.Invoke();
+            events.onQuestFailed?.Invoke();
             OnceQuestIsFailed();
-            if(isFinalQuest) parentQuest?.CompleteCampaignQuest();
             //decrement karma, by event maybe
+            QuestManager.Instance.UpdateCampaigns();
+            gameObject.SetActive(false);
+            m_JustStarted = false;
         }
 
-        public void OnMMEvent(QuestCompleted eventType)
+        public bool IsJustStarted()
         {
-            if (eventType.quest != this) return;
-            if(eventType.newQuestState == QuestState.Completed) CompleteQuest();
-            else FailQuest();
+            if (!m_JustStarted) return false;
+            m_JustStarted = false;
+            return true;
         }
     }
 }

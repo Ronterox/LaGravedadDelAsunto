@@ -1,35 +1,60 @@
-using System.Collections.Generic;
+using Managers;
+using UnityEngine;
+using UnityEngine.Events;
 
 namespace Questing_System
 {
     [System.Serializable]
     public class Campaign
     {
-        public List<CampaignQuest> campaignQuests;
+        public string id;
+        [Space] public CampaignQuest[] campaignQuests;
         private int m_CurrentQuestIndex;
-        
-        public bool started;
-        public bool isCompleted => m_CurrentQuestIndex >= campaignQuests.Count;
-        public bool isOnGoing => started && !isCompleted;
 
-        public void StartCampaignQuest(int index)
-        {
-            campaignQuests.ForEach(x => x.campaign = this);
-            campaignQuests[index].StartQuest();
-        }
+        public QuestState campaignResult;
 
-        //Maybe call this by an quest completed event
+        private int m_FailedCounter, m_CompletedCounter;
+
+        [Header("Final Events")]
+        public UnityEvent onCampaignCompleted;
+
+        public UnityEvent onCampaignFailed;
+
+        public UnityEvent onCampaignNeutralEnding;
+
+        public bool Started => campaignQuests[0].questState != QuestState.NotStarted;
+        public bool IsCompleted => m_CurrentQuestIndex >= campaignQuests.Length;
+        public bool IsOnGoing => Started && !IsCompleted;
+
+        public void StartCampaignQuest(int index) => campaignQuests[index].StartQuest();
+
         public void UpdateCampaign()
-        { 
-            m_CurrentQuestIndex++;
+        {
+            CampaignQuest campaignQuest = GetCurrentCampaignQuest();
+            campaignQuest.UpdateState();
+            
+            switch (campaignQuest.questState)
+            {
+                case QuestState.Completed: m_CompletedCounter++; break;
+                case QuestState.Failed: m_FailedCounter++; break;
+                case QuestState.NeutralEnding: break;
+                default: return;
+            }
 
-            if (m_CurrentQuestIndex < campaignQuests.Count) StartCampaignQuest(m_CurrentQuestIndex);
+            if (++m_CurrentQuestIndex < campaignQuests.Length) StartCampaignQuest(m_CurrentQuestIndex);
             else CompleteCampaign();
         }
 
-        public void CompleteCampaign() { }
+        public void CompleteCampaign()
+        {
+            if (m_FailedCounter == m_CompletedCounter) campaignResult = QuestState.NeutralEnding;
+            else if (m_FailedCounter > m_CompletedCounter) campaignResult = QuestState.Failed;
+            else campaignResult = QuestState.Completed;
+        }
 
-        public Quest GetCurrentQuest() => campaignQuests[m_CurrentQuestIndex].currentQuest;
+        public CampaignQuest GetCurrentCampaignQuest() => campaignQuests[IsCompleted ? campaignQuests.Length - 1 : m_CurrentQuestIndex];
+
+        public Quest GetCurrentQuest() => campaignQuests[IsCompleted ? campaignQuests.Length - 1 : m_CurrentQuestIndex].currentQuest;
     }
 
 }
