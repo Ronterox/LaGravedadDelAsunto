@@ -10,22 +10,27 @@ namespace Player
         private float m_ScrollWheelMovement;
         
         public bool playerControllerInputBlocked;
+        private bool m_ExternalInputBlocked;
 
         private Vector2 m_Movement;
         private Vector2 m_Camera;
 
         private bool m_Jump;
         private bool m_Interact;
-        
-        private bool m_ExternalInputBlocked;
 
-        public Vector2 MoveInput => playerControllerInputBlocked || m_ExternalInputBlocked ? Vector2.zero : m_Movement;
+        private bool m_Attack;
 
-        public Vector2 CameraInput => playerControllerInputBlocked || m_ExternalInputBlocked ? Vector2.zero : m_Camera;
+        public Vector2 MoveInput => InputBlocked ? Vector2.zero : m_Movement;
 
-        public bool JumpInput => m_Jump && !playerControllerInputBlocked && !m_ExternalInputBlocked;
+        public Vector2 CameraInput => InputBlocked ? Vector2.zero : m_Camera;
 
-        public bool Interact => m_Interact && !playerControllerInputBlocked && !m_ExternalInputBlocked;
+        public bool InputBlocked => playerControllerInputBlocked || m_ExternalInputBlocked;
+
+        public bool JumpInput => m_Jump && !InputBlocked;
+
+        public bool Interact => m_Interact && !InputBlocked;
+
+        public bool Attack => m_Attack && !InputBlocked;
 
         public bool IsScrollingUp => m_ScrollWheelMovement > 0;
 
@@ -39,7 +44,8 @@ namespace Player
             m_Camera.Set(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
             m_Jump = Input.GetButton("Jump");
 
-            m_Interact = Input.GetButtonDown("Fire1");
+            m_Interact = Input.GetButtonDown("Interact");
+            m_Attack = Input.GetButtonDown("Fire1");
             Pause = Input.GetButtonDown("Submit");
 
             m_ScrollWheelMovement = Input.GetAxis("Mouse ScrollWheel");

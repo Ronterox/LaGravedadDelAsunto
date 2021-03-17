@@ -22,7 +22,7 @@ namespace Questing_System.Quests
 
         public void DestroyGathered()
         {
-            if (--m_TotalDestroyed == toDestroyGatheringQuantity) FailQuest();
+            if (++m_TotalDestroyed == toDestroyGatheringQuantity) FailQuest();
         }
 
         protected override void OnceQuestIsCompleted() { }

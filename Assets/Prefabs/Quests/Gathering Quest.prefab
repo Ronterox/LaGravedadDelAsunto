@@ -96,7 +96,7 @@ MonoBehaviour:
   - {fileID: 5564481379438519064}
   - {fileID: 2738724809388541438}
   - {fileID: 8769595213277786001}
-  toGetGatheringQuantity: 3
+  toGetGatheringQuantity: 2
   toDestroyGatheringQuantity: 2
 --- !u!1 &5887081618233881301
 GameObject:
