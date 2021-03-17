@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Plugins
+namespace Plugins.Tools
 {
     [AddComponentMenu("Penguins Mafia/Tools/FPS Counter")]
     public class FPSCounter : MonoBehaviour
