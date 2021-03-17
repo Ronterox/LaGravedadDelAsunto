@@ -1,5 +1,4 @@
 using System.Collections;
-using Managers;
 using Questing_System;
 using TMPro;
 using UnityEngine;
@@ -10,7 +9,7 @@ namespace NPCs
     {
         public TextMeshPro helpMessage;
         public float secondsBetweenTyping = 0.025f;
-        
+
         private Coroutine m_CurrentCoroutine;
         private WaitForSeconds m_WaitForSeconds;
 
@@ -20,23 +19,21 @@ namespace NPCs
             TypeInto(helpMessage, "Hello you, come here!");
         }
 
-        protected override void OnCampaignCompleted() => TypeInto(helpMessage, GameManager.Instance.GetCampaign(npcScriptable.campaignID).campaignResult == QuestState.Completed ? 
-                                                                      "Thank you so much!!!" 
-                                                                      : "Fuck you, sir");
+        protected override void OnCampaignCompleted(Campaign campaign) => TypeInto(helpMessage, campaign.campaignResult == QuestState.Completed ? "Thank you so much!!!, Sir" : "Fuck you, Sir");
 
         protected override void OnInteractionRangeEnter() => TypeInto(helpMessage, "You can press \"E\" to interact!");
 
-        protected override void OnInteractionRangeExit() => TypeInto( helpMessage,"Well, see you and good luck...");
+        protected override void OnInteractionRangeExit() => TypeInto(helpMessage, "Well, see you and good luck...");
 
-        public override void Interact()
+        protected override void OnInteraction(QuestState lastQuestState, Quest quest)
         {
-            TypeInto(helpMessage,"Quest started sir, look behind you!");
-            base.Interact();
+            if(quest.questState != QuestState.Completed) TypeInto(helpMessage, lastQuestState == QuestState.NotStarted && quest.questState == QuestState.OnGoing? 
+                                                                      "Quest started sir, look around!" : "Come talk to me once you collect everything!");
         }
 
         private void TypeInto(TMP_Text textMeshPro, string text)
         {
-            if(m_CurrentCoroutine != null) StopCoroutine(m_CurrentCoroutine);
+            if (m_CurrentCoroutine != null) StopCoroutine(m_CurrentCoroutine);
             m_CurrentCoroutine = StartCoroutine(TypingCoroutine(textMeshPro, text));
         }
 

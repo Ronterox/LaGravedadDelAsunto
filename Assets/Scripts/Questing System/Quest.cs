@@ -49,7 +49,7 @@ namespace Questing_System
             onQuestCompleted?.Invoke();
             OnceQuestIsCompleted();
             //increment karma, by event maybe
-            GameManager.Instance.UpdateCampaigns();
+            QuestManager.Instance.UpdateCampaigns();
             gameObject.SetActive(false);
         }
 
@@ -59,7 +59,7 @@ namespace Questing_System
             onQuestFailed?.Invoke();
             OnceQuestIsFailed();
             //decrement karma, by event maybe
-            GameManager.Instance.UpdateCampaigns();
+            QuestManager.Instance.UpdateCampaigns();
             gameObject.SetActive(false);
         }
     }

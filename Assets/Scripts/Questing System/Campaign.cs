@@ -15,7 +15,7 @@ namespace Questing_System
         //TODO: count failed missions and completed ones, to guess the result of the campaign
         private int m_FailedCounter, m_CompletedCounter;
 
-        public bool Started => campaignQuests[m_CurrentQuestIndex].questState != QuestState.NotStarted;
+        public bool Started => campaignQuests[0].questState != QuestState.NotStarted;
         public bool IsCompleted => m_CurrentQuestIndex >= campaignQuests.Length;
         public bool IsOnGoing => Started && !IsCompleted;
 
@@ -24,9 +24,9 @@ namespace Questing_System
         public void UpdateCampaign()
         {
             CampaignQuest currentCampaignQuest = campaignQuests[m_CurrentQuestIndex];
-            
+
             currentCampaignQuest.UpdateState();
-            
+
             if (currentCampaignQuest.questState != QuestState.Completed && currentCampaignQuest.questState != QuestState.Failed) return;
 
             if (++m_CurrentQuestIndex < campaignQuests.Length) StartCampaignQuest(m_CurrentQuestIndex);
@@ -37,10 +37,10 @@ namespace Questing_System
         {
             //Read upper TODO to change this
             //campaignResult = campaignQuests[m_CurrentQuestIndex].questState;
-            GameManager.Instance.onGoingCampaigns.Remove(this);
+            QuestManager.Instance.onGoingCampaigns.Remove(this);
         }
 
-        public Quest GetCurrentQuest() => campaignQuests[m_CurrentQuestIndex].currentQuest;
+        public Quest GetCurrentQuest() => campaignQuests[IsCompleted ? campaignQuests.Length - 1 : m_CurrentQuestIndex].currentQuest;
     }
 
 }
