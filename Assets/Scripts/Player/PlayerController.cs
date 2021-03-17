@@ -12,6 +12,8 @@ namespace Player
         private PlayerInput m_Input;
         private CharacterController m_CharCtrl;
 
+        private Animator m_Animator;
+
         [Header("Movement")]
         public float speed = 6f;
         
@@ -35,12 +37,14 @@ namespace Player
         {
             m_CharCtrl = GetComponent<CharacterController>();
             m_Input = GetComponent<PlayerInput>();
+            m_Animator = GetComponent<Animator>();
         }
 
         private void FixedUpdate()
         {
+            AnimatePlayer();
             SetRotation();
-            CalculateVerticalMovement();
+            CalculateVerticalMovement();            
         }
 
         private void OnAnimatorMove()
@@ -80,6 +84,15 @@ namespace Player
             float targetAngle = Mathf.Atan2(m_Input.MoveInput.x, m_Input.MoveInput.y).ToRadians() + mainCamera.eulerAngles.y;
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref m_TurnSmoothVelocity, turnSmoothTime);
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
+        }
+
+        private void AnimatePlayer()
+        {
+            if (!IsMoving && m_IsGrounded) m_Animator.SetFloat("Speed", 0, 0.15f, Time.deltaTime);
+            if (IsMoving && m_IsGrounded) m_Animator.SetFloat("Speed", 0.5f, 0.15f, Time.deltaTime);
+            if (m_CanJump && m_Input.JumpInput) m_Animator.SetTrigger("Jump");            
+            if (m_IsGrounded) m_Animator.SetBool("IsFalling", false);
+            else m_Animator.SetBool("IsFalling", true);
         }
     }
 }
