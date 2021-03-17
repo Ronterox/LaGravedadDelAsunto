@@ -11,23 +11,39 @@ namespace Questing_System
         [Header("Required")]
         public Quest mainQuest;
 
-        [Header("If you fail the quest yo go to...")]
+        [Header("If you fail the quest you go to...")]
         public Quest badQuest;
 
-        [Header("If you complete the quest yo go to...")]
+        [Header("If you complete the quest you go to...")]
         public Quest goodQuest;
+
+        private int m_FailedCounter, m_CompletedCounter;
 
         public void UpdateState()
         {
-            if (!currentQuest) currentQuest = mainQuest;
-            if (questState != QuestState.OnGoing) return;
+            if (questState != QuestState.NotStarted || questState != QuestState.OnGoing) return;
 
-            if (currentQuest.isFinalQuest) questState = currentQuest.isCompleted ? QuestState.Completed : QuestState.Failed;
-            else if (currentQuest.isCompleted)
+            if (currentQuest.isFinalQuest)
             {
-                currentQuest = currentQuest.isCompleted ? goodQuest : badQuest;
-                currentQuest.StartQuest();
+                if (currentQuest.IsCompleted) m_CompletedCounter++;
+                else m_FailedCounter++;
+                
+                if (m_FailedCounter == m_CompletedCounter) questState = QuestState.NeutralEnding;
+                else questState = m_CompletedCounter > m_FailedCounter ? QuestState.Completed : QuestState.Failed;
+                return;
             }
+
+            if (currentQuest.IsCompleted)
+            {
+                currentQuest = goodQuest;
+                m_CompletedCounter++;
+            }
+            else
+            {
+                currentQuest = badQuest;
+                m_FailedCounter++;
+            }
+            currentQuest.StartQuest();
         }
 
         public void StartQuest()

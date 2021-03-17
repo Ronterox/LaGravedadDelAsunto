@@ -66868,11 +66868,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5617871185371070069, guid: 881f5ea122226be93a0d47628b8a2826, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.0000000042820463
+      value: 0.0000000042820463
       objectReference: {fileID: 0}
     - target: {fileID: 5617871185371070069, guid: 881f5ea122226be93a0d47628b8a2826, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 4.096356e-10
+      value: -4.096356e-10
       objectReference: {fileID: 0}
     - target: {fileID: 5617871186160820124, guid: 881f5ea122226be93a0d47628b8a2826, type: 3}
       propertyPath: m_LocalRotation.w
@@ -67032,6 +67032,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3619904921541985691, guid: 6b204319c6bc7b1b19fbb704b483fa5d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8791522931685928594, guid: 6b204319c6bc7b1b19fbb704b483fa5d, type: 3}
       propertyPath: onQuestStarted.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 

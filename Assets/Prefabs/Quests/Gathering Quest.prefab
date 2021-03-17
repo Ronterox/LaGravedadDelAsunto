@@ -78,6 +78,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 549c4ef59df34dec9b1a3542a979609b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  questID: gathering
+  questInfo: {fileID: 11400000, guid: 10cdce77ea97e21f6a81a1ab5f27a3b3, type: 2}
   questState: 0
   isFinalQuest: 0
   onQuestCompleted:
@@ -89,8 +91,6 @@ MonoBehaviour:
   onQuestStarted:
     m_PersistentCalls:
       m_Calls: []
-  positiveKarma: 0
-  negativeKarma: 0
   collectable: {fileID: 1918555765227773207}
   spawnPositions:
   - {fileID: 5564481379438519064}

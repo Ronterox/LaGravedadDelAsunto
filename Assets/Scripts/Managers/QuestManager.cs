@@ -14,10 +14,9 @@ namespace Managers
         {
             base.Awake();
             foreach (Campaign campaign in allCampaigns) m_Campaigns.Add(campaign.id, campaign);
-            UpdateCampaigns();
         }
         
-        public void UpdateCampaigns() { foreach (KeyValuePair<string, Campaign> campaign in m_Campaigns) campaign.Value.UpdateCampaign(); }
+        public void UpdateCampaigns() { foreach (Campaign campaign in onGoingCampaigns) campaign.UpdateCampaign(); }
 
         public void StartNewCampaign(string campaignID)
         {

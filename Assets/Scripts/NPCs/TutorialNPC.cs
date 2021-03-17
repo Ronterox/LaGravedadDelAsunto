@@ -13,22 +13,32 @@ namespace NPCs
         private Coroutine m_CurrentCoroutine;
         private WaitForSeconds m_WaitForSeconds;
 
+        private const string GATHERING_QUEST_ID = "gathering";
+
         private void Awake()
         {
             m_WaitForSeconds = new WaitForSeconds(secondsBetweenTyping);
             TypeInto(helpMessage, "Hello you, come here!");
         }
 
-        protected override void OnCampaignCompleted(Campaign campaign) => TypeInto(helpMessage, campaign.campaignResult == QuestState.Completed ? "Thank you so much!!!, Sir" : "Fuck you, Sir");
+        protected override void OnCampaignCompletedInteraction(Campaign campaign)
+        {
+            if(campaign.campaignResult == QuestState.NeutralEnding) TypeInto(helpMessage, "Thank you, I guess...?");
+            else TypeInto(helpMessage, campaign.campaignResult == QuestState.Completed ? "Thank you so much!!!, Sir" : "Fuck you, Sir");
+        }
 
         protected override void OnInteractionRangeEnter() => TypeInto(helpMessage, "You can press \"E\" to interact!");
 
         protected override void OnInteractionRangeExit() => TypeInto(helpMessage, "Well, see you and good luck...");
 
-        protected override void OnInteraction(QuestState lastQuestState, Quest quest)
+        protected override void OnInteraction(Campaign campaign)
         {
-            if(quest.questState != QuestState.Completed) TypeInto(helpMessage, lastQuestState == QuestState.NotStarted && quest.questState == QuestState.OnGoing? 
-                                                                      "Quest started sir, look around!" : "Come talk to me once you collect everything!");
+            Quest currentQuest = campaign.GetCurrentQuest();
+            
+            if (!currentQuest.questID.Equals(GATHERING_QUEST_ID)) return;
+            
+            if (currentQuest.IsJustStarted()) TypeInto(helpMessage, "Quest started sir, look around!");
+            else if(currentQuest.IsOnGoing) TypeInto(helpMessage, "Come talk to me once you collect everything!");
         }
 
         private void TypeInto(TMP_Text textMeshPro, string text)

@@ -8,26 +8,28 @@ namespace Questing_System
     {
         NotStarted,
         Completed,
+        NeutralEnding,
         OnGoing,
         Failed
     }
     
     public abstract class Quest : MonoBehaviour
     {
+        public string questID;
+        public QuestInfo questInfo;
         [Space] public QuestState questState = QuestState.NotStarted;
 
         public bool isFinalQuest;
-        public bool isCompleted => questState == QuestState.Completed;
-        public bool isFailed => questState == QuestState.Failed;
+        public bool IsCompleted => questState == QuestState.Completed;
+        public bool IsFailed => questState == QuestState.Failed;
+        public bool IsOnGoing => questState == QuestState.OnGoing;
+
+        private bool m_JustStarted;
 
         [Header("Events")]
         public UnityEvent onQuestCompleted;
         public UnityEvent onQuestFailed;
         public UnityEvent onQuestStarted;
-
-        [Header("Quest Rewards")]
-        public int positiveKarma;
-        public int negativeKarma;
 
         protected abstract void OnceQuestIsCompleted();
 
@@ -41,6 +43,7 @@ namespace Questing_System
             questState = QuestState.OnGoing;
             onQuestStarted?.Invoke();
             OnceQuestStarted();
+            m_JustStarted = true;
         }
 
         public void CompleteQuest()
@@ -51,6 +54,7 @@ namespace Questing_System
             //increment karma, by event maybe
             QuestManager.Instance.UpdateCampaigns();
             gameObject.SetActive(false);
+            m_JustStarted = false;
         }
 
         public void FailQuest()
@@ -61,6 +65,14 @@ namespace Questing_System
             //decrement karma, by event maybe
             QuestManager.Instance.UpdateCampaigns();
             gameObject.SetActive(false);
+            m_JustStarted = false;
+        }
+
+        public bool IsJustStarted()
+        {
+            if (!m_JustStarted) return false;
+            m_JustStarted = false;
+            return true;
         }
     }
 }

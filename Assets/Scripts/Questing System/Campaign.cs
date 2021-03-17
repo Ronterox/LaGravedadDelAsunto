@@ -1,5 +1,6 @@
 using Managers;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Questing_System
 {
@@ -12,8 +13,14 @@ namespace Questing_System
 
         public QuestState campaignResult;
 
-        //TODO: count failed missions and completed ones, to guess the result of the campaign
         private int m_FailedCounter, m_CompletedCounter;
+
+        [Header("Final Events")]
+        public UnityEvent onCampaignCompleted;
+
+        public UnityEvent onCampaignFailed;
+
+        public UnityEvent onCampaignNeutralEnding;
 
         public bool Started => campaignQuests[0].questState != QuestState.NotStarted;
         public bool IsCompleted => m_CurrentQuestIndex >= campaignQuests.Length;
@@ -23,11 +30,12 @@ namespace Questing_System
 
         public void UpdateCampaign()
         {
-            CampaignQuest currentCampaignQuest = campaignQuests[m_CurrentQuestIndex];
+            CampaignQuest campaignQuest = GetCurrentCampaignQuest();
+            campaignQuest.UpdateState();
 
-            currentCampaignQuest.UpdateState();
-
-            if (currentCampaignQuest.questState != QuestState.Completed && currentCampaignQuest.questState != QuestState.Failed) return;
+            if (campaignQuest.questState == QuestState.Completed) m_CompletedCounter++;
+            else if (campaignQuest.questState == QuestState.Failed) m_FailedCounter++;
+            else return;
 
             if (++m_CurrentQuestIndex < campaignQuests.Length) StartCampaignQuest(m_CurrentQuestIndex);
             else CompleteCampaign();
@@ -35,10 +43,14 @@ namespace Questing_System
 
         public void CompleteCampaign()
         {
-            //Read upper TODO to change this
-            //campaignResult = campaignQuests[m_CurrentQuestIndex].questState;
+            Debug.Log(m_FailedCounter + " and " + m_CompletedCounter);
+            if (m_FailedCounter == m_CompletedCounter) campaignResult = QuestState.NeutralEnding;
+            else if (m_FailedCounter > m_CompletedCounter) campaignResult = QuestState.Failed;
+            else campaignResult = QuestState.Completed;
             QuestManager.Instance.onGoingCampaigns.Remove(this);
         }
+
+        public CampaignQuest GetCurrentCampaignQuest() => campaignQuests[IsCompleted ? campaignQuests.Length - 1 : m_CurrentQuestIndex];
 
         public Quest GetCurrentQuest() => campaignQuests[IsCompleted ? campaignQuests.Length - 1 : m_CurrentQuestIndex].currentQuest;
     }

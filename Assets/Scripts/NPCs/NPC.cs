@@ -10,30 +10,33 @@ namespace NPCs
     {
         [Space] public ScriptableNPC npcScriptable;
 
-        [Space] public UnityEvent onCampaignCompleted;
+        [Space] public UnityEvent onCampaignCompletedInteraction;
 
-        private bool m_PlayerOnRange;
+        public bool infiniteCompletedEventCall;
+        private bool m_PlayerOnRange, m_CalledCampaignEventOnce;
 
-        protected abstract void OnCampaignCompleted(Campaign campaign);
+        protected abstract void OnCampaignCompletedInteraction(Campaign campaign);
 
         protected abstract void OnInteractionRangeEnter();
 
         protected abstract void OnInteractionRangeExit();
 
-        protected abstract void OnInteraction(QuestState lastQuestState, Quest quest);
+        protected abstract void OnInteraction(Campaign campaign);
 
         private void Interact()
         {
             Campaign npcCampaign = QuestManager.Instance.GetCampaign(npcScriptable.campaignID);
-            Quest currentQuest = npcCampaign.GetCurrentQuest();
-            QuestState lastQuestState = currentQuest.questState;
             if (npcCampaign.IsCompleted)
             {
-                OnCampaignCompleted(npcCampaign);
-                onCampaignCompleted.Invoke();
+                if (infiniteCompletedEventCall || !m_CalledCampaignEventOnce)
+                {
+                    m_CalledCampaignEventOnce = true;
+                    OnCampaignCompletedInteraction(npcCampaign);
+                    onCampaignCompletedInteraction?.Invoke();
+                }
             }
             else if (!npcCampaign.Started) QuestManager.Instance.StartNewCampaign(npcScriptable.campaignID);
-            OnInteraction(lastQuestState, currentQuest);
+            OnInteraction(npcCampaign);
         }
 
         private void Update()
