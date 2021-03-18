@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Karma_System
+namespace Managers
 {
     public class KarmaController : MonoBehaviour
     {

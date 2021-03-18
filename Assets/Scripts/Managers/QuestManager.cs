@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using Questing_System;
 using UnityEngine;
 
@@ -8,24 +9,19 @@ namespace Managers
     public class QuestManager : MonoBehaviour
     {
         public Campaign[] allCampaigns;
+        
         private readonly Dictionary<string, Campaign> m_Campaigns = new Dictionary<string, Campaign>();
-        public List<Campaign> onGoingCampaigns;
+        private readonly HashSet<Campaign> onGoingCampaigns = new HashSet<Campaign>();
 
         private void Awake() { foreach (Campaign campaign in allCampaigns) m_Campaigns.Add(campaign.id, campaign); }
 
         public void UpdateCampaigns()
         {
-            onGoingCampaigns.ForEach(campaign => campaign.UpdateCampaign());
+            foreach (Campaign onGoingCampaign in onGoingCampaigns) onGoingCampaign.UpdateCampaign();
             RemoveCompletedCampaigns();
         }
 
-        private void RemoveCompletedCampaigns()
-        {
-            foreach (Campaign campaign in onGoingCampaigns.ToArray())
-            {
-                if (campaign.IsCompleted) onGoingCampaigns.Remove(campaign);
-            }
-        }
+        private void RemoveCompletedCampaigns() { foreach (Campaign campaign in onGoingCampaigns.ToArray()) { if (campaign.IsCompleted) onGoingCampaigns.Remove(campaign); } }
 
         public void StartNewCampaign(string campaignID)
         {
