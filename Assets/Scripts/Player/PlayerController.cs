@@ -16,7 +16,8 @@ namespace Player
 
         [Header("Movement")]
         public float speed = 6f;
-        
+        public float sprintMultiplier = 2f;
+
         public float jumpForce;
         private float m_VerticalSpeed;
         
@@ -53,7 +54,7 @@ namespace Player
 
         private void OnAnimatorMove()
         {
-            Vector3 movement = IsMoving? Time.deltaTime * speed * transform.forward : Vector3.zero;
+            Vector3 movement = IsMoving? Time.deltaTime * (m_Input.SprintInput? speed * sprintMultiplier : speed) * transform.forward : Vector3.zero;
             movement += m_VerticalSpeed * Time.deltaTime * Vector3.up;
             
             m_CharCtrl.Move(movement);
@@ -83,7 +84,7 @@ namespace Player
 
         private void SetRotation()
         {
-            if (m_Input.MoveInput == Vector2.zero) return;
+            if (!IsMoving) return;
 
             float targetAngle = Mathf.Atan2(m_Input.MoveInput.x, m_Input.MoveInput.y).ToRadians() + mainCamera.eulerAngles.y;
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref m_TurnSmoothVelocity, turnSmoothTime);

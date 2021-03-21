@@ -32,6 +32,8 @@ namespace Player
 
         public bool Attack => m_Attack && !InputBlocked;
 
+        public bool SprintInput { get; private set; }
+
         public bool IsScrollingUp => m_ScrollWheelMovement > 0;
 
         public bool IsScrollingDown => m_ScrollWheelMovement < 0;
@@ -48,6 +50,8 @@ namespace Player
             m_Attack = Input.GetButtonDown("Fire1");
             Pause = Input.GetButtonDown("Submit");
 
+            SprintInput = Input.GetButton("Sprint");
+            
             m_ScrollWheelMovement = Input.GetAxis("Mouse ScrollWheel");
         }
 
