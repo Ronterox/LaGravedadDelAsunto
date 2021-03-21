@@ -15,3 +15,32 @@ MonoBehaviour:
   npcName: George
   description: A commoner testing npc...
   campaignID: test
+  dialogues:
+  - groupName: Tutorial
+    dialogues:
+    - id: neutral ending
+      line: Thank you, I guess...?
+      options: []
+    - id: bad ending
+      line: Fuck you, Sir
+      options: []
+    - id: good ending
+      line: Thank you so much!!!, Sir
+      options: []
+    - id: look around
+      line: Quest started, sir look around!
+      options: []
+    - id: collect
+      line: Come talk to me once you collect everything!
+      options: []
+  - groupName: Interactions and Greetings
+    dialogues:
+    - id: interaction enter
+      line: You can press \"E\" to interact!
+      options: []
+    - id: interaction exit
+      line: Well, see you and good luck...
+      options: []
+    - id: greetings
+      line: Hello you, come here!
+      options: []

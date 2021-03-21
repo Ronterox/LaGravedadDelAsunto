@@ -12,14 +12,16 @@ namespace NPCs
 
         [Space] public UnityEvent onCampaignCompletedInteraction;
 
+        public Transform textPosition;
+
         public bool infiniteCompletedEventCall;
         private bool m_PlayerOnRange, m_CalledCampaignEventOnce;
 
         protected abstract void OnCampaignCompletedInteraction(Campaign campaign);
 
-        protected abstract void OnInteractionRangeEnter();
+        protected abstract void OnInteractionRangeEnter(Campaign campaign);
 
-        protected abstract void OnInteractionRangeExit();
+        protected abstract void OnInteractionRangeExit(Campaign campaign);
 
         protected abstract void OnInteraction(Campaign campaign);
 
@@ -39,6 +41,8 @@ namespace NPCs
             OnInteraction(npcCampaign);
         }
 
+        public void Say(string dialogueID) => GameManager.Instance.dialogueManager.Type(npcScriptable.GetDialogue(dialogueID).line, textPosition.position);
+
         private void Update()
         {
             if (m_PlayerOnRange && PlayerInput.Instance.Interact) Interact();
@@ -48,14 +52,14 @@ namespace NPCs
         {
             if (!other.CompareTag("Player")) return;
             m_PlayerOnRange = true;
-            OnInteractionRangeEnter();
+            OnInteractionRangeEnter(GameManager.Instance.questManager.GetCampaign(npcScriptable.campaignID));
         }
 
         private void OnTriggerExit(Collider other)
         {
             if (!other.CompareTag("Player")) return;
             m_PlayerOnRange = false;
-            OnInteractionRangeExit();
+            OnInteractionRangeExit(GameManager.Instance.questManager.GetCampaign(npcScriptable.campaignID));
         }
     }
 }
