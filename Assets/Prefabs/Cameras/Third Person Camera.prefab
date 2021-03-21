@@ -403,7 +403,7 @@ MonoBehaviour:
     m_Radius: 1
   - m_Height: 3
     m_Radius: 7
-  - m_Height: -3
+  - m_Height: -1
     m_Radius: 1
   m_LegacyHeadingBias: 3.4028235e+38
   m_Rigs:

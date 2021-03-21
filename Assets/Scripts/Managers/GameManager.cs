@@ -6,5 +6,6 @@ namespace Managers
     {
         public KarmaController karmaController;
         public QuestManager questManager;
+        public DialogueManager dialogueManager;
     }
 }
