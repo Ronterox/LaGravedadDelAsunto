@@ -97,7 +97,15 @@ namespace Player
             if (m_IsGrounded)
             {
                 if (!IsMoving) m_Animator.SetFloat(SPEED_ANIMATION_HASH, 0, 0.15f, Time.deltaTime);
-                else m_Animator.SetFloat(SPEED_ANIMATION_HASH, 0.5f, 0.15f, Time.deltaTime);
+                else
+                {
+                    if (m_Input.WalkSlowInput) m_Animator.SetFloat(SPEED_ANIMATION_HASH, 0.5f, 0.15f, Time.deltaTime);
+                    else
+                    {
+                        if (m_Input.SprintInput) m_Animator.SetFloat(SPEED_ANIMATION_HASH, 1.5f, 0.15f, Time.deltaTime);
+                        else m_Animator.SetFloat(SPEED_ANIMATION_HASH, 1f, 0.15f, Time.deltaTime);
+                    }                                       
+                }
                 if (m_CanJump && m_Input.JumpInput) m_Animator.SetTrigger(JUMP_ANIMATION_HASH);    
             }
             m_Animator.SetBool(FALLING_ANIMATION_HASH, !m_IsGrounded);
