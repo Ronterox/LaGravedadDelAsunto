@@ -5,7 +5,6 @@ using UnityEngine;
 
 namespace Managers
 {
-    //TODO: Comment all methods of the quest system
     public class QuestManager : MonoBehaviour
     {
         public Campaign[] allCampaigns;

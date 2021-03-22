@@ -17,13 +17,6 @@ namespace Managers
             karmaBar.value = karma;
         }
 
-        //Only for test if works after implemented.
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.X)) ChangeKarma(-1);
-            if (Input.GetKeyDown(KeyCode.Z)) ChangeKarma(+1);
-        }
-
         public void ChangeKarma(int increment) => karmaBar.value = karma += increment;
     }
 }
