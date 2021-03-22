@@ -10,8 +10,8 @@ namespace NPCs
 
         protected override void OnCampaignCompletedInteraction(Campaign campaign)
         {
-            if (campaign.campaignResult == QuestState.NeutralEnding) Say("neutral ending");
-            else Say(campaign.campaignResult == QuestState.Completed ? "good ending" : "bad ending");
+            if (campaign.campaignResult == QuestEndType.NeutralEnding) Say("neutral ending");
+            else Say(campaign.campaignResult == QuestEndType.DoneGood ? "good ending" : "bad ending");
         }
 
         protected override void OnInteractionRangeEnter(Campaign campaign) => Say("interaction enter");

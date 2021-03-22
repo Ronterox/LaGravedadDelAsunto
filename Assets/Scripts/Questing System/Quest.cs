@@ -7,17 +7,25 @@ namespace Questing_System
     public enum QuestState
     {
         NotStarted,
-        Completed,
-        NeutralEnding,
         OnGoing,
-        Failed
+        Completed
     }
 
+    public enum QuestEndType
+    {
+        DoneGood,
+        DoneBad,
+        NeutralEnding
+    }
+
+    /// <summary>
+    /// Group of unity event methods
+    /// </summary>
     [System.Serializable]
     public struct QuestEvents
     {
-        public UnityEvent onQuestCompleted;
-        public UnityEvent onQuestFailed;
+        public UnityEvent onQuestDoneGood;
+        public UnityEvent onQuestDoneBad;
         public UnityEvent onQuestStarted;
     }
     
@@ -25,23 +33,36 @@ namespace Questing_System
     {
         public string questID;
         public QuestInfo questInfo;
-        [Space] public QuestState questState = QuestState.NotStarted;
+        [Space] 
+        private QuestState questState = QuestState.NotStarted;
+        public QuestEndType questEndType = QuestEndType.NeutralEnding;
 
         public bool isFinalQuest;
         public bool IsCompleted => questState == QuestState.Completed;
-        public bool IsFailed => questState == QuestState.Failed;
         public bool IsOnGoing => questState == QuestState.OnGoing;
 
         private bool m_JustStarted;
 
         public QuestEvents events;
 
-        protected abstract void OnceQuestIsCompleted();
+        /// <summary>
+        /// Called once quest completed with DoneGood Ending
+        /// </summary>
+        protected abstract void OnceQuestIsDoneGood();
 
-        protected abstract void OnceQuestIsFailed();
+        /// <summary>
+        /// Called once quest completed with DoneBad Ending
+        /// </summary>
+        protected abstract void OnceQuestIsDoneBad();
 
+        /// <summary>
+        /// Called at the start of the quest
+        /// </summary>
         protected abstract void OnceQuestStarted();
 
+        /// <summary>
+        /// Starts the quest and initializes the corresponding starting methods
+        /// </summary>
         public void StartQuest()
         {
             gameObject.SetActive(true);
@@ -51,28 +72,39 @@ namespace Questing_System
             m_JustStarted = true;
         }
 
-        public void CompleteQuest()
+        /// <summary>
+        /// Ends the quest by passing it the ending type, and proceeds to call ending related methods
+        /// </summary>
+        /// <param name="endingType">Type of completion of the quest</param>
+        public void EndQuest(QuestEndType endingType)
         {
+            if(questState == QuestState.Completed) return;
+            
             questState = QuestState.Completed;
-            events.onQuestCompleted?.Invoke();
-            OnceQuestIsCompleted();
-            GameManager.Instance.karmaController.ChangeKarma(questInfo.positiveKarma);
+            questEndType = endingType;
+            
+            if (endingType == QuestEndType.DoneGood)
+            {
+                events.onQuestDoneGood?.Invoke();
+                OnceQuestIsDoneGood();
+                GameManager.Instance.karmaController.ChangeKarma(questInfo.positiveKarma);
+            }
+            else
+            {
+                events.onQuestDoneBad?.Invoke();
+                OnceQuestIsDoneBad();
+                GameManager.Instance.karmaController.ChangeKarma(-questInfo.negativeKarma);
+            }
+            
             GameManager.Instance.questManager.UpdateCampaigns();
             gameObject.SetActive(false);
             m_JustStarted = false;
         }
 
-        public void FailQuest()
-        {
-            questState = QuestState.Failed;
-            events.onQuestFailed?.Invoke();
-            OnceQuestIsFailed();
-            GameManager.Instance.karmaController.ChangeKarma(-questInfo.negativeKarma);
-            GameManager.Instance.questManager.UpdateCampaigns();
-            gameObject.SetActive(false);
-            m_JustStarted = false;
-        }
-
+        /// <summary>
+        /// Checks if the quest just started, and changes the just started boolean to false
+        /// </summary>
+        /// <returns></returns>
         public bool IsJustStarted()
         {
             if (!m_JustStarted) return false;

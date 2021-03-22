@@ -37,7 +37,7 @@ namespace NPCs
                     onCampaignCompletedInteraction?.Invoke();
                 }
             }
-            else if (!npcCampaign.Started) GameManager.Instance.questManager.StartNewCampaign(npcScriptable.campaignID);
+            else if (!npcCampaign.IsStarted) GameManager.Instance.questManager.StartNewCampaign(npcScriptable.campaignID);
             OnInteraction(npcCampaign);
         }
 

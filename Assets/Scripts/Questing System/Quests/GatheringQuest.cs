@@ -16,17 +16,17 @@ namespace Questing_System.Quests
 
         public void Gather()
         {
-            if (++m_TotalGathered == toGetGatheringQuantity) CompleteQuest();
+            if (++m_TotalGathered == toGetGatheringQuantity) EndQuest(QuestEndType.DoneGood);
         }
 
         public void DestroyGathered()
         {
-            if (++m_TotalDestroyed == toDestroyGatheringQuantity) FailQuest();
+            if (++m_TotalDestroyed == toDestroyGatheringQuantity) EndQuest(QuestEndType.DoneBad);
         }
 
-        protected override void OnceQuestIsCompleted() { }
+        protected override void OnceQuestIsDoneGood() { }
 
-        protected override void OnceQuestIsFailed() { }
+        protected override void OnceQuestIsDoneBad() { }
 
         protected override void OnceQuestStarted()
         {
