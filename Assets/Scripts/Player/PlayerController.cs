@@ -1,5 +1,6 @@
 using Plugins.Tools;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace Player
 {
@@ -50,8 +51,10 @@ namespace Player
             AnimatePlayer();
             SetRotation();
             CalculateVerticalMovement();
+
         }
 
+     
         private void OnAnimatorMove()
         {
             Vector3 movement = IsMoving? Time.deltaTime * (m_Input.SprintInput? speed * sprintMultiplier : speed) * transform.forward : Vector3.zero;
