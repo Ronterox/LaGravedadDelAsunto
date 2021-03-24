@@ -21,7 +21,7 @@ namespace Player
         private bool m_Attack;
         private bool m_Sprint;
 
-        private bool m_WalkSlowInput;
+        private bool m_Walking;
 
         public Vector2 MoveInput => InputBlocked ? Vector2.zero : m_Movement;
 
@@ -35,9 +35,9 @@ namespace Player
 
         public bool Attack => m_Attack && !InputBlocked;
 
-        public bool SprintInput => m_Sprint && !WalkingSlow && !InputBlocked; 
+        public bool SprintInput => m_Sprint && !IsWalking && !InputBlocked; 
 
-        public bool WalkingSlow = false;
+        public bool IsWalking { get; private set; }
 
         public bool IsScrollingUp => m_ScrollWheelMovement > 0;
 
@@ -59,10 +59,8 @@ namespace Player
             
             m_ScrollWheelMovement = Input.GetAxis("Mouse ScrollWheel");
 
-            m_WalkSlowInput = Input.GetKeyDown(KeyCode.LeftControl);
-            if (m_WalkSlowInput){
-                WalkingSlow = !WalkingSlow;
-            }
+            m_Walking = Input.GetKeyDown(KeyCode.LeftControl);
+            if (m_Walking) IsWalking = !IsWalking;
         }
 
         public bool HasControl() => !m_ExternalInputBlocked;
