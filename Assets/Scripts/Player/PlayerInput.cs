@@ -19,6 +19,9 @@ namespace Player
         private bool m_Interact;
 
         private bool m_Attack;
+        private bool m_Sprint;
+
+        private bool m_Walking;
 
         public Vector2 MoveInput => InputBlocked ? Vector2.zero : m_Movement;
 
@@ -26,13 +29,15 @@ namespace Player
 
         public bool InputBlocked => playerControllerInputBlocked || m_ExternalInputBlocked;
 
-        public bool JumpInput => m_Jump && !InputBlocked;
+        public bool JumpInput => m_Jump && !InputBlocked;        
 
         public bool Interact => m_Interact && !InputBlocked;
 
         public bool Attack => m_Attack && !InputBlocked;
 
-        public bool SprintInput { get; private set; }
+        public bool SprintInput => m_Sprint && !IsWalking && !InputBlocked; 
+
+        public bool IsWalking { get; private set; }
 
         public bool IsScrollingUp => m_ScrollWheelMovement > 0;
 
@@ -50,9 +55,12 @@ namespace Player
             m_Attack = Input.GetButtonDown("Fire1");
             Pause = Input.GetButtonDown("Submit");
 
-            SprintInput = Input.GetButton("Sprint");
+            m_Sprint = Input.GetButton("Sprint");
             
             m_ScrollWheelMovement = Input.GetAxis("Mouse ScrollWheel");
+
+            m_Walking = Input.GetKeyDown(KeyCode.LeftControl);
+            if (m_Walking) IsWalking = !IsWalking;
         }
 
         public bool HasControl() => !m_ExternalInputBlocked;
