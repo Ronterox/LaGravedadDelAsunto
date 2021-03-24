@@ -59,7 +59,7 @@ namespace Player
             
             m_ScrollWheelMovement = Input.GetAxis("Mouse ScrollWheel");
 
-            m_WalkSlowInput = Input.GetKey(KeyCode.LeftControl);
+            m_WalkSlowInput = Input.GetKeyDown(KeyCode.LeftControl);
             if (m_WalkSlowInput){
                 WalkingSlow = !WalkingSlow;
             }
