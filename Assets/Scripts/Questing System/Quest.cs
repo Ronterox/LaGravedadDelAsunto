@@ -35,6 +35,7 @@ namespace Questing_System
         public QuestInfo questInfo;
         [Space] 
         private QuestState questState = QuestState.NotStarted;
+        [HideInInspector]
         public QuestEndType questEndType = QuestEndType.NeutralEnding;
 
         public bool isFinalQuest;
@@ -71,6 +72,9 @@ namespace Questing_System
             OnceQuestStarted();
             m_JustStarted = true;
         }
+
+        public void EndQuestPositive() => EndQuest(QuestEndType.DoneGood);
+        public void EndQuestNegative() => EndQuest(QuestEndType.DoneBad);
 
         /// <summary>
         /// Ends the quest by passing it the ending type, and proceeds to call ending related methods

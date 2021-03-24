@@ -36,7 +36,7 @@ MonoBehaviour:
   - groupName: Interactions and Greetings
     dialogues:
     - id: interaction enter
-      line: You can press \"E\" to interact!
+      line: You can press "E" to interact!
       options: []
     - id: interaction exit
       line: Well, see you and good luck...
