@@ -2,17 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PickUpItem : MonoBehaviour
+public class PickUpItem : Interactable
 {
-    // Start is called before the first frame update
-    void Start()
+
+    public Item item;
+    public override void Interact()
     {
-        
+        base.Interact();
+        PickUp();
     }
 
-    // Update is called once per frame
-    void Update()
+    void PickUp()
     {
-        
+        bool wasPickedUp = Inventory.instance.Add(item);
+
+        if(wasPickedUp)
+        Destroy(gameObject);
     }
 }

@@ -8,6 +8,7 @@ public class InventoryUi : MonoBehaviour
     public Transform itemsParent;
     InventorySlot[] slots;
     public GameObject inventoryUi;
+    public static bool inInventory = false;
     void Start()
     {
         inventory = Inventory.instance;
@@ -21,7 +22,20 @@ public class InventoryUi : MonoBehaviour
     {
         if (Input.GetButtonDown("Inventory"))
         {
-            inventoryUi.SetActive(!inventoryUi.activeSelf);
+            if (inInventory)
+            {
+                inventoryUi.SetActive(false);
+                Time.timeScale = 1f;
+                inInventory = false;
+            }
+            else
+            {
+                inventoryUi.SetActive(true);
+                Time.timeScale = 0f;
+                inInventory = true;
+                
+            }
+         
         }
     }
 
