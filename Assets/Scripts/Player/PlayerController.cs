@@ -27,7 +27,7 @@ namespace Player
         public float turnSmoothTime = 0.1f;
         private float m_TurnSmoothVelocity;
 
-        private bool m_IsGrounded, m_CanJump;
+        private bool m_IsGrounded, m_CanJump, m_WasSprinting;
 
         private readonly int SPEED_ANIMATION_HASH = Animator.StringToHash("Speed");
         private readonly int JUMP_ANIMATION_HASH = Animator.StringToHash("Jump");
@@ -54,7 +54,8 @@ namespace Player
 
         private void OnAnimatorMove()
         {
-            float stateSpeed = m_Input.IsWalking ? speed * .5f : m_Input.SprintInput && m_IsGrounded? speed * sprintMultiplier : speed;
+            float stateSpeed = m_Input.IsWalking && m_IsGrounded? speed * .5f : 
+                m_Input.SprintInput && m_IsGrounded || m_WasSprinting? speed * sprintMultiplier : speed;
             
             Vector3 movement = IsMoving ? Time.deltaTime * stateSpeed * transform.forward : Vector3.zero;
             movement += m_VerticalSpeed * Time.deltaTime * Vector3.up;
@@ -70,9 +71,12 @@ namespace Player
 
             if (m_IsGrounded)
             {
+                if (m_WasSprinting) m_WasSprinting = false;
+                
                 m_VerticalSpeed = -gravity * STICKING_GRAVITY_PROPORTION;
 
                 if (!m_Input.JumpInput || !m_CanJump) return;
+                m_WasSprinting = m_Input.SprintInput;
                 m_VerticalSpeed = jumpForce;
                 m_IsGrounded = false;
                 m_CanJump = false;
