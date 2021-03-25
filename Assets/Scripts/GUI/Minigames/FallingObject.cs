@@ -8,7 +8,7 @@ namespace GUI.Minigames
         public Vector3 direction = Vector3.down;
         private Vector3 movement;
 
-        private void OnEnable() => movement = direction.normalized * speed;
+        protected virtual void OnEnable() => movement = direction.normalized * speed;
 
         private void Update() => transform.Translate(movement);
     }
