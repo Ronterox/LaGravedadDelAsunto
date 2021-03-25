@@ -17,10 +17,8 @@ namespace Managers
         public void UpdateCampaigns()
         {
             foreach (Campaign onGoingCampaign in onGoingCampaigns) onGoingCampaign.UpdateCampaign();
-            RemoveCompletedCampaigns();
+            onGoingCampaigns.RemoveWhere(campaign => campaign.IsCompleted);
         }
-
-        private void RemoveCompletedCampaigns() { foreach (Campaign campaign in onGoingCampaigns.ToArray()) { if (campaign.IsCompleted) onGoingCampaigns.Remove(campaign); } }
 
         public void StartNewCampaign(string campaignID)
         {
