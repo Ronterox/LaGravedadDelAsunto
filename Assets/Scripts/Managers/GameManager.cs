@@ -1,4 +1,7 @@
+using Inventory_System;
+using Player;
 using Plugins.Tools;
+using UnityEngine;
 
 namespace Managers
 {
@@ -6,6 +9,15 @@ namespace Managers
     {
         public KarmaController karmaController;
         public QuestManager questManager;
+        
         public DialogueManager dialogueManager;
+        public Inventory inventory;
+
+        public Transform playerPos;
+
+        private void LookForPlayerPosition()
+        {
+            if (!playerPos) playerPos = PlayerInput.Instance.transform;
+        }
     }
 }
