@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Managers;
+using Plugins.Tools;
 using UnityEngine;
 
 namespace Inventory_System
@@ -11,6 +12,11 @@ namespace Inventory_System
         public OnItemChanged onItemChangedCallback;
         public int space = 20;
         public List<Item> items = new List<Item>();
+        public float force;
+        public float offset;
+ 
+        
+
 
         public bool Add(Item item)
         {
@@ -32,7 +38,9 @@ namespace Inventory_System
 
         public void Drop(Item item)
         {
-            Instantiate(item, GameManager.Instance.playerPos.position, Quaternion.identity);
+            Vector3 direction = UtilityMethods.GetRandomDirection(true,false);
+            GameObject obj= Instantiate(item.itemRef, GameManager.Instance.playerPos.position+direction*offset, Quaternion.identity);
+            obj.GetComponent<Rigidbody>().AddForce(direction*force,ForceMode.Impulse);
             Remove(item);
         }
     }

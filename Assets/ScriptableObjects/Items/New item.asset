@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b85dcc4fbed054147903f5dc82a5ece3, type: 3}
   m_Name: New item
   m_EditorClassIdentifier: 
-  name: Espada
+  itemName: New Item
   icon: {fileID: 21300000, guid: e9693e667ff5c364786205cdf58d2798, type: 3}
+  itemRef: {fileID: 6528765871127474381, guid: c43666cbb403261438d7bf0be3070fed, type: 3}

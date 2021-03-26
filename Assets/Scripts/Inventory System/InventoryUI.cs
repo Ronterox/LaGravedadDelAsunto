@@ -14,26 +14,17 @@ namespace Inventory_System
         {
             inventory = GameManager.Instance.inventory;
             inventory.onItemChangedCallback += UpdateUi;
-
             slots = itemsParent.GetComponentsInChildren<InventorySlot>();
+            inventory.space = slots.Length;
         }
 
-
+       
         private void Update()
         {
             if (Input.GetButtonDown("Inventory"))
             {
-                if (inInventory)
-                {
-                    inventoryUi.SetActive(false);
-                    Time.timeScale = 1f;
-                }
-                else
-                {
-                    inventoryUi.SetActive(true);
-                    Time.timeScale = 0f;
-                }
                 inInventory = !inInventory;
+                inventoryUi.SetActive(inInventory);
             }
         }
 

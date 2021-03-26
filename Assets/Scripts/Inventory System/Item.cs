@@ -2,15 +2,16 @@ using UnityEngine;
 
 namespace Inventory_System
 {
-    [CreateAssetMenu(fileName = "New item", menuName = "Inventory/Item")]
+    [CreateAssetMenu(fileName = "New item", menuName = "Penguins Mafia/Item")]
     public class Item : ScriptableObject
     {
-        new public string name = "New Item";
+        public string itemName = "New Item";
         public Sprite icon = null;
+        public GameObject itemRef;
 
         public void testMessage()
         {
-            Debug.Log("Picking" + name);
+            Debug.Log("Picking" + itemName);
         }
 
         public virtual void Use()

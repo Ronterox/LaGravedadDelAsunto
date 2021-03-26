@@ -29,7 +29,7 @@ namespace Inventory_System
 
         public void OnRemoveButton()
         {
-            GameManager.Instance.inventory.Remove(item);
+            GameManager.Instance.inventory.Drop(item);
         }
 
         public void UseItem()
