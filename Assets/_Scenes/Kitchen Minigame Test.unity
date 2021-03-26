@@ -182,8 +182,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 901543252}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.000030517578, y: 0.000015258789, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -351,22 +351,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3670289239778680657, guid: 311ba39e80f285142a2b3ca3be3be279, type: 3}
-      propertyPath: speed
-      value: 0.75
-      objectReference: {fileID: 0}
-    - target: {fileID: 3670289239778680669, guid: 311ba39e80f285142a2b3ca3be3be279, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3670289239834437558, guid: 311ba39e80f285142a2b3ca3be3be279, type: 3}
-      propertyPath: Time
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3670289239834437558, guid: 311ba39e80f285142a2b3ca3be3be279, type: 3}
-      propertyPath: InitialDelayTime
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3670289241054840486, guid: 311ba39e80f285142a2b3ca3be3be279, type: 3}
       propertyPath: m_Name
       value: Kitchen Minigame Canvas

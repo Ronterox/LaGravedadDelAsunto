@@ -40,5 +40,6 @@ namespace Plugins.Tools
 
         public static string ToColorString(this string sentence, string color) => $"<color={color}>{sentence}</color>";
 
+        public static Vector3 GetRandomDirection(bool horizontalDirections, bool verticalDirections) => Random.Range(horizontalDirections ? 0 : 4, verticalDirections ? 6 : 4) switch { 0 => Vector3.forward, 1 => Vector3.back, 2 => Vector3.left, 3 => Vector3.right, 4 => Vector3.up, 5 => Vector3.down, _ => Vector3.zero };
     }
 }
