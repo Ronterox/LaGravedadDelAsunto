@@ -135,8 +135,8 @@ MonoBehaviour:
   karma: 0
   karmaBar: {fileID: 0}
   karmabarCanvasGroup: {fileID: 0}
-  secondsBetweenBarMove: 5
-  lerpSpeed: 0.5
+  secondsBetweenBarMove: 0.1
+  lerpSpeed: 0.08
 --- !u!114 &1017325481
 MonoBehaviour:
   m_ObjectHideFlags: 0

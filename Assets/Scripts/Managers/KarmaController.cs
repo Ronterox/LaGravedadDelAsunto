@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
@@ -31,19 +30,20 @@ namespace Managers
         public void ChangeKarma(int increment)
         {
             if (m_CurrentCoroutine != null) StopCoroutine(m_CurrentCoroutine);
-            m_CurrentCoroutine = StartCoroutine(KarmaCoroutine(increment, lerpSpeed));
+
+            karma += increment;
+            if (karma > maxKarmaValue) karma = maxKarmaValue;
+            
+            karmaBar.gameObject.SetActive(true);
+            
+            GameManager.Instance.guiManager.AnimateAlpha(karmabarCanvasGroup, 1f, () => m_CurrentCoroutine = StartCoroutine(KarmaCoroutine()));
         }
 
-        private IEnumerator KarmaCoroutine(int increment, float lerp)
+        private IEnumerator KarmaCoroutine()
         {
-            karmaBar.gameObject.SetActive(true);
-            GameManager.Instance.guiManager.AnimateAlpha(karmabarCanvasGroup, 1f);
-
-            int endValue = karma += increment;
-
-            while (Math.Abs(karmaBar.value - endValue) > 0.01f)
+            while (Mathf.Abs(karmaBar.value - karma) > 0.01f)
             {
-                karmaBar.value = Mathf.Lerp(karmaBar.value, endValue, lerp);
+                karmaBar.value = Mathf.Lerp(karmaBar.value, karma, lerpSpeed);
                 yield return m_WaitForSeconds;
             }
 
