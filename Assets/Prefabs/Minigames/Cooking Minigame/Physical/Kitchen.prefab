@@ -66,7 +66,6 @@ MonoBehaviour:
   numberOfInteractions: 1
   infiniteInteractions: 0
   guiCanvasGroup: {fileID: 2128010003266286048}
-  alphaAnimationSpeed: 0.07
   playerTransform: {fileID: 8367965801697119700}
   autoSpawnersGameObject:
   - {fileID: 3196794414385051814}
@@ -426,11 +425,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4442847295197502038, guid: d55ddfae84316ce69a12516ece1f8c8f, type: 3}
       propertyPath: m_text
-      value: Kitchen
+      value: Kitchen, prepare ingredients
       objectReference: {fileID: 0}
     - target: {fileID: 4442847295197502038, guid: d55ddfae84316ce69a12516ece1f8c8f, type: 3}
       propertyPath: m_fontSize
-      value: 17.9
+      value: 8.8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d55ddfae84316ce69a12516ece1f8c8f, type: 3}

@@ -1,54 +1,36 @@
-using System.Collections;
-using System.Collections.Generic;
+using Managers;
+using Player;
+using Plugins.Tools;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PauseMenu : MonoBehaviour
-{   
-    private bool GameIsPaused;
-
-    private Player.PlayerInput m_Input;
-
-    public GameObject pauseMenuUI;
-
-    private void Awake()
+namespace GUI
+{
+    public class PauseMenu : Singleton<PauseMenu>
     {
-        m_Input = GetComponent<Player.PlayerInput>();
-    }
+        public GameObject pauseMenuUI;
+        public bool GameIsPaused => Time.timeScale == 0f;
 
-    void Update()
-    {       
-        if (Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape))
+        private void Update()
         {
+            if (!PlayerInput.Instance.Pause && !Input.GetKeyDown(KeyCode.Escape)) return;
             if (GameIsPaused) Resume();
             else Pause();
         }
-    }
 
-    public void Resume()
-    {       
-        pauseMenuUI.SetActive(false);
-        Time.timeScale = 1f;
-        GameIsPaused = false;
-        
-        
-    }
+        private void ActivatePause(bool activate)
+        {
+            pauseMenuUI.SetActive(activate);
+            Time.timeScale = activate ? 0f : 1f;
+            GameManager.Instance.pointerManager.SetCursorActive(activate);
+        }
 
-    void Pause()
-    {
-        pauseMenuUI.SetActive(true);
-        Time.timeScale = 0f;
-        GameIsPaused = true;
+        public void Resume() => ActivatePause(false);
 
-    }
-    
-    public void LoadMainMenu()
-    {
-        SceneManager.LoadScene("MainMenu");
-    }
+        private void Pause() => ActivatePause(true);
 
-    public void OpenSettings()
-    {
-        SceneManager.LoadScene("");
+        public void LoadMainMenu() => SceneManager.LoadScene("MainMenu");
+
+        public void OpenSettings() => SceneManager.LoadScene("");
     }
 }

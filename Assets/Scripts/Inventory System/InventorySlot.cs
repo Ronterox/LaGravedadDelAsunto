@@ -27,14 +27,8 @@ namespace Inventory_System
             removeButton.interactable =false;
         }
 
-        public void OnRemoveButton()
-        {
-            GameManager.Instance.inventory.Drop(item);
-        }
+        public void OnRemoveButton() => GameManager.Instance.inventory.Drop(item);
 
-        public void UseItem()
-        {
-            item.Use();
-        }
+        public void UseItem() => item.Use();
     }
 }

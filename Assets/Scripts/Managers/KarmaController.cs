@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
@@ -8,12 +9,16 @@ namespace Managers
     {
         public int maxKarmaValue = 50;
         public int karma;
-        public Slider karmaBar;
 
-        private Coroutine m_CurrentCoroutine;
+        public Slider karmaBar;
+        public CanvasGroup karmabarCanvasGroup;
+
         private WaitForSeconds m_WaitForSeconds;
+        private Coroutine m_CurrentCoroutine;
+
         public float secondsBetweenBarMove = 1f;
-        public float lerpSpeed=0;
+        public float lerpSpeed;
+
         private void Awake()
         {
             karmaBar.minValue = -maxKarmaValue;
@@ -26,27 +31,23 @@ namespace Managers
         public void ChangeKarma(int increment)
         {
             if (m_CurrentCoroutine != null) StopCoroutine(m_CurrentCoroutine);
-            m_CurrentCoroutine = StartCoroutine(KarmaCoroutine(karmaBar,increment, lerpSpeed,true));
-          
+            m_CurrentCoroutine = StartCoroutine(KarmaCoroutine(increment, lerpSpeed));
         }
 
-        private IEnumerator KarmaCoroutine(Slider sliderKarma,int increment, float lerp, bool disappearAfter = false, float disappearDelay = 2f)
+        private IEnumerator KarmaCoroutine(int increment, float lerp)
         {
-            sliderKarma.gameObject.SetActive(true);
-            var endValue = karma += increment;
-            print(sliderKarma.maxValue);
-            print(sliderKarma.minValue);
+            karmaBar.gameObject.SetActive(true);
+            GameManager.Instance.guiManager.AnimateAlpha(karmabarCanvasGroup, 1f);
 
-            while(sliderKarma.value!=endValue)
+            int endValue = karma += increment;
+
+            while (Math.Abs(karmaBar.value - endValue) > 0.01f)
             {
-                sliderKarma.value=Mathf.Lerp(sliderKarma.value,endValue,lerp);
-              
-                
+                karmaBar.value = Mathf.Lerp(karmaBar.value, endValue, lerp);
                 yield return m_WaitForSeconds;
             }
-            if (!disappearAfter) yield break;
-            yield return new WaitForSeconds(disappearDelay);
-            sliderKarma.gameObject.SetActive(false);
+
+            GameManager.Instance.guiManager.AnimateAlpha(karmabarCanvasGroup, 0f, () => karmaBar.gameObject.SetActive(false));
         }
     }
 }

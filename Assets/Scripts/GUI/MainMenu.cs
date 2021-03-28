@@ -1,31 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class MainMenu : MonoBehaviour
+namespace GUI
 {
-    public void PlayGame()
+    public class MainMenu : MonoBehaviour
     {
-        SceneManager.LoadScene("");
-    }
+        public void PlayGame() => SceneManager.LoadScene("");
 
-    public void TestZone()
-    {
-        SceneManager.LoadScene("TestZone");
-    }
+        public void TestZone() => SceneManager.LoadScene("TestZone");
 
-    public void OpenSettings()
-    {
-        SceneManager.LoadScene("");
-    }
+        public void OpenSettings() => SceneManager.LoadScene("");
 
-    public void QuitGame()
-    {
-        Application.Quit();
+        public void QuitGame() => Application.Quit();
     }
-
-    
 }

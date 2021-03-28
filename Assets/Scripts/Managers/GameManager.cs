@@ -1,7 +1,6 @@
+using GUI;
 using Inventory_System;
-using Player;
 using Plugins.Tools;
-using UnityEngine;
 
 namespace Managers
 {
@@ -12,5 +11,8 @@ namespace Managers
         
         public DialogueManager dialogueManager;
         public Inventory inventory;
+
+        public PointerManager pointerManager;
+        public GUIManager guiManager;
     }
 }

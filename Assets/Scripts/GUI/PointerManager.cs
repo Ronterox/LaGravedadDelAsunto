@@ -18,7 +18,7 @@ namespace GUI
             else if (Input.GetKeyUp(showPointerKey)) SetCursorActive(false);
         }
 
-        private void SetCursorActive(bool active = true)
+        public void SetCursorActive(bool active = true)
         {
             Cursor.visible = active;
             Cursor.lockState = active ? CursorLockMode.None : CursorLockMode.Locked;
