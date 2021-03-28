@@ -1,10 +1,16 @@
+using System;
+using Plugins.Tools;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 namespace General.Minigames
 {
     public abstract class QuickTimeEvent : MonoBehaviour
     {
+        public Image timerProgressFilledImage;
+
         public TMP_Text qteText;
         public KeyCode[] keys;
 
@@ -26,14 +32,15 @@ namespace General.Minigames
         {
             m_CorrectKeycode = keys[Random.Range(0, keys.Length)];
             qteText.text = $"[\"{m_CorrectKeycode}\"]";
-            m_Timer = 0;
+            SetTimer(timeForEach);
+            transform.position = UtilityMethods.GetRandomVector2(0, Screen.width, 0, Screen.height);
         }
 
         private void Update()
         {
-            if(!m_QTEStarted) return;
-            
-            if (m_Timer >= timeForEach)
+            if (!m_QTEStarted) return;
+
+            if (m_Timer <= 0)
             {
                 SetRandomCookQTE();
                 OnWrongPress();
@@ -42,10 +49,16 @@ namespace General.Minigames
             {
                 if (Input.GetKeyDown(m_CorrectKeycode)) OnCorrectPress();
                 else OnWrongPress();
-            
+
                 SetRandomCookQTE();
             }
-            else m_Timer += Time.deltaTime;
+            else SetTimer(m_Timer - Time.deltaTime);
+        }
+
+        private void SetTimer(float time)
+        {
+            m_Timer = time;
+            timerProgressFilledImage.fillAmount = m_Timer.GetPercentageValue(timeForEach);
         }
 
         protected abstract void OnWrongPress();
