@@ -12,12 +12,5 @@ namespace Managers
         
         public DialogueManager dialogueManager;
         public Inventory inventory;
-
-        public Transform playerPos;
-
-        private void LookForPlayerPosition()
-        {
-            if (!playerPos) playerPos = PlayerInput.Instance.transform;
-        }
     }
 }

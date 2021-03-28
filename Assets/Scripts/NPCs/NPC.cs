@@ -1,3 +1,4 @@
+using General;
 using Managers;
 using Player;
 using Questing_System;
@@ -6,7 +7,7 @@ using UnityEngine.Events;
 
 namespace NPCs
 {
-    public abstract class NPC : MonoBehaviour
+    public abstract class NPC : Interactable
     {
         [Space] public ScriptableNPC npcScriptable;
 
@@ -15,7 +16,7 @@ namespace NPCs
         public Transform textPosition;
 
         public bool infiniteCompletedEventCall;
-        private bool m_PlayerOnRange, m_CalledCampaignEventOnce;
+        private bool m_CalledCampaignEventOnce;
 
         protected abstract void OnCampaignCompletedInteraction(Campaign campaign);
 
@@ -25,7 +26,11 @@ namespace NPCs
 
         protected abstract void OnInteraction(Campaign campaign);
 
-        private void Interact()
+        protected override void OnEnterTrigger(Collider other) => OnInteractionRangeEnter(GameManager.Instance.questManager.GetCampaign(npcScriptable.campaignID));
+
+        protected override void OnExitTrigger(Collider other) => OnInteractionRangeExit(GameManager.Instance.questManager.GetCampaign(npcScriptable.campaignID));
+
+        public override void Interact()
         {
             Campaign npcCampaign = GameManager.Instance.questManager.GetCampaign(npcScriptable.campaignID);
             if (npcCampaign.IsCompleted)
@@ -42,24 +47,5 @@ namespace NPCs
         }
 
         public void Say(string dialogueID) => GameManager.Instance.dialogueManager.Type(npcScriptable.GetDialogue(dialogueID).line, textPosition.position);
-
-        private void Update()
-        {
-            if (m_PlayerOnRange && PlayerInput.Instance.Interact) Interact();
-        }
-
-        private void OnTriggerEnter(Collider other)
-        {
-            if (!other.CompareTag("Player")) return;
-            m_PlayerOnRange = true;
-            OnInteractionRangeEnter(GameManager.Instance.questManager.GetCampaign(npcScriptable.campaignID));
-        }
-
-        private void OnTriggerExit(Collider other)
-        {
-            if (!other.CompareTag("Player")) return;
-            m_PlayerOnRange = false;
-            OnInteractionRangeExit(GameManager.Instance.questManager.GetCampaign(npcScriptable.campaignID));
-        }
     }
 }
