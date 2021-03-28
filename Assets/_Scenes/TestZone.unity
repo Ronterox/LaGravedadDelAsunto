@@ -38448,7 +38448,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 266129333}
   m_Direction: 1
   m_MinValue: 0
-  m_MaxValue: 1
+  m_MaxValue: 100
   m_WholeNumbers: 1
   m_Value: 0
   m_OnValueChanged:
@@ -67729,11 +67729,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5617871187225851715, guid: 881f5ea122226be93a0d47628b8a2826, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.00000000847696
+      value: 0.000000008476966
       objectReference: {fileID: 0}
     - target: {fileID: 5617871187225851715, guid: 881f5ea122226be93a0d47628b8a2826, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0000000014683262
+      value: -0.0000000014683269
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 881f5ea122226be93a0d47628b8a2826, type: 3}
@@ -67875,9 +67875,29 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1011815845}
     - target: {fileID: 1157012126, guid: 6b204319c6bc7b1b19fbb704b483fa5d, type: 3}
+      propertyPath: karma
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1157012126, guid: 6b204319c6bc7b1b19fbb704b483fa5d, type: 3}
       propertyPath: karmaBar
       value: 
       objectReference: {fileID: 1404680839}
+    - target: {fileID: 1157012126, guid: 6b204319c6bc7b1b19fbb704b483fa5d, type: 3}
+      propertyPath: lerpSpeed
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1157012126, guid: 6b204319c6bc7b1b19fbb704b483fa5d, type: 3}
+      propertyPath: maxKarmaValue
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1157012126, guid: 6b204319c6bc7b1b19fbb704b483fa5d, type: 3}
+      propertyPath: secondsBetweenTyping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1157012126, guid: 6b204319c6bc7b1b19fbb704b483fa5d, type: 3}
+      propertyPath: secondsBetweenBarMove
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 8791522931685928594, guid: 6b204319c6bc7b1b19fbb704b483fa5d, type: 3}
       propertyPath: events.onQuestStarted.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
