@@ -8,6 +8,9 @@ namespace General.Minigames
         public TMP_Text qteText;
         public KeyCode[] keys;
 
+        public float timeForEach;
+        private float m_Timer;
+
         private bool m_QTEStarted;
         private KeyCode m_CorrectKeycode;
 
@@ -23,16 +26,26 @@ namespace General.Minigames
         {
             m_CorrectKeycode = keys[Random.Range(0, keys.Length)];
             qteText.text = $"[\"{m_CorrectKeycode}\"]";
+            m_Timer = 0;
         }
 
         private void Update()
         {
-            if (!m_QTEStarted || !Input.anyKeyDown) return;
+            if(!m_QTEStarted) return;
             
-            if (Input.GetKeyDown(m_CorrectKeycode)) OnCorrectPress();
-            else OnWrongPress();
+            if (m_Timer >= timeForEach)
+            {
+                SetRandomCookQTE();
+                OnWrongPress();
+            }
+            else if (Input.anyKeyDown)
+            {
+                if (Input.GetKeyDown(m_CorrectKeycode)) OnCorrectPress();
+                else OnWrongPress();
             
-            SetRandomCookQTE();
+                SetRandomCookQTE();
+            }
+            else m_Timer += Time.deltaTime;
         }
 
         protected abstract void OnWrongPress();
