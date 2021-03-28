@@ -5,9 +5,11 @@ namespace Inventory_System
     [CreateAssetMenu(fileName = "New item", menuName = "Penguins Mafia/Item")]
     public class Item : ScriptableObject
     {
+
         public string itemName = "New Item";
         public Sprite icon = null;
         public GameObject itemRef;
+        public ItemType itemType;
 
         public void testMessage()
         {
@@ -19,5 +21,12 @@ namespace Inventory_System
             Debug.Log("used");
         }
     }
+    public enum ItemType
+    {
+        Ingredient,
+        Weapon,
+        Consumable
+    }
+
 }
 

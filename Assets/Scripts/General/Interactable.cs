@@ -10,7 +10,7 @@ namespace General
     
         public virtual void Interact()
         {
-            Debug.Log("xd");
+            Debug.Log("picking");
 
         }
         private void Update()
