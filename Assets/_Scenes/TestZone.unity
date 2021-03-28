@@ -67771,6 +67771,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2128010003266286048, guid: e3464fac6fe7e0fa09a21f14718dc319, type: 3}
+      propertyPath: m_Alpha
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6471262914927967565, guid: e3464fac6fe7e0fa09a21f14718dc319, type: 3}
       propertyPath: player
       value: 
@@ -67823,6 +67827,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Kitchen
       objectReference: {fileID: 0}
+    - target: {fileID: 8367965801697119707, guid: e3464fac6fe7e0fa09a21f14718dc319, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e3464fac6fe7e0fa09a21f14718dc319, type: 3}
 --- !u!1001 &8792325524997676080
@@ -67841,15 +67849,7 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1404680839}
     - target: {fileID: 1157012126, guid: 6b204319c6bc7b1b19fbb704b483fa5d, type: 3}
-      propertyPath: maxKarmaValue
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 1157012126, guid: 6b204319c6bc7b1b19fbb704b483fa5d, type: 3}
       propertyPath: karmaBarCanvasGroup
-      value: 
-      objectReference: {fileID: 1404680840}
-    - target: {fileID: 1157012126, guid: 6b204319c6bc7b1b19fbb704b483fa5d, type: 3}
-      propertyPath: karmabarCanvasGroup
       value: 
       objectReference: {fileID: 1404680840}
     - target: {fileID: 8791522931685928594, guid: 6b204319c6bc7b1b19fbb704b483fa5d, type: 3}

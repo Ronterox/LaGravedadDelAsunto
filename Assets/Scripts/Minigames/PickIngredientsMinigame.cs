@@ -20,6 +20,7 @@ namespace Minigames
                 o.gameObject.SetActive(active);
                 if (active) o.RestartObjectsPosition();
             }
+            playerTransform.gameObject.SetActive(active);
         }
 
         protected override void OnEnterTrigger(Collider other) { }

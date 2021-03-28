@@ -173,10 +173,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7234647176139726436}
     m_Modifications:
-    - target: {fileID: 3670289239834437556, guid: 7e534af4c2741a1269c45db1e5721fc2, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3670289241054840486, guid: 7e534af4c2741a1269c45db1e5721fc2, type: 3}
       propertyPath: m_Name
       value: Kitchen Minigame Canvas
@@ -265,16 +261,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7679424084866160865, guid: 7e534af4c2741a1269c45db1e5721fc2, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7679424085019957621, guid: 7e534af4c2741a1269c45db1e5721fc2, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 161429403664693781, guid: 7e534af4c2741a1269c45db1e5721fc2, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7e534af4c2741a1269c45db1e5721fc2, type: 3}
 --- !u!224 &8367965802377930495 stripped
 RectTransform:

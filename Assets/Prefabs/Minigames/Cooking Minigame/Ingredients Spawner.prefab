@@ -112,6 +112,14 @@ PrefabInstance:
       propertyPath: speed
       value: 0.75
       objectReference: {fileID: 0}
+    - target: {fileID: 565853479512777763, guid: 65b54dcb25745800297af1e0a8e7e8e4, type: 3}
+      propertyPath: itemIngredient
+      value: 
+      objectReference: {fileID: 11400000, guid: 24e062c2302728d4d8108b4ecdfe9c27, type: 2}
+    - target: {fileID: 565853479512777773, guid: 65b54dcb25745800297af1e0a8e7e8e4, type: 3}
+      propertyPath: m_Texture
+      value: 
+      objectReference: {fileID: 2800000, guid: 63da0462cfc1e2649a95114a28afacec, type: 3}
     - target: {fileID: 565853479512777774, guid: 65b54dcb25745800297af1e0a8e7e8e4, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -142,11 +150,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 565853479512777774, guid: 65b54dcb25745800297af1e0a8e7e8e4, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 50
+      value: 512
       objectReference: {fileID: 0}
     - target: {fileID: 565853479512777774, guid: 65b54dcb25745800297af1e0a8e7e8e4, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 50
+      value: 512
       objectReference: {fileID: 0}
     - target: {fileID: 565853479512777774, guid: 65b54dcb25745800297af1e0a8e7e8e4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -223,10 +231,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5285761309081493599}
     m_Modifications:
-    - target: {fileID: 565853479512777763, guid: 65b54dcb25745800297af1e0a8e7e8e4, type: 3}
-      propertyPath: speed
-      value: 0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 565853479512777774, guid: 65b54dcb25745800297af1e0a8e7e8e4, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -257,11 +261,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 565853479512777774, guid: 65b54dcb25745800297af1e0a8e7e8e4, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 50
+      value: 512
       objectReference: {fileID: 0}
     - target: {fileID: 565853479512777774, guid: 65b54dcb25745800297af1e0a8e7e8e4, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 50
+      value: 512
       objectReference: {fileID: 0}
     - target: {fileID: 565853479512777774, guid: 65b54dcb25745800297af1e0a8e7e8e4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -315,10 +319,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Falling Ingredient Slow
       objectReference: {fileID: 0}
-    - target: {fileID: 565853479512777775, guid: 65b54dcb25745800297af1e0a8e7e8e4, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 65b54dcb25745800297af1e0a8e7e8e4, type: 3}
 --- !u!1 &6892732460870157244 stripped
@@ -338,6 +338,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5285761309081493599}
     m_Modifications:
+    - target: {fileID: 565853479512777763, guid: 65b54dcb25745800297af1e0a8e7e8e4, type: 3}
+      propertyPath: itemIngredient
+      value: 
+      objectReference: {fileID: 11400000, guid: cac61f811b1b32a4d8ae1d8e6e8e116a, type: 2}
+    - target: {fileID: 565853479512777773, guid: 65b54dcb25745800297af1e0a8e7e8e4, type: 3}
+      propertyPath: m_Texture
+      value: 
+      objectReference: {fileID: 2800000, guid: a52be366dec6aed46857d2472036aff6, type: 3}
     - target: {fileID: 565853479512777774, guid: 65b54dcb25745800297af1e0a8e7e8e4, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -368,11 +376,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 565853479512777774, guid: 65b54dcb25745800297af1e0a8e7e8e4, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 50
+      value: 512
       objectReference: {fileID: 0}
     - target: {fileID: 565853479512777774, guid: 65b54dcb25745800297af1e0a8e7e8e4, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 50
+      value: 512
       objectReference: {fileID: 0}
     - target: {fileID: 565853479512777774, guid: 65b54dcb25745800297af1e0a8e7e8e4, type: 3}
       propertyPath: m_LocalPosition.x

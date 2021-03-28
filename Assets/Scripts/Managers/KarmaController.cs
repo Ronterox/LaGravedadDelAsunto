@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
@@ -33,6 +34,7 @@ namespace Managers
 
             karma += increment;
             if (karma > maxKarmaValue) karma = maxKarmaValue;
+            else if (karma < -maxKarmaValue) karma = -maxKarmaValue;
             
             karmaBar.gameObject.SetActive(true);
             
@@ -41,9 +43,11 @@ namespace Managers
 
         private IEnumerator KarmaCoroutine()
         {
-            while (Mathf.Abs(karmaBar.value - karma) > 0.01f)
+            while (Math.Abs(karmaBar.value - karma) > 0.01f)
             {
                 karmaBar.value = Mathf.Lerp(karmaBar.value, karma, lerpSpeed);
+                print(Mathf.Lerp(karmaBar.value, karma, lerpSpeed));
+                print(karma);
                 yield return m_WaitForSeconds;
             }
 

@@ -325,7 +325,6 @@ GameObject:
   - component: {fileID: 3670289241054840504}
   - component: {fileID: 3670289241054840505}
   - component: {fileID: 6577425631807754661}
-  - component: {fileID: 161429403664693781}
   m_Layer: 5
   m_Name: Kitchen Minigame Canvas
   m_TagString: Untagged
@@ -427,29 +426,10 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3670289241054840486}
   m_Enabled: 1
-  m_Alpha: 0
+  m_Alpha: 1
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
---- !u!114 &161429403664693781
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3670289241054840486}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31d631c4cf43a9d178d5966cfd00994b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minigameCanvasGroup: {fileID: 6577425631807754661}
-  playerTransform: {fileID: 3670289239873908113}
-  autoSpawnersGameObject:
-  - {fileID: 7679424084866160867}
-  - {fileID: 7679424085019957623}
-  - {fileID: 3670289239834437558}
-  alphaAnimationSpeed: 0.07
 --- !u!1001 &3670289239770048931
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -659,19 +639,24 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6892732460306685699, guid: fca83f4b795955e0aac3beb84d156034, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6892732460870157244, guid: fca83f4b795955e0aac3beb84d156034, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6892732460870157245, guid: fca83f4b795955e0aac3beb84d156034, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 512
+      objectReference: {fileID: 0}
+    - target: {fileID: 6892732460870157245, guid: fca83f4b795955e0aac3beb84d156034, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 512
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fca83f4b795955e0aac3beb84d156034, type: 3}
---- !u!114 &7679424084866160867 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6376453972963219973, guid: fca83f4b795955e0aac3beb84d156034, type: 3}
-  m_PrefabInstance: {fileID: 3670289240771461862}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec61e1a6036b3244eb58275bfd2b60f6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!224 &7679424084866160866 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6376453972963219972, guid: fca83f4b795955e0aac3beb84d156034, type: 3}
@@ -831,17 +816,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6376453972963219972, guid: fca83f4b795955e0aac3beb84d156034, type: 3}
   m_PrefabInstance: {fileID: 3670289240889508722}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &7679424085019957623 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6376453972963219973, guid: fca83f4b795955e0aac3beb84d156034, type: 3}
-  m_PrefabInstance: {fileID: 3670289240889508722}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec61e1a6036b3244eb58275bfd2b60f6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &6041863003722580897
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1058,14 +1032,3 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6376453972963219972, guid: fca83f4b795955e0aac3beb84d156034, type: 3}
   m_PrefabInstance: {fileID: 7679424086079765939}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &3670289239834437558 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6376453972963219973, guid: fca83f4b795955e0aac3beb84d156034, type: 3}
-  m_PrefabInstance: {fileID: 7679424086079765939}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec61e1a6036b3244eb58275bfd2b60f6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
