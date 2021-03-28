@@ -67729,11 +67729,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5617871187225851715, guid: 881f5ea122226be93a0d47628b8a2826, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000008476966
+      value: -0.00000000847696
       objectReference: {fileID: 0}
     - target: {fileID: 5617871187225851715, guid: 881f5ea122226be93a0d47628b8a2826, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000000014683269
+      value: 0.0000000014683262
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 881f5ea122226be93a0d47628b8a2826, type: 3}

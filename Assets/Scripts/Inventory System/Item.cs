@@ -6,13 +6,8 @@ namespace Inventory_System
     public class Item : ScriptableObject
     {
         public string itemName = "New Item";
-        public Sprite icon = null;
+        public Sprite icon;
         public GameObject itemRef;
-
-        public void testMessage()
-        {
-            Debug.Log("Picking" + itemName);
-        }
 
         public virtual void Use()
         {
