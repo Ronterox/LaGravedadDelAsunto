@@ -1,35 +1,37 @@
 using Player;
 using UnityEngine;
 
-namespace General
+namespace General.Utilities
 {
     public abstract class Interactable : MonoBehaviour
     {
         public int numberOfInteractions = 1;
-        private int interactTimes;
+        public bool infiniteInteractions;
+
+        private int m_InteractTimes;
         private bool m_PlayerOnRange;
 
         public abstract void Interact();
 
         private void IncrementInteraction()
         {
-            interactTimes++;
-            Interact();
+            if (infiniteInteractions || m_InteractTimes++ < numberOfInteractions) Interact();
         }
 
         protected abstract void OnEnterTrigger(Collider other);
 
         protected abstract void OnExitTrigger(Collider other);
 
-        private void Update()
+        protected virtual void Update()
         {
-            if (m_PlayerOnRange && interactTimes < numberOfInteractions && PlayerInput.Instance.Interact) IncrementInteraction();
+            if (m_PlayerOnRange && PlayerInput.Instance.Interact) IncrementInteraction();
         }
+        
         private void OnTriggerEnter(Collider other)
         {
             if (!other.CompareTag("Player")) return;
             m_PlayerOnRange = true;
-            interactTimes = 0;
+            m_InteractTimes = 0;
             OnEnterTrigger(other);
         }
 

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace General
+namespace General.Utilities
 {
     public class WorldHelpMessage : MonoBehaviour
     {

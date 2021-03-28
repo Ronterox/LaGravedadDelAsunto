@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace General
+namespace General.Utilities
 {
     public class Collectible : MonoBehaviour
     {

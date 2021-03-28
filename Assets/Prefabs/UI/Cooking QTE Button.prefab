@@ -222,7 +222,7 @@ GameObject:
   - component: {fileID: 5569495671233990020}
   - component: {fileID: 64890981266920347}
   m_Layer: 5
-  m_Name: QTE Button
+  m_Name: Cooking QTE Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -300,7 +300,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timerProgressFilledImage: {fileID: 5569495671233990020}
-  positioningMargin: {x: 300, y: 300}
   qteText: {fileID: 5569495670399009472}
   keys: 0900000061000000660000006a000000
   timeForEach: 5

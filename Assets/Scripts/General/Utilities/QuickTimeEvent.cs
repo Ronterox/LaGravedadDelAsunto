@@ -1,11 +1,10 @@
-using System;
 using Plugins.Tools;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
-namespace General.Minigames
+namespace General.Utilities
 {
     public abstract class QuickTimeEvent : MonoBehaviour
     {

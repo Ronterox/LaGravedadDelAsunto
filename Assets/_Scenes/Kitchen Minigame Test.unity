@@ -130,6 +130,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 161429403664693781, guid: 7e534af4c2741a1269c45db1e5721fc2, type: 3}
+      propertyPath: guiCanvasGroup
+      value: 
+      objectReference: {fileID: 542076421}
     - target: {fileID: 3670289239834437556, guid: 7e534af4c2741a1269c45db1e5721fc2, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -252,6 +256,11 @@ PrefabInstance:
       objectReference: {fileID: 845513177}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7e534af4c2741a1269c45db1e5721fc2, type: 3}
+--- !u!225 &542076421 stripped
+CanvasGroup:
+  m_CorrespondingSourceObject: {fileID: 6577425631807754661, guid: 7e534af4c2741a1269c45db1e5721fc2, type: 3}
+  m_PrefabInstance: {fileID: 542076420}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &640913055 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 307385177964549519, guid: 1e5dbec7136e28a4994b927b6da66fd7, type: 3}
