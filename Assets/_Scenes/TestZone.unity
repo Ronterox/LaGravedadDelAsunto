@@ -13971,27 +13971,6 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!1 &457264110 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8792325526232751510, guid: 6b204319c6bc7b1b19fbb704b483fa5d, type: 3}
-  m_PrefabInstance: {fileID: 8792325524997676080}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &457264116
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 457264110}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f78807ba174adf42be8710470a7f0b9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  space: 2
-  items: []
-  force: 3
-  offset: 1.5
 --- !u!1 &469688110
 GameObject:
   m_ObjectHideFlags: 0
@@ -67730,14 +67709,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Kitchen
       objectReference: {fileID: 0}
-    - target: {fileID: 7234647176334076256, guid: e3464fac6fe7e0fa09a21f14718dc319, type: 3}
-      propertyPath: m_Size.x
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7234647176334076256, guid: e3464fac6fe7e0fa09a21f14718dc319, type: 3}
-      propertyPath: m_Size.z
-      value: 5
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e3464fac6fe7e0fa09a21f14718dc319, type: 3}
 --- !u!1001 &8792325524997676080
@@ -67763,10 +67734,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Game Manager
       objectReference: {fileID: 0}
-    - target: {fileID: 8792325526232751511, guid: 6b204319c6bc7b1b19fbb704b483fa5d, type: 3}
-      propertyPath: inventory
-      value: 
-      objectReference: {fileID: 457264116}
     - target: {fileID: 8792325526232751511, guid: 6b204319c6bc7b1b19fbb704b483fa5d, type: 3}
       propertyPath: playerPos
       value: 

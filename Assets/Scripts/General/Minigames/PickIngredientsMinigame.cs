@@ -15,13 +15,13 @@ namespace General.Minigames
         
         public void EnterMinigame()
         {
-            StartCoroutine(AlphaCoroutine(1, true));
+            StartCoroutine(AlphaCoroutine(1f, true));
             m_MinigameStarted = true;
         }
 
         public void ExitMinigame()
         {
-            StartCoroutine(AlphaCoroutine(0, false));
+            StartCoroutine(AlphaCoroutine(0f, false));
             m_MinigameStarted = false;
         }
 

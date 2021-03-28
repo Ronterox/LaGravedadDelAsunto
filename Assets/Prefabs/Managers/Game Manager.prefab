@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 325547153588836211}
   - component: {fileID: 1157012126}
   - component: {fileID: 1017325481}
+  - component: {fileID: 457264116}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -83,6 +84,8 @@ MonoBehaviour:
   karmaController: {fileID: 1157012126}
   questManager: {fileID: 325547153588836211}
   dialogueManager: {fileID: 1017325481}
+  inventory: {fileID: 457264116}
+  playerPos: {fileID: 0}
 --- !u!114 &325547153588836211
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -99,7 +102,7 @@ MonoBehaviour:
   - id: test
     campaignQuests:
     - currentQuest: {fileID: 0}
-      questState: 0
+      questEndType: 2
       mainQuest: {fileID: 8791522931685928594}
       badQuest: {fileID: 1128256689153835977}
       goodQuest: {fileID: 1128256689109642966}
@@ -142,6 +145,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textInstance: {fileID: 0}
   secondsBetweenTyping: 0.025
+--- !u!114 &457264116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8792325526232751510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f78807ba174adf42be8710470a7f0b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  space: 2
+  items: []
+  force: 3
+  offset: 1.5
 --- !u!1001 &1129560760586659945
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 565853479512777762}
   - component: {fileID: 565853479512777763}
   m_Layer: 5
-  m_Name: Falling Object
+  m_Name: Falling Ingredient
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -117,3 +117,4 @@ MonoBehaviour:
   onTriggerEnter:
     m_PersistentCalls:
       m_Calls: []
+  itemIngredient: {fileID: 11400000, guid: 6ae42ef2e42f1c3499b5d50b17ec0d37, type: 2}

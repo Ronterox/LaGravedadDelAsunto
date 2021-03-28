@@ -1,3 +1,4 @@
+using System;
 using Cinemachine;
 using Player;
 using Plugins.Tools;
@@ -9,8 +10,13 @@ namespace Cameras
     {
         public CinemachineFreeLook playerCamera;
 
+        public Transform playerTransform;
+
         private const int MIN_CAMERA_ZOOM = 20;
         private const int MAX_CAMERA_ZOOM = 95;
+
+        protected void Start() => LookForPlayerPosition();
+
         private void LateUpdate() => SetCameraZoom();
 
         private void SetCameraZoom()
@@ -22,7 +28,16 @@ namespace Cameras
             else if (PlayerInput.Instance.IsScrollingDown)
             {
                 playerCamera.m_Lens.FieldOfView = Mathf.Lerp(playerCamera.m_Lens.FieldOfView, MAX_CAMERA_ZOOM, PlayerInput.Instance.zoomSpeed);
-            }           
+            }
+        }
+
+        private void LookForPlayerPosition()
+        {
+            if (!playerTransform) playerTransform = PlayerInput.Instance.transform;
+
+            if (!playerTransform) return;
+            playerCamera.Follow = playerTransform;
+            playerCamera.LookAt = playerTransform.Find("CameraLookAt");
         }
     }
 }

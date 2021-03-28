@@ -6,11 +6,7 @@ namespace General.Minigames
     public class KitchenInteractable : Interactable
     {
         public PickIngredientsMinigame pickIngredientsMinigame;
-        public override void Interact()
-        {
-            pickIngredientsMinigame.EnterMinigame();
-            print("Interacted!".ToColorString("red"));
-        }
+        public override void Interact() => pickIngredientsMinigame.EnterMinigame();
 
         protected override void OnEnterTrigger(Collider other) { }
 

@@ -448,7 +448,7 @@ MonoBehaviour:
   - {fileID: 7679424084866160865}
   - {fileID: 7679424085019957621}
   - {fileID: 3670289239834437556}
-  alphaAnimationSpeed: 0
+  alphaAnimationSpeed: 0.07
 --- !u!1001 &3670289239770048931
 PrefabInstance:
   m_ObjectHideFlags: 0
