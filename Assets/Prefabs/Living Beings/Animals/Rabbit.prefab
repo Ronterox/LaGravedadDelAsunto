@@ -1,5 +1,49 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3137902601840792885
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6588884335762516884}
+  - component: {fileID: 1156285425647225726}
+  m_Layer: 0
+  m_Name: Collider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6588884335762516884
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3137902601840792885}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2956182146623465730}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1156285425647225726
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3137902601840792885}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.196742, y: 2.5096323, z: 3.0286217}
+  m_Center: {x: 0.71186686, y: -0.08033836, z: -0.18051338}
 --- !u!1 &6736607408979626713
 GameObject:
   m_ObjectHideFlags: 0
@@ -10,6 +54,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2956182146623465730}
   - component: {fileID: 4682525231799503143}
+  - component: {fileID: 3016850069190951399}
   m_Layer: 0
   m_Name: Rabbit
   m_TagString: Untagged
@@ -29,6 +74,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5126755303132209313}
+  - {fileID: 6588884335762516884}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -45,7 +91,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numberOfInteractions: 1
-  item: {fileID: 11400000, guid: 6ae42ef2e42f1c3499b5d50b17ec0d37, type: 2}
+  infiniteInteractions: 0
+  item: {fileID: 11400000, guid: b675ed13758a4ce439bb43814e239f81, type: 2}
+--- !u!65 &3016850069190951399
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6736607408979626713}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.4960098, y: 1.8499517, z: 1}
+  m_Center: {x: 0.7480049, y: -0.42497587, z: 0}
 --- !u!1001 &4661047168826001226
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -63,15 +123,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4124cd2385f37f947ab69229a9133b27, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -10.56139
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4124cd2385f37f947ab69229a9133b27, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.355901
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4124cd2385f37f947ab69229a9133b27, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 5.4677086
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4124cd2385f37f947ab69229a9133b27, type: 3}
       propertyPath: m_LocalRotation.w
