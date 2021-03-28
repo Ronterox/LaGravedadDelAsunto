@@ -56,7 +56,6 @@ namespace General.Minigames
         {
             while (Math.Abs(minigameCanvasGroup.alpha - objectiveAlpha) > 0.01f)
             {
-                print(minigameCanvasGroup.alpha);
                 minigameCanvasGroup.alpha = Mathf.Lerp(minigameCanvasGroup.alpha, objectiveAlpha, alphaAnimationSpeed);
                 yield return null;
             }
