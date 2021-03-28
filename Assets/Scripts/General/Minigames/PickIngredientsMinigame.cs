@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using Player;
 using UnityEngine;
@@ -8,7 +7,9 @@ namespace General.Minigames
     public class PickIngredientsMinigame : MonoBehaviour
     {
         public CanvasGroup minigameCanvasGroup;
-        [Range(0, 1)] public float animationSpeed;
+        public GameObject[] autoSpawnersGameObject;
+        
+        [Range(0, 1)] public float alphaAnimationSpeed;
 
         private bool m_MinigameStarted;
         
@@ -29,15 +30,18 @@ namespace General.Minigames
             if (m_MinigameStarted && PlayerInput.Instance.Pause) ExitMinigame();
         }
 
+        private void SetSpawnersActive(bool active) { foreach (GameObject o in autoSpawnersGameObject) o.SetActive(active); }
+
         private IEnumerator AlphaCoroutine(float objectiveAlpha, bool isInteractable)
         {
             while (!Mathf.Approximately(minigameCanvasGroup.alpha, objectiveAlpha))
             {
-                minigameCanvasGroup.alpha = Mathf.Lerp(minigameCanvasGroup.alpha, objectiveAlpha, animationSpeed);
+                minigameCanvasGroup.alpha = Mathf.Lerp(minigameCanvasGroup.alpha, objectiveAlpha, alphaAnimationSpeed);
                 yield return null;
             }
             minigameCanvasGroup.interactable = isInteractable;
             PlayerController.Instance.BlockMovement(isInteractable);
+            SetSpawnersActive(isInteractable);
         }
     }
 }

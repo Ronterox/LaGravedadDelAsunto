@@ -1,3 +1,6 @@
+using Plugins.Tools;
+using UnityEngine;
+
 namespace General.Minigames
 {
     public class KitchenInteractable : Interactable
@@ -5,8 +8,12 @@ namespace General.Minigames
         public PickIngredientsMinigame pickIngredientsMinigame;
         public override void Interact()
         {
-            base.Interact();
             pickIngredientsMinigame.EnterMinigame();
+            print("Interacted!".ToColorString("red"));
         }
+
+        protected override void OnEnterTrigger(Collider other) { }
+
+        protected override void OnExitTrigger(Collider other) { }
     }
 }

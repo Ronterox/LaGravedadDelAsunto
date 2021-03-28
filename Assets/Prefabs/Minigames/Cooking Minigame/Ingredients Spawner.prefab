@@ -97,7 +97,7 @@ MonoBehaviour:
   - ObjectToPool: {fileID: 6892732459646654240}
     AmountToPool: 3
     ShouldExpand: 0
-  PoolName: ingredients
+  PoolName: 
   InitialDelayTime: 1
   minTimeBtwSpawns: 1
   maxTimeBtwSpawns: 4

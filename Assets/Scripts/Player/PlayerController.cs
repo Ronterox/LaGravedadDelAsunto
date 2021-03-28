@@ -1,6 +1,5 @@
 using Plugins.Tools;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 namespace Player
 {
@@ -41,8 +40,9 @@ namespace Player
 
         private bool m_MovementBlocked;
 
-        private void Awake()
+        protected override void Awake()
         {
+            base.Awake();
             m_CharCtrl = GetComponent<CharacterController>();
             m_Input = GetComponent<PlayerInput>();
             m_Animator = GetComponent<Animator>();
