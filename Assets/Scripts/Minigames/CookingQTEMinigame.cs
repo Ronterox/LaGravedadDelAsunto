@@ -4,11 +4,13 @@ using UnityEngine;
 
 namespace Minigames
 {
-    public class CookingQTEMinigame : Interactable
+    public class CookingQTEMinigame : GUIInteractable
     {
         public CookingQTE quickTimeEvent;
 
-        public override void Interact() => quickTimeEvent.StartQuickTimeEvent();
+        public override void OnInterfaceOpen() => quickTimeEvent.StartQuickTimeEvent();
+
+        public override void OnInterfaceClose() => quickTimeEvent.StopQuickTimeEvent();
 
         protected override void OnEnterTrigger(Collider other) { }
 

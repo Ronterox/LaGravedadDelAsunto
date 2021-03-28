@@ -67501,6 +67501,63 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6faa110327f9a562fbf6f42503ad3d0e, type: 3}
+--- !u!1001 &3851376621650520368
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6411161574915633200, guid: 9b674e86972803873aec9913dd98909b, type: 3}
+      propertyPath: m_Name
+      value: Cooking QTE Kitchen
+      objectReference: {fileID: 0}
+    - target: {fileID: 7223678410507454810, guid: 9b674e86972803873aec9913dd98909b, type: 3}
+      propertyPath: m_RootOrder
+      value: 23
+      objectReference: {fileID: 0}
+    - target: {fileID: 7223678410507454810, guid: 9b674e86972803873aec9913dd98909b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7223678410507454810, guid: 9b674e86972803873aec9913dd98909b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7223678410507454810, guid: 9b674e86972803873aec9913dd98909b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7223678410507454810, guid: 9b674e86972803873aec9913dd98909b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7223678410507454810, guid: 9b674e86972803873aec9913dd98909b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7223678410507454810, guid: 9b674e86972803873aec9913dd98909b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7223678410507454810, guid: 9b674e86972803873aec9913dd98909b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7223678410507454810, guid: 9b674e86972803873aec9913dd98909b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7223678410507454810, guid: 9b674e86972803873aec9913dd98909b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7223678410507454810, guid: 9b674e86972803873aec9913dd98909b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9b674e86972803873aec9913dd98909b, type: 3}
 --- !u!1001 &5113823775611053256
 PrefabInstance:
   m_ObjectHideFlags: 0
