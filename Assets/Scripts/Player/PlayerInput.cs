@@ -43,7 +43,7 @@ namespace Player
 
         public bool IsScrollingDown => m_ScrollWheelMovement < 0;
 
-        public bool Pause { get; private set; }
+        public bool Pause;
 
         private void Update()
         {
