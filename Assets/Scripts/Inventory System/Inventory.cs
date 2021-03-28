@@ -11,11 +11,13 @@ namespace Inventory_System
         public delegate void OnItemChanged();
 
         public OnItemChanged onItemChangedCallback;
+
         public int space = 20;
         public List<Item> items = new List<Item>();
+
+        [Header("Drop Settings")]
         public float force;
         public float offset;
-
 
         public bool Add(Item item)
         {
@@ -29,7 +31,7 @@ namespace Inventory_System
             return true;
         }
 
-        public void Remove(Item item)
+        private void Remove(Item item)
         {
             items.Remove(item);
             onItemChangedCallback?.Invoke();

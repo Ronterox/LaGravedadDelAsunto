@@ -10,7 +10,7 @@ namespace Managers
         public int karma;
 
         public Slider karmaBar;
-        public CanvasGroup karmabarCanvasGroup;
+        public CanvasGroup karmaBarCanvasGroup;
 
         private WaitForSeconds m_WaitForSeconds;
         private Coroutine m_CurrentCoroutine;
@@ -36,7 +36,7 @@ namespace Managers
             
             karmaBar.gameObject.SetActive(true);
             
-            GameManager.Instance.guiManager.AnimateAlpha(karmabarCanvasGroup, 1f, () => m_CurrentCoroutine = StartCoroutine(KarmaCoroutine()));
+            GameManager.Instance.guiManager.AnimateAlpha(karmaBarCanvasGroup, 1f, () => m_CurrentCoroutine = StartCoroutine(KarmaCoroutine()));
         }
 
         private IEnumerator KarmaCoroutine()
@@ -47,7 +47,7 @@ namespace Managers
                 yield return m_WaitForSeconds;
             }
 
-            GameManager.Instance.guiManager.AnimateAlpha(karmabarCanvasGroup, 0f, () => karmaBar.gameObject.SetActive(false));
+            GameManager.Instance.guiManager.AnimateAlpha(karmaBarCanvasGroup, 0f, () => karmaBar.gameObject.SetActive(false));
         }
     }
 }

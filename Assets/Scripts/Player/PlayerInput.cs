@@ -53,7 +53,7 @@ namespace Player
 
             m_Interact = Input.GetButtonDown("Interact");
             m_Attack = Input.GetButtonDown("Fire1");
-            Pause = Input.GetButtonDown("Submit");
+            Pause = Input.GetButtonDown("Pause");
 
             m_Sprint = Input.GetButton("Sprint");
             
