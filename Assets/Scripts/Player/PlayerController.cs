@@ -1,5 +1,6 @@
 using Plugins.Tools;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace Player
 {
@@ -50,8 +51,10 @@ namespace Player
             AnimatePlayer();
             SetRotation();
             CalculateVerticalMovement();
+
         }
 
+     
         private void OnAnimatorMove()
         {
             float stateSpeed = m_Input.IsWalking && m_IsGrounded? speed * .5f : 

@@ -5,6 +5,7 @@ namespace General
 {
     public class Collectible : MonoBehaviour
     {
+       
         //This is temporal only to test the destroying event;
         [Header("Testing Can be Destroy Feedback")]
         public MeshRenderer meshRenderer;
