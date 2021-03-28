@@ -1,12 +1,13 @@
-using System;
+using Inventory_System;
+using Managers;
 using UnityEngine;
 
 namespace GUI.Minigames
 {
     public class FallingIngredient : FallingTrigger
     {
+        public Item itemIngredient;
         private Vector3 m_StartPosition;
-        //public Item itemIngredient;
 
         private void Awake() => m_StartPosition = transform.position;
 
@@ -21,8 +22,7 @@ namespace GUI.Minigames
 
         private void _GivePlayer()
         {
-            //Called inventory a give the ingredient
-            //GameManager.Instance.inventory.Add(itemIngredient);
+            GameManager.Instance.inventory.Add(itemIngredient);
             gameObject.SetActive(false);
         }
     }

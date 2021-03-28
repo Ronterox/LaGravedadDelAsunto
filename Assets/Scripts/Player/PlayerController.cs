@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 namespace Player
 {
     [RequireComponent(typeof(CharacterController))]
-    public class PlayerController : MonoBehaviour
+    public class PlayerController : Singleton<PlayerController>
     {
         [Header("Requirements")]
         public Transform mainCamera;
@@ -39,6 +39,8 @@ namespace Player
 
         private bool IsMoving => m_Input.MoveInput != Vector2.zero;
 
+        private bool m_MovementBlocked;
+
         private void Awake()
         {
             m_CharCtrl = GetComponent<CharacterController>();
@@ -46,20 +48,24 @@ namespace Player
             m_Animator = GetComponent<Animator>();
         }
 
+        public void BlockMovement(bool blockMovement) => m_MovementBlocked = blockMovement;
+
         private void FixedUpdate()
         {
+            if(m_MovementBlocked) return;
+            
             AnimatePlayer();
             SetRotation();
             CalculateVerticalMovement();
-
         }
 
-     
         private void OnAnimatorMove()
         {
-            float stateSpeed = m_Input.IsWalking && m_IsGrounded? speed * .5f : 
-                m_Input.SprintInput && m_IsGrounded || m_WasSprinting? speed * sprintMultiplier : speed;
+            if(m_MovementBlocked) return;
             
+            float stateSpeed = m_Input.IsWalking && m_IsGrounded ? speed * .5f :
+                m_Input.SprintInput && m_IsGrounded || m_WasSprinting ? speed * sprintMultiplier : speed;
+
             Vector3 movement = IsMoving ? Time.deltaTime * stateSpeed * transform.forward : Vector3.zero;
             movement += m_VerticalSpeed * Time.deltaTime * Vector3.up;
 
@@ -75,7 +81,7 @@ namespace Player
             if (m_IsGrounded)
             {
                 if (m_WasSprinting) m_WasSprinting = false;
-                
+
                 m_VerticalSpeed = -gravity * STICKING_GRAVITY_PROPORTION;
 
                 if (!m_Input.JumpInput || !m_CanJump) return;
@@ -110,7 +116,7 @@ namespace Player
                     else m_Animator.SetFloat(SPEED_ANIMATION_HASH, m_Input.SprintInput ? 1.5f : 1f, 0.15f, Time.deltaTime);
                 }
                 else m_Animator.SetFloat(SPEED_ANIMATION_HASH, 0, 0.15f, Time.deltaTime);
-                
+
                 if (m_CanJump && m_Input.JumpInput) m_Animator.SetTrigger(JUMP_ANIMATION_HASH);
             }
             m_Animator.SetBool(FALLING_ANIMATION_HASH, !m_IsGrounded);
