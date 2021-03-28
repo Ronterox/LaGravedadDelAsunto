@@ -15,7 +15,7 @@ namespace Managers
 
         private void Awake()
         {
-            m_TextTransform = textInstance.transform;
+            if(textInstance) m_TextTransform = textInstance.transform;
             m_WaitForSeconds = new WaitForSeconds(secondsBetweenTyping);
         }
 

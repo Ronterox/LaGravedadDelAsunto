@@ -171,12 +171,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a80ce83968944090b554ecb99a685fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  numberOfInteractions: 10
   npcScriptable: {fileID: 11400000, guid: 1290f9c6360d7233aa4f573b8d581d66, type: 2}
   onCampaignCompletedInteraction:
     m_PersistentCalls:
       m_Calls: []
-  infiniteCompletedEventCall: 1
   textPosition: {fileID: 2078478830}
+  infiniteCompletedEventCall: 1
 --- !u!1001 &4442847294004284346
 PrefabInstance:
   m_ObjectHideFlags: 0

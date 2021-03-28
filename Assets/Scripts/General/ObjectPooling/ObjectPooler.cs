@@ -30,6 +30,8 @@ namespace General.ObjectPooling
         private List<int> m_Positions;
         private Transform m_PoolContent;
 
+        private const string OBJECTS_SCENE_NAME = "Game Common";
+
         /// <summary>
         /// Awake
         /// </summary>
@@ -42,10 +44,19 @@ namespace General.ObjectPooling
             if (!string.IsNullOrEmpty(PoolName))
             {
                 m_PoolContent = new GameObject(PoolName).transform;
-                Scene scene = SceneManager.GetSceneByName("GameCommon");
-                if (scene.IsValid()) SceneManager.MoveGameObjectToScene(m_PoolContent.gameObject, scene);
+                Scene scene = SceneManager.GetSceneByName(OBJECTS_SCENE_NAME);
+                SceneManager.MoveGameObjectToScene(m_PoolContent.gameObject, scene.IsValid() ? scene : SceneManager.CreateScene(OBJECTS_SCENE_NAME));
             }
             for (var i = 0; i < ItemsToPool.Count; i++) ObjectPoolItemToPooledObject(i);
+        }
+
+        public void RestartObjectsPosition()
+        {
+            for (var i = 0; i < m_PooledObjectsList.Count; i++)
+            {
+                Vector3 objPos = ItemsToPool[i].ObjectToPool.transform.position;
+                m_PooledObjectsList[i].ForEach(obj => obj.transform.position = objPos);
+            }
         }
 
         /// <summary>
@@ -64,12 +75,12 @@ namespace General.ObjectPooling
             }
 
             if (!ItemsToPool[index].ShouldExpand) return null;
-            
+
             GameObject obj = Instantiate(ItemsToPool[index].ObjectToPool, string.IsNullOrEmpty(PoolName) ? transform : m_PoolContent);
             obj.SetActive(false);
-            
+
             m_PooledObjectsList[index].Add(obj);
-            
+
             return obj;
         }
 
@@ -107,7 +118,7 @@ namespace General.ObjectPooling
             m_PooledObjects = new List<GameObject>();
             for (var i = 0; i < item.AmountToPool; i++)
             {
-                GameObject obj = Instantiate(item.ObjectToPool, !string.IsNullOrEmpty(PoolName) ? transform : m_PoolContent);
+                GameObject obj = Instantiate(item.ObjectToPool, string.IsNullOrEmpty(PoolName) ? transform : m_PoolContent);
                 obj.SetActive(false);
                 m_PooledObjects.Add(obj);
             }
@@ -116,4 +127,3 @@ namespace General.ObjectPooling
         }
     }
 }
-
