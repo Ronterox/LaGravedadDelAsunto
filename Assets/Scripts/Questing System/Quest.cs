@@ -1,3 +1,4 @@
+using System;
 using Managers;
 using UnityEngine;
 using UnityEngine.Events;
@@ -46,6 +47,20 @@ namespace Questing_System
 
         public QuestEvents events;
 
+        private void OnEnable()
+        {
+            events.onQuestStarted.AddListener(OnceQuestStarted);
+            events.onQuestDoneBad.AddListener(OnceQuestIsDoneBad);
+            events.onQuestDoneGood.AddListener(OnceQuestIsDoneGood);
+        }
+
+        private void OnDisable()
+        {
+            events.onQuestStarted.RemoveListener(OnceQuestStarted);
+            events.onQuestDoneBad.RemoveListener(OnceQuestIsDoneBad);
+            events.onQuestDoneGood.RemoveListener(OnceQuestIsDoneGood);
+        }
+
         /// <summary>
         /// Called once quest completed with DoneGood Ending
         /// </summary>
@@ -69,11 +84,17 @@ namespace Questing_System
             gameObject.SetActive(true);
             questState = QuestState.OnGoing;
             events.onQuestStarted?.Invoke();
-            OnceQuestStarted();
             m_JustStarted = true;
         }
 
+        /// <summary>
+        /// Ends the quest with a being good ending
+        /// </summary>
         public void EndQuestPositive() => EndQuest(QuestEndType.DoneGood);
+        
+        /// <summary>
+        /// Ends the quest with a being bad ending
+        /// </summary>
         public void EndQuestNegative() => EndQuest(QuestEndType.DoneBad);
 
         /// <summary>
@@ -90,13 +111,11 @@ namespace Questing_System
             if (endingType == QuestEndType.DoneGood)
             {
                 events.onQuestDoneGood?.Invoke();
-                OnceQuestIsDoneGood();
                 GameManager.Instance.karmaController.ChangeKarma(questInfo.positiveKarma);
             }
             else
             {
                 events.onQuestDoneBad?.Invoke();
-                OnceQuestIsDoneBad();
                 GameManager.Instance.karmaController.ChangeKarma(-questInfo.negativeKarma);
             }
             

@@ -8,6 +8,10 @@ namespace General.Minigames
         protected override void OnWrongPress() => print("Failed Quick Time Event!!!".ToColorString("red"));
 
         protected override void OnCorrectPress() => print("Pressed Correctly Quick Time Event!!!".ToColorString("green"));
+
+        protected override void OnQTEStop() { }
+
+        protected override void OnQTEStart() { }
     }
 
 }

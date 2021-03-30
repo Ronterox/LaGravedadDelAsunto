@@ -1,4 +1,3 @@
-using System.Collections;
 using Managers;
 using Player;
 using UnityEngine;

@@ -5,7 +5,7 @@ namespace General.Utilities
 {
     public abstract class Interactable : MonoBehaviour
     {
-        public int numberOfInteractions = 1;
+        public int numberOfInteractionsOnPlace = 1;
         public bool infiniteInteractions;
 
         private int m_InteractTimes;
@@ -15,7 +15,7 @@ namespace General.Utilities
 
         private void IncrementInteraction()
         {
-            if (infiniteInteractions || m_InteractTimes++ < numberOfInteractions) Interact();
+            if (infiniteInteractions || m_InteractTimes++ < numberOfInteractionsOnPlace) Interact();
         }
 
         protected abstract void OnEnterTrigger(Collider other);

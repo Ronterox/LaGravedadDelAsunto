@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Minigames
 {
-    public class CookingQTEMinigame : GUIInteractable
+    public class CookingQTEInteractable : GUIInteractable
     {
         public CookingQTE quickTimeEvent;
 
