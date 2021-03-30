@@ -1,47 +1,43 @@
 using Managers;
+using Player;
 using UnityEngine;
 
 namespace Inventory_System
 {
     public class InventoryUI : MonoBehaviour
     {
-        private Inventory inventory;
-        public Transform itemsParent;
-        private InventorySlot[] slots;
         public GameObject inventoryUi;
-        public bool inInventory;
+        public Transform itemsParent;
+        private bool m_InInventory;
+
+        private InventorySlot[] m_InventorySlots;
+        private Inventory m_InventoryRef;
+
         private void Start()
         {
-            inventory = GameManager.Instance.inventory;
-            inventory.onItemChangedCallback += UpdateUi;
-            slots = itemsParent.GetComponentsInChildren<InventorySlot>();
-            inventory.space = slots.Length;
+            m_InventorySlots = itemsParent.GetComponentsInChildren<InventorySlot>();
+
+            m_InventoryRef = GameManager.Instance.inventory;
+            m_InventoryRef.onItemChangedCallback += UpdateUi;
+            m_InventoryRef.space = m_InventorySlots.Length;
         }
 
-       
         private void Update()
         {
-            if (Input.GetButtonDown("Inventory"))
+            if (PlayerInput.Instance.Inventory)
             {
-                inInventory = !inInventory;
-                inventoryUi.SetActive(inInventory);
+                m_InInventory = !m_InInventory;
+                inventoryUi.SetActive(m_InInventory);
             }
         }
 
         private void UpdateUi()
         {
-            for(var i = 0; i < slots.Length; i++)
+            for (var i = 0; i < m_InventorySlots.Length; i++)
             {
-                if (i < inventory.items.Count)
-                {
-                    slots[i].AddItem(inventory.items[i]);
-                }
-                else
-                {
-                    slots[i].ClearSlot();
-                }
+                if (i < m_InventoryRef.items.Count) m_InventorySlots[i].AddItem(m_InventoryRef.items[i]);
+                else m_InventorySlots[i].ClearSlot();
             }
-
         }
     }
 }

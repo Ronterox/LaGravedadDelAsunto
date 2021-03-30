@@ -40,7 +40,7 @@ namespace Inventory_System
         {
             Vector3 direction = UtilityMethods.GetRandomDirection(true, false);
             GameObject obj = Instantiate(item.itemRef, CameraManager.Instance.playerTransform.position + direction * offset, Quaternion.identity);
-            obj.GetComponent<Rigidbody>().AddForce(direction * force, ForceMode.Impulse);
+            obj.GetComponent<Rigidbody>()?.AddForce(direction * force, ForceMode.Impulse);
             Remove(item);
         }
     }

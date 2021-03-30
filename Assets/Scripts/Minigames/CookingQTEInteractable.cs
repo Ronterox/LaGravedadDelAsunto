@@ -8,9 +8,13 @@ namespace Minigames
     {
         public CookingQTE quickTimeEvent;
 
+        private void OnEnable() => quickTimeEvent.onQTEStop.AddListener(ExitInterface);
+
+        private void OnDisable() => quickTimeEvent.onQTEStop.RemoveListener(ExitInterface);
+
         public override void OnInterfaceOpen() => quickTimeEvent.StartQuickTimeEvent();
 
-        public override void OnInterfaceClose() => quickTimeEvent.StopQuickTimeEvent();
+        public override void OnInterfaceClose() { }
 
         protected override void OnEnterTrigger(Collider other) { }
 

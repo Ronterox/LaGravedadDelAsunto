@@ -8,7 +8,7 @@ namespace Player
         [Range(0f, 1.0f)]
         public float zoomSpeed = 5f;
         private float m_ScrollWheelMovement;
-        
+
         public bool playerControllerInputBlocked;
         private bool m_ExternalInputBlocked;
 
@@ -22,6 +22,7 @@ namespace Player
         private bool m_Sprint;
 
         private bool m_Walking;
+        private bool m_Inventory;
 
         public Vector2 MoveInput => InputBlocked ? Vector2.zero : m_Movement;
 
@@ -29,13 +30,15 @@ namespace Player
 
         public bool InputBlocked => playerControllerInputBlocked || m_ExternalInputBlocked;
 
-        public bool JumpInput => m_Jump && !InputBlocked;        
+        public bool JumpInput => m_Jump && !InputBlocked;
 
         public bool Interact => m_Interact && !InputBlocked;
 
+        public bool Inventory => m_Inventory && !InputBlocked;
+
         public bool Attack => m_Attack && !InputBlocked;
 
-        public bool SprintInput => m_Sprint && !IsWalking && !InputBlocked; 
+        public bool SprintInput => m_Sprint && !IsWalking && !InputBlocked;
 
         public bool IsWalking { get; private set; }
 
@@ -56,11 +59,12 @@ namespace Player
             Pause = Input.GetButtonDown("Pause");
 
             m_Sprint = Input.GetButton("Sprint");
-            
             m_ScrollWheelMovement = Input.GetAxis("Mouse ScrollWheel");
 
             m_Walking = Input.GetKeyDown(KeyCode.LeftControl);
             if (m_Walking) IsWalking = !IsWalking;
+
+            m_Inventory = Input.GetButtonDown("Inventory");
         }
 
         public bool HasControl() => !m_ExternalInputBlocked;

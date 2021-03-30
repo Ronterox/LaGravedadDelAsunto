@@ -1,4 +1,3 @@
-using System;
 using Plugins.Tools;
 using TMPro;
 using UnityEngine;
@@ -14,7 +13,7 @@ namespace General.Utilities
         public TMP_Text qteText;
 
         [Header("Settings")]
-        public int numberOfQTEs;
+        public int numberOfPresses;
         public KeyCode[] keys;
 
         public float timeForEach;
@@ -80,7 +79,7 @@ namespace General.Utilities
             StopIfFinish();
         }
 
-        private void StopIfFinish() { if(m_TotalWrong + m_TotalCorrect >= numberOfQTEs) StopQuickTimeEvent(); }
+        private void StopIfFinish() { if(m_TotalWrong + m_TotalCorrect >= numberOfPresses) StopQuickTimeEvent(); }
         
         private void CorrectPress()
         {
