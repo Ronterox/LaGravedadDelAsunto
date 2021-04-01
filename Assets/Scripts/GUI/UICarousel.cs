@@ -110,7 +110,6 @@ namespace GUI
         public void DeselectCurrentElement()
         {
             if (!SelectedElement) return;
-
             OnElementDeselect(SelectedElement);
         }
 
