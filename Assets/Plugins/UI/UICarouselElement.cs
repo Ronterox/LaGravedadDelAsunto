@@ -55,6 +55,6 @@ namespace Plugins.UI
 
         public virtual void PlayDeselectAnim() => transform.DOScale(deselectAnim.scale, deselectAnim.duration).SetEase(deselectAnim.easeType);
 
-        public abstract void Setup(params object[] parameters);
+        public abstract UICarouselElement Setup(params object[] parameters);
     }
 }

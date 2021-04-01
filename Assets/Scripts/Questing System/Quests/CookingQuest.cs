@@ -1,3 +1,4 @@
+using GUI;
 using Inventory_System;
 using TMPro;
 using UnityEngine;
@@ -8,6 +9,7 @@ namespace Questing_System.Quests
     public class CookingQuest : Quest
     {
         public Item currentPlate;
+        public PlatesMenu platesMenu;
 
         [Header("Visual Feedback")]
         public Image plateImage;
@@ -20,14 +22,14 @@ namespace Questing_System.Quests
         private int m_PlateProgress;
         private int m_PlatesCooked, m_PlatesBurned;
 
-        private bool m_TimerStarted;
+        private bool m_GameStarted;
 
         private const int COOKED_FOOD_HP = 100, BURNED_FOOD_HP = -100;
         private const int COOKED_LIMIT = 3, BURNED_LIMIT = 2;
 
         private void Update()
         {
-            if (!m_TimerStarted) return;
+            if (!m_GameStarted) return;
             if (m_Timer >= secondsToCook)
             {
                 m_Timer = 0;
@@ -38,11 +40,11 @@ namespace Questing_System.Quests
 
         public void StartCooking()
         {
-            m_TimerStarted = true;
+            m_GameStarted = true;
             m_Timer = 0;
         }
 
-        public void StopCooking() => m_TimerStarted = false;
+        public void StopCooking() => m_GameStarted = false;
 
         public void SelectPlate(Item plate)
         {
@@ -58,12 +60,7 @@ namespace Questing_System.Quests
 
         protected override void OnceQuestIsDoneBad() => StopCooking();
 
-        protected override void OnceQuestStarted() => ShowMenuOptions();
-
-        public void ShowMenuOptions()
-        {
-            
-        }
+        protected override void OnceQuestStarted() => platesMenu.SetupCarousel(SelectPlate);
 
         private void UpdateQuestState(bool foodBurned, bool foodCooked)
         {
