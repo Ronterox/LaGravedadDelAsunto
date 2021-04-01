@@ -21,7 +21,7 @@ namespace General.Utilities
 
         private void SetInterfaceActive(bool setActive)
         {
-            GameManager.Instance.guiManager.AnimateAlpha(guiCanvasGroup, setActive ? 1f : 0, () =>
+            GameManager.Instance.guiManager.AnimateAlpha(guiCanvasGroup, setActive ? 1f : 0, null,() =>
             {
                 guiCanvasGroup.interactable = setActive;
                 PlayerController.Instance.BlockMovement(setActive);
