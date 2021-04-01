@@ -19,8 +19,8 @@ namespace GUI.Editor
 
             carousel = target as UICarousel;
 
-            m_ElementPrefab = serializedObject.FindProperty("ElementPrefab");
-            m_ScrollMask = serializedObject.FindProperty("ScrollMask");
+            m_ElementPrefab = serializedObject.FindProperty("elementPrefab");
+            m_ScrollMask = serializedObject.FindProperty("scrollMask");
         }
 
         public override void OnInspectorGUI()
@@ -37,10 +37,10 @@ namespace GUI.Editor
 
             GUILayout.Space(5);
             GUILayout.Label("Animation", EditorStyles.boldLabel);
-            carousel.ScrollSpeed = EditorGUILayout.FloatField("Scroll Speed", carousel.ScrollSpeed);
-            carousel.ScrollEase = (Ease)EditorGUILayout.EnumPopup("Scroll Ease", carousel.ScrollEase);
+            carousel.scrollSpeed = EditorGUILayout.FloatField("Scroll Speed", carousel.scrollSpeed);
+            carousel.scrollEase = (Ease)EditorGUILayout.EnumPopup("Scroll Ease", carousel.scrollEase);
 
-            carousel.ScrollSpeed = Mathf.Max(carousel.ScrollSpeed, 0.01f);
+            carousel.scrollSpeed = Mathf.Max(carousel.scrollSpeed, 0.01f);
 
             serializedObject.ApplyModifiedProperties();
         }

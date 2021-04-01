@@ -10,19 +10,19 @@ namespace GUI
         [System.Serializable]
         public struct ElementAnim
         {
-            public float Scale;
-            public float Duration;
-            public Ease EaseType;
+            public float scale;
+            public float duration;
+            public Ease easeType;
         }
 
         public int ID;
-        public ElementAnim SelectAnim;
-        public ElementAnim DeselectAnim;
+        public ElementAnim selectAnim;
+        public ElementAnim deselectAnim;
 
         public delegate void UICarouselElementEvent(UICarouselElement element);
 
-        public event UICarouselElementEvent OnSelectElement;
-        public event UICarouselElementEvent OnDeselectElement;
+        public event UICarouselElementEvent onSelectElement;
+        public event UICarouselElementEvent onDeselectElement;
 
         public RectTransform RectTransform { get; private set; }
 
@@ -36,23 +36,23 @@ namespace GUI
         public override void OnSelect(BaseEventData eventData)
         {
             base.OnSelect(eventData);
-            OnSelectElement?.Invoke(this);
+            onSelectElement?.Invoke(this);
             PlaySelectAnim();
         }
 
         public override void OnDeselect(BaseEventData eventData)
         {
             base.OnDeselect(eventData);
-            OnDeselectElement?.Invoke(this);
+            onDeselectElement?.Invoke(this);
             PlayDeselectAnim();
         }
 
         public virtual void PlaySelectAnim() =>
-            transform.DOScale(SelectAnim.Scale, SelectAnim.Duration).SetEase(SelectAnim.EaseType).OnUpdate(() =>
+            transform.DOScale(selectAnim.scale, selectAnim.duration).SetEase(selectAnim.easeType).OnUpdate(() =>
             {
                 LayoutRebuilder.ForceRebuildLayoutImmediate(transform.parent as RectTransform);
             });
 
-        public virtual void PlayDeselectAnim() => transform.DOScale(DeselectAnim.Scale, DeselectAnim.Duration).SetEase(DeselectAnim.EaseType);
+        public virtual void PlayDeselectAnim() => transform.DOScale(deselectAnim.scale, deselectAnim.duration).SetEase(deselectAnim.easeType);
     }
 }

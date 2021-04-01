@@ -17,8 +17,8 @@ namespace GUI.Editor
         {
             base.OnEnable();
 
-            m_SelectAnim = serializedObject.FindProperty("SelectAnim");
-            m_DeselectAnim = serializedObject.FindProperty("DeselectAnim");
+            m_SelectAnim = serializedObject.FindProperty("selectAnim");
+            m_DeselectAnim = serializedObject.FindProperty("deselectAnim");
         }
 
         public override void OnInspectorGUI()

@@ -258,7 +258,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   ElementPrefab: {fileID: 1522640342}
-  ScrollMask: {fileID: 0}
+  ScrollMask: {fileID: 2137915130}
   ScrollSpeed: 0.01
   ScrollEase: 0
 --- !u!1 &507039582

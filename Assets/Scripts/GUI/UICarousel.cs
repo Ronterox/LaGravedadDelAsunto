@@ -8,17 +8,17 @@ namespace GUI
 {
     public abstract class UICarousel : ScrollRect
     {
-        public GameObject ElementPrefab;
-        public RectTransform ScrollMask;
+        public GameObject elementPrefab;
+        public RectTransform scrollMask;
 
         [Header("Animation")]
-        public float ScrollSpeed;
-        public Ease ScrollEase;
+        public float scrollSpeed;
+        public Ease scrollEase;
 
         public delegate void UICarouselEvent(UICarouselElement element);
 
-        public event UICarouselEvent OnSelectElement;
-        public event UICarouselEvent OnDeselectElement;
+        public event UICarouselEvent onSelectElement;
+        public event UICarouselEvent onDeselectElement;
 
         protected List<UICarouselElement> m_Elements;
         protected RectTransform m_RectTransform;
@@ -37,12 +37,12 @@ namespace GUI
 
         public virtual UICarouselElement CreateElement(int id, bool selected)
         {
-            GameObject elementGO = Instantiate(ElementPrefab, content);
+            GameObject elementGO = Instantiate(elementPrefab, content);
             var element = elementGO.GetComponent<UICarouselElement>();
 
             element.ID = id;
-            element.OnSelectElement += OnElementSelect;
-            element.OnDeselectElement += OnElementDeselect;
+            element.onSelectElement += OnElementSelect;
+            element.onDeselectElement += OnElementDeselect;
 
             m_Elements.Add(element);
 
@@ -117,10 +117,10 @@ namespace GUI
         {
             SelectedElement = element;
             ScrollToElement(element);
-            OnSelectElement?.Invoke(element);
+            onSelectElement?.Invoke(element);
         }
 
-        protected virtual void OnElementDeselect(UICarouselElement element) => OnDeselectElement?.Invoke(element);
+        protected virtual void OnElementDeselect(UICarouselElement element) => onDeselectElement?.Invoke(element);
 
         protected virtual void ScrollToElement(UICarouselElement element)
         {
@@ -128,7 +128,7 @@ namespace GUI
             Vector3 elementCenterPos = GetWorldPointInWidget(m_RectTransform, GetWidgetWorldPoint(element.RectTransform));
 
             /// Where the element should be inside the scroll rect
-            Vector3 targetPos = GetWorldPointInWidget(m_RectTransform, GetWidgetWorldPoint(ScrollMask));
+            Vector3 targetPos = GetWorldPointInWidget(m_RectTransform, GetWidgetWorldPoint(scrollMask));
 
             Vector3 difference = targetPos - elementCenterPos;
 
@@ -150,7 +150,7 @@ namespace GUI
 
             //normalizedPosition = newNormalizedPosition;
             Debug.Log(normalizedPosition);
-            DOTween.To(() => normalizedPosition, (x) => normalizedPosition = x, newNormalizedPosition, 1f / ScrollSpeed).SetEase(ScrollEase);
+            DOTween.To(() => normalizedPosition, (x) => normalizedPosition = x, newNormalizedPosition, 1f / scrollSpeed).SetEase(scrollEase);
         }
 
         private Vector3 GetWidgetWorldPoint(RectTransform target)
