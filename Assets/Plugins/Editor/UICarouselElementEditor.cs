@@ -1,8 +1,9 @@
+using Plugins.UI;
 using UnityEditor;
 using UnityEditor.UI;
 using UnityEngine;
 
-namespace GUI.Editor
+namespace Plugins.Editor
 {
     [CustomEditor(typeof(UICarouselElement)), CanEditMultipleObjects]
     public class UICarouselElementEditor : ButtonEditor
@@ -23,10 +24,7 @@ namespace GUI.Editor
 
         public override void OnInspectorGUI()
         {
-            var header = new GUIStyle(EditorStyles.boldLabel)
-            {
-                fontSize = 14
-            };
+            var header = new GUIStyle(EditorStyles.boldLabel) { fontSize = 14 };
 
             GUILayout.Space(5);
             GUILayout.Label("Button Behaviour", header);
@@ -48,5 +46,5 @@ namespace GUI.Editor
 
             base.OnDisable();
         }
-    } 
+    }
 }

@@ -3,9 +3,9 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-namespace GUI
+namespace Plugins.UI
 {
-    public class UICarouselElement : Button
+    public abstract class UICarouselElement : Button
     {
         [System.Serializable]
         public struct ElementAnim
@@ -54,5 +54,7 @@ namespace GUI
             });
 
         public virtual void PlayDeselectAnim() => transform.DOScale(deselectAnim.scale, deselectAnim.duration).SetEase(deselectAnim.easeType);
+
+        public abstract void Setup(params object[] parameters);
     }
 }

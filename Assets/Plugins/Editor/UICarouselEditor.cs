@@ -1,11 +1,12 @@
 using DG.Tweening;
+using Plugins.UI;
 using UnityEditor;
 using UnityEditor.UI;
 using UnityEngine;
 
-namespace GUI.Editor
+namespace Plugins.Editor
 {
-    [CustomEditor(typeof(UICarousel), true), CanEditMultipleObjects]
+    [CustomEditor(typeof(UICarousel)), CanEditMultipleObjects]
     public class UICarouselEditor : ScrollRectEditor
     {
         private SerializedProperty m_ElementPrefab;

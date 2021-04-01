@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-namespace GUI
+namespace Plugins.UI
 {
     public abstract class UICarousel : ScrollRect
     {
@@ -51,10 +51,7 @@ namespace GUI
                 element.PlaySelectAnim();
                 SelectedElement = element;
             }
-            else
-            {
-                element.PlayDeselectAnim();
-            }
+            else element.PlayDeselectAnim();
 
             return element;
         }
@@ -150,7 +147,7 @@ namespace GUI
 
             //normalizedPosition = newNormalizedPosition;
             Debug.Log(normalizedPosition);
-            DOTween.To(() => normalizedPosition, (x) => normalizedPosition = x, newNormalizedPosition, 1f / scrollSpeed).SetEase(scrollEase);
+            DG.Tweening.DOTween.To(() => normalizedPosition, (x) => normalizedPosition = x, newNormalizedPosition, 1f / scrollSpeed).SetEase(scrollEase);
         }
 
         private Vector3 GetWidgetWorldPoint(RectTransform target)
@@ -162,6 +159,7 @@ namespace GUI
             Vector3 localPosition = target.localPosition + pivotOffset;
             return target.parent.TransformPoint(localPosition);
         }
+
         private Vector3 GetWorldPointInWidget(Transform target, Vector3 worldPoint) => target.InverseTransformPoint(worldPoint);
     }
 }
