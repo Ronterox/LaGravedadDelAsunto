@@ -9,6 +9,8 @@ namespace Questing_System.Quests
     public class CookingQuest : Quest
     {
         public Item currentPlate;
+        public Item[] availablePlates;
+        
         public PlatesMenu platesMenu;
 
         [Header("Visual Feedback")]
@@ -60,7 +62,7 @@ namespace Questing_System.Quests
 
         protected override void OnceQuestIsDoneBad() => StopCooking();
 
-        protected override void OnceQuestStarted() => platesMenu.SetupCarousel(SelectPlate);
+        protected override void OnceQuestStarted() => platesMenu.SetupCarousel(availablePlates, SelectPlate);
 
         private void UpdateQuestState(bool foodBurned, bool foodCooked)
         {

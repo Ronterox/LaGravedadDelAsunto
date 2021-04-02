@@ -8,9 +8,7 @@ namespace GUI
 {
     public class PlatesMenu : UICarousel
     {
-        //TODO: Pass plates through minigame, and just call method, and then delete the custom editor
-        public Item[] plates;
-        public void SetupCarousel(UnityAction<Item> onClickAction)
+        public void SetupCarousel(Item[] plates, UnityAction<Item> onClickAction)
         {
             for (var i = 0; i < plates.Length; i++)
             {

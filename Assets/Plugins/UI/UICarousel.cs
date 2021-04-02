@@ -134,8 +134,10 @@ namespace Plugins.UI
             if (!vertical) difference.y = 0f;
 
             Vector2 normalizedDifference;
-            normalizedDifference.x = difference.x / (content.rect.size.x - m_RectTransform.rect.size.x);
-            normalizedDifference.y = difference.y / (content.rect.size.y - m_RectTransform.rect.size.y);
+            
+            Rect rect = content.rect, rect1 = m_RectTransform.rect;
+            normalizedDifference.x = difference.x / (rect.size.x - rect1.size.x);
+            normalizedDifference.y = difference.y / (rect.size.y - rect1.size.y);
 
             Vector2 newNormalizedPosition = normalizedPosition - normalizedDifference;
 
@@ -146,7 +148,6 @@ namespace Plugins.UI
             }
 
             //normalizedPosition = newNormalizedPosition;
-            Debug.Log(normalizedPosition);
             DG.Tweening.DOTween.To(() => normalizedPosition, (x) => normalizedPosition = x, newNormalizedPosition, 1f / scrollSpeed).SetEase(scrollEase);
         }
 

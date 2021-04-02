@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Plugins.Editor
 {
-    [CustomEditor(typeof(UICarousel)), CanEditMultipleObjects]
+    [CustomEditor(typeof(UICarousel), true), CanEditMultipleObjects]
     public class UICarouselEditor : ScrollRectEditor
     {
         private SerializedProperty m_ElementPrefab;
