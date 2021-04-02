@@ -8,12 +8,12 @@ namespace GUI.Minigames.Cook_Plate
 {
     public class PlatesMenu : UICarousel
     {
-        public void SetupCarousel(Item[] plates, UnityAction<Item> onClickAction)
+        public void SetupCarousel(Item[] plates, UnityAction<int> onClickAction)
         {
             for (var i = 0; i < plates.Length; i++)
             {
                 int positionCopy = i;
-                CreateElement(i, i == 0).Setup(plates[i]).onClick.AddListener(delegate { onClickAction.Invoke(plates[positionCopy]); });
+                CreateElement(i, i == 0).Setup(plates[i]).onClick.AddListener(delegate { onClickAction.Invoke(positionCopy); });
             }
 
             EventSystem.current.SetSelectedGameObject(SelectedElement.gameObject);

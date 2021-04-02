@@ -22,7 +22,7 @@ namespace Inventory_System
         {
             if (items.Count >= space)
             {
-                Debug.Log("Inventory full");
+                Debug.Log($"Inventory is full couldn't add item {item.itemName}".ToColorString("red"));
                 return false;
             }
             items.Add(item);

@@ -1,4 +1,3 @@
-using System;
 using Managers;
 using UnityEngine;
 using UnityEngine.Events;
@@ -39,7 +38,7 @@ namespace Questing_System
         [HideInInspector]
         public QuestEndType questEndType = QuestEndType.NeutralEnding;
 
-        public bool isFinalQuest;
+        public bool isFinalQuest, startsInstantly;
         public bool IsCompleted => questState == QuestState.Completed;
         public bool IsOnGoing => questState == QuestState.OnGoing;
 

@@ -32,17 +32,21 @@ namespace Questing_System
             {
                 case QuestEndType.DoneGood:
                     m_DoneGoodCounter++;
-                    if (currentQuest.isFinalQuest) UpdateStateQuest();
-                    else (currentQuest = goodQuest).StartQuest();
+                    AssignNextQuest(goodQuest);
                     break;
                 case QuestEndType.DoneBad:
                     m_DoneBadCounter++;
-                    if (currentQuest.isFinalQuest) UpdateStateQuest();
-                    else (currentQuest = badQuest).StartQuest();
+                    AssignNextQuest(badQuest);
                     break;
                 case QuestEndType.NeutralEnding: break;
                 default: return;
             }
+        }
+
+        private void AssignNextQuest(Quest nextQuest)
+        {
+            if (mainQuest.isFinalQuest) UpdateStateQuest();
+            else if ((mainQuest = nextQuest).startsInstantly) mainQuest.StartQuest();
         }
 
         private void UpdateStateQuest()
