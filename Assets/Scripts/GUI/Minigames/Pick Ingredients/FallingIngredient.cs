@@ -2,7 +2,7 @@ using Inventory_System;
 using Managers;
 using UnityEngine;
 
-namespace GUI.Minigames
+namespace GUI.Minigames.Pick_Ingredients
 {
     public class FallingIngredient : FallingTrigger
     {

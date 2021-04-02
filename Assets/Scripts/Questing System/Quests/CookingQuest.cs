@@ -1,4 +1,5 @@
 using GUI;
+using GUI.Minigames.Cook_Plate;
 using Inventory_System;
 using TMPro;
 using UnityEngine;

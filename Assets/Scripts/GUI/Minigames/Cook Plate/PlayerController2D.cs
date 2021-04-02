@@ -1,7 +1,7 @@
 using Player;
 using UnityEngine;
 
-namespace GUI.Minigames
+namespace GUI.Minigames.Cook_Plate
 {
     public class PlayerController2D : MonoBehaviour
     {

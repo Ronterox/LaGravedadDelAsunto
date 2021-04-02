@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace GUI.Minigames
+namespace GUI.Minigames.Pick_Ingredients
 {
     public class FallingTrigger : FallingObject
     {

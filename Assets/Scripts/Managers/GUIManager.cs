@@ -2,7 +2,7 @@ using DG.Tweening;
 using Plugins.DOTween.Modules;
 using UnityEngine;
 
-namespace GUI
+namespace Managers
 {
     public class GUIManager : MonoBehaviour
     {

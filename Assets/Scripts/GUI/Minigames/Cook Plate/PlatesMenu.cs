@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
-namespace GUI
+namespace GUI.Minigames.Cook_Plate
 {
     public class PlatesMenu : UICarousel
     {

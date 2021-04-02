@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace GUI
+namespace GUI.Minigames.Cook_Plate
 {
     public class PlatesMenuElement : UICarouselElement
     {

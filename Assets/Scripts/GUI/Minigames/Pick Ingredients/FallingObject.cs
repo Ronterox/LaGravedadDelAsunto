@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace GUI.Minigames
+namespace GUI.Minigames.Pick_Ingredients
 {
     public class FallingObject : MonoBehaviour
     {
