@@ -29,7 +29,7 @@ namespace General.Utilities
         private bool m_QTEStarted;
         private KeyCode m_CorrectKeycode;
 
-        private int m_TotalWrong, m_TotalCorrect;
+        protected int m_TotalWrong, m_TotalCorrect;
 
         private void OnEnable()
         {

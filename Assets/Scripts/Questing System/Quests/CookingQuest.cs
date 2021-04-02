@@ -1,11 +1,11 @@
 using DG.Tweening;
 using General.Utilities;
 using GUI.Minigames.Cook_Plate;
-using Inventory_System;
 using Managers;
 using Minigames;
 using Player;
 using Plugins.DOTween.Modules;
+using Plugins.Tools;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -15,7 +15,7 @@ namespace Questing_System.Quests
     public class CookingQuest : Quest
     {
         public PlatesMenu platesMenu;
-        public Item[] availablePlates;
+        public FoodPlate[] availablePlates;
 
         public CookingQTEInteractable[] cookingQteInteractables;
 
@@ -36,6 +36,8 @@ namespace Questing_System.Quests
         private const int COOKED_FOOD_HP = 100, BURNED_FOOD_HP = -100;
         private const int COOKED_LIMIT = 3, BURNED_LIMIT = 2;
 
+        private const int COOK_INCREMENT = 10;
+
         private void Update()
         {
             if (!m_GameStarted) return;
@@ -55,8 +57,8 @@ namespace Questing_System.Quests
             foreach (CookingQTEInteractable cookingQteInteractable in cookingQteInteractables)
             {
                 QuickTimeEvent cookingQTE = cookingQteInteractable.quickTimeEvent;
-                cookingQTE.onCorrectPressEvent.AddListener(() => CookPlate(10));
-                cookingQTE.onWrongPressEvent.AddListener(() => CookPlate(-10));
+                cookingQTE.onCorrectPressEvent.AddListener(CookPlateAction);
+                cookingQTE.onWrongPressEvent.AddListener(BurnPlateAction);
             }
         }
 
@@ -67,16 +69,22 @@ namespace Questing_System.Quests
             foreach (CookingQTEInteractable cookingQteInteractable in cookingQteInteractables)
             {
                 QuickTimeEvent cookingQTE = cookingQteInteractable.quickTimeEvent;
-                cookingQTE.onCorrectPressEvent.RemoveListener(() => CookPlate(10));
-                cookingQTE.onWrongPressEvent.RemoveListener(() => CookPlate(-10));
+                cookingQTE.onCorrectPressEvent.RemoveListener(CookPlateAction);
+                cookingQTE.onWrongPressEvent.RemoveListener(BurnPlateAction);
             }
         }
+
+        public void CookPlateAction() => CookPlate(COOK_INCREMENT);
+
+        public void BurnPlateAction() => CookPlate(-COOK_INCREMENT);
 
         public void SelectPlate(int position)
         {
             m_PlateIndex = position;
 
-            plateImage.sprite = availablePlates[position].icon;
+            FoodPlate selectedPlate = availablePlates[position];
+
+            plateImage.sprite = selectedPlate.icon;
             ProgressTextUpdate();
 
             //TODO: change this to close of gui manager once gui manager is done
@@ -95,6 +103,13 @@ namespace Questing_System.Quests
                 PlayerInput.Instance.UnlockInput();
                 StartCooking();
             });
+
+            int ingredientsQuantity = selectedPlate.ingredients.Length, index = Random.Range(0, ingredientsQuantity);
+            foreach (CookingQTEInteractable cookingQteInteractable in cookingQteInteractables)
+            {
+                cookingQteInteractable.ingredientToCook = selectedPlate.ingredients[index];
+                index.ChangeValueLimited(1, ingredientsQuantity);
+            }
         }
 
         protected override void OnceQuestIsDoneGood() => StopCooking();

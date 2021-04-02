@@ -30,7 +30,9 @@ namespace Inventory_System
             return true;
         }
 
-        private void Remove(Item item)
+        public bool Has(Item item) => items.Contains(item);
+
+        public void Remove(Item item)
         {
             items.Remove(item);
             onItemChangedCallback?.Invoke();

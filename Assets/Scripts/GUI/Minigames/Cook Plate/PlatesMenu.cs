@@ -1,4 +1,4 @@
-using Inventory_System;
+using Minigames;
 using Plugins.UI;
 using UnityEngine;
 using UnityEngine.Events;
@@ -8,7 +8,8 @@ namespace GUI.Minigames.Cook_Plate
 {
     public class PlatesMenu : UICarousel
     {
-        public void SetupCarousel(Item[] plates, UnityAction<int> onClickAction)
+        //TODO: try to reuse same 3 plates for shown of all, has to remove use of lambda to be able to remove listener
+        public void SetupCarousel(FoodPlate[] plates, UnityAction<int> onClickAction)
         {
             for (var i = 0; i < plates.Length; i++)
             {
