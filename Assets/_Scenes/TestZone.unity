@@ -3627,6 +3627,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 460704000516947506, guid: 31f4487950f2db128aa319497b32f907, type: 3}
+      propertyPath: availablePlates.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 460704000516947506, guid: 31f4487950f2db128aa319497b32f907, type: 3}
+      propertyPath: availablePlates.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: cac61f811b1b32a4d8ae1d8e6e8e116a, type: 2}
+    - target: {fileID: 460704000516947506, guid: 31f4487950f2db128aa319497b32f907, type: 3}
+      propertyPath: availablePlates.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: b675ed13758a4ce439bb43814e239f81, type: 2}
+    - target: {fileID: 460704000516947506, guid: 31f4487950f2db128aa319497b32f907, type: 3}
+      propertyPath: availablePlates.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 24e062c2302728d4d8108b4ecdfe9c27, type: 2}
     - target: {fileID: 460704000516947507, guid: 31f4487950f2db128aa319497b32f907, type: 3}
       propertyPath: m_Name
       value: Cooking Quest
@@ -68073,11 +68089,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5617871185371070069, guid: 881f5ea122226be93a0d47628b8a2826, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.0000000042820463
+      value: 0.0000000042820463
       objectReference: {fileID: 0}
     - target: {fileID: 5617871185371070069, guid: 881f5ea122226be93a0d47628b8a2826, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 4.096356e-10
+      value: -4.096356e-10
       objectReference: {fileID: 0}
     - target: {fileID: 5617871186160820124, guid: 881f5ea122226be93a0d47628b8a2826, type: 3}
       propertyPath: m_LocalRotation.w
@@ -68153,11 +68169,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5617871187225851715, guid: 881f5ea122226be93a0d47628b8a2826, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.00000000847696
+      value: 0.000000008476966
       objectReference: {fileID: 0}
     - target: {fileID: 5617871187225851715, guid: 881f5ea122226be93a0d47628b8a2826, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0000000014683262
+      value: -0.0000000014683269
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 881f5ea122226be93a0d47628b8a2826, type: 3}
