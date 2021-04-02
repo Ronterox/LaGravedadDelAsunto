@@ -13,7 +13,7 @@ namespace GUI.Minigames.Cook_Plate
             for (var i = 0; i < plates.Length; i++)
             {
                 int positionCopy = i;
-                CreateElement(i, i == 0).Setup(plates[i]).onClick.AddListener(delegate { onClickAction.Invoke(positionCopy); });
+                CreateElement(i, i == 0).Setup(plates[i]).onClick.AddListener(() => onClickAction.Invoke(positionCopy));
             }
 
             EventSystem.current.SetSelectedGameObject(SelectedElement.gameObject);

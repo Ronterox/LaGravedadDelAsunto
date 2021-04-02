@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &460704000516947509
 Transform:
   m_ObjectHideFlags: 0
@@ -81,6 +81,7 @@ GameObject:
   - component: {fileID: 8805231012833038403}
   - component: {fileID: 570896629229186216}
   - component: {fileID: 5602525349196923500}
+  - component: {fileID: 6009353182413537594}
   m_Layer: 5
   m_Name: Temp Canvas Menu Horizontal
   m_TagString: Untagged
@@ -169,6 +170,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!225 &6009353182413537594
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4466319505239150151}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1001 &746831427314905458
 PrefabInstance:
   m_ObjectHideFlags: 0
