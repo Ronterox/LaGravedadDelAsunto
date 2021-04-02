@@ -1,6 +1,7 @@
 using GUI.Minigames.Cook_Plate;
 using Inventory_System;
 using Managers;
+using Player;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -55,6 +56,8 @@ namespace Questing_System.Quests
             plateImage.sprite = availablePlates[position].icon;
             ProgressTextUpdate();
 
+            PlayerInput.Instance.UnlockInput();
+            
             StartCooking();
         }
 
@@ -62,7 +65,11 @@ namespace Questing_System.Quests
 
         protected override void OnceQuestIsDoneBad() => StopCooking();
         
-        protected override void OnceQuestStarted() => platesMenu.SetupCarousel(availablePlates, SelectPlate);
+        protected override void OnceQuestStarted()
+        {
+            PlayerInput.Instance.BlockInput();
+            platesMenu.SetupCarousel(availablePlates, SelectPlate);
+        }
 
         private void UpdateQuestState(bool foodBurned, bool foodCooked)
         {

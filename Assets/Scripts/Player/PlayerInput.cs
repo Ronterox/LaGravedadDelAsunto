@@ -71,6 +71,6 @@ namespace Player
 
         public void BlockInput() => m_ExternalInputBlocked = true;
 
-        public void UnlockedInput() => m_ExternalInputBlocked = false;
+        public void UnlockInput() => m_ExternalInputBlocked = false;
     }
 }
