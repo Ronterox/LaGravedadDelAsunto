@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 3de2e642e747bcb3fbb4e5b4e230836a, type: 2}
   m_LightingSettings: {fileID: 1440515882}
 --- !u!196 &4
 NavMeshSettings:
@@ -3627,22 +3627,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 460704000516947506, guid: 31f4487950f2db128aa319497b32f907, type: 3}
-      propertyPath: availablePlates.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 460704000516947506, guid: 31f4487950f2db128aa319497b32f907, type: 3}
-      propertyPath: availablePlates.Array.data[0]
-      value: 
-      objectReference: {fileID: 11400000, guid: cac61f811b1b32a4d8ae1d8e6e8e116a, type: 2}
-    - target: {fileID: 460704000516947506, guid: 31f4487950f2db128aa319497b32f907, type: 3}
-      propertyPath: availablePlates.Array.data[1]
-      value: 
-      objectReference: {fileID: 11400000, guid: b675ed13758a4ce439bb43814e239f81, type: 2}
-    - target: {fileID: 460704000516947506, guid: 31f4487950f2db128aa319497b32f907, type: 3}
-      propertyPath: availablePlates.Array.data[2]
-      value: 
-      objectReference: {fileID: 11400000, guid: 24e062c2302728d4d8108b4ecdfe9c27, type: 2}
     - target: {fileID: 460704000516947507, guid: 31f4487950f2db128aa319497b32f907, type: 3}
       propertyPath: m_Name
       value: Cooking Quest
@@ -3695,10 +3679,6 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 960402170}
-    - target: {fileID: 8636987343563825197, guid: 31f4487950f2db128aa319497b32f907, type: 3}
-      propertyPath: numberOfPresses
-      value: 4
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31f4487950f2db128aa319497b32f907, type: 3}
 --- !u!43 &146215545
@@ -16790,6 +16770,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1165946739829635259, guid: 70b0eddc3c4ff804ca774c4ff1346dae, type: 3}
+      propertyPath: m_AdditionalShaderChannelsFlag
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 70b0eddc3c4ff804ca774c4ff1346dae, type: 3}
 --- !u!1 &664547635
@@ -29840,17 +29824,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 17cb672c8bd6ed44581819b3940f5c5c, type: 3}
---- !u!114 &1011815845 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2078478828, guid: 5bca2747d2915012e81a24b9c5c9e192, type: 3}
-  m_PrefabInstance: {fileID: 2058058280}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9541d86e2fd84c1d9990edf0852d74ab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!43 &1028633485
 Mesh:
   m_ObjectHideFlags: 0
@@ -68089,11 +68062,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5617871185371070069, guid: 881f5ea122226be93a0d47628b8a2826, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.0000000042820463
+      value: -0.0000000042820463
       objectReference: {fileID: 0}
     - target: {fileID: 5617871185371070069, guid: 881f5ea122226be93a0d47628b8a2826, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -4.096356e-10
+      value: 4.096356e-10
       objectReference: {fileID: 0}
     - target: {fileID: 5617871186160820124, guid: 881f5ea122226be93a0d47628b8a2826, type: 3}
       propertyPath: m_LocalRotation.w
@@ -68306,10 +68279,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1017325481, guid: 6b204319c6bc7b1b19fbb704b483fa5d, type: 3}
-      propertyPath: textInstance
-      value: 
-      objectReference: {fileID: 1011815845}
     - target: {fileID: 1157012126, guid: 6b204319c6bc7b1b19fbb704b483fa5d, type: 3}
       propertyPath: karmaBar
       value: 
@@ -68318,6 +68287,10 @@ PrefabInstance:
       propertyPath: karmaBarCanvasGroup
       value: 
       objectReference: {fileID: 1404680840}
+    - target: {fileID: 5164704531365980810, guid: 6b204319c6bc7b1b19fbb704b483fa5d, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 960402170}
     - target: {fileID: 8791522931685928594, guid: 6b204319c6bc7b1b19fbb704b483fa5d, type: 3}
       propertyPath: events.onQuestStarted.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 

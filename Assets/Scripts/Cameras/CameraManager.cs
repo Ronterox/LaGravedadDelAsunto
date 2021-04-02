@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Cameras
 {
-    public class CameraManager : PersistentSingleton<CameraManager>
+    public class CameraManager : Singleton<CameraManager>
     {
         public CinemachineFreeLook playerCamera;
 
