@@ -21,7 +21,7 @@ namespace Questing_System.Quests
 
         [Header("Visual Feedback")]
         public Image plateImage;
-        public TMP_Text plateProgressText;
+        public TMP_Text plateProgressText, timerText;
 
         [Header("Settings")]
         public float secondsToCook = 180f;
@@ -41,18 +41,20 @@ namespace Questing_System.Quests
         private void Update()
         {
             if (!m_GameStarted) return;
-            if (m_Timer >= secondsToCook)
+            if (m_Timer <= 0)
             {
-                m_Timer = 0;
+                m_Timer = secondsToCook;
                 CookPlate(-100);
             }
-            else m_Timer += Time.deltaTime;
+            else m_Timer -= Time.deltaTime;
+
+            if(timerText) timerText.text = $"{m_Timer / 60 % 60:00}:{m_Timer % 60:00}";
         }
 
         public void StartCooking()
         {
             m_GameStarted = true;
-            m_Timer = 0;
+            m_Timer = secondsToCook;
 
             foreach (CookingQTEInteractable cookingQteInteractable in cookingQteInteractables)
             {
@@ -138,7 +140,7 @@ namespace Questing_System.Quests
                     if (m_PlatesCooked >= COOKED_LIMIT) EndQuestPositive();
                 }
                 m_PlateProgress = 0;
-                m_Timer = 0;
+                m_Timer = secondsToCook;
             }
             ProgressTextUpdate();
         }
