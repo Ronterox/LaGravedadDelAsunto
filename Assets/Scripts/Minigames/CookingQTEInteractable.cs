@@ -18,17 +18,9 @@ namespace Minigames
             else Debug.Log($"Player doesn't have ingredient {ingredientToCook.itemName}".ToColorString("red"));
         }
 
-        private void OnEnable()
-        {
-            quickTimeEvent.onQTEStop.AddListener(ExitInterface);
-            quickTimeEvent.onQTEStop.AddListener(UseIngredient);
-        }
+        private void OnEnable() => quickTimeEvent.onQTEStop.AddListener(UseIngredient);
 
-        private void OnDisable()
-        {
-            quickTimeEvent.onQTEStop.RemoveListener(ExitInterface);
-            quickTimeEvent.onQTEStop.RemoveListener(UseIngredient);
-        }
+        private void OnDisable() => quickTimeEvent.onQTEStop.RemoveListener(UseIngredient);
 
         private void UseIngredient() => GameManager.Instance.inventory.Remove(ingredientToCook);
 

@@ -15,7 +15,7 @@ namespace Managers
         [Header("Animations Settings")]
         public float secondsBetweenBarMove = 1f;
         public float lerpSpeed;
-        
+
         private WaitForSeconds m_WaitForSeconds;
         private Coroutine m_CurrentCoroutine;
 
@@ -38,7 +38,7 @@ namespace Managers
 
             karmaBar.gameObject.SetActive(true);
 
-            GameManager.Instance.guiManager.AnimateAlpha(karmaBarCanvasGroup, 1f, null, AnimateKarmaChange);
+            GameManager.Instance.guiManager.AnimateAlpha(karmaBarCanvasGroup, 1f, AnimateKarmaChange);
         }
 
         private void AnimateKarmaChange() =>
@@ -47,7 +47,7 @@ namespace Managers
                     () => !karmaBar.value.Approximates(karma),
                     () => karmaBar.value = Mathf.Lerp(karmaBar.value, karma, lerpSpeed),
                     m_WaitForSeconds, null,
-                    () => GameManager.Instance.guiManager.AnimateAlpha(karmaBarCanvasGroup, 0f, null, () => karmaBar.gameObject.SetActive(false)))
+                    () => GameManager.Instance.guiManager.AnimateAlpha(karmaBarCanvasGroup, 0f, () => karmaBar.gameObject.SetActive(false)))
             );
     }
 }

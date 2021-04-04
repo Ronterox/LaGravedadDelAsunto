@@ -1,3 +1,4 @@
+using System;
 using DG.Tweening;
 using Player;
 using Plugins.DOTween.Modules;
@@ -20,6 +21,7 @@ namespace Managers
         private CanvasGroup m_CurrentGUICanvasGroup;
         private GameObject m_CurrentGUI;
 
+        private Action m_OnCloseGUI;
         private bool m_IsGuiOpened;
 
         private void Start()
@@ -33,30 +35,41 @@ namespace Managers
             else Debug.Log("Main canvas is missing on GUI Manager!".ToColorString("cyan"));
         }
 
-        public void AnimateAlpha(CanvasGroup canvasGroup, float objectiveAlpha, TweenCallback onceStartAnimation = null, TweenCallback onceFinishAnimation = null) =>
-            canvasGroup.DOFade(objectiveAlpha, alphaAnimationDuration).OnStart(onceStartAnimation).OnComplete(onceFinishAnimation);
+        private void Update()
+        {
+            if (m_IsGuiOpened && PlayerInput.Instance.Pause) CloseGUIMenu();
+        }
+
+        public void AnimateAlpha(CanvasGroup canvasGroup, float objectiveAlpha, TweenCallback onceFinishAnimation = null) =>
+            canvasGroup.DOFade(objectiveAlpha, alphaAnimationDuration).OnComplete(onceFinishAnimation);
 
         public void LockInputs() => PlayerInput.Instance.BlockInput();
 
         public void UnlockInputs() => PlayerInput.Instance.UnlockInput();
 
         //TODO: maybe, add addressables to instantiate async
-        public void OpenGUIMenu(GameObject menu, bool showPointer = false, bool pauseTime = false, bool lockMovement = false, bool lockInput = false)
+        public void OpenGUIMenu(GameObject menu, Action onOpenGUI = null, Action onCloseGUI = null, bool showPointer = false, bool pauseTime = false, bool lockMovement = false, bool lockInput = false)
         {
             if (m_IsGuiOpened) return;
-
-            if (lockInput) LockInputs();
-            if (pauseTime) Time.timeScale = 0;
-            PlayerController.Instance.BlockMovement(lockMovement);
 
             m_CurrentGUI = Instantiate(menu, mainCanvas.transform);
 
             m_CurrentGUICanvasGroup = m_CurrentGUI.GetComponent<CanvasGroup>();
 
-            AnimateAlpha(m_CurrentGUICanvasGroup, 1f, null, () =>
+            AnimateAlpha(m_CurrentGUICanvasGroup, 1f, () =>
             {
+                m_CurrentGUICanvasGroup.interactable = true;
+
+                if (lockInput) LockInputs();
+                if (pauseTime) Time.timeScale = 0;
+
                 if (showPointer) GameManager.Instance.pointerManager.SetCursorActive();
+                PlayerController.Instance.BlockMovement(lockMovement);
+
+                onOpenGUI?.Invoke();
             });
+
+            m_OnCloseGUI = onCloseGUI;
 
             m_IsGuiOpened = true;
         }
@@ -65,19 +78,25 @@ namespace Managers
         {
             if (!m_IsGuiOpened) return;
 
-            UnlockInputs();
-            Time.timeScale = 0;
-            PlayerController.Instance.BlockMovement(false);
-
-            AnimateAlpha(m_CurrentGUICanvasGroup, 0f, null, () =>
+            AnimateAlpha(m_CurrentGUICanvasGroup, 0f, () =>
             {
+                m_CurrentGUICanvasGroup.interactable = false;
+
+                UnlockInputs();
+                Time.timeScale = 0;
+
+                PlayerController.Instance.BlockMovement(false);
                 GameManager.Instance.pointerManager.SetCursorActive(false);
+
                 Destroy(m_CurrentGUI);
+
+                m_OnCloseGUI?.Invoke();
+                m_OnCloseGUI = null;
             });
 
             m_IsGuiOpened = false;
         }
 
-        public void OpenPauseMenu() => OpenGUIMenu(pauseMenu, true, true);
+        public void OpenPauseMenu() => OpenGUIMenu(pauseMenu, null, null, true, true);
     }
 }
