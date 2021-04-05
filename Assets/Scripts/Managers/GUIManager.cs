@@ -21,7 +21,7 @@ namespace Managers
         private CanvasGroup m_CurrentGUICanvasGroup;
         private GameObject m_CurrentGUI;
 
-        private Action m_OnCloseGUI;
+        private Action<GameObject> m_OnCloseGUI;
         private bool m_IsGuiOpened;
 
         private void Start()
@@ -48,7 +48,7 @@ namespace Managers
         public void UnlockInputs() => PlayerInput.Instance.UnlockInput();
 
         //TODO: maybe, add addressables to instantiate async
-        public void OpenGUIMenu(GameObject menu, Action onOpenGUI = null, Action onCloseGUI = null, bool showPointer = false, bool pauseTime = false, bool lockMovement = false, bool lockInput = false)
+        public void OpenGUIMenu(GameObject menu, Action<GameObject> onOpenGUI = null, Action<GameObject> onCloseGUI = null, bool showPointer = false, bool pauseTime = false, bool lockMovement = true, bool lockInput = false)
         {
             if (m_IsGuiOpened) return;
 
@@ -66,13 +66,15 @@ namespace Managers
                 if (showPointer) GameManager.Instance.pointerManager.SetCursorActive();
                 PlayerController.Instance.BlockMovement(lockMovement);
 
-                onOpenGUI?.Invoke();
+                onOpenGUI?.Invoke(m_CurrentGUI);
             });
 
             m_OnCloseGUI = onCloseGUI;
 
             m_IsGuiOpened = true;
         }
+
+        public void OpenGUIMenu(GameObject menu, Action onOpenGUI = null, Action onCloseGUI = null, bool showPointer = false, bool pauseTime = false, bool lockMovement = true, bool lockInput = false) => OpenGUIMenu(menu, x => onOpenGUI?.Invoke(), x => onCloseGUI?.Invoke(), showPointer, pauseTime, lockMovement, lockInput);
 
         public void CloseGUIMenu()
         {
@@ -90,13 +92,13 @@ namespace Managers
 
                 Destroy(m_CurrentGUI);
 
-                m_OnCloseGUI?.Invoke();
+                m_OnCloseGUI?.Invoke(m_CurrentGUI);
                 m_OnCloseGUI = null;
             });
 
             m_IsGuiOpened = false;
         }
 
-        public void OpenPauseMenu() => OpenGUIMenu(pauseMenu, null, null, true, true);
+        public void OpenPauseMenu() => OpenGUIMenu(pauseMenu, x => { }, null, true, true, false);
     }
 }

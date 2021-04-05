@@ -1,27 +1,25 @@
-using DG.Tweening;
 using General.Utilities;
 using GUI.Minigames.Cook_Plate;
 using Managers;
 using Minigames;
-using Player;
-using Plugins.DOTween.Modules;
 using Plugins.Tools;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Questing_System.Quests
 {
     public class CookingQuest : Quest
     {
-        public PlatesMenu platesMenu;
+        public GameObject platesMenuGameObject;
+        [Space]
         public FoodPlate[] availablePlates;
-
         public CookingQTEInteractable[] cookingQteInteractables;
 
         [Header("Visual Feedback")]
-        public Image plateImage;
-        public TMP_Text plateProgressText, timerText;
+        public GameObject plateCardTemplate;
+        private ImageTextCard m_PlateCard;
+        [Space]
+        public TMP_Text timerText;
 
         [Header("Settings")]
         public float secondsToCook = 180f;
@@ -30,6 +28,7 @@ namespace Questing_System.Quests
         private int m_PlateProgress;
         private int m_PlatesCooked, m_PlatesBurned;
 
+        private PlatesMenu m_PlatesMenu;
         private bool m_GameStarted;
         private int m_PlateIndex;
 
@@ -48,7 +47,7 @@ namespace Questing_System.Quests
             }
             else m_Timer -= Time.deltaTime;
 
-            if(timerText) timerText.text = $"{m_Timer / 60 % 60:00}:{m_Timer % 60:00}";
+            if (timerText) timerText.text = $"{m_Timer / 60 % 60:00}:{m_Timer % 60:00}";
         }
 
         public void StartCooking()
@@ -62,6 +61,21 @@ namespace Questing_System.Quests
                 cookingQTE.onCorrectPressEvent.AddListener(CookPlateAction);
                 cookingQTE.onWrongPressEvent.AddListener(BurnPlateAction);
             }
+            SetPlateActive();
+        }
+
+        private void SetPlateActive(bool setActive = true)
+        {
+            if (setActive)
+            {
+                m_PlateCard = Instantiate(plateCardTemplate).GetComponent<ImageTextCard>();
+
+                m_PlateCard.image.sprite = availablePlates[m_PlateIndex].icon;
+                ProgressTextUpdate();
+
+                GUIManager.Instance.AnimateAlpha(m_PlateCard.canvasGroup, 1f);
+            }
+            else GUIManager.Instance.AnimateAlpha(m_PlateCard.canvasGroup, 0f, () => Destroy(m_PlateCard.gameObject));
         }
 
         public void StopCooking()
@@ -74,6 +88,7 @@ namespace Questing_System.Quests
                 cookingQTE.onCorrectPressEvent.RemoveListener(CookPlateAction);
                 cookingQTE.onWrongPressEvent.RemoveListener(BurnPlateAction);
             }
+            SetPlateActive(false);
         }
 
         public void CookPlateAction() => CookPlate(COOK_INCREMENT);
@@ -84,45 +99,29 @@ namespace Questing_System.Quests
         {
             m_PlateIndex = position;
 
-            FoodPlate selectedPlate = availablePlates[position];
+            FoodPlate selectedPlate = availablePlates[m_PlateIndex];
 
-            plateImage.sprite = selectedPlate.icon;
-            ProgressTextUpdate();
-
-            //TODO: change this to close of gui manager once gui manager is done
-            var parentCanvas = platesMenu.gameObject.GetComponentInParent<CanvasGroup>();
-            parentCanvas.interactable = false;
-
-            parentCanvas.DOFade(0, .25f).OnComplete(() =>
-            {
-                //This is messed up lmao TODO: FIX THIS!
-                plateImage.gameObject.transform.parent.gameObject.SetActive(true);
-                platesMenu.gameObject.SetActive(false);
-
-                parentCanvas.DOFade(1f, .25f);
-                //
-
-                PlayerInput.Instance.UnlockInput();
-                StartCooking();
-            });
-
+            //Assigns random ingredients to cook for each interactable
             int ingredientsQuantity = selectedPlate.ingredients.Length, index = Random.Range(0, ingredientsQuantity);
             foreach (CookingQTEInteractable cookingQteInteractable in cookingQteInteractables)
             {
                 cookingQteInteractable.ingredientToCook = selectedPlate.ingredients[index];
                 index.ChangeValueLimited(1, ingredientsQuantity);
             }
+
+            GUIManager.Instance.CloseGUIMenu();
         }
 
         protected override void OnceQuestIsDoneGood() => StopCooking();
 
         protected override void OnceQuestIsDoneBad() => StopCooking();
 
-        protected override void OnceQuestStarted()
-        {
-            PlayerInput.Instance.BlockInput();
-            platesMenu.SetupCarousel(availablePlates, SelectPlate);
-        }
+        protected override void OnceQuestStarted() =>
+            GUIManager.Instance.OpenGUIMenu(platesMenuGameObject, gui =>
+            {
+                m_PlatesMenu = gui.GetComponent<PlatesMenu>();
+                m_PlatesMenu.SetupCarousel(availablePlates, SelectPlate);
+            }, x => StartCooking());
 
         private void UpdateQuestState(bool foodBurned, bool foodCooked)
         {
@@ -145,7 +144,7 @@ namespace Questing_System.Quests
             ProgressTextUpdate();
         }
 
-        private void ProgressTextUpdate() => plateProgressText.text = 100 - Mathf.Abs(m_PlateProgress) + (m_PlateProgress < 0 ? "% left to be burned!" : "% left to be cooked!");
+        private void ProgressTextUpdate() => m_PlateCard.tmpText.text = 100 - Mathf.Abs(m_PlateProgress) + (m_PlateProgress < 0 ? "% left to be burned!" : "% left to be cooked!");
 
         public void CookPlate(int cook)
         {
