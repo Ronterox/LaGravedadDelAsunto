@@ -73,9 +73,9 @@ namespace Questing_System.Quests
                 m_PlateCard.image.sprite = availablePlates[m_PlateIndex].icon;
                 ProgressTextUpdate();
 
-                GUIManager.Instance.AnimateAlpha(m_PlateCard.canvasGroup, 1f);
+                GUIManager.AnimateAlpha(m_PlateCard.canvasGroup, 1f);
             }
-            else GUIManager.Instance.AnimateAlpha(m_PlateCard.canvasGroup, 0f, () => Destroy(m_PlateCard.gameObject));
+            else GUIManager.AnimateAlpha(m_PlateCard.canvasGroup, 0f, default,() => Destroy(m_PlateCard.gameObject));
         }
 
         public void StopCooking()

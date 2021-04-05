@@ -13,6 +13,8 @@ namespace Managers
         public CanvasGroup karmaBarCanvasGroup;
 
         [Header("Animations Settings")]
+        public float alphaAnimationDuration;
+        [Space]
         public float secondsBetweenBarMove = 1f;
         public float lerpSpeed;
 
@@ -38,7 +40,7 @@ namespace Managers
 
             karmaBar.gameObject.SetActive(true);
 
-            GameManager.Instance.guiManager.AnimateAlpha(karmaBarCanvasGroup, 1f, AnimateKarmaChange);
+            GUIManager.AnimateAlpha(karmaBarCanvasGroup, 1f, alphaAnimationDuration, AnimateKarmaChange);
         }
 
         private void AnimateKarmaChange() =>
@@ -47,7 +49,7 @@ namespace Managers
                     () => !karmaBar.value.Approximates(karma),
                     () => karmaBar.value = Mathf.Lerp(karmaBar.value, karma, lerpSpeed),
                     m_WaitForSeconds, null,
-                    () => GameManager.Instance.guiManager.AnimateAlpha(karmaBarCanvasGroup, 0f, () => karmaBar.gameObject.SetActive(false)))
+                    () => GUIManager.AnimateAlpha(karmaBarCanvasGroup, 0f, alphaAnimationDuration, () => karmaBar.gameObject.SetActive(false)))
             );
     }
 }

@@ -25,6 +25,7 @@ namespace Managers
         private Action<GameObject> m_OnCloseGUI;
         private bool m_IsGuiOpened;
 
+        //TODO: Test and fix all UI gameObjects
         private void Start()
         {
             if (mainCanvas)
@@ -41,14 +42,13 @@ namespace Managers
             if (m_IsGuiOpened && PlayerInput.Instance.Pause) CloseGUIMenu();
         }
 
-        public void AnimateAlpha(CanvasGroup canvasGroup, float objectiveAlpha, TweenCallback onceFinishAnimation = null) =>
-            canvasGroup.DOFade(objectiveAlpha, alphaAnimationDuration).OnComplete(onceFinishAnimation);
+        public static void AnimateAlpha(CanvasGroup canvasGroup, float objectiveAlpha, float animationDuration = 0.5f, TweenCallback onceFinishAnimation = null) =>
+            canvasGroup.DOFade(objectiveAlpha, animationDuration).OnComplete(onceFinishAnimation);
 
         public void LockInputs() => PlayerInput.Instance.BlockInput();
 
         public void UnlockInputs() => PlayerInput.Instance.UnlockInput();
 
-        //TODO: maybe, add addressables to instantiate async
         public void OpenGUIMenu(GameObject menu, Action<GameObject> onOpenGUI = null, Action<GameObject> onCloseGUI = null, bool showPointer = false, bool pauseTime = false, bool lockMovement = true, bool lockInput = false)
         {
             if (m_IsGuiOpened) return;
@@ -57,7 +57,7 @@ namespace Managers
 
             m_CurrentGUICanvasGroup = m_CurrentGUI.GetComponent<CanvasGroup>();
 
-            AnimateAlpha(m_CurrentGUICanvasGroup, 1f, () =>
+            AnimateAlpha(m_CurrentGUICanvasGroup, 1f, alphaAnimationDuration,() =>
             {
                 m_CurrentGUICanvasGroup.interactable = true;
 
@@ -81,7 +81,7 @@ namespace Managers
         {
             if (!m_IsGuiOpened) return;
 
-            AnimateAlpha(m_CurrentGUICanvasGroup, 0f, () =>
+            AnimateAlpha(m_CurrentGUICanvasGroup, 0f, alphaAnimationDuration,() =>
             {
                 m_CurrentGUICanvasGroup.interactable = false;
 

@@ -15,7 +15,6 @@ namespace Managers
         public Inventory inventory;
 
         public PointerManager pointerManager;
-        public GUIManager guiManager;
         
         public static bool GameIsPaused => Time.timeScale == 0f;
 
