@@ -54,17 +54,12 @@ namespace Inventory_System
                 return false;
             }
             items.Add(item);
-            UpdateUI();
             return true;
         }
 
         public bool Has(Item item) => items.Contains(item);
 
-        public void Remove(Item item)
-        {
-            items.Remove(item);
-            UpdateUI();
-        }
+        public void Remove(Item item) => items.Remove(item);
 
         public void Drop(Item item)
         {
