@@ -14,6 +14,7 @@ namespace Managers
 
         [Header("Menus GameObjects")]
         public GameObject pauseMenu;
+        public GameObject inventoryUi;
 
         [Header("GUI Animation Settings")]
         [Range(0.5f, 3f)] public float alphaAnimationDuration;
@@ -100,5 +101,7 @@ namespace Managers
         }
 
         public void OpenPauseMenu() => OpenGUIMenu(pauseMenu, x => { }, null, true, true, false);
+
+        public void OpenInventory() => OpenGUIMenu(inventoryUi, GameManager.Instance.inventory.InitializeInventory, null, true, false, false);
     }
 }
