@@ -15,7 +15,7 @@ namespace GUI.Minigames.Cook_Plate
 
         public override UICarouselElement Setup(params object[] parameters)
         {
-            if (parameters != null && parameters.Length > 0) plate = parameters[0] as FoodPlate;
+            if (parameters != null) plate = parameters[0] as FoodPlate;
             if (!plate) return this;
             if (plateImage) plateImage.sprite = plate.icon;
             if (plateName) plateName.text = plate.itemName;

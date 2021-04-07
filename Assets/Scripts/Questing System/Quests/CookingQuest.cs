@@ -30,7 +30,8 @@ namespace Questing_System.Quests
 
         private PlatesMenu m_PlatesMenu;
         private bool m_GameStarted;
-        private int m_PlateIndex;
+
+        private int m_PlateIndex = -1;
 
         private const int COOKED_FOOD_HP = 100, BURNED_FOOD_HP = -100;
         private const int COOKED_LIMIT = 3, BURNED_LIMIT = 2;
@@ -40,7 +41,7 @@ namespace Questing_System.Quests
         protected override void OnEnable()
         {
             base.OnEnable();
-            
+
             foreach (CookingQTEInteractable cookingQteInteractable in cookingQteInteractables)
             {
                 cookingQteInteractable.onCorrectPress = CookPlateAction;
@@ -48,6 +49,7 @@ namespace Questing_System.Quests
             }
         }
 
+        //TODO: Fix timer not showing what it is
         private void Update()
         {
             if (!m_GameStarted) return;
@@ -65,7 +67,7 @@ namespace Questing_System.Quests
         {
             m_GameStarted = true;
             m_Timer = secondsToCook;
-            
+
             SetPlateActive();
         }
 
@@ -73,9 +75,10 @@ namespace Questing_System.Quests
         {
             if (setActive)
             {
-                m_PlateCard = Instantiate(plateCardTemplate).GetComponent<ImageTextCard>();
+                m_PlateCard = Instantiate(plateCardTemplate, GUIManager.Instance.mainCanvas.transform).GetComponent<ImageTextCard>();
 
                 m_PlateCard.image.sprite = availablePlates[m_PlateIndex].icon;
+                m_PlateCard.canvasGroup.interactable = false;
                 ProgressTextUpdate();
 
                 GUIManager.AnimateAlpha(m_PlateCard.canvasGroup, .8f);
@@ -86,6 +89,7 @@ namespace Questing_System.Quests
         public void StopCooking()
         {
             m_GameStarted = false;
+            m_PlateIndex = -1;
             SetPlateActive(false);
         }
 
@@ -115,11 +119,14 @@ namespace Questing_System.Quests
         protected override void OnceQuestIsDoneBad() => StopCooking();
 
         protected override void OnceQuestStarted() =>
-            GUIManager.Instance.OpenGUIMenu(platesMenuGameObject, gui =>
+            GUIManager.Instance.OpenGUIMenu(platesMenuGameObject, null, gui =>
             {
                 m_PlatesMenu = gui.GetComponent<PlatesMenu>();
                 m_PlatesMenu.SetupCarousel(availablePlates, SelectPlate);
-            }, x => StartCooking());
+            }, x =>
+            {
+                if (m_PlateIndex != -1) StartCooking();
+            });
 
         private void UpdateQuestState(bool foodBurned, bool foodCooked)
         {

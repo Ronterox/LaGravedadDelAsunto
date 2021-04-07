@@ -20,6 +20,8 @@ namespace General.Utilities
         {
             if (infiniteInteractions || m_InteractTimes++ < numberOfInteractionsOnPlace) Interact();
         }
+        
+        //Fix parameters of inspector, i don't like interactions on place name
 
         protected abstract void OnEnterTrigger(Collider other);
 
