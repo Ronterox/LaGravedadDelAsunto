@@ -1,22 +1,27 @@
 using Player;
+using Plugins.Tools;
 using UnityEngine;
 
 namespace General.Utilities
 {
     public abstract class Interactable : MonoBehaviour
     {
-        public int numberOfInteractions = 1;
+        public int numberOfInteractionsOnPlace = 1;
         public bool infiniteInteractions;
 
         private int m_InteractTimes;
         private bool m_PlayerOnRange;
 
+        protected virtual void Awake() => gameObject.MoveToScene("Interactables Scene");
+
         public abstract void Interact();
 
         private void IncrementInteraction()
         {
-            if (infiniteInteractions || m_InteractTimes++ < numberOfInteractions) Interact();
+            if (infiniteInteractions || m_InteractTimes++ < numberOfInteractionsOnPlace) Interact();
         }
+        
+        //Fix parameters of inspector, i don't like interactions on place name
 
         protected abstract void OnEnterTrigger(Collider other);
 
@@ -26,7 +31,7 @@ namespace General.Utilities
         {
             if (m_PlayerOnRange && PlayerInput.Instance.Interact) IncrementInteraction();
         }
-        
+
         private void OnTriggerEnter(Collider other)
         {
             if (!other.CompareTag("Player")) return;

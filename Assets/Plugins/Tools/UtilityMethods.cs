@@ -1,5 +1,9 @@
+using System;
+using System.Collections;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using Random = UnityEngine.Random;
 
 namespace Plugins.Tools
 {
@@ -76,6 +80,89 @@ namespace Plugins.Tools
         /// <param name="maxValueY"></param>
         /// <returns></returns>
         public static Vector2 GetRandomVector2(float minValueX, float maxValueX, float minValueY, float maxValueY) => new Vector2(Random.Range(minValueX, maxValueX), Random.Range(minValueY, maxValueY));
+
+        /// <summary>
+        /// Changes the value by a limited amount
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="increment">Positive or negative value to be incremented or decremented with</param>
+        /// <param name="byLimit">the max amount to be limited to</param>
+        public static void ChangeValueLimited(this ref float value, float increment, float byLimit) => value = (value + increment) % byLimit;
+
+        /// <summary>
+        /// Changes the value by a limited amount
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="increment">Positive or negative value to be incremented or decremented with</param>
+        /// <param name="byLimit">the max amount to be limited to</param>
+        public static void ChangeValueLimited(this ref int value, int increment, int byLimit) => value = (value + increment) % byLimit;
+
+        /// <summary>
+        /// Coroutine standard cycle function to be reused
+        /// </summary>
+        /// <param name="whileCondition"></param>
+        /// <param name="loopWaitForSeconds"></param>
+        /// <param name="loopAction"></param>
+        /// <param name="onceStartCoroutine"></param>
+        /// <param name="onceFinishCoroutine"></param>
+        /// <returns></returns>
+        public static IEnumerator FunctionCycleCoroutine(Func<bool> whileCondition, Action loopAction, WaitForSeconds loopWaitForSeconds = null, Action onceStartCoroutine = null, Action onceFinishCoroutine = null)
+        {
+            onceStartCoroutine?.Invoke();
+            while (whileCondition())
+            {
+                loopAction?.Invoke();
+                yield return loopWaitForSeconds;
+            }
+            onceFinishCoroutine?.Invoke();
+        }
+
+        /// <summary>
+        /// Checks if a float approximates other float by a tolerance
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="objective"></param>
+        /// <param name="tolerance"></param>
+        /// <returns></returns>
+        public static bool Approximates(this float value, float objective, float tolerance = 0.01f) => Math.Abs(value - objective) <= tolerance;
+
+
+        /// <summary>
+        /// Checks if a vector3 approximates other vector3 by a tolerance
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="objective"></param>
+        /// <param name="tolerance"></param>
+        /// <returns></returns>
+        public static bool Approximates(this Vector3 value, Vector3 objective, float tolerance = 0.01f) => Vector3.SqrMagnitude(value - objective) <= tolerance;
+
+        /// <summary>
+        /// Lerps a vector3
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="objective"></param>
+        /// <param name="speed">Between 0 and 1</param>
+        public static void Lerp(this ref Vector3 value, Vector3 objective, float speed) => value = Vector3.Lerp(value, objective, speed);
+
+        /// <summary>
+        /// Lerps a float
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="objective"></param>
+        /// <param name="speed">Between 0 and 1</param>
+        public static void Lerp(this ref float value, float objective, float speed) => value = Mathf.Lerp(value, objective, speed);
+
+        /// <summary>
+        /// Moves the gameObject to the exist if exist, if it doesn't it creates the scene
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="sceneName"></param>
+        public static void MoveToScene(this GameObject obj, string sceneName)
+        {
+            if (obj.transform.parent) return;
+            Scene scene = SceneManager.GetSceneByName(sceneName);
+            SceneManager.MoveGameObjectToScene(obj, scene.IsValid() ? scene : SceneManager.CreateScene(sceneName));
+        }
     }
 
 

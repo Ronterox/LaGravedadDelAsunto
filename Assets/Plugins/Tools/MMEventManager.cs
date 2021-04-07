@@ -68,7 +68,6 @@ namespace Plugins.Tools
     /// } 
     /// will catch all events of type MMGameEvent emitted from anywhere in the game, and do something if it's named GameOver
     ///</summary>
-    [ExecuteInEditMode]
     public static class MMEventManager
     {
         private static readonly Dictionary<Type, List<MMEventListenerBase>> m_SubscribersList;

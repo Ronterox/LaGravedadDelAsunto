@@ -1,7 +1,6 @@
-using System;
 using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
+using Plugins.Tools;
 
 namespace Managers
 {
@@ -13,11 +12,14 @@ namespace Managers
         public Slider karmaBar;
         public CanvasGroup karmaBarCanvasGroup;
 
-        private WaitForSeconds m_WaitForSeconds;
-        private Coroutine m_CurrentCoroutine;
-
+        [Header("Animations Settings")]
+        public float alphaAnimationDuration;
+        [Space]
         public float secondsBetweenBarMove = 1f;
         public float lerpSpeed;
+
+        private WaitForSeconds m_WaitForSeconds;
+        private Coroutine m_CurrentCoroutine;
 
         private void Awake()
         {
@@ -35,23 +37,19 @@ namespace Managers
             karma += increment;
             if (karma > maxKarmaValue) karma = maxKarmaValue;
             else if (karma < -maxKarmaValue) karma = -maxKarmaValue;
-            
+
             karmaBar.gameObject.SetActive(true);
-            
-            GameManager.Instance.guiManager.AnimateAlpha(karmaBarCanvasGroup, 1f, () => m_CurrentCoroutine = StartCoroutine(KarmaCoroutine()));
+
+            GUIManager.AnimateAlpha(karmaBarCanvasGroup, 1f, alphaAnimationDuration, AnimateKarmaChange);
         }
 
-        private IEnumerator KarmaCoroutine()
-        {
-            while (Math.Abs(karmaBar.value - karma) > 0.01f)
-            {
-                karmaBar.value = Mathf.Lerp(karmaBar.value, karma, lerpSpeed);
-                print(Mathf.Lerp(karmaBar.value, karma, lerpSpeed));
-                print(karma);
-                yield return m_WaitForSeconds;
-            }
-
-            GameManager.Instance.guiManager.AnimateAlpha(karmaBarCanvasGroup, 0f, () => karmaBar.gameObject.SetActive(false));
-        }
+        private void AnimateKarmaChange() =>
+            m_CurrentCoroutine = StartCoroutine(
+                UtilityMethods.FunctionCycleCoroutine(
+                    () => !karmaBar.value.Approximates(karma),
+                    () => karmaBar.value = Mathf.Lerp(karmaBar.value, karma, lerpSpeed),
+                    m_WaitForSeconds, null,
+                    () => GUIManager.AnimateAlpha(karmaBarCanvasGroup, 0f, alphaAnimationDuration, () => karmaBar.gameObject.SetActive(false)))
+            );
     }
 }

@@ -301,5 +301,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timerProgressFilledImage: {fileID: 5569495671233990020}
   qteText: {fileID: 5569495670399009472}
+  numberOfPresses: 5
   keys: 0900000061000000660000006a000000
-  timeForEach: 5
+  timeForEach: 2
+  onQTEStart:
+    m_PersistentCalls:
+      m_Calls: []
+  onQTEStop:
+    m_PersistentCalls:
+      m_Calls: []
+  onWrongPressEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onCorrectPressEvent:
+    m_PersistentCalls:
+      m_Calls: []
