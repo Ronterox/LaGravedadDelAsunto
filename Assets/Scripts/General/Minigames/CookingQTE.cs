@@ -1,4 +1,5 @@
 using General.Utilities;
+using Managers;
 using Plugins.Tools;
 
 namespace General.Minigames
@@ -9,7 +10,7 @@ namespace General.Minigames
 
         protected override void OnCorrectPress() => print("Pressed Correctly Quick Time Event!!!".ToColorString("green"));
 
-        protected override void OnQTEStop() { }
+        protected override void OnQTEStop() => GUIManager.Instance.CloseGUIMenu();
 
         protected override void OnQTEStart() { }
     }

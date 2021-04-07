@@ -6,7 +6,11 @@ namespace NPCs
     {
         private const string GATHERING_QUEST_ID = "gathering";
 
-        private void Awake() => Say("greetings");
+        protected override void Awake()
+        {
+            base.Awake();
+            Say("greetings");
+        }
 
         protected override void OnCampaignCompletedInteraction(Campaign campaign)
         {

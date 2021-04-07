@@ -5,6 +5,7 @@ namespace General.Utilities
 {
     public abstract class GUIInteractable : Interactable
     {
+        [Space]
         public GameObject interfaceGameObject;
 
         public override void Interact() => OpenInterface();

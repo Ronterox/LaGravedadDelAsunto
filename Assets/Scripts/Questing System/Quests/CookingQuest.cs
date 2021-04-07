@@ -37,6 +37,17 @@ namespace Questing_System.Quests
 
         private const int COOK_INCREMENT = 10;
 
+        protected override void OnEnable()
+        {
+            base.OnEnable();
+            
+            foreach (CookingQTEInteractable cookingQteInteractable in cookingQteInteractables)
+            {
+                cookingQteInteractable.onCorrectPress = CookPlateAction;
+                cookingQteInteractable.onWrongPress = BurnPlateAction;
+            }
+        }
+
         private void Update()
         {
             if (!m_GameStarted) return;
@@ -54,13 +65,7 @@ namespace Questing_System.Quests
         {
             m_GameStarted = true;
             m_Timer = secondsToCook;
-
-            foreach (CookingQTEInteractable cookingQteInteractable in cookingQteInteractables)
-            {
-                QuickTimeEvent cookingQTE = cookingQteInteractable.quickTimeEvent;
-                cookingQTE.onCorrectPressEvent.AddListener(CookPlateAction);
-                cookingQTE.onWrongPressEvent.AddListener(BurnPlateAction);
-            }
+            
             SetPlateActive();
         }
 
@@ -75,19 +80,12 @@ namespace Questing_System.Quests
 
                 GUIManager.AnimateAlpha(m_PlateCard.canvasGroup, .8f);
             }
-            else GUIManager.AnimateAlpha(m_PlateCard.canvasGroup, 0f, default,() => Destroy(m_PlateCard.gameObject));
+            else GUIManager.AnimateAlpha(m_PlateCard.canvasGroup, 0f, default, () => Destroy(m_PlateCard.gameObject));
         }
 
         public void StopCooking()
         {
             m_GameStarted = false;
-
-            foreach (CookingQTEInteractable cookingQteInteractable in cookingQteInteractables)
-            {
-                QuickTimeEvent cookingQTE = cookingQteInteractable.quickTimeEvent;
-                cookingQTE.onCorrectPressEvent.RemoveListener(CookPlateAction);
-                cookingQTE.onWrongPressEvent.RemoveListener(BurnPlateAction);
-            }
             SetPlateActive(false);
         }
 

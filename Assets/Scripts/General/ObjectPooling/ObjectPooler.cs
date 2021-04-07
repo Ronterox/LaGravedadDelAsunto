@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
+using Plugins.Tools;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace General.ObjectPooling
 {
@@ -44,8 +44,7 @@ namespace General.ObjectPooling
             if (!string.IsNullOrEmpty(PoolName))
             {
                 m_PoolContent = new GameObject(PoolName).transform;
-                Scene scene = SceneManager.GetSceneByName(OBJECTS_SCENE_NAME);
-                SceneManager.MoveGameObjectToScene(m_PoolContent.gameObject, scene.IsValid() ? scene : SceneManager.CreateScene(OBJECTS_SCENE_NAME));
+                m_PoolContent.gameObject.MoveToScene(OBJECTS_SCENE_NAME);
             }
             for (var i = 0; i < ItemsToPool.Count; i++) ObjectPoolItemToPooledObject(i);
         }

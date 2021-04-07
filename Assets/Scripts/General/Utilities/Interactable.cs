@@ -1,4 +1,5 @@
 using Player;
+using Plugins.Tools;
 using UnityEngine;
 
 namespace General.Utilities
@@ -10,6 +11,8 @@ namespace General.Utilities
 
         private int m_InteractTimes;
         private bool m_PlayerOnRange;
+
+        protected virtual void Awake() => gameObject.MoveToScene("Interactables Scene");
 
         public abstract void Interact();
 
@@ -26,7 +29,7 @@ namespace General.Utilities
         {
             if (m_PlayerOnRange && PlayerInput.Instance.Interact) IncrementInteraction();
         }
-        
+
         private void OnTriggerEnter(Collider other)
         {
             if (!other.CompareTag("Player")) return;

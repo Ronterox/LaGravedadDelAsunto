@@ -208,7 +208,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7234647176139726439, guid: e3464fac6fe7e0fa09a21f14718dc319, type: 3}
       propertyPath: m_Name
-      value: Kitchen
+      value: Pick Ingredients Minigame
       objectReference: {fileID: 0}
     - target: {fileID: 8367965801697119707, guid: e3464fac6fe7e0fa09a21f14718dc319, type: 3}
       propertyPath: m_IsActive

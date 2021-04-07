@@ -4,7 +4,6 @@ using Player;
 using Plugins.DOTween.Modules;
 using Plugins.Tools;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace Managers
 {
@@ -27,12 +26,7 @@ namespace Managers
 
         private void Start()
         {
-            if (mainCanvas)
-            {
-                const string sceneName = "GUI Objects";
-                Scene scene = SceneManager.GetSceneByName(sceneName);
-                SceneManager.MoveGameObjectToScene(mainCanvas.gameObject, scene.IsValid() ? scene : SceneManager.CreateScene(sceneName));
-            }
+            if (mainCanvas) mainCanvas.gameObject.MoveToScene("GUI Scene");
             else Debug.Log("Main canvas is missing on GUI Manager!".ToColorString("cyan"));
         }
 
@@ -49,6 +43,8 @@ namespace Managers
             if (m_IsGuiOpened) return;
 
             m_CurrentGUI = Instantiate(menu, mainCanvas.transform);
+
+            m_CurrentGUI.SetActive(true);
 
             beforeOpenGUI?.Invoke(m_CurrentGUI);
 

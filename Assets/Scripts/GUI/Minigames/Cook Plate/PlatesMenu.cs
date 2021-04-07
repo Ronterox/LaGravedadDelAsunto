@@ -1,6 +1,5 @@
 using Minigames;
 using Plugins.UI;
-using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
@@ -18,7 +17,6 @@ namespace GUI.Minigames.Cook_Plate
             }
 
             EventSystem.current.SetSelectedGameObject(SelectedElement.gameObject);
-            Debug.Log("Selected => " + EventSystem.current.currentSelectedGameObject);
         }
     }
 }

@@ -4,13 +4,15 @@ using Inventory_System;
 using Managers;
 using Plugins.Tools;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Minigames
 {
     public class CookingQTEInteractable : GUIInteractable
     {
-        public CookingQTE quickTimeEvent;
+        [Space]
         public Item ingredientToCook;
+        public UnityAction onWrongPress, onCorrectPress;
 
         public override void Interact()
         {
@@ -18,13 +20,17 @@ namespace Minigames
             else Debug.Log($"Player doesn't have ingredient {ingredientToCook.itemName}".ToColorString("red"));
         }
 
-        private void OnEnable() => quickTimeEvent.onQTEStop.AddListener(UseIngredient);
+        public override void OnInterfaceOpen(GameObject gui)
+        {
+            var quickTimeEvent = gui.GetComponentInChildren<CookingQTE>();
 
-        private void OnDisable() => quickTimeEvent.onQTEStop.RemoveListener(UseIngredient);
+            quickTimeEvent.onCorrectPressEvent.AddListener(onCorrectPress);
+            quickTimeEvent.onWrongPressEvent.AddListener(onWrongPress);
 
-        private void UseIngredient() => GameManager.Instance.inventory.Remove(ingredientToCook);
+            quickTimeEvent.onQTEStop.AddListener(() => GameManager.Instance.inventory.Remove(ingredientToCook));
 
-        public override void OnInterfaceOpen(GameObject gui) => quickTimeEvent.StartQuickTimeEvent();
+            quickTimeEvent.StartQuickTimeEvent();
+        }
 
         public override void OnInterfaceClose(GameObject gui) { }
 

@@ -7,6 +7,7 @@ namespace Inventory_System
     public class PickUpItem : Interactable
     {
         public Item item;
+
         public override void Interact() => PickUp();
 
         protected override void OnEnterTrigger(Collider other) { }

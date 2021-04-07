@@ -1,4 +1,5 @@
 using Managers;
+using Plugins.Tools;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -46,14 +47,16 @@ namespace Questing_System
 
         public QuestEvents events;
 
-        private void OnEnable()
+        protected virtual void Awake() => gameObject.MoveToScene("Quests Scene");
+
+        protected virtual void OnEnable()
         {
             events.onQuestStarted.AddListener(OnceQuestStarted);
             events.onQuestDoneBad.AddListener(OnceQuestIsDoneBad);
             events.onQuestDoneGood.AddListener(OnceQuestIsDoneGood);
         }
 
-        private void OnDisable()
+        protected virtual void OnDisable()
         {
             events.onQuestStarted.RemoveListener(OnceQuestStarted);
             events.onQuestDoneBad.RemoveListener(OnceQuestIsDoneBad);
