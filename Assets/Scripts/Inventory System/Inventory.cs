@@ -31,10 +31,10 @@ namespace Inventory_System
         {
             if (!PlayerInput.Instance.Inventory) return;
 
-            m_InInventory = !m_InInventory;
-
             if (m_InInventory) GUIManager.Instance.CloseGUIMenu();
             else GUIManager.Instance.OpenInventory();
+            
+            m_InInventory = !m_InInventory;
         }
 
         private void UpdateUI()
@@ -54,12 +54,17 @@ namespace Inventory_System
                 return false;
             }
             items.Add(item);
+            if(m_InInventory) UpdateUI();
             return true;
         }
 
         public bool Has(Item item) => items.Contains(item);
 
-        public void Remove(Item item) => items.Remove(item);
+        public void Remove(Item item)
+        {
+            items.Remove(item);
+            if(m_InInventory) UpdateUI();
+        }
 
         public void Drop(Item item)
         {

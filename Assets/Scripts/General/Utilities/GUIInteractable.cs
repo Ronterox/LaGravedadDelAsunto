@@ -5,7 +5,7 @@ namespace General.Utilities
 {
     public abstract class GUIInteractable : Interactable
     {
-        public GameObject menuGameObject;
+        public GameObject interfaceGameObject;
 
         public override void Interact() => OpenInterface();
 
@@ -13,6 +13,6 @@ namespace General.Utilities
 
         public abstract void OnInterfaceClose();
 
-        public void OpenInterface() => GUIManager.Instance.OpenGUIMenu(menuGameObject, OnInterfaceOpen, OnInterfaceClose);
+        public void OpenInterface() => GUIManager.Instance.OpenGUIMenu(interfaceGameObject, null, OnInterfaceOpen, OnInterfaceClose);
     }
 }

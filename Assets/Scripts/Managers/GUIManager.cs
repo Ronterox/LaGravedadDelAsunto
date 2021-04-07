@@ -25,7 +25,7 @@ namespace Managers
         private Action<GameObject> m_OnCloseGUI;
         private bool m_IsGuiOpened;
 
-        //TODO: Test and fix all UI gameObjects
+        //TODO: Fix Minigames
         private void Start()
         {
             if (mainCanvas)
@@ -49,44 +49,48 @@ namespace Managers
 
         public void UnlockInputs() => PlayerInput.Instance.UnlockInput();
 
-        public void OpenGUIMenu(GameObject menu, Action<GameObject> onOpenGUI = null, Action<GameObject> onCloseGUI = null, bool showPointer = false, bool pauseTime = false, bool lockMovement = true, bool lockInput = false)
+        public void OpenGUIMenu(GameObject menu, Action<GameObject> beforeOpenGUI = null, Action<GameObject> onOpenGUI = null, Action<GameObject> onCloseGUI = null, bool showPointer = false, bool pauseTime = false, bool lockMovement = true, bool lockInput = false)
         {
             if (m_IsGuiOpened) return;
 
             m_CurrentGUI = Instantiate(menu, mainCanvas.transform);
 
+            beforeOpenGUI?.Invoke(m_CurrentGUI);
+
             m_CurrentGUICanvasGroup = m_CurrentGUI.GetComponent<CanvasGroup>();
 
-            AnimateAlpha(m_CurrentGUICanvasGroup, 1f, alphaAnimationDuration,() =>
+            void Callback()
             {
                 m_CurrentGUICanvasGroup.interactable = true;
 
                 if (lockInput) LockInputs();
-                if (pauseTime) Time.timeScale = 0;
-
+                if (pauseTime) Time.timeScale = 0f;
                 if (showPointer) GameManager.Instance.pointerManager.SetCursorActive();
                 PlayerController.Instance.BlockMovement(lockMovement);
 
                 onOpenGUI?.Invoke(m_CurrentGUI);
-            });
+            }
+
+            if (m_CurrentGUICanvasGroup && !pauseTime) AnimateAlpha(m_CurrentGUICanvasGroup, 1f, alphaAnimationDuration, Callback);
+            else Callback();
 
             m_OnCloseGUI = onCloseGUI;
 
             m_IsGuiOpened = true;
         }
 
-        public void OpenGUIMenu(GameObject menu, Action onOpenGUI = null, Action onCloseGUI = null, bool showPointer = false, bool pauseTime = false, bool lockMovement = true, bool lockInput = false) => OpenGUIMenu(menu, x => onOpenGUI?.Invoke(), x => onCloseGUI?.Invoke(), showPointer, pauseTime, lockMovement, lockInput);
+        public void OpenGUIMenu(GameObject menu, Action beforeOpenGUI = null, Action onOpenGUI = null, Action onCloseGUI = null, bool showPointer = false, bool pauseTime = false, bool lockMovement = true, bool lockInput = false) => OpenGUIMenu(menu, x => beforeOpenGUI?.Invoke(), x => onOpenGUI?.Invoke(), x => onCloseGUI?.Invoke(), showPointer, pauseTime, lockMovement, lockInput);
 
-        public void CloseGUIMenu()
+        public void CloseGUIMenu(bool animate = true)
         {
             if (!m_IsGuiOpened) return;
 
-            AnimateAlpha(m_CurrentGUICanvasGroup, 0f, alphaAnimationDuration,() =>
+            void OnceFinishAnimation()
             {
                 m_CurrentGUICanvasGroup.interactable = false;
 
                 UnlockInputs();
-                Time.timeScale = 0;
+                Time.timeScale = 1f;
 
                 PlayerController.Instance.BlockMovement(false);
                 GameManager.Instance.pointerManager.SetCursorActive(false);
@@ -95,13 +99,16 @@ namespace Managers
 
                 m_OnCloseGUI?.Invoke(m_CurrentGUI);
                 m_OnCloseGUI = null;
-            });
+            }
+
+            if (animate) AnimateAlpha(m_CurrentGUICanvasGroup, 0f, alphaAnimationDuration, OnceFinishAnimation);
+            else OnceFinishAnimation();
 
             m_IsGuiOpened = false;
         }
 
-        public void OpenPauseMenu() => OpenGUIMenu(pauseMenu, x => { }, null, true, true, false);
+        public void OpenPauseMenu() => OpenGUIMenu(pauseMenu, x => { }, null, null, true, true, false);
 
-        public void OpenInventory() => OpenGUIMenu(inventoryUi, GameManager.Instance.inventory.InitializeInventory, null, true, false, false);
+        public void OpenInventory() => OpenGUIMenu(inventoryUi, GameManager.Instance.inventory.InitializeInventory, null, null, true, false, false);
     }
 }

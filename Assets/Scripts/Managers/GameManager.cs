@@ -16,7 +16,7 @@ namespace Managers
 
         public PointerManager pointerManager;
         
-        public static bool GameIsPaused => Time.timeScale == 0f;
+        public bool GameIsPaused;
 
         private void Update()
         {
@@ -24,6 +24,8 @@ namespace Managers
             
             if (GameIsPaused) GUIManager.Instance.CloseGUIMenu();
             else GUIManager.Instance.OpenPauseMenu();
+
+            GameIsPaused = !GameIsPaused;
         }
     }
 }

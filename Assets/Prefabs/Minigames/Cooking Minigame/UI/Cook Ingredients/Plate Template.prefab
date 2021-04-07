@@ -12,7 +12,9 @@ GameObject:
   - component: {fileID: 6817841697210359267}
   - component: {fileID: 6817841697210359266}
   - component: {fileID: 6817841697210359264}
+  - component: {fileID: 6720907510526019911}
   - component: {fileID: 6817841697210359265}
+  - component: {fileID: 1864424732882984545}
   m_Layer: 5
   m_Name: Plate Template
   m_TagString: Untagged
@@ -105,6 +107,18 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!225 &6720907510526019911
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6817841697210359278}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!114 &6817841697210359265
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -161,6 +175,21 @@ MonoBehaviour:
   plate: {fileID: 0}
   plateImage: {fileID: 6817841697822760024}
   plateName: {fileID: 6817841698365290328}
+--- !u!114 &1864424732882984545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6817841697210359278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b8609384c419ad94b29df7abf5a466c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvasGroup: {fileID: 6720907510526019911}
+  tmpText: {fileID: 6817841698365290328}
+  image: {fileID: 6817841697822760024}
 --- !u!1 &6817841697822760038
 GameObject:
   m_ObjectHideFlags: 0

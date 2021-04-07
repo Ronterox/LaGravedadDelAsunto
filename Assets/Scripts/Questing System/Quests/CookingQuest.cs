@@ -73,7 +73,7 @@ namespace Questing_System.Quests
                 m_PlateCard.image.sprite = availablePlates[m_PlateIndex].icon;
                 ProgressTextUpdate();
 
-                GUIManager.AnimateAlpha(m_PlateCard.canvasGroup, 1f);
+                GUIManager.AnimateAlpha(m_PlateCard.canvasGroup, .8f);
             }
             else GUIManager.AnimateAlpha(m_PlateCard.canvasGroup, 0f, default,() => Destroy(m_PlateCard.gameObject));
         }
