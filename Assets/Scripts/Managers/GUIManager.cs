@@ -25,7 +25,6 @@ namespace Managers
         private Action<GameObject> m_OnCloseGUI;
         private bool m_IsGuiOpened;
 
-        //TODO: Fix Minigames
         private void Start()
         {
             if (mainCanvas)
@@ -45,10 +44,6 @@ namespace Managers
         public static void AnimateAlpha(CanvasGroup canvasGroup, float objectiveAlpha, float animationDuration = 0.5f, TweenCallback onceFinishAnimation = null) =>
             canvasGroup.DOFade(objectiveAlpha, animationDuration).OnComplete(onceFinishAnimation);
 
-        public void LockInputs() => PlayerInput.Instance.BlockInput();
-
-        public void UnlockInputs() => PlayerInput.Instance.UnlockInput();
-
         public void OpenGUIMenu(GameObject menu, Action<GameObject> beforeOpenGUI = null, Action<GameObject> onOpenGUI = null, Action<GameObject> onCloseGUI = null, bool showPointer = false, bool pauseTime = false, bool lockMovement = true, bool lockInput = false)
         {
             if (m_IsGuiOpened) return;
@@ -63,8 +58,9 @@ namespace Managers
             {
                 m_CurrentGUICanvasGroup.interactable = true;
 
-                if (lockInput) LockInputs();
                 if (pauseTime) Time.timeScale = 0f;
+                if (lockInput) PlayerInput.Instance.BlockInput();
+
                 if (showPointer) GameManager.Instance.pointerManager.SetCursorActive();
                 PlayerController.Instance.BlockMovement(lockMovement);
 
@@ -89,8 +85,8 @@ namespace Managers
             {
                 m_CurrentGUICanvasGroup.interactable = false;
 
-                UnlockInputs();
                 Time.timeScale = 1f;
+                PlayerInput.Instance.UnlockInput();
 
                 PlayerController.Instance.BlockMovement(false);
                 GameManager.Instance.pointerManager.SetCursorActive(false);
@@ -99,16 +95,16 @@ namespace Managers
 
                 m_OnCloseGUI?.Invoke(m_CurrentGUI);
                 m_OnCloseGUI = null;
+
+                m_IsGuiOpened = false;
             }
 
             if (animate) AnimateAlpha(m_CurrentGUICanvasGroup, 0f, alphaAnimationDuration, OnceFinishAnimation);
             else OnceFinishAnimation();
-
-            m_IsGuiOpened = false;
         }
 
-        public void OpenPauseMenu() => OpenGUIMenu(pauseMenu, x => { }, null, null, true, true, false);
+        public void OpenPauseMenu(Action onOpenGUI, Action onCloseGUI) => OpenGUIMenu(pauseMenu, null, null, x => onCloseGUI?.Invoke(), false, true, false, true);
 
-        public void OpenInventory() => OpenGUIMenu(inventoryUi, GameManager.Instance.inventory.InitializeInventory, null, null, true, false, false);
+        public void OpenInventory(Action onOpenGUI, Action onCloseGUI) => OpenGUIMenu(inventoryUi, GameManager.Instance.inventory.InitializeInventory, x => onOpenGUI?.Invoke(), x => onCloseGUI?.Invoke(), true, false, false);
     }
 }

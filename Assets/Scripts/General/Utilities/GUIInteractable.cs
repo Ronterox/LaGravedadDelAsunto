@@ -9,9 +9,9 @@ namespace General.Utilities
 
         public override void Interact() => OpenInterface();
 
-        public abstract void OnInterfaceOpen();
+        public abstract void OnInterfaceOpen(GameObject gui);
 
-        public abstract void OnInterfaceClose();
+        public abstract void OnInterfaceClose(GameObject gui);
 
         public void OpenInterface() => GUIManager.Instance.OpenGUIMenu(interfaceGameObject, null, OnInterfaceOpen, OnInterfaceClose);
     }

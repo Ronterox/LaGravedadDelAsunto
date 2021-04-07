@@ -24,9 +24,9 @@ namespace Minigames
 
         private void UseIngredient() => GameManager.Instance.inventory.Remove(ingredientToCook);
 
-        public override void OnInterfaceOpen() => quickTimeEvent.StartQuickTimeEvent();
+        public override void OnInterfaceOpen(GameObject gui) => quickTimeEvent.StartQuickTimeEvent();
 
-        public override void OnInterfaceClose() { }
+        public override void OnInterfaceClose(GameObject gui) { }
 
         protected override void OnEnterTrigger(Collider other) { }
 
