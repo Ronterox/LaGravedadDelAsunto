@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using DG.Tweening;
+using GUI;
 using Player;
 using Plugins.DOTween.Modules;
 using Plugins.Tools;
@@ -8,9 +9,10 @@ using UnityEngine;
 
 namespace Managers
 {
-    public class GUIManager : Singleton<GUIManager>
+    public class GUIManager : PersistentSingleton<GUIManager>
     {
-        public Canvas mainCanvas;
+        public GameObject mainCanvas;
+        public PointerManager pointerManager;
 
         [Header("Menus GameObjects")]
         public GameObject pauseMenu;
@@ -26,16 +28,19 @@ namespace Managers
         private bool m_IsGuiOpened;
 
         private readonly List<GameObject> m_InstantiatedObjects = new List<GameObject>();
+        private GameObject m_CanvasInstance;
 
-        private void Start()
-        {
-            if (mainCanvas) mainCanvas.gameObject.MoveToScene("GUI Scene");
-            else Debug.Log("Main canvas is missing on GUI Manager!".ToColorString("cyan"));
-        }
+        private void Start() => InitializeCanvasInstance();
 
         private void Update()
         {
             if (m_IsGuiOpened && PlayerInput.Instance.Pause) CloseGUIMenu();
+        }
+
+        private void InitializeCanvasInstance()
+        {
+            if (m_CanvasInstance) Destroy(m_CanvasInstance);
+            (m_CanvasInstance = Instantiate(mainCanvas)).MoveToScene("GUI Scene");
         }
 
         /// <summary>
@@ -45,8 +50,7 @@ namespace Managers
         /// <param name="objectiveAlpha">the objective to get to as de alpha value, it starts from the value it already has</param>
         /// <param name="animationDuration">the duration of the fading</param>
         /// <param name="onceFinishAnimation">once the animation is finished</param>
-        public static void AnimateAlpha(CanvasGroup canvasGroup, float objectiveAlpha, float animationDuration = 0.5f, TweenCallback onceFinishAnimation = null) =>
-            canvasGroup.DOFade(objectiveAlpha, animationDuration).OnComplete(onceFinishAnimation);
+        public static void AnimateAlpha(CanvasGroup canvasGroup, float objectiveAlpha, float animationDuration = 0.5f, TweenCallback onceFinishAnimation = null) => canvasGroup.DOFade(objectiveAlpha, animationDuration).OnComplete(onceFinishAnimation);
 
         /// <summary>
         /// Opens the gameObject passed as a gui on the main canvas
@@ -63,7 +67,7 @@ namespace Managers
         {
             if (m_IsGuiOpened) return;
 
-            m_CurrentGUI = Instantiate(menu, mainCanvas.transform);
+            m_CurrentGUI = Instantiate(menu, m_CanvasInstance.transform);
 
             m_CurrentGUI.SetActive(true);
 
@@ -78,7 +82,7 @@ namespace Managers
                 if (pauseTime) Time.timeScale = 0f;
                 if (lockInput) PlayerInput.Instance.BlockInput();
 
-                if (showPointer) GameManager.Instance.pointerManager.SetCursorActive();
+                if (showPointer) pointerManager.SetCursorActive();
                 PlayerController.Instance.BlockMovement(lockMovement);
 
                 onOpenGUI?.Invoke(m_CurrentGUI);
@@ -123,7 +127,7 @@ namespace Managers
                 PlayerInput.Instance.UnlockInput();
 
                 PlayerController.Instance.BlockMovement(false);
-                GameManager.Instance.pointerManager.SetCursorActive(false);
+                pointerManager.SetCursorActive(false);
 
                 Destroy(m_CurrentGUI);
 
@@ -145,7 +149,7 @@ namespace Managers
         public GameObject InstantiateUIInstantly(GameObject obj)
         {
             GameObject instance;
-            m_InstantiatedObjects.Add(instance = Instantiate(obj, mainCanvas.transform));
+            m_InstantiatedObjects.Add(instance = Instantiate(obj, m_CanvasInstance.transform));
             return instance;
         }
 
@@ -160,12 +164,12 @@ namespace Managers
         public GameObject InstantiateUI(GameObject obj, float targetAlpha = 1f, float animationDuration = 0.5f, TweenCallback onAnimationEnd = null)
         {
             GameObject instance = InstantiateUIInstantly(obj);
-            
+
             var canvasGroup = instance.GetComponent<CanvasGroup>();
-            
+
             if (canvasGroup) AnimateAlpha(canvasGroup, targetAlpha, animationDuration, onAnimationEnd);
             else onAnimationEnd?.Invoke();
-            
+
             return instance;
         }
 
