@@ -3,7 +3,6 @@ using GUI.Minigames.Cook_Plate;
 using Managers;
 using Minigames;
 using Plugins.Tools;
-using TMPro;
 using UnityEngine;
 
 namespace Questing_System.Quests
@@ -18,18 +17,18 @@ namespace Questing_System.Quests
         [Header("Visual Feedback")]
         public GameObject plateCardTemplate;
         private ImageTextCard m_PlateCard;
+
         [Space]
-        public TMP_Text timerText;
+        public GameObject timerGameObject;
+        private GameObject m_TimerInstance;
 
         [Header("Settings")]
         public float secondsToCook = 180f;
-        private float m_Timer;
 
         private int m_PlateProgress;
         private int m_PlatesCooked, m_PlatesBurned;
 
         private PlatesMenu m_PlatesMenu;
-        private bool m_GameStarted;
 
         private int m_PlateIndex = -1;
 
@@ -49,25 +48,9 @@ namespace Questing_System.Quests
             }
         }
 
-        //TODO: Fix timer not showing what it is
-        private void Update()
-        {
-            if (!m_GameStarted) return;
-            if (m_Timer <= 0)
-            {
-                m_Timer = secondsToCook;
-                CookPlate(-100);
-            }
-            else m_Timer -= Time.deltaTime;
-
-            if (timerText) timerText.text = $"{m_Timer / 60 % 60:00}:{m_Timer % 60:00}";
-        }
-
         public void StartCooking()
         {
-            m_GameStarted = true;
-            m_Timer = secondsToCook;
-
+            SetTimerActive();
             SetPlateActive();
         }
 
@@ -75,21 +58,39 @@ namespace Questing_System.Quests
         {
             if (setActive)
             {
-                m_PlateCard = Instantiate(plateCardTemplate, GUIManager.Instance.mainCanvas.transform).GetComponent<ImageTextCard>();
+                m_PlateCard = GUIManager.Instance.InstantiateUI(plateCardTemplate, .8f).GetComponent<ImageTextCard>();
 
                 m_PlateCard.image.sprite = availablePlates[m_PlateIndex].icon;
                 m_PlateCard.canvasGroup.interactable = false;
+                
                 ProgressTextUpdate();
-
-                GUIManager.AnimateAlpha(m_PlateCard.canvasGroup, .8f);
             }
-            else GUIManager.AnimateAlpha(m_PlateCard.canvasGroup, 0f, default, () => Destroy(m_PlateCard.gameObject));
+            else GUIManager.Instance.RemoveUI(m_PlateCard.gameObject);
+        }
+
+        private void SetTimerActive(bool setActive = true)
+        {
+            if (setActive)
+            {
+                m_TimerInstance = GUIManager.Instance.InstantiateUI(timerGameObject);
+
+                var timerUI = m_TimerInstance.GetComponent<TimerUI>();
+
+                timerUI.events.onTimerEnd.AddListener(() => CookPlate(-100));
+
+                timerUI.timerTime = secondsToCook;
+
+                timerUI.resetOnEnd = true;
+
+                timerUI.StartTimer();
+            }
+            else GUIManager.Instance.RemoveUI(m_TimerInstance);
         }
 
         public void StopCooking()
         {
-            m_GameStarted = false;
             m_PlateIndex = -1;
+            SetTimerActive(false);
             SetPlateActive(false);
         }
 
@@ -144,7 +145,6 @@ namespace Questing_System.Quests
                     if (m_PlatesCooked >= COOKED_LIMIT) EndQuestPositive();
                 }
                 m_PlateProgress = 0;
-                m_Timer = secondsToCook;
             }
             ProgressTextUpdate();
         }

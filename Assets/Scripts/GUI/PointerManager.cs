@@ -4,7 +4,7 @@ namespace GUI
 {
     public class PointerManager : MonoBehaviour
     {
-        public KeyCode showPointerKey;
+        public KeyCode cursorKey;
         
         private void Awake()
         {
@@ -14,8 +14,8 @@ namespace GUI
 
         private void LateUpdate()
         {
-            if (Input.GetKeyDown(showPointerKey)) SetCursorActive();
-            else if (Input.GetKeyUp(showPointerKey)) SetCursorActive(false);
+            if (Input.GetKeyDown(cursorKey)) SetCursorActive();
+            else if (Input.GetKeyUp(cursorKey)) SetCursorActive(false);
         }
 
         public void SetCursorActive(bool active = true)

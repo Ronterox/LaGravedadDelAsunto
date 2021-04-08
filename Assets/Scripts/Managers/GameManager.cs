@@ -1,5 +1,5 @@
-using GUI;
 using Inventory_System;
+using Karma_System;
 using Player;
 using Plugins.Tools;
 
@@ -13,10 +13,8 @@ namespace Managers
         public DialogueManager dialogueManager;
         public Inventory inventory;
 
-        public PointerManager pointerManager;
-
         public bool GameIsPaused;
-
+        
         private void Update()
         {
             if (!PlayerInput.Instance.Pause) return;
