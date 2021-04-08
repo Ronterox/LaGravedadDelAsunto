@@ -4,18 +4,12 @@ using UnityEngine.Events;
 
 namespace Plugins.Tools
 {
-    public readonly struct TimerEvents
+    [System.Serializable]
+    public struct TimerEvents
     {
-        public readonly UnityEvent onTimerStart;
-        public readonly UnityEvent onTimerStop;
-        public readonly UnityEvent onTimerEnd;
-
-        public TimerEvents(UnityEvent onTimerStart, UnityEvent onTimerStop, UnityEvent onTimerEnd)
-        {
-            this.onTimerStart = onTimerStart;
-            this.onTimerStop = onTimerStop;
-            this.onTimerEnd = onTimerEnd;
-        }
+        public UnityEvent onTimerStart;
+        public UnityEvent onTimerStop;
+        public UnityEvent onTimerEnd;
     }
 
     public class TimerUI : MonoBehaviour

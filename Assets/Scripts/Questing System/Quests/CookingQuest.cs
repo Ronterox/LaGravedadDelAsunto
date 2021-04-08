@@ -81,7 +81,7 @@ namespace Questing_System.Quests
                 timerUI.timerTime = secondsToCook;
 
                 timerUI.resetOnEnd = true;
-                
+
                 timerUI.StartTimer();
             }
             else GUIManager.Instance.RemoveUI(m_TimerInstance);
