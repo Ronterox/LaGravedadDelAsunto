@@ -3695,10 +3695,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cooking Quest
       objectReference: {fileID: 0}
-    - target: {fileID: 460704000516947507, guid: 31f4487950f2db128aa319497b32f907, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 460704000516947509, guid: 31f4487950f2db128aa319497b32f907, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -67379,11 +67375,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5617871185371070069, guid: 881f5ea122226be93a0d47628b8a2826, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.0000000042820463
+      value: 0.0000000042820463
       objectReference: {fileID: 0}
     - target: {fileID: 5617871185371070069, guid: 881f5ea122226be93a0d47628b8a2826, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 4.096356e-10
+      value: -4.096356e-10
       objectReference: {fileID: 0}
     - target: {fileID: 5617871186160820124, guid: 881f5ea122226be93a0d47628b8a2826, type: 3}
       propertyPath: m_LocalRotation.w
@@ -67459,11 +67455,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5617871187225851715, guid: 881f5ea122226be93a0d47628b8a2826, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.00000000847696
+      value: 0.000000008476966
       objectReference: {fileID: 0}
     - target: {fileID: 5617871187225851715, guid: 881f5ea122226be93a0d47628b8a2826, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0000000014683262
+      value: -0.0000000014683269
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 881f5ea122226be93a0d47628b8a2826, type: 3}

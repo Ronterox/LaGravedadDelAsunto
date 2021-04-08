@@ -63,7 +63,7 @@ namespace Questing_System.Quests
             }
             else m_Timer -= Time.deltaTime;
 
-            if (m_TimerText) m_TimerText.text = $"{m_Timer / 60 % 60:00}:{m_Timer % 60:00}";
+            if (m_TimerText) m_TimerText.text = $"{Mathf.Floor(m_Timer / 60) % 60:00}:{m_Timer % 60:00}";
         }
 
         public void StartCooking()
