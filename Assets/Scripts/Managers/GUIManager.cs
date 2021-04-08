@@ -142,10 +142,30 @@ namespace Managers
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
-        public GameObject Instantiate(GameObject obj)
+        public GameObject InstantiateUIInstantly(GameObject obj)
         {
             GameObject instance;
             m_InstantiatedObjects.Add(instance = Instantiate(obj, mainCanvas.transform));
+            return instance;
+        }
+
+        /// <summary>
+        /// Instantiates a game object on the main canvas with an animation
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="targetAlpha">target alpha of the animation</param>
+        /// <param name="animationDuration">optional</param>
+        /// <param name="onAnimationEnd">optional event</param>
+        /// <returns></returns>
+        public GameObject InstantiateUI(GameObject obj, float targetAlpha = 1f, float animationDuration = 0.5f, TweenCallback onAnimationEnd = null)
+        {
+            GameObject instance = InstantiateUIInstantly(obj);
+            
+            var canvasGroup = instance.GetComponent<CanvasGroup>();
+            
+            if (canvasGroup) AnimateAlpha(canvasGroup, targetAlpha, animationDuration, onAnimationEnd);
+            else onAnimationEnd?.Invoke();
+            
             return instance;
         }
 
@@ -154,11 +174,27 @@ namespace Managers
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
-        public bool RemoveObject(GameObject obj)
+        public void RemoveUIInstantly(GameObject obj)
         {
             bool exist = m_InstantiatedObjects.Remove(obj);
             if (exist) Destroy(obj);
-            return exist;
+        }
+
+        /// <summary>
+        /// Removes a game object from the main canvas with an animation
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="animationDuration"></param>
+        /// <param name="onceFinishAnimation"></param>
+        /// <returns></returns>
+        public void RemoveUI(GameObject obj, float animationDuration = 0.5f, TweenCallback onceFinishAnimation = null)
+        {
+            var canvasGroup = obj.GetComponent<CanvasGroup>();
+
+            onceFinishAnimation += () => RemoveUIInstantly(obj);
+
+            if (canvasGroup) AnimateAlpha(canvasGroup, 0f, animationDuration, onceFinishAnimation);
+            else onceFinishAnimation();
         }
 
         /// <summary>
