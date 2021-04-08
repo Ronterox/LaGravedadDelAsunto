@@ -68,7 +68,7 @@ MonoBehaviour:
   cookingQteInteractables:
   - {fileID: 6452531643260720592}
   plateCardTemplate: {fileID: 6817841697210359278, guid: ec8acf24c2e2e6c728a857d306095e04, type: 3}
-  timerText: {fileID: 0}
+  timerTextGameObject: {fileID: 7854772032020463413, guid: fea39767077e86ac2983c4bdd6c122e3, type: 3}
   secondsToCook: 300
 --- !u!1001 &3851376621788682076
 PrefabInstance:

@@ -24,11 +24,14 @@ namespace Inventory_System
 
             icon.sprite = null;
             icon.enabled = false;
-            removeButton.interactable =false;
+            removeButton.interactable = false;
         }
 
         public void OnRemoveButton() => GameManager.Instance.inventory.Drop(item);
 
-        public void UseItem() => item.Use();
+        public void UseItem()
+        {
+            if (item) item.Use();
+        }
     }
 }

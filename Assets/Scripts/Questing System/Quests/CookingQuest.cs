@@ -19,7 +19,10 @@ namespace Questing_System.Quests
         public GameObject plateCardTemplate;
         private ImageTextCard m_PlateCard;
         [Space]
-        public TMP_Text timerText;
+        public GameObject timerTextGameObject;
+        private GameObject m_TimerInstance;
+
+        private TMP_Text m_TimerText;
 
         [Header("Settings")]
         public float secondsToCook = 180f;
@@ -60,11 +63,15 @@ namespace Questing_System.Quests
             }
             else m_Timer -= Time.deltaTime;
 
-            if (timerText) timerText.text = $"{m_Timer / 60 % 60:00}:{m_Timer % 60:00}";
+            if (m_TimerText) m_TimerText.text = $"{m_Timer / 60 % 60:00}:{m_Timer % 60:00}";
         }
 
         public void StartCooking()
         {
+            m_TimerInstance = GUIManager.Instance.Instantiate(timerTextGameObject);
+
+            m_TimerText = m_TimerInstance.GetComponent<TMP_Text>();
+
             m_GameStarted = true;
             m_Timer = secondsToCook;
 
