@@ -54,10 +54,14 @@ namespace Combat
 
         private IEnumerator DoDamage(CharacterHealth health, float delay)
         {
+            PlayerController.Instance.BlockMovement(true);
+            
             yield return new WaitForSeconds(delay);
             health.TakeDamage(damage);
 
             if (health.currentHealth <= 0) inCombat = false;
+            
+            PlayerController.Instance.BlockMovement(false);
         }
 
         private void AnimatePlayer()
