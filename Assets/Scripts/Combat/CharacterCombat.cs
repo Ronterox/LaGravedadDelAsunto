@@ -1,57 +1,68 @@
 using System.Collections;
-using System.Collections.Generic;
 using Player;
 using UnityEngine;
 
-[RequireComponent(typeof(CharacterStats))]
-public class CharacterCombat : MonoBehaviour
+namespace Combat
 {
-    public float attackSpeed = 1f;
-    private float attackCooldown = 0f;
-    public float attackDelay = .6f;
-    CharacterStats myStats;
-    public float combatCooldown = 2;
-    public float lastAttackTime;
-    public bool inCombat { get; private set; }
+    [RequireComponent(typeof(CharacterHealth))]
+    public class CharacterCombat : MonoBehaviour
+    {
+        public float attackSpeed = 1f;
+        public float attackDelay = .6f;
 
-    public event System.Action onAttack;
-    private void Start()
-    {
-        myStats = GetComponent<CharacterStats>();
-    }
-    private void Update()
-    {
-        attackCooldown -= Time.deltaTime;
-        if (Time.time - lastAttackTime > combatCooldown)
-        {
-            inCombat = false;
-        }
-        if (PlayerInput.Instance.Attack)
-        {
-            inCombat = true;
-        }
-    }
-    public void Attack(CharacterStats targetStats)
-    {
-        if (attackCooldown <= 0f)
-        {
-            StartCoroutine(DoDamage(targetStats,attackDelay));
-            if (onAttack != null) onAttack();
-          
-            attackCooldown = 1f / attackSpeed;
-            inCombat = true;
-            lastAttackTime = Time.time;
-        }
-        
-    }
+        private float attackCooldown;
 
-    IEnumerator DoDamage(CharacterStats stats,float delay)
-    {
-        yield return new WaitForSeconds(delay);
-        stats.TakeDamage(myStats.damage.GetValue());
-        if (stats.currentHealth <= 0)
+        public float combatCooldown = 2;
+        public float lastAttackTime;
+
+        public int damage;
+
+        public bool inCombat { get; private set; }
+
+        private Animator m_Animator;
+
+        private readonly int IN_COMBAT_HASH = Animator.StringToHash("inCombat");
+
+        private void Start() => m_Animator = GetComponent<Animator>();
+
+        private void Update()
         {
-            inCombat = false;
+            attackCooldown -= Time.deltaTime;
+            if (Time.time - lastAttackTime > combatCooldown)
+            {
+                inCombat = false;
+            }
+            if (PlayerInput.Instance.Attack)
+            {
+                inCombat = true;
+            }
+        }
+
+        private void FixedUpdate() => AnimatePlayer();
+
+        public void Attack(CharacterHealth targetHealth)
+        {
+            if (attackCooldown <= 0f)
+            {
+                StartCoroutine(DoDamage(targetHealth, attackDelay));
+
+                inCombat = true;
+                attackCooldown = 1f / attackSpeed;
+                lastAttackTime = Time.time;
+            }
+        }
+
+        private IEnumerator DoDamage(CharacterHealth health, float delay)
+        {
+            yield return new WaitForSeconds(delay);
+            health.TakeDamage(damage);
+
+            if (health.currentHealth <= 0) inCombat = false;
+        }
+
+        private void AnimatePlayer()
+        {
+            m_Animator.SetBool(IN_COMBAT_HASH, inCombat);
         }
     }
 }

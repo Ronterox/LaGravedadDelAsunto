@@ -1,40 +1,28 @@
 using General.Utilities;
+using Managers;
 using Player;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-[RequireComponent(typeof(CharacterStats))]
-public class Enemy : Interactable
+
+namespace Combat
 {
-    PlayerManager playerManager;
-    CharacterStats myStats;
+    [RequireComponent(typeof(CharacterHealth))]
+    public class Enemy : Interactable
+    {
+        public CharacterHealth myHealth;
 
-    private void Start()
-    {
-        playerManager = PlayerManager.instance;
-        myStats = GetComponent<CharacterStats>();
-    }
-    public override void Interact()
-    {
-        CharacterCombat playerCombat=playerManager.player.GetComponent<CharacterCombat>();
-        if (playerCombat != null)
+        private void Start() => myHealth = GetComponent<CharacterHealth>();
+
+        public override void Interact() => GameManager.Instance.characterCombat.Attack(myHealth);
+
+        protected override void Update()
         {
-            playerCombat.Attack(myStats);
+            if (m_PlayerOnRange && PlayerInput.Instance.Attack) Interact();
         }
-    }
-    protected override void Update()
-    {
-        if (m_PlayerOnRange && PlayerInput.Instance.Attack) Interact();
-    }
-    protected override void OnEnterTrigger(Collider other)
-    {
-        
-    }
 
-    protected override void OnExitTrigger(Collider other)
-    {
-        
-    }
+        protected override void OnEnterTrigger(Collider other) { }
 
-  
+        protected override void OnExitTrigger(Collider other) { }
+
+
+    }
 }

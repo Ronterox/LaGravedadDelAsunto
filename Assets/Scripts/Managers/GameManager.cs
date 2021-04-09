@@ -1,3 +1,4 @@
+using Combat;
 using GUI;
 using Inventory_System;
 using Player;
@@ -15,7 +16,7 @@ namespace Managers
 
         public PointerManager pointerManager;
 
-        public PlayerManager playermanager;
+        public CharacterCombat characterCombat;
 
         public bool GameIsPaused;
 
