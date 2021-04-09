@@ -15,6 +15,8 @@ namespace Managers
 
         public PointerManager pointerManager;
 
+        public PlayerManager playermanager;
+
         public bool GameIsPaused;
 
         private void Update()

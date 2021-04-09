@@ -10,7 +10,7 @@ namespace General.Utilities
         public bool infiniteInteractions;
 
         private int m_InteractTimes;
-        private bool m_PlayerOnRange;
+        public bool m_PlayerOnRange;
 
         protected virtual void Awake() => gameObject.MoveToScene("Interactables Scene");
 

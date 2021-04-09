@@ -44,6 +44,8 @@ GameObject:
   - component: {fileID: 6729424279741692700}
   - component: {fileID: 6729424279741692696}
   - component: {fileID: 6729424279741692697}
+  - component: {fileID: 6845724718579589871}
+  - component: {fileID: 5678576151616417647}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -99,6 +101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   zoomSpeed: 0.1
   playerControllerInputBlocked: 0
+  Pause: 0
 --- !u!114 &6729424279741692700
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -149,6 +152,33 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &6845724718579589871
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6729424279741692689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e210cccbe3568d44af39c92e6a7ca0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5678576151616417647
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6729424279741692689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7a2fba38f636124a9f80d4f9c649dca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  damage:
+    baseValue: 20
 --- !u!1001 &8558579438066374546
 PrefabInstance:
   m_ObjectHideFlags: 0
