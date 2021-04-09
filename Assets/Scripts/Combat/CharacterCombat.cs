@@ -7,6 +7,8 @@ namespace Combat
     [RequireComponent(typeof(CharacterHealth))]
     public class CharacterCombat : MonoBehaviour
     {
+        public Transform weaponHolder;
+        
         public float attackSpeed = 1f;
         public float attackDelay = .6f;
 
@@ -25,6 +27,11 @@ namespace Combat
 
         private void Start() => m_Animator = GetComponent<Animator>();
 
+        public void SetWeapon(string weapon)
+        {
+            //weapon.transform.parent = weaponHolder;
+        }
+        
         private void Update()
         {
             attackCooldown -= Time.deltaTime;
