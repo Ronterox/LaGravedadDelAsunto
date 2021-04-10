@@ -4,6 +4,7 @@ using Managers;
 using Minigames;
 using Plugins.Tools;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Questing_System.Quests
 {
@@ -62,7 +63,7 @@ namespace Questing_System.Quests
 
                 m_PlateCard.image.sprite = availablePlates[m_PlateIndex].icon;
                 m_PlateCard.canvasGroup.interactable = false;
-                
+
                 ProgressTextUpdate();
             }
             else GUIManager.Instance.RemoveUI(m_PlateCard.gameObject);
@@ -119,15 +120,23 @@ namespace Questing_System.Quests
 
         protected override void OnceQuestIsDoneBad() => StopCooking();
 
-        protected override void OnceQuestStarted() =>
-            GUIManager.Instance.OpenGUIMenu(platesMenuGameObject, null, gui =>
+        protected override void OnceQuestStarted() => ShowSelectPlateMenu();
+
+        public void ShowSelectPlateMenu()
+        {
+            void SetPlatesToSelect(GameObject gui)
             {
                 m_PlatesMenu = gui.GetComponent<PlatesMenu>();
                 m_PlatesMenu.SetupCarousel(availablePlates, SelectPlate);
-            }, x =>
+            }
+
+            void CheckIfPlateSelected(GameObject x)
             {
                 if (m_PlateIndex != -1) StartCooking();
-            });
+            }
+
+            GUIManager.Instance.OpenGUIMenu(platesMenuGameObject, new UIOptions(null, SetPlatesToSelect, CheckIfPlateSelected));
+        }
 
         private void UpdateQuestState(bool foodBurned, bool foodCooked)
         {

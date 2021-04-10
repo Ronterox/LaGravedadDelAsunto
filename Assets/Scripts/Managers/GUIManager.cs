@@ -9,6 +9,43 @@ using UnityEngine;
 
 namespace Managers
 {
+    public struct UIOptions
+    {
+        public readonly bool showPointer, pauseTime, lockMovement, lockInput;
+
+        public Action<GameObject> beforeOpenGUI, onOpenGUI, onCloseGUI;
+
+        public void SetActions(Action<GameObject> beforeOpen, Action<GameObject> onOpen, Action<GameObject> onClose)
+        {
+            beforeOpenGUI = beforeOpen;
+            onOpenGUI = onOpen;
+            onCloseGUI = onClose;
+        }
+        public UIOptions(bool showPointer, bool pauseTime, bool lockMovement, bool lockInput)
+        {
+            this.showPointer = showPointer;
+            this.pauseTime = pauseTime;
+            this.lockMovement = lockMovement;
+            this.lockInput = lockInput;
+
+            beforeOpenGUI = null;
+            onOpenGUI = null;
+            onCloseGUI = null;
+        }
+
+        public UIOptions(Action<GameObject> beforeOpenGUI, Action<GameObject> onOpenGUI, Action<GameObject> onCloseGUI)
+        {
+            this.beforeOpenGUI = beforeOpenGUI;
+            this.onOpenGUI = onOpenGUI;
+            this.onCloseGUI = onCloseGUI;
+
+            showPointer = false;
+            pauseTime = false;
+            lockMovement = true;
+            lockInput = false;
+        }
+    }
+
     public class GUIManager : PersistentSingleton<GUIManager>
     {
         public GameObject mainCanvas;
@@ -50,20 +87,15 @@ namespace Managers
         /// <param name="objectiveAlpha">the objective to get to as de alpha value, it starts from the value it already has</param>
         /// <param name="animationDuration">the duration of the fading</param>
         /// <param name="onceFinishAnimation">once the animation is finished</param>
-        public static void AnimateAlpha(CanvasGroup canvasGroup, float objectiveAlpha, float animationDuration = 0.5f, TweenCallback onceFinishAnimation = null) => canvasGroup.DOFade(objectiveAlpha, animationDuration).OnComplete(onceFinishAnimation);
+        /// <param name="animEase">the type of animation ease</param>
+        public static void AnimateAlpha(CanvasGroup canvasGroup, float objectiveAlpha, float animationDuration = 0.5f, TweenCallback onceFinishAnimation = null, Ease animEase = Ease.Unset) => canvasGroup.DOFade(objectiveAlpha, animationDuration).SetEase(animEase).OnComplete(onceFinishAnimation);
 
         /// <summary>
         /// Opens the gameObject passed as a gui on the main canvas
         /// </summary>
         /// <param name="menu">the gui to instantiate</param>
-        /// <param name="beforeOpenGUI">just after instantiating the gui</param>
-        /// <param name="onOpenGUI">after the gui opens with animation</param>
-        /// <param name="onCloseGUI">after the gui is close</param>
-        /// <param name="showPointer">shows the pointer when gui is opened</param>
-        /// <param name="pauseTime">pauses the time after the gui is called</param>
-        /// <param name="lockMovement">locks the movement of the player once the gui is opened</param>
-        /// <param name="lockInput">locks the input of the player once the gui is opened</param>
-        public void OpenGUIMenu(GameObject menu, Action<GameObject> beforeOpenGUI = null, Action<GameObject> onOpenGUI = null, Action<GameObject> onCloseGUI = null, bool showPointer = false, bool pauseTime = false, bool lockMovement = true, bool lockInput = false)
+        /// <param name="options">menu instantiation effects</param>
+        public void OpenGUIMenu(GameObject menu, UIOptions options)
         {
             if (m_IsGuiOpened) return;
 
@@ -71,7 +103,7 @@ namespace Managers
 
             m_CurrentGUI.SetActive(true);
 
-            beforeOpenGUI?.Invoke(m_CurrentGUI);
+            options.beforeOpenGUI?.Invoke(m_CurrentGUI);
 
             m_CurrentGUICanvasGroup = m_CurrentGUI.GetComponent<CanvasGroup>();
 
@@ -79,36 +111,22 @@ namespace Managers
             {
                 m_CurrentGUICanvasGroup.interactable = true;
 
-                if (pauseTime) Time.timeScale = 0f;
-                if (lockInput) PlayerInput.Instance.BlockInput();
+                if (options.pauseTime) Time.timeScale = 0f;
+                if (options.lockInput) PlayerInput.Instance.BlockInput();
 
-                if (showPointer) pointerManager.SetCursorActive();
-                PlayerController.Instance.BlockMovement(lockMovement);
+                if (options.showPointer) pointerManager.SetCursorActive();
+                PlayerController.Instance.BlockMovement(options.lockMovement);
 
-                onOpenGUI?.Invoke(m_CurrentGUI);
+                options.onOpenGUI?.Invoke(m_CurrentGUI);
             }
 
-            if (m_CurrentGUICanvasGroup && !pauseTime) AnimateAlpha(m_CurrentGUICanvasGroup, 1f, alphaAnimationDuration, Callback);
+            if (m_CurrentGUICanvasGroup && !options.pauseTime) AnimateAlpha(m_CurrentGUICanvasGroup, 1f, alphaAnimationDuration, Callback);
             else Callback();
 
-            m_OnCloseGUI = onCloseGUI;
+            m_OnCloseGUI = options.onCloseGUI;
 
             m_IsGuiOpened = true;
         }
-
-
-        /// <summary>
-        /// Opens the gameObject passed as a gui on the main canvas
-        /// </summary>
-        /// <param name="menu">the gui to instantiate</param>
-        /// <param name="beforeOpenGUI">just after instantiating the gui</param>
-        /// <param name="onOpenGUI">after the gui opens with animation</param>
-        /// <param name="onCloseGUI">after the gui is close</param>
-        /// <param name="showPointer">shows the pointer when gui is opened</param>
-        /// <param name="pauseTime">pauses the time after the gui is called</param>
-        /// <param name="lockMovement">locks the movement of the player once the gui is opened</param>
-        /// <param name="lockInput">locks the input of the player once the gui is opened</param>
-        public void OpenGUIMenu(GameObject menu, Action beforeOpenGUI = null, Action onOpenGUI = null, Action onCloseGUI = null, bool showPointer = false, bool pauseTime = false, bool lockMovement = true, bool lockInput = false) => OpenGUIMenu(menu, x => beforeOpenGUI?.Invoke(), x => onOpenGUI?.Invoke(), x => onCloseGUI?.Invoke(), showPointer, pauseTime, lockMovement, lockInput);
 
         /// <summary>
         /// Closes the last gui opened
@@ -160,14 +178,15 @@ namespace Managers
         /// <param name="targetAlpha">target alpha of the animation</param>
         /// <param name="animationDuration">optional</param>
         /// <param name="onAnimationEnd">optional event</param>
+        /// <param name="animationEase">animation style</param>
         /// <returns></returns>
-        public GameObject InstantiateUI(GameObject obj, float targetAlpha = 1f, float animationDuration = 0.5f, TweenCallback onAnimationEnd = null)
+        public GameObject InstantiateUI(GameObject obj, float targetAlpha = 1f, float animationDuration = 0.5f, TweenCallback onAnimationEnd = null, Ease animationEase = Ease.Unset)
         {
             GameObject instance = InstantiateUIInstantly(obj);
 
             var canvasGroup = instance.GetComponent<CanvasGroup>();
 
-            if (canvasGroup) AnimateAlpha(canvasGroup, targetAlpha, animationDuration, onAnimationEnd);
+            if (canvasGroup) AnimateAlpha(canvasGroup, targetAlpha, animationDuration, onAnimationEnd, animationEase);
             else onAnimationEnd?.Invoke();
 
             return instance;
@@ -190,14 +209,15 @@ namespace Managers
         /// <param name="obj"></param>
         /// <param name="animationDuration"></param>
         /// <param name="onceFinishAnimation"></param>
+        /// <param name="animationEase">animation style</param>
         /// <returns></returns>
-        public void RemoveUI(GameObject obj, float animationDuration = 0.5f, TweenCallback onceFinishAnimation = null)
+        public void RemoveUI(GameObject obj, float animationDuration = 0.5f, TweenCallback onceFinishAnimation = null, Ease animationEase = Ease.Unset)
         {
             var canvasGroup = obj.GetComponent<CanvasGroup>();
 
             onceFinishAnimation += () => RemoveUIInstantly(obj);
 
-            if (canvasGroup) AnimateAlpha(canvasGroup, 0f, animationDuration, onceFinishAnimation);
+            if (canvasGroup) AnimateAlpha(canvasGroup, 0f, animationDuration, onceFinishAnimation, animationEase);
             else onceFinishAnimation();
         }
 
@@ -206,13 +226,27 @@ namespace Managers
         /// </summary>
         /// <param name="onOpenGUI"></param>
         /// <param name="onCloseGUI"></param>
-        public void OpenPauseMenu(Action onOpenGUI, Action onCloseGUI) => OpenGUIMenu(pauseMenu, null, x => onOpenGUI?.Invoke(), x => onCloseGUI?.Invoke(), true, true, false, true);
+        public void OpenPauseMenu(Action onOpenGUI, Action onCloseGUI)
+        {
+            var options = new UIOptions(true, true, false, true);
+
+            options.SetActions(null, x => onOpenGUI?.Invoke(), x => onCloseGUI?.Invoke());
+
+            OpenGUIMenu(pauseMenu, options);
+        }
 
         /// <summary>
         /// Opens the inventory
         /// </summary>
         /// <param name="onOpenGUI"></param>
         /// <param name="onCloseGUI"></param>
-        public void OpenInventory(Action onOpenGUI, Action onCloseGUI) => OpenGUIMenu(inventoryUi, GameManager.Instance.inventory.InitializeInventory, x => onOpenGUI?.Invoke(), x => onCloseGUI?.Invoke(), true, false, false);
+        public void OpenInventory(Action onOpenGUI, Action onCloseGUI)
+        {
+            var options = new UIOptions(true, false, false, false);
+
+            options.SetActions(GameManager.Instance.inventory.InitializeInventory, x => onOpenGUI?.Invoke(), x => onCloseGUI?.Invoke());
+
+            OpenGUIMenu(inventoryUi, options);
+        }
     }
 }

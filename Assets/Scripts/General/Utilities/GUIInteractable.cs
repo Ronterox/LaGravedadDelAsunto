@@ -14,6 +14,6 @@ namespace General.Utilities
 
         public abstract void OnInterfaceClose(GameObject gui);
 
-        public void OpenInterface() => GUIManager.Instance.OpenGUIMenu(interfaceGameObject, null, OnInterfaceOpen, OnInterfaceClose);
+        public void OpenInterface() => GUIManager.Instance.OpenGUIMenu(interfaceGameObject, new UIOptions(null, OnInterfaceOpen, OnInterfaceClose));
     }
 }
