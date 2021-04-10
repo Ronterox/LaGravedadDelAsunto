@@ -1,16 +1,16 @@
-﻿using UnityEngine;
+﻿using Managers;
+using Plugins.Tools;
+using UnityEngine;
 
 namespace GUI
 {
-    public class PointerManager : MonoBehaviour
+    public class PointerManager : Singleton<PointerManager>, MMEventListener<MMGameEvent>
     {
         public KeyCode cursorKey;
-        
-        private void Awake()
-        {
-            Cursor.visible = false;
-            Cursor.lockState = CursorLockMode.Locked;
-        }
+
+        public void OnEnable() => this.MMEventStartListening();
+
+        public void OnDisable() => this.MMEventStopListening();
 
         private void LateUpdate()
         {
@@ -22,6 +22,11 @@ namespace GUI
         {
             Cursor.visible = active;
             Cursor.lockState = active ? CursorLockMode.None : CursorLockMode.Locked;
+        }
+
+        public void OnMMEvent(MMGameEvent eventType)
+        {
+            if (eventType.Equals(MMGameEvent.LOAD)) SetCursorActive(LevelLoadManager.Instance.SceneIsGUI);
         }
     }
 }

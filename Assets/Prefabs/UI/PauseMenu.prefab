@@ -180,6 +180,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8e3c506e479676499cd9aa4c4991d00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  menu: MainMenu
+  settings: TestZone
 --- !u!1 &5873792240818956812
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,15 +1,18 @@
+using Managers;
+using Plugins.Properties;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace GUI
 {
     public class MainMenu : MonoBehaviour
     {
-        public void PlayGame() => SceneManager.LoadScene("");
+        [Scene] public string testZone, settings;
 
-        public void TestZone() => SceneManager.LoadScene("TestZone");
+        public void PlayGame() {}
 
-        public void OpenSettings() => SceneManager.LoadScene("");
+        public void TestZone() => LevelLoadManager.Instance.LoadScene(testZone);
+
+        public void OpenSettings() => LevelLoadManager.Instance.LoadScene(settings);
 
         public void QuitGame() => Application.Quit();
     }

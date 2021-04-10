@@ -8,9 +8,12 @@ namespace General.Utilities
 
         private void Awake()
         {
-            if (!player) player = GameObject.FindWithTag("Player").transform;
+            if (!player) player = GameObject.FindWithTag("Player")?.transform;
         }
 
-        private void LateUpdate() => transform.LookAt(player);
+        private void LateUpdate()
+        {
+            if (player) transform.LookAt(player);
+        }
     }
 }

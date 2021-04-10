@@ -13,13 +13,15 @@ namespace Plugins.Tools
     /// <summary>
     /// MMGameEvents are used throughout the game for general match events
     /// </summary>
-    public struct MMGameEvent
+    public readonly struct MMGameEvent
     {
         public const string PAUSE = "Pause";
         public const string UNPAUSE = "Unpause";
         public const string LOAD = "Load";
 
-        private string eventName;
+        private readonly string eventName;
+
+        public bool Equals(string nameOfEvent) => eventName.Equals(nameOfEvent);
 
         public MMGameEvent(string newName) => eventName = newName;
     }
@@ -61,13 +63,14 @@ namespace Plugins.Tools
     /// 3 - Implement the MMEventListener interface for that event. For example :
     /// public void OnMMEvent(MMGameEvent gameEvent)
     /// {
-    /// 	if (gameEvent.eventName == "GameOver")
+    /// 	if (gameEvent.nameOfEvent == "GameOver")
     ///		{
     ///			// DO SOMETHING
     ///		}
     /// } 
     /// will catch all events of type MMGameEvent emitted from anywhere in the game, and do something if it's named GameOver
     ///</summary>
+    [ExecuteAlways]
     public static class MMEventManager
     {
         private static readonly Dictionary<Type, List<MMEventListenerBase>> m_SubscribersList;
@@ -164,9 +167,9 @@ namespace Plugins.Tools
     {
         public delegate void Delegate<in T>(T eventType);
 
-        public static void MMEventStartListening<EventType>(this MMEventListener<EventType> caller) where EventType : struct => MMEventManager.AddListener<EventType>(caller);
+        public static void MMEventStartListening<EventType>(this MMEventListener<EventType> caller) where EventType : struct => MMEventManager.AddListener(caller);
 
-        public static void MMEventStopListening<EventType>(this MMEventListener<EventType> caller) where EventType : struct => MMEventManager.RemoveListener<EventType>(caller);
+        public static void MMEventStopListening<EventType>(this MMEventListener<EventType> caller) where EventType : struct => MMEventManager.RemoveListener(caller);
     }
 
     /// <summary>
@@ -179,6 +182,10 @@ namespace Plugins.Tools
     /// </summary>
     public interface MMEventListener<in T> : MMEventListenerBase
     {
+        void OnEnable();
+
+        void OnDisable();
+
         void OnMMEvent(T eventType);
     }
 }

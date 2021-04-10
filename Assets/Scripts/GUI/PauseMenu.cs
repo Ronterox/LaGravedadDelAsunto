@@ -1,23 +1,17 @@
 using Managers;
+using Plugins.Properties;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace GUI
 {
     public class PauseMenu : MonoBehaviour
     {
-        public void Resume() => GUIManager.Instance.CloseGUIMenu(false);
+        [Scene] public string menu, settings;
 
-        public void LoadMainMenu()
-        {
-            Resume();
-            SceneManager.LoadScene("MainMenu");
-        }
+        public void Resume() => GUIManager.Instance.CloseGUIMenu();
 
-        public void OpenSettings()
-        {
-            Resume();
-            SceneManager.LoadScene("");
-        }
+        public void LoadMainMenu() => LevelLoadManager.Instance.LoadScene(menu);
+
+        public void OpenSettings() => LevelLoadManager.Instance.LoadScene(settings);
     }
 }
