@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using Plugins.Properties;
 using Plugins.Tools;
@@ -10,6 +11,12 @@ namespace Managers
         private bool m_IsLoading;
 
         [Scene] public string[] guiScenes;
+
+        private void OnEnable() => SceneManager.sceneLoaded += OnSceneLoaded;
+
+        private void OnDisable() => SceneManager.sceneLoaded -= OnSceneLoaded;
+
+        private void OnSceneLoaded(Scene scene, LoadSceneMode mode) => MMEventManager.TriggerEvent(new MMGameEvent(MMGameEvent.LOAD));
 
         public bool SceneIsGUI => guiScenes.Contains(GetCurrentSceneName());
 
@@ -40,11 +47,13 @@ namespace Managers
             {
                 switch (scene)
                 {
-                    case string sceneName: SceneManager.LoadScene(sceneName); break;
-                    case int sceneIndex:   SceneManager.LoadScene(sceneIndex); break;
+                    case string sceneName:
+                        SceneManager.LoadScene(sceneName);
+                        break;
+                    case int sceneIndex:
+                        SceneManager.LoadScene(sceneIndex);
+                        break;
                 }
-
-                MMEventManager.TriggerEvent(new MMGameEvent(MMGameEvent.LOAD));
 
                 TransitionManager.Instance.Close(() => m_IsLoading = false);
             });

@@ -46,7 +46,7 @@ namespace Managers
         }
     }
 
-    public class GUIManager : PersistentSingleton<GUIManager>
+    public class GUIManager : PersistentSingleton<GUIManager>, MMEventListener<MMGameEvent>
     {
         public GameObject mainCanvas;
 
@@ -68,6 +68,10 @@ namespace Managers
 
         private void Start() => InitializeCanvasInstance();
 
+        public void OnEnable() => this.MMEventStartListening();
+
+        public void OnDisable() => this.MMEventStopListening();
+
         private void Update()
         {
             if (m_IsGuiOpened && PlayerInput.Instance.Pause) CloseGUIMenu();
@@ -87,7 +91,11 @@ namespace Managers
         /// <param name="animationDuration">the duration of the fading</param>
         /// <param name="onceFinishAnimation">once the animation is finished</param>
         /// <param name="animEase">the type of animation ease</param>
-        public static void AnimateAlpha(CanvasGroup canvasGroup, float objectiveAlpha, float animationDuration = 0.5f, TweenCallback onceFinishAnimation = null, Ease animEase = Ease.Unset) => canvasGroup.DOFade(objectiveAlpha, animationDuration).SetEase(animEase).OnComplete(onceFinishAnimation);
+        public static void AnimateAlpha(CanvasGroup canvasGroup, float objectiveAlpha, float animationDuration = 0.5f, TweenCallback onceFinishAnimation = null, Ease animEase = Ease.Unset)
+        {
+            canvasGroup.alpha = Mathf.Abs(1f - objectiveAlpha);
+            canvasGroup.DOFade(objectiveAlpha, animationDuration).SetEase(animEase).OnComplete(onceFinishAnimation);
+        }
 
         /// <summary>
         /// Opens the gameObject passed as a gui on the main canvas
@@ -246,6 +254,11 @@ namespace Managers
             options.SetActions(GameManager.Instance.inventory.InitializeInventory, x => onOpenGUI?.Invoke(), x => onCloseGUI?.Invoke());
 
             OpenGUIMenu(inventoryUi, options);
+        }
+
+        public void OnMMEvent(MMGameEvent eventType)
+        {
+            if (eventType.Equals(MMGameEvent.LOAD)) InitializeCanvasInstance();
         }
     }
 }

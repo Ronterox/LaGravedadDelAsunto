@@ -1,6 +1,4 @@
-﻿using System.Linq;
-using Managers;
-using Plugins.Properties;
+﻿using Managers;
 using Plugins.Tools;
 using UnityEngine;
 

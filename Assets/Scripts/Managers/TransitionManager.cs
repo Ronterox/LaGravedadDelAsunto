@@ -27,13 +27,18 @@ namespace Managers
         {
             if (m_IsTransitioning) return;
 
-            if (open && transitionPanelGameObject) GUIManager.Instance.RemoveUIInstantly(transitionPanelGameObject);
+            if (open && m_TransitionPanelInstance) GUIManager.Instance.RemoveUIInstantly(m_TransitionPanelInstance);
 
             m_IsTransitioning = true;
-            callback += () => m_IsTransitioning = false;
 
-            if (open) m_TransitionPanelInstance = GUIManager.Instance.InstantiateUI(transitionPanelGameObject, 1f, duration, callback, openEase);
-            else GUIManager.Instance.RemoveUI(m_TransitionPanelInstance, duration, callback, closeEase);
+            void OnceFinishAnimation()
+            {
+                m_IsTransitioning = false;
+                callback?.Invoke();
+            }
+
+            if (open) m_TransitionPanelInstance = GUIManager.Instance.InstantiateUI(transitionPanelGameObject, 1f, duration, OnceFinishAnimation, openEase);
+            else GUIManager.Instance.RemoveUI(m_TransitionPanelInstance, duration, OnceFinishAnimation, closeEase);
         }
 
         /// <summary>
