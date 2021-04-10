@@ -37,7 +37,7 @@ namespace Managers
                 callback?.Invoke();
             }
 
-            if (open) m_TransitionPanelInstance = GUIManager.Instance.InstantiateUI(transitionPanelGameObject, 1f, duration, OnceFinishAnimation, openEase);
+            if (open) m_TransitionPanelInstance = GUIManager.Instance.InstantiateUI(transitionPanelGameObject, false,1f, duration, OnceFinishAnimation, openEase);
             else GUIManager.Instance.RemoveUI(m_TransitionPanelInstance, duration, OnceFinishAnimation, closeEase);
         }
 

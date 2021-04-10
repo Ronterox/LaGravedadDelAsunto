@@ -105,6 +105,8 @@ namespace Managers
         {
             if (m_IsGuiOpened) return;
 
+            m_IsGuiOpened = true;
+
             m_CurrentGUI = Instantiate(menu, m_CanvasInstance.transform);
 
             m_CurrentGUI.SetActive(true);
@@ -130,8 +132,6 @@ namespace Managers
             else Callback();
 
             m_OnCloseGUI = options.onCloseGUI;
-
-            m_IsGuiOpened = true;
         }
 
         /// <summary>
@@ -166,14 +166,59 @@ namespace Managers
         }
 
         /// <summary>
+        /// Closes any opened menu instantly
+        /// </summary>
+        public void CloseGUIMenuInstantly()
+        {
+            Time.timeScale = 1f;
+            Destroy(m_CurrentGUI);
+            m_IsGuiOpened = false;
+        }
+
+        /// <summary>
         /// Instantiates a game object on the main canvas
         /// </summary>
-        /// <param name="obj"></param>
+        /// <param name="obj">game object to be instantiated</param>
+        /// <param name="destroyOnLoad">check whether to be destroyed on load</param>
         /// <returns></returns>
-        public GameObject InstantiateUIInstantly(GameObject obj)
+        public GameObject InstantiateUIInstantly(GameObject obj, bool destroyOnLoad = true)
         {
             GameObject instance;
             m_InstantiatedObjects.Add(instance = Instantiate(obj, m_CanvasInstance.transform));
+
+            if (destroyOnLoad)
+            {
+                void DestroyInstance()
+                {
+                    RemoveUIInstantly(instance);
+                    LevelLoadManager.Instance.onSceneLoadCompleted -= DestroyInstance;
+                }
+
+                LevelLoadManager.Instance.onSceneLoadCompleted += DestroyInstance;
+            }
+
+            return instance;
+        }
+
+        /// <summary>
+        /// Instantiates a game object on the main canvas with an animation
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="destroyOnLoad">check whether to be destroyed on load</param>
+        /// <param name="targetAlpha">target alpha of the animation</param>
+        /// <param name="animationDuration">optional</param>
+        /// <param name="onAnimationEnd">optional event</param>
+        /// <param name="animationEase">animation style</param>
+        /// <returns></returns>
+        public GameObject InstantiateUI(GameObject obj, bool destroyOnLoad, float targetAlpha = 1f, float animationDuration = 0.5f, TweenCallback onAnimationEnd = null, Ease animationEase = Ease.Unset)
+        {
+            GameObject instance = InstantiateUIInstantly(obj, destroyOnLoad);
+
+            var canvasGroup = instance.GetComponent<CanvasGroup>();
+
+            if (canvasGroup) AnimateAlpha(canvasGroup, targetAlpha, animationDuration, onAnimationEnd, animationEase);
+            else onAnimationEnd?.Invoke();
+
             return instance;
         }
 
@@ -186,17 +231,7 @@ namespace Managers
         /// <param name="onAnimationEnd">optional event</param>
         /// <param name="animationEase">animation style</param>
         /// <returns></returns>
-        public GameObject InstantiateUI(GameObject obj, float targetAlpha = 1f, float animationDuration = 0.5f, TweenCallback onAnimationEnd = null, Ease animationEase = Ease.Unset)
-        {
-            GameObject instance = InstantiateUIInstantly(obj);
-
-            var canvasGroup = instance.GetComponent<CanvasGroup>();
-
-            if (canvasGroup) AnimateAlpha(canvasGroup, targetAlpha, animationDuration, onAnimationEnd, animationEase);
-            else onAnimationEnd?.Invoke();
-
-            return instance;
-        }
+        public GameObject InstantiateUI(GameObject obj, float targetAlpha = 1f, float animationDuration = 0.5f, TweenCallback onAnimationEnd = null, Ease animationEase = Ease.Unset) => InstantiateUI(obj, true, targetAlpha, animationDuration, onAnimationEnd, animationEase);
 
         /// <summary>
         /// Removes a game object from the main canvas

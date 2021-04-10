@@ -27,9 +27,8 @@ namespace Managers
 
         public void OnMMEvent(MMGameEvent eventType)
         {
-            if (!eventType.Equals(MMGameEvent.LOAD)) return;
-            
-            if (LevelLoadManager.Instance.SceneIsGUI) Destroy(gameObject);
+            if (m_Instance || !eventType.Equals(MMGameEvent.LOAD)) return;
+            if (LevelLoadManager.Instance.SceneIsGUI) Destroy(m_Instance.gameObject);
         }
 
         public void OnEnable() => this.MMEventStartListening();

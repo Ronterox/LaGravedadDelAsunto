@@ -26,7 +26,7 @@ namespace NPCs
         {
             Quest currentQuest = campaign.GetCurrentQuest();
 
-            if (!currentQuest.questID.Equals(GATHERING_QUEST_ID)) return;
+            if (currentQuest && !currentQuest.questID.Equals(GATHERING_QUEST_ID)) return;
 
             if (currentQuest.IsJustStarted()) Say("look around");
             else if (currentQuest.IsOnGoing) Say("collect");

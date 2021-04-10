@@ -12,8 +12,12 @@ namespace Managers
 
         [Scene] public string[] guiScenes;
 
+        public delegate void LevelLoadEvent();
+
+        public event LevelLoadEvent onSceneLoadCompleted;
+
         public bool SceneIsGUI => guiScenes.Contains(GetCurrentSceneName());
-        
+
         private void OnEnable() => SceneManager.sceneLoaded += OnSceneLoaded;
 
         private void OnDisable() => SceneManager.sceneLoaded -= OnSceneLoaded;
@@ -21,7 +25,12 @@ namespace Managers
         private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
         {
             MMEventManager.TriggerEvent(new MMGameEvent(MMGameEvent.LOAD));
-            if (SceneIsGUI) GUIManager.Instance.InitializeCanvasInstance();
+            
+            GUIManager.Instance.CloseGUIMenuInstantly();
+
+            onSceneLoadCompleted?.Invoke();
+
+            m_IsLoading = false;
         }
 
         /// <summary>
@@ -44,9 +53,9 @@ namespace Managers
         private void LoadSceneProcedure(object scene)
         {
             if (m_IsLoading) return;
-            
+
             Time.timeScale = 1f;
-            
+
             m_IsLoading = true;
 
             TransitionManager.Instance.Open(() =>
@@ -61,7 +70,7 @@ namespace Managers
                         break;
                 }
 
-                TransitionManager.Instance.Close(() => m_IsLoading = false);
+                TransitionManager.Instance.Close();
             });
         }
 
