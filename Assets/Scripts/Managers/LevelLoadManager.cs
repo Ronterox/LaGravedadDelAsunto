@@ -1,7 +1,7 @@
-using System;
 using System.Linq;
 using Plugins.Properties;
 using Plugins.Tools;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace Managers
@@ -12,13 +12,17 @@ namespace Managers
 
         [Scene] public string[] guiScenes;
 
+        public bool SceneIsGUI => guiScenes.Contains(GetCurrentSceneName());
+        
         private void OnEnable() => SceneManager.sceneLoaded += OnSceneLoaded;
 
         private void OnDisable() => SceneManager.sceneLoaded -= OnSceneLoaded;
 
-        private void OnSceneLoaded(Scene scene, LoadSceneMode mode) => MMEventManager.TriggerEvent(new MMGameEvent(MMGameEvent.LOAD));
-
-        public bool SceneIsGUI => guiScenes.Contains(GetCurrentSceneName());
+        private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+        {
+            MMEventManager.TriggerEvent(new MMGameEvent(MMGameEvent.LOAD));
+            if (SceneIsGUI) GUIManager.Instance.InitializeCanvasInstance();
+        }
 
         /// <summary>
         /// Loads the next scene on the build settings
@@ -40,7 +44,9 @@ namespace Managers
         private void LoadSceneProcedure(object scene)
         {
             if (m_IsLoading) return;
-
+            
+            Time.timeScale = 1f;
+            
             m_IsLoading = true;
 
             TransitionManager.Instance.Open(() =>

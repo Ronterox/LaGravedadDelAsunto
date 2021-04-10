@@ -46,7 +46,7 @@ namespace Managers
         }
     }
 
-    public class GUIManager : PersistentSingleton<GUIManager>, MMEventListener<MMGameEvent>
+    public class GUIManager : PersistentSingleton<GUIManager>
     {
         public GameObject mainCanvas;
 
@@ -55,7 +55,7 @@ namespace Managers
         public GameObject inventoryUi;
 
         [Header("GUI Animation Settings")]
-        [Range(0.5f, 3f)] public float alphaAnimationDuration;
+        [Range(0.1f, 1f)] public float alphaAnimationDuration;
 
         private CanvasGroup m_CurrentGUICanvasGroup;
         private GameObject m_CurrentGUI;
@@ -68,18 +68,17 @@ namespace Managers
 
         private void Start() => InitializeCanvasInstance();
 
-        public void OnEnable() => this.MMEventStartListening();
-
-        public void OnDisable() => this.MMEventStopListening();
-
         private void Update()
         {
             if (m_IsGuiOpened && PlayerInput.Instance.Pause) CloseGUIMenu();
         }
 
-        private void InitializeCanvasInstance()
+        public void InitializeCanvasInstance()
         {
+            m_IsGuiOpened = false;
+
             if (m_CanvasInstance) Destroy(m_CanvasInstance);
+
             (m_CanvasInstance = Instantiate(mainCanvas)).transform.SetParent(transform);
         }
 
@@ -254,11 +253,6 @@ namespace Managers
             options.SetActions(GameManager.Instance.inventory.InitializeInventory, x => onOpenGUI?.Invoke(), x => onCloseGUI?.Invoke());
 
             OpenGUIMenu(inventoryUi, options);
-        }
-
-        public void OnMMEvent(MMGameEvent eventType)
-        {
-            if (eventType.Equals(MMGameEvent.LOAD)) InitializeCanvasInstance();
         }
     }
 }
