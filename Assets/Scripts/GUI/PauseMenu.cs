@@ -1,6 +1,5 @@
 using Managers;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace GUI
 {
@@ -11,13 +10,13 @@ namespace GUI
         public void LoadMainMenu()
         {
             Resume();
-            SceneManager.LoadScene("MainMenu");
+            LevelLoadManager.Instance.LoadScene("MainMenu");
         }
 
         public void OpenSettings()
         {
             Resume();
-            SceneManager.LoadScene("");
+            LevelLoadManager.Instance.LoadScene("");
         }
     }
 }

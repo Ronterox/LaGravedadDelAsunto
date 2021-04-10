@@ -5,7 +5,7 @@ using Plugins.Tools;
 
 namespace Managers
 {
-    public class GameManager : PersistentSingleton<GameManager>
+    public class GameManager : PersistentSingleton<GameManager>, MMEventListener<MMGameEvent>
     {
         public KarmaController karmaController;
         public QuestManager questManager;
@@ -14,7 +14,7 @@ namespace Managers
         public Inventory inventory;
 
         public bool GameIsPaused;
-        
+
         private void Update()
         {
             if (!PlayerInput.Instance.Pause) return;
@@ -24,5 +24,16 @@ namespace Managers
 
             GameIsPaused = !GameIsPaused;
         }
+
+        public void OnMMEvent(MMGameEvent eventType)
+        {
+            if (!eventType.Equals(MMGameEvent.LOAD)) return;
+            
+            if (LevelLoadManager.Instance.SceneIsGUI) Destroy(gameObject);
+        }
+
+        public void OnEnable() => this.MMEventStartListening();
+
+        public void OnDisable() => this.MMEventStopListening();
     }
 }

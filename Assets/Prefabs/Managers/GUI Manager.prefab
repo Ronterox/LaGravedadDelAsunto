@@ -45,7 +45,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCanvas: {fileID: 161616629438499575, guid: 549423e1716805ac7ae4a7806e8249d4, type: 3}
-  pointerManager: {fileID: 595173530420329776}
   pauseMenu: {fileID: 5873792240648600600, guid: c5945f73167ac6ba2957b26bbf175e39, type: 3}
   inventoryUi: {fileID: 4812793505276247951, guid: 036f00ce4491e0d8b82582fa29760a3c, type: 3}
   alphaAnimationDuration: 0.5
@@ -62,3 +61,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cursorKey: 308
+  guiScenes:
+  - MainMenu

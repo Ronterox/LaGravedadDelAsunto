@@ -8,7 +8,7 @@ namespace Managers
     /// Manager class that allows displaying a transition animation whenever necessary.
     /// It's a persistent Singleton.
     /// </summary>
-    public class TransitionManager : PersistentSingleton<TransitionManager>
+    public class TransitionManager : Singleton<TransitionManager>
     {
         public GameObject transitionPanelGameObject;
 

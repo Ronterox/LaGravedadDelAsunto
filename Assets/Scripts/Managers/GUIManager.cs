@@ -49,7 +49,6 @@ namespace Managers
     public class GUIManager : PersistentSingleton<GUIManager>
     {
         public GameObject mainCanvas;
-        public PointerManager pointerManager;
 
         [Header("Menus GameObjects")]
         public GameObject pauseMenu;
@@ -77,7 +76,7 @@ namespace Managers
         private void InitializeCanvasInstance()
         {
             if (m_CanvasInstance) Destroy(m_CanvasInstance);
-            (m_CanvasInstance = Instantiate(mainCanvas)).MoveToScene("GUI Scene");
+            (m_CanvasInstance = Instantiate(mainCanvas)).transform.SetParent(transform);
         }
 
         /// <summary>
@@ -114,7 +113,7 @@ namespace Managers
                 if (options.pauseTime) Time.timeScale = 0f;
                 if (options.lockInput) PlayerInput.Instance.BlockInput();
 
-                if (options.showPointer) pointerManager.SetCursorActive();
+                if (options.showPointer) PointerManager.Instance.SetCursorActive();
                 PlayerController.Instance.BlockMovement(options.lockMovement);
 
                 options.onOpenGUI?.Invoke(m_CurrentGUI);
@@ -145,7 +144,7 @@ namespace Managers
                 PlayerInput.Instance.UnlockInput();
 
                 PlayerController.Instance.BlockMovement(false);
-                pointerManager.SetCursorActive(false);
+                PointerManager.Instance.SetCursorActive(false);
 
                 Destroy(m_CurrentGUI);
 
