@@ -13,7 +13,7 @@ namespace Managers
         public DialogueManager dialogueManager;
         public Inventory inventory;
 
-        public bool GameIsPaused;
+        public bool GameIsPaused { get; private set; }
 
         private void Update()
         {
@@ -21,8 +21,6 @@ namespace Managers
 
             if (GameIsPaused) GUIManager.Instance.CloseGUIMenu();
             else GUIManager.Instance.OpenPauseMenu(() => GameIsPaused = true, () => GameIsPaused = false);
-
-            GameIsPaused = !GameIsPaused;
         }
 
         public void OnMMEvent(MMGameEvent eventType)
