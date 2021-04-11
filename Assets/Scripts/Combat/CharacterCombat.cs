@@ -1,5 +1,6 @@
 using System.Collections;
 using Player;
+using Plugins.Tools;
 using UnityEngine;
 
 namespace Combat
@@ -12,10 +13,14 @@ namespace Combat
         public float attackSpeed = 1f;
         public float attackDelay = .6f;
 
-        private float attackCooldown;
+ 
 
         public float combatCooldown = 2;
         public float lastAttackTime;
+
+ 
+
+        public Weapon sword;
 
         public int damage;
 
@@ -23,57 +28,49 @@ namespace Combat
 
         private Animator m_Animator;
 
-        private readonly int IN_COMBAT_HASH = Animator.StringToHash("inCombat");
+        private readonly int ATTACK_HASH = Animator.StringToHash("Attack");
 
-        private void Start() => m_Animator = GetComponent<Animator>();
+        private void Start() => SetWeapon();
 
-        public void SetWeapon(string weapon)
+        public void SetWeapon()
         {
-            //weapon.transform.parent = weaponHolder;
+            sword.transform.parent = weaponHolder;
+            sword.transform.position = weaponHolder.position;
+          
         }
-        
+
+        private void Awake()
+        {
+           
+            m_Animator = GetComponent<Animator>();
+        }
+
         private void Update()
         {
-            attackCooldown -= Time.deltaTime;
-            if (Time.time - lastAttackTime > combatCooldown)
-            {
-                inCombat = false;
-            }
             if (PlayerInput.Instance.Attack)
             {
-                inCombat = true;
+                m_Animator.SetTrigger(ATTACK_HASH);
+
             }
         }
 
-        private void FixedUpdate() => AnimatePlayer();
+ 
 
-        public void Attack(CharacterHealth targetHealth)
+        public void Attack(int isAttacking)
         {
-            if (attackCooldown <= 0f)
+            bool enableCollider=false;
+            if (isAttacking == 0)
             {
-                StartCoroutine(DoDamage(targetHealth, attackDelay));
-
-                inCombat = true;
-                attackCooldown = 1f / attackSpeed;
-                lastAttackTime = Time.time;
+                enableCollider = false;
+            }else if (isAttacking == 1)
+            {
+                enableCollider = true;
             }
+            sword.SetCollider(enableCollider);
+
         }
 
-        private IEnumerator DoDamage(CharacterHealth health, float delay)
-        {
-            PlayerController.Instance.BlockMovement(true);
-            
-            yield return new WaitForSeconds(delay);
-            health.TakeDamage(damage);
 
-            if (health.currentHealth <= 0) inCombat = false;
-            
-            PlayerController.Instance.BlockMovement(false);
-        }
-
-        private void AnimatePlayer()
-        {
-            m_Animator.SetBool(IN_COMBAT_HASH, inCombat);
-        }
+   
     }
 }

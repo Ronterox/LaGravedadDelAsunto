@@ -16,7 +16,6 @@ namespace Managers
 
         public PointerManager pointerManager;
 
-        public CharacterCombat characterCombat;
 
         public bool GameIsPaused;
 
