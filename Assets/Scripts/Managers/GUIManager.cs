@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using GUI;
@@ -66,11 +67,14 @@ namespace Managers
         private readonly List<GameObject> m_InstantiatedObjects = new List<GameObject>();
         private GameObject m_CanvasInstance;
 
+        private bool m_JustOpenedGUI;
+
         private void Start() => InitializeCanvasInstance();
 
         private void Update()
         {
-            if (m_IsGuiOpened && PlayerInput.Instance.Pause) CloseGUIMenu();
+            if (m_IsGuiOpened && !m_JustOpenedGUI && PlayerInput.Instance.Pause) CloseGUIMenu();
+            if (m_JustOpenedGUI) m_JustOpenedGUI = false;
         }
 
         public void InitializeCanvasInstance()
@@ -106,6 +110,7 @@ namespace Managers
             if (m_IsGuiOpened) return;
 
             m_IsGuiOpened = true;
+            m_JustOpenedGUI = true;
 
             m_CurrentGUI = Instantiate(menu, m_CanvasInstance.transform);
 

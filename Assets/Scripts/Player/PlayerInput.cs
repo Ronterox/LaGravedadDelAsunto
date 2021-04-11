@@ -9,9 +9,6 @@ namespace Player
         public float zoomSpeed = 5f;
         private float m_ScrollWheelMovement;
 
-        public bool playerControllerInputBlocked;
-        private bool m_ExternalInputBlocked;
-
         private Vector2 m_Movement;
         private Vector2 m_Camera;
 
@@ -28,7 +25,7 @@ namespace Player
 
         public Vector2 CameraInput => InputBlocked ? Vector2.zero : m_Camera;
 
-        public bool InputBlocked => playerControllerInputBlocked || m_ExternalInputBlocked;
+        public bool InputBlocked { get; private set; }
 
         public bool JumpInput => m_Jump && !InputBlocked;
 
@@ -46,7 +43,7 @@ namespace Player
 
         public bool IsScrollingDown => m_ScrollWheelMovement < 0;
 
-        public bool Pause;
+        public bool Pause { get; private set; }
 
         private void Update()
         {
@@ -67,10 +64,10 @@ namespace Player
             m_Inventory = Input.GetButtonDown("Inventory");
         }
 
-        public bool HasControl() => !m_ExternalInputBlocked;
+        public bool HasControl() => !InputBlocked;
 
-        public void BlockInput() => m_ExternalInputBlocked = true;
+        public void BlockInput() => InputBlocked = true;
 
-        public void UnlockInput() => m_ExternalInputBlocked = false;
+        public void UnlockInput() => InputBlocked = false;
     }
 }

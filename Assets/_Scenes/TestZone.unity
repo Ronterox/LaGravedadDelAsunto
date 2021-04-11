@@ -67695,7 +67695,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3982869366555399440, guid: 4cc04cb27b7677ad982ab891e518fb60, type: 3}
       propertyPath: m_Name
-      value: Transition Manager
+      value: LevelLoad Manager
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4cc04cb27b7677ad982ab891e518fb60, type: 3}
