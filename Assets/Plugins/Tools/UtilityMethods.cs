@@ -163,6 +163,20 @@ namespace Plugins.Tools
             Scene scene = SceneManager.GetSceneByName(sceneName);
             SceneManager.MoveGameObjectToScene(obj, scene.IsValid() ? scene : SceneManager.CreateScene(sceneName));
         }
+
+        /// <summary>
+        /// Returns the decibel value as a volume value from 0 to 1
+        /// </summary>
+        /// <param name="dB"></param>
+        /// <returns></returns>
+        public static float ToVolume(this float dB) => Mathf.Pow(10, dB * 0.05f);
+
+        /// <summary>
+        /// Returns the volume from 0 to 1 as its decibel value
+        /// </summary>
+        /// <param name="volume"></param>
+        /// <returns></returns>
+        public static float ToDecibels(this float volume) => volume > 0 ? Mathf.Log10(volume) * 20 : -80f;
     }
 
 
