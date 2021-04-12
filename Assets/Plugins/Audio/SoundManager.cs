@@ -35,18 +35,10 @@ namespace Plugins.Audio
     [RequireComponent(typeof(SoundPooler))]
     public class SoundManager : PersistentSingleton<SoundManager>
     {
-        public AudioClip menuAudioClip;
-
-        public AudioClip changeAudio;
-        public AudioClip pressAudio;
-
         [Header("Mixer")]
         public AudioMixer audioMixer;
         public AudioMixerGroup inGameAudioMixer;
         public AudioMixerGroup uiAudioMixer;
-
-        [Header("Pause")]
-        public bool muteSfxOnPause = true;
 
         [Header("InGame Pooler:")]
         public GameObject inGamePoolerPrefab;
@@ -62,11 +54,14 @@ namespace Plugins.Audio
         private SoundPooler m_SoundsPool;
         private SoundPooler m_CurrentInGamePooler;
 
-        // volume Params
+        // Volume Params
         private const string MASTER_VOLUME_PARAM = "Master_Volume";
+        
         private const string MUSIC_VOLUME_PARAM = "Music_Volume";
         private const string VOICE_VOLUME_PARAM = "Voice_Volume";
         private const string SFX_VOLUME_PARAM = "SFX_Volume";
+
+        private const string SOUND_OBJECT_POOL = "SoundFXPool_Item";
 
         /// <summary>
         /// Awake
@@ -110,7 +105,7 @@ namespace Plugins.Audio
         {
             if (m_BackgroundMusic.clip == clip) yield break;
 
-            yield return StartCoroutine(FadeMixerVolume(m_BackgroundMusic.outputAudioMixerGroup.audioMixer, "BackgroundMusic_Volume", fadeDuration, 0f));
+            yield return StartCoroutine(FadeMixerVolume(m_BackgroundMusic.outputAudioMixerGroup.audioMixer, MUSIC_VOLUME_PARAM, fadeDuration, 0f));
 
             m_BackgroundMusic.clip = clip;
             // we set the loop setting to true, the music will loop forever
@@ -119,7 +114,7 @@ namespace Plugins.Audio
             // we start playing the background music
             m_BackgroundMusic.Play();
 
-            yield return StartCoroutine(FadeMixerVolume(m_BackgroundMusic.outputAudioMixerGroup.audioMixer, "BackgroundMusic_Volume", fadeDuration, MusicVolume));
+            yield return StartCoroutine(FadeMixerVolume(m_BackgroundMusic.outputAudioMixerGroup.audioMixer, MUSIC_VOLUME_PARAM, fadeDuration, MusicVolume));
         }
 
         /// <summary>
@@ -217,7 +212,7 @@ namespace Plugins.Audio
             if (m_CurrentInGamePooler == null) return;
 
             var sound = new SoundItem(sfx, inGameAudioMixer, volume, 1f, loop, minDistance, maxDistance, AudioRolloffMode.Linear);
-            m_CurrentInGamePooler.Trigger("SoundFXPool_Item", location, delay, sound);
+            m_CurrentInGamePooler.Trigger(SOUND_OBJECT_POOL, location, delay, sound);
         }
 
         /// <summary>
@@ -231,7 +226,7 @@ namespace Plugins.Audio
         public void PlayNonDiegeticSound(AudioClip sfx, float volume = 1f, bool loop = false, float delay = 0f)
         {
             var sound = new SoundItem(sfx, uiAudioMixer, volume, 0f, loop);
-            m_SoundsPool.Trigger("SoundFXPool_Item", Vector3.zero, delay, sound);
+            m_SoundsPool.Trigger(SOUND_OBJECT_POOL, Vector3.zero, delay, sound);
         }
 
         /// <summary>
@@ -259,8 +254,8 @@ namespace Plugins.Audio
         /// </summary>
         public void OpenMenuVolume()
         {
-            audioMixer.SetFloat("BackgroundMusic_Volume", (MusicVolume * 0.5f).ToDecibels());
-            audioMixer.SetFloat("SFX_Volume", (SFXVolume * 0.5f).ToDecibels());
+            audioMixer.SetFloat(MUSIC_VOLUME_PARAM, (MusicVolume * 0.5f).ToDecibels());
+            audioMixer.SetFloat(SFX_VOLUME_PARAM, (SFXVolume * 0.5f).ToDecibels());
         }
 
         /// <summary>
@@ -268,8 +263,8 @@ namespace Plugins.Audio
         /// </summary>
         public void CloseMenuVolume()
         {
-            audioMixer.SetFloat("BackgroundMusic_Volume", MusicVolume.ToDecibels());
-            audioMixer.SetFloat("SFX_Volume", SFXVolume.ToDecibels());
+            audioMixer.SetFloat(MUSIC_VOLUME_PARAM, MusicVolume.ToDecibels());
+            audioMixer.SetFloat(SFX_VOLUME_PARAM, SFXVolume.ToDecibels());
         }
     }
 }

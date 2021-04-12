@@ -84,7 +84,7 @@ namespace Plugins.Audio
                 item.pool.initialPoolCount = item.InitialObjectCount;
                 item.pool.PoolName = item.PoolName;
 
-                m_Pools[StringToHash(item.Prefab.name)] = item.pool as TInstancePooler;
+                m_Pools[item.Prefab.name.GetHashCode()] = item.pool as TInstancePooler;
             }
 
             m_Running = new PriorityQueue<TPooledType>();
@@ -100,7 +100,6 @@ namespace Plugins.Audio
             // Sleep pooled item if expire time passed
             while (!m_Running.Empty && m_Running.First.EndAt <= Time.time)
             {
-                   
                 TPooledType instance = m_Running.Pop();
                 instance.ChainedItem.ReturnToPool();
             }
@@ -130,18 +129,11 @@ namespace Plugins.Audio
         /// <summary>
         /// public call for triggering pool
         /// </summary>
-        /// <param name="soundName"></param>
+        /// <param name="objectName"></param>
         /// <param name="position"></param>
         /// <param name="startDelay"></param>
         /// <param name="additionalParams"></param>
-        public abstract void Trigger(string soundName, Vector3 position, float startDelay, params object[] additionalParams);
-
-        /// <summary>
-        /// Name to hash
-        /// </summary>
-        /// <param name="name"></param>
-        /// <returns></returns>
-        public static int StringToHash(string name) => name.GetHashCode();
+        public abstract void Trigger(string objectName, Vector3 position, float startDelay, params object[] additionalParams);
 
         /// <summary>
         /// Stop pooler

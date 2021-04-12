@@ -51,12 +51,12 @@ namespace Plugins.Audio
     /// </summary>
     public class SoundPooler : Pooler<SoundPoolPendingTask, SoundInstancePool, SoundPoolObject, SoundPoolConfig>
     {
-        public override void Trigger(string soundName, Vector3 position, float startDelay, params object[] additionalParams)
+        public override void Trigger(string objectName, Vector3 position, float startDelay, params object[] additionalParams)
         {
             if (m_Pools == null) return;
-            if (!m_Pools.TryGetValue(StringToHash(soundName), out SoundInstancePool pooler))
+            if (!m_Pools.TryGetValue(objectName.GetHashCode(), out SoundInstancePool pooler))
             {
-                Debug.LogError($"SoundPooler({gameObject.name}): Pool with soundName: {soundName} wasn't found.");
+                Debug.LogError($"SoundPooler({gameObject.name}): Pool with objectName: {objectName} wasn't found.");
                 return;
             }
 
@@ -69,7 +69,7 @@ namespace Plugins.Audio
                 Position = position,
                 StartAt = Time.time + startDelay,
                 EndAt = item.loop ? Mathf.Infinity : Time.time + startDelay + item.clip.length,
-                PrefabName = soundName
+                PrefabName = objectName
             };
 
             if (startDelay > 0) m_Pending.Push(task);
@@ -78,7 +78,7 @@ namespace Plugins.Audio
 
         protected override void SetUpInstance(SoundPoolPendingTask task)
         {
-            m_Pools.TryGetValue(StringToHash(task.PrefabName), out SoundInstancePool pooler);
+            m_Pools.TryGetValue(task.PrefabName.GetHashCode(), out SoundInstancePool pooler);
 
             // Wake up object item
             if (!pooler) return;
