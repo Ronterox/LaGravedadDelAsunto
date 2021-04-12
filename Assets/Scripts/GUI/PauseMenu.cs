@@ -1,4 +1,6 @@
+using System;
 using Managers;
+using Plugins.Audio;
 using Plugins.Properties;
 using UnityEngine;
 
@@ -6,12 +8,41 @@ namespace GUI
 {
     public class PauseMenu : MonoBehaviour
     {
-        [Scene] public string menu, settings;
+        [Scene] public string menuScene, settingsScene;
+        
+        [Header("Buttons")]
+        public SelectableButton resumeButton;
+        public SelectableButton settingsButton, mainMenuButton;
 
-        public void Resume() => GUIManager.Instance.CloseGUIMenu();
+        [Header("Sound Effects")]
+        public AudioClip selectAudio;
+        public AudioClip pressAudio;
 
-        public void LoadMainMenu() => LevelLoadManager.Instance.LoadScene(menu);
+        private void OnEnable()
+        {
+            void PlaySelectSound() => PlayAudio(selectAudio);
+            
+            resumeButton.SetActions(Resume, PlaySelectSound);
+            settingsButton.SetActions(OpenSettings, PlaySelectSound);
+            mainMenuButton.SetActions(LoadMainMenu, PlaySelectSound);
+        }
 
-        public void OpenSettings() => LevelLoadManager.Instance.LoadScene(settings);
+        public void Resume()
+        {
+            PlayAudio(pressAudio);
+            GUIManager.Instance.CloseGUIMenu();
+        }
+
+        public void LoadMainMenu() => Load(menuScene);
+
+        public void OpenSettings() => Load(settingsScene);
+        
+        private void Load(string scene)
+        {
+            PlayAudio(pressAudio);
+            LevelLoadManager.Instance.LoadScene(scene);
+        }
+
+        private void PlayAudio(AudioClip audioClip) => SoundManager.Instance.PlayNonDiegeticSound(audioClip);
     }
 }

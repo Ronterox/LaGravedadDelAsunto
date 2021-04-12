@@ -1,5 +1,6 @@
 using General.Utilities;
 using Managers;
+using Plugins.Audio;
 using UnityEngine;
 
 namespace Inventory_System
@@ -7,6 +8,9 @@ namespace Inventory_System
     public class PickUpItem : Interactable
     {
         public Item item;
+
+        [Header("Sfx")]
+        public AudioClip pickSfx;
 
         public override void Interact() => PickUp();
 
@@ -16,6 +20,7 @@ namespace Inventory_System
 
         private void PickUp()
         {
+            SoundManager.Instance.PlaySound(pickSfx, transform.position);
             if (GameManager.Instance.inventory.Add(item)) Destroy(gameObject);
         }
     }

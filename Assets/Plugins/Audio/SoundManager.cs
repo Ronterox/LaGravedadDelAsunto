@@ -17,8 +17,9 @@ namespace Plugins.Audio
         public readonly float minDistance;
         public readonly float maxDistance;
         public readonly AudioRolloffMode audioRollOffMode;
+        public readonly float randomPitchRange;
 
-        public SoundItem(AudioClip clip, AudioMixerGroup audioMixerGroup, float volume = 1f, float spatialBlend = 0f, bool loop = false, float minDistance = 1f, float maxDistance = 500f, AudioRolloffMode audioRollOffMode = AudioRolloffMode.Logarithmic)
+        public SoundItem(AudioClip clip, AudioMixerGroup audioMixerGroup, float volume = 1f, float randomPitchRange = .1f, float spatialBlend = 0f, bool loop = false, float minDistance = 1f, float maxDistance = 500f, AudioRolloffMode audioRollOffMode = AudioRolloffMode.Logarithmic)
         {
             this.clip = clip;
             this.audioMixerGroup = audioMixerGroup;
@@ -28,6 +29,7 @@ namespace Plugins.Audio
             this.minDistance = minDistance;
             this.maxDistance = maxDistance;
             this.audioRollOffMode = audioRollOffMode;
+            this.randomPitchRange = randomPitchRange;
         }
     }
 
@@ -207,11 +209,24 @@ namespace Plugins.Audio
         /// <param name="minDistance"></param>
         /// <param name="maxDistance"></param>
         /// <param name="delay"></param>
-        public void PlaySound(AudioClip sfx, Vector3 location, float volume = 1f, bool loop = false, float minDistance = 1f, float maxDistance = 4f, float delay = 0f)
-        {
-            if (m_CurrentInGamePooler == null) return;
+        public void PlaySound(AudioClip sfx, Vector3 location, float volume = 1f, bool loop = false, float minDistance = 1f, float maxDistance = 4f, float delay = 0f) => PlaySoundRandomPitch(sfx, location, volume, 0f, loop, minDistance, maxDistance, delay);
 
-            var sound = new SoundItem(sfx, inGameAudioMixer, volume, 1f, loop, minDistance, maxDistance, AudioRolloffMode.Linear);
+        /// <summary>
+        /// Plays a sound with random pitch
+        /// </summary>
+        /// <param name="sfx">The sound clip you want to play.</param>
+        /// <param name="location">The location of the sound.</param>
+        /// <param name="volume"></param>
+        /// <param name="randomPitchRange">A range to be played between the pitch</param>
+        /// <param name="loop">If set to true, the sound will loop.</param>
+        /// <param name="minDistance"></param>
+        /// <param name="maxDistance"></param>
+        /// <param name="delay"></param>
+        public void PlaySoundRandomPitch(AudioClip sfx, Vector3 location, float volume = 1f, float randomPitchRange = .1f, bool loop = false, float minDistance = 1f, float maxDistance = 4f, float delay = 0f)
+        {
+            if (!m_CurrentInGamePooler) return;
+
+            var sound = new SoundItem(sfx, inGameAudioMixer, volume, randomPitchRange, 1f, loop, minDistance, maxDistance, AudioRolloffMode.Linear);
             m_CurrentInGamePooler.Trigger(SOUND_OBJECT_POOL, location, delay, sound);
         }
 
@@ -223,9 +238,20 @@ namespace Plugins.Audio
         /// <param name="volume"></param>
         /// <param name="loop"></param>
         /// <param name="delay">Delay time waited before playing.</param>
-        public void PlayNonDiegeticSound(AudioClip sfx, float volume = 1f, bool loop = false, float delay = 0f)
+        public void PlayNonDiegeticSound(AudioClip sfx, float volume = 1f, bool loop = false, float delay = 0f) => PlayNonDiegeticRandomPitchSound(sfx, volume, 0f, loop, delay);
+
+        /// <summary>
+        /// Plays a sound effect with random pitch without taking position into account. Also, sound is not destroyed on scene load,
+        /// as long as the SoundManager isn't destroyed either.
+        /// </summary>
+        /// <param name="sfx">Sound Effect to be played.</param>
+        /// <param name="volume"></param>
+        /// <param name="randomPitchRange">A range to be played between the pitch</param>
+        /// <param name="loop"></param>
+        /// <param name="delay">Delay time waited before playing.</param>
+        public void PlayNonDiegeticRandomPitchSound(AudioClip sfx, float volume = 1f, float randomPitchRange = .1f, bool loop = false, float delay = 0f)
         {
-            var sound = new SoundItem(sfx, uiAudioMixer, volume, 0f, loop);
+            var sound = new SoundItem(sfx, uiAudioMixer, volume, randomPitchRange, 0f, loop);
             m_SoundsPool.Trigger(SOUND_OBJECT_POOL, Vector3.zero, delay, sound);
         }
 
