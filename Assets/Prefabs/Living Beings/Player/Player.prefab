@@ -39,6 +39,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6729424279741692701}
+  - component: {fileID: 1982173946440195526}
   - component: {fileID: 6729424279741692698}
   - component: {fileID: 6729424279741692699}
   - component: {fileID: 6729424279741692700}
@@ -66,6 +67,14 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!81 &1982173946440195526
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6729424279741692689}
+  m_Enabled: 1
 --- !u!143 &6729424279741692698
 CharacterController:
   m_ObjectHideFlags: 0
@@ -97,7 +106,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   zoomSpeed: 0.1
-  playerControllerInputBlocked: 0
 --- !u!114 &6729424279741692700
 MonoBehaviour:
   m_ObjectHideFlags: 0

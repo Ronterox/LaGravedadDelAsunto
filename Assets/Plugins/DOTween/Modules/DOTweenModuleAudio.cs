@@ -9,7 +9,7 @@ using DG.Tweening.Plugins.Options;
 using UnityEngine;
 using UnityEngine.Audio;
 
-// Required for AudioMixer
+// Required for audioMixer
 #endif
 
 #pragma warning disable 1591
@@ -21,8 +21,8 @@ namespace Plugins.DOTween.Modules
 
         #region Audio
 
-        /// <summary>Tweens an AudioSource's volume to the given value.
-        /// Also stores the AudioSource as the tween's target so it can be used for filtered operations</summary>
+        /// <summary>Tweens an audioSource's volume to the given value.
+        /// Also stores the audioSource as the tween's target so it can be used for filtered operations</summary>
         /// <param name="endValue">The end value to reach (0 to 1)</param><param name="duration">The duration of the tween</param>
         public static TweenerCore<float, float, FloatOptions> DOFade(this AudioSource target, float endValue, float duration)
         {
@@ -33,8 +33,8 @@ namespace Plugins.DOTween.Modules
             return t;
         }
 
-        /// <summary>Tweens an AudioSource's pitch to the given value.
-        /// Also stores the AudioSource as the tween's target so it can be used for filtered operations</summary>
+        /// <summary>Tweens an audioSource's pitch to the given value.
+        /// Also stores the audioSource as the tween's target so it can be used for filtered operations</summary>
         /// <param name="endValue">The end value to reach</param><param name="duration">The duration of the tween</param>
         public static TweenerCore<float, float, FloatOptions> DOPitch(this AudioSource target, float endValue, float duration)
         {
@@ -46,11 +46,11 @@ namespace Plugins.DOTween.Modules
         #endregion
 
 #if UNITY_5 || UNITY_2017_1_OR_NEWER
-        #region AudioMixer (Unity 5 or Newer)
+        #region audioMixer (Unity 5 or Newer)
 
-        /// <summary>Tweens an AudioMixer's exposed float to the given value.
-        /// Also stores the AudioMixer as the tween's target so it can be used for filtered operations.
-        /// Note that you need to manually expose a float in an AudioMixerGroup in order to be able to tween it from an AudioMixer.</summary>
+        /// <summary>Tweens an audioMixer's exposed float to the given value.
+        /// Also stores the audioMixer as the tween's target so it can be used for filtered operations.
+        /// Note that you need to manually expose a float in an audioMixerGroup in order to be able to tween it from an audioMixer.</summary>
         /// <param name="floatName">Name given to the exposed float to set</param>
         /// <param name="endValue">The end value to reach</param><param name="duration">The duration of the tween</param>
         public static TweenerCore<float, float, FloatOptions> DOSetFloat(this AudioMixer target, string floatName, float endValue, float duration)

@@ -86,7 +86,6 @@ MonoBehaviour:
   questManager: {fileID: 325547153588836211}
   dialogueManager: {fileID: 1017325481}
   inventory: {fileID: 457264116}
-  GameIsPaused: 0
 --- !u!114 &325547153588836211
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -563,6 +562,10 @@ PrefabInstance:
     - target: {fileID: 4442847295197502032, guid: d55ddfae84316ce69a12516ece1f8c8f, type: 3}
       propertyPath: m_Name
       value: Help Message Dialogue
+      objectReference: {fileID: 0}
+    - target: {fileID: 4442847295197502032, guid: d55ddfae84316ce69a12516ece1f8c8f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4442847295197502033, guid: d55ddfae84316ce69a12516ece1f8c8f, type: 3}
       propertyPath: player
