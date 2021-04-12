@@ -6,9 +6,9 @@ namespace GUI
 {
     public class MainMenu : MonoBehaviour
     {
-        [Scene] public string testZone, settings;
+        [Scene] public string playScene, testZone, settings;
 
-        public void PlayGame() {}
+        public void PlayGame() => LevelLoadManager.Instance.LoadScene(playScene);
 
         public void TestZone() => LevelLoadManager.Instance.LoadScene(testZone);
 
