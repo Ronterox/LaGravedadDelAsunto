@@ -101,10 +101,6 @@ namespace Player
             m_IsGrounded = m_CharCtrl.isGrounded;
         }
 
-        private void PlayFootStepSound() => SoundManager.Instance.PlayNonDiegeticSound(stepSfx);
-
-        private void PlayJumpSound() => SoundManager.Instance.PlayNonDiegeticSound(jumpSfx);
-
         private void CalculateVerticalMovement()
         {
             if (!m_Input.JumpInput && m_IsGrounded) m_CanJump = true;
@@ -153,5 +149,9 @@ namespace Player
             }
             m_Animator.SetBool(FALLING_ANIMATION_HASH, !m_IsGrounded);
         }
+        
+        private void PlayFootStepSound() => SoundManager.Instance.PlayNonDiegeticRandomPitchSound(stepSfx,1f, .2f);
+
+        private void PlayJumpSound() => SoundManager.Instance.PlayNonDiegeticRandomPitchSound(jumpSfx,1f, .2f);
     }
 }

@@ -40,6 +40,9 @@ namespace Plugins.Audio
             audioSource.minDistance = task.Data.minDistance;
             audioSource.maxDistance = task.Data.maxDistance;
             audioSource.rolloffMode = task.Data.audioRollOffMode;
+
+            float range = task.Data.randomPitchRange;
+            if (range != 0) audioSource.pitch = Random.Range(1 - range, 1 + range);
         }
     }
 
