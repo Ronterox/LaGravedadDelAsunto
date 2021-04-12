@@ -124,6 +124,11 @@ MonoBehaviour:
   jumpForce: 10
   gravity: 20
   turnSmoothTime: 0.1
+  stepSfx: {fileID: 8300000, guid: 888d305d245642b72bf4eba0fd00ee13, type: 3}
+  jumpSfx: {fileID: 8300000, guid: 42e0b6fa88cdaf2ce97f62405e983ddb, type: 3}
+  timeBtwSteps: 0.3
+  timeBtwStepsSprint: 0.2
+  timeBtwStepsWalk: 0.65
 --- !u!95 &6729424279741692697
 Animator:
   serializedVersion: 3

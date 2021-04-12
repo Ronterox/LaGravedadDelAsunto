@@ -34,7 +34,7 @@ namespace Managers
         }
 
         /// <summary>
-        /// Loads the next scene on the build settings
+        /// Loads the next scene on the build settingsScene
         /// </summary>
         public void LoadNextScene() => LoadSceneProcedure(SceneManager.GetActiveScene().buildIndex + 1);
 

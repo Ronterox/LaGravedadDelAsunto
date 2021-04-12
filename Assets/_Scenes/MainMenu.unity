@@ -251,7 +251,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 208260245}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Script: {fileID: 11500000, guid: f21d654f6375dbcc197e374afa736f3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
@@ -265,7 +265,7 @@ MonoBehaviour:
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9137255, g: 0.6156863, b: 0.023529412, a: 1}
-    m_PressedColor: {r: 0.7830189, g: 0.5208778, b: 0, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.52156866, b: 0, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
@@ -285,19 +285,13 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 208260248}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1960100484}
-        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: PlayGame
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
+  onSelect:
+    m_PersistentCalls:
+      m_Calls: []
+  onDeselect:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &208260248
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -345,7 +339,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3654193085903791090, guid: 4cc04cb27b7677ad982ab891e518fb60, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3654193085903791090, guid: 4cc04cb27b7677ad982ab891e518fb60, type: 3}
       propertyPath: m_LocalPosition.x
@@ -441,7 +435,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 573211314}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Script: {fileID: 11500000, guid: f21d654f6375dbcc197e374afa736f3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
@@ -475,19 +469,13 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 573211317}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1960100484}
-        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: TestZone
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
+  onSelect:
+    m_PersistentCalls:
+      m_Calls: []
+  onDeselect:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &573211317
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -601,7 +589,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3654456769513503326, guid: 8f03b4265ef2cba2b857e847b1efd05b, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3654456769513503326, guid: 8f03b4265ef2cba2b857e847b1efd05b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -649,6 +637,63 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8f03b4265ef2cba2b857e847b1efd05b, type: 3}
+--- !u!1001 &932038288
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1164279638112271136, guid: c0011726977962dc2aa023fa72a02cab, type: 3}
+      propertyPath: m_Name
+      value: SoundManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 1164279638112271139, guid: c0011726977962dc2aa023fa72a02cab, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1164279638112271139, guid: c0011726977962dc2aa023fa72a02cab, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.011903107
+      objectReference: {fileID: 0}
+    - target: {fileID: 1164279638112271139, guid: c0011726977962dc2aa023fa72a02cab, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.2968729
+      objectReference: {fileID: 0}
+    - target: {fileID: 1164279638112271139, guid: c0011726977962dc2aa023fa72a02cab, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.07413316
+      objectReference: {fileID: 0}
+    - target: {fileID: 1164279638112271139, guid: c0011726977962dc2aa023fa72a02cab, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1164279638112271139, guid: c0011726977962dc2aa023fa72a02cab, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1164279638112271139, guid: c0011726977962dc2aa023fa72a02cab, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1164279638112271139, guid: c0011726977962dc2aa023fa72a02cab, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1164279638112271139, guid: c0011726977962dc2aa023fa72a02cab, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1164279638112271139, guid: c0011726977962dc2aa023fa72a02cab, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1164279638112271139, guid: c0011726977962dc2aa023fa72a02cab, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c0011726977962dc2aa023fa72a02cab, type: 3}
 --- !u!1 &1064575447
 GameObject:
   m_ObjectHideFlags: 0
@@ -697,7 +742,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1064575447}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Script: {fileID: 11500000, guid: f21d654f6375dbcc197e374afa736f3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
@@ -731,19 +776,13 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1064575450}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1960100484}
-        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: OpenSettings
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
+  onSelect:
+    m_PersistentCalls:
+      m_Calls: []
+  onDeselect:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1064575450
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1417,6 +1456,12 @@ MonoBehaviour:
   playScene: Town
   testZone: TestZone
   settings: MainMenu
+  playGameButton: {fileID: 208260247}
+  testZoneButton: {fileID: 573211316}
+  settingsButton: {fileID: 1064575449}
+  quitButton: {fileID: 2055681716}
+  selectAudio: {fileID: 8300000, guid: 888d305d245642b72bf4eba0fd00ee13, type: 3}
+  pressAudio: {fileID: 8300000, guid: 42e0b6fa88cdaf2ce97f62405e983ddb, type: 3}
 --- !u!1 &1980108866
 GameObject:
   m_ObjectHideFlags: 0
@@ -1599,7 +1644,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2055681714}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Script: {fileID: 11500000, guid: f21d654f6375dbcc197e374afa736f3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
@@ -1633,19 +1678,13 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2055681717}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1960100484}
-        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: QuitGame
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
+  onSelect:
+    m_PersistentCalls:
+      m_Calls: []
+  onDeselect:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2055681717
 MonoBehaviour:
   m_ObjectHideFlags: 0

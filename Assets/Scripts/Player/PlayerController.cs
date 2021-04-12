@@ -1,3 +1,4 @@
+using Plugins.Audio;
 using Plugins.Tools;
 using UnityEngine;
 
@@ -27,6 +28,17 @@ namespace Player
         public float turnSmoothTime = 0.1f;
         private float m_TurnSmoothVelocity;
 
+        [Header("Sound Effects")]
+        public AudioClip stepSfx;
+        public AudioClip jumpSfx;
+
+        [Space]
+        public float timeBtwSteps;
+        public float timeBtwStepsSprint;
+        public float timeBtwStepsWalk;
+
+        private float m_Timer;
+
         private bool m_IsGrounded, m_CanJump, m_WasSprinting;
 
         private readonly int SPEED_ANIMATION_HASH = Animator.StringToHash("Speed");
@@ -37,6 +49,10 @@ namespace Player
         private const float JUMP_ABORT_SPEED = 10;
 
         private bool IsMoving => m_Input.MoveInput != Vector2.zero;
+
+        private bool IsWalking => m_Input.IsWalking && m_IsGrounded;
+
+        private bool IsSprinting => m_Input.SprintInput && m_IsGrounded;
 
         private bool m_MovementBlocked;
 
@@ -50,10 +66,22 @@ namespace Player
 
         public void BlockMovement(bool blockMovement) => m_MovementBlocked = blockMovement;
 
+        private void Update()
+        {
+            if (m_MovementBlocked) return;
+
+            if (m_Timer > 0) m_Timer -= Time.deltaTime;
+            else if (m_IsGrounded && IsMoving)
+            {
+                m_Timer = m_Input.SprintInput ? timeBtwStepsSprint : m_Input.IsWalking ? timeBtwStepsWalk : timeBtwSteps;
+                PlayFootStepSound();
+            }
+        }
+
         private void FixedUpdate()
         {
-            if(m_MovementBlocked) return;
-            
+            if (m_MovementBlocked) return;
+
             AnimatePlayer();
             SetRotation();
             CalculateVerticalMovement();
@@ -61,10 +89,9 @@ namespace Player
 
         private void OnAnimatorMove()
         {
-            if(m_MovementBlocked) return;
-            
-            float stateSpeed = m_Input.IsWalking && m_IsGrounded ? speed * .5f :
-                m_Input.SprintInput && m_IsGrounded || m_WasSprinting ? speed * sprintMultiplier : speed;
+            if (m_MovementBlocked) return;
+
+            float stateSpeed = IsWalking ? speed * .5f : IsSprinting || m_WasSprinting ? speed * sprintMultiplier : speed;
 
             Vector3 movement = IsMoving ? Time.deltaTime * stateSpeed * transform.forward : Vector3.zero;
             movement += m_VerticalSpeed * Time.deltaTime * Vector3.up;
@@ -73,6 +100,10 @@ namespace Player
 
             m_IsGrounded = m_CharCtrl.isGrounded;
         }
+
+        private void PlayFootStepSound() => SoundManager.Instance.PlayNonDiegeticSound(stepSfx);
+
+        private void PlayJumpSound() => SoundManager.Instance.PlayNonDiegeticSound(jumpSfx);
 
         private void CalculateVerticalMovement()
         {
@@ -89,6 +120,7 @@ namespace Player
                 m_VerticalSpeed = jumpForce;
                 m_IsGrounded = false;
                 m_CanJump = false;
+                PlayJumpSound();
             }
             else
             {

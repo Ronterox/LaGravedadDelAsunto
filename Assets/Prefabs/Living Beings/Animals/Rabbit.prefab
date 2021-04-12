@@ -91,9 +91,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65f1144e4eb8b67429f54b1003aca10a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberOfInteractions: 1
+  numberOfInteractionsOnPlace: 1
   infiniteInteractions: 0
   item: {fileID: 11400000, guid: b675ed13758a4ce439bb43814e239f81, type: 2}
+  pickSfx: {fileID: 8300000, guid: 42e0b6fa88cdaf2ce97f62405e983ddb, type: 3}
 --- !u!65 &3016850069190951399
 BoxCollider:
   m_ObjectHideFlags: 0
