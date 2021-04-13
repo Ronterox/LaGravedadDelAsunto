@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace PetoonsStudio.Tools
+namespace Plugins.Audio
 {
     /// <summary>
     /// Base item config data

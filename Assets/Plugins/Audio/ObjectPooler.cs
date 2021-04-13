@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace PetoonsStudio.Tools
+namespace Plugins.Audio
 {
     [System.Serializable]
     public class ObjectPoolItem
