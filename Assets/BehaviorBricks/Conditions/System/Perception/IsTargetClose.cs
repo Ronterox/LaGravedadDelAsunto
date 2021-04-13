@@ -12,13 +12,13 @@ namespace BehaviorBricks.Conditions.System.Perception
     public class IsTargetClose : GOCondition
     {
         ///<value>Input Target Parameter to to check the distance.</value>
-        [InParam("target")]
+        [InParam("Target")]
         [Help("Target to check the distance")]
         public GameObject target;
 
         ///<value>Input maximum distance Parameter to consider that the target is close.</value>
         [InParam("closeDistance")]
-        [Help("The maximun distance to consider that the target is close")]
+        [Help("The maximum distance to consider that the target is close")]
         public float closeDistance;
 
         /// <summary>

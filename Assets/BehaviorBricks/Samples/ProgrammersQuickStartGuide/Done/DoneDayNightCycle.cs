@@ -24,14 +24,14 @@ namespace BehaviorBricks.Samples.ProgrammersQuickStartGuide.Done // Programmers 
 		private Color dayColor;
 
 		// Private field with the hard-coded night color.
-		private Color nightColor = Color.white * 0.1f;
+		private readonly Color nightColor = Color.white * 0.1f;
 
 		// Reference to the Light component
 		private Light lightComponent;
 
         /// <summary>DoneDayNightCycle Initialization Method.</summary>
         /// <remarks>Search the light component and set color light.</remarks>
-		void Start()
+        private void Start()
 		{
 			lightComponent = GetComponent<Light>();
 			dayColor = lightComponent.color;
@@ -40,15 +40,13 @@ namespace BehaviorBricks.Samples.ProgrammersQuickStartGuide.Done // Programmers 
         /// <summary>DoneDayNightCycle Update Method.</summary>
         /// <remarks>Calculate the intensity of the light with the time elapsed and 
         /// depending on it do a lerp between the color of day and night, also register of EventHandler of this class.</remarks>
-		void Update()
+        private void Update()
 		{
-			float lightIntensity = 0.5f +
-						  Mathf.Sin(Time.time * 2.0f * Mathf.PI / dayDuration) / 2.0f;
-			if (isNight != (lightIntensity < 0.3))
+			float lightIntensity = 0.5f + Mathf.Sin(Time.time * 2.0f * Mathf.PI / dayDuration) / 2.0f;
+			if (isNight != lightIntensity < 0.3)
 			{
 				isNight = !isNight;
-				if (OnChanged != null)
-					OnChanged(this, System.EventArgs.Empty);
+				OnChanged?.Invoke(this, System.EventArgs.Empty);
 			}
 			lightComponent.color = Color.Lerp(nightColor, dayColor, lightIntensity);
 		} // Update
