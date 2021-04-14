@@ -135,9 +135,9 @@ MonoBehaviour:
     campaignQuests:
     - currentQuest: {fileID: 0}
       questEndType: 0
-      mainQuest: {fileID: 3720236894319233994}
-      badQuest: {fileID: 0}
-      goodQuest: {fileID: 4623059567110716713}
+      mainQuest: {fileID: 4623059567110716713}
+      badQuest: {fileID: 3720236894319233994}
+      goodQuest: {fileID: 3720236894319233994}
     campaignResult: 0
     onCampaignCompleted:
       m_PersistentCalls:
