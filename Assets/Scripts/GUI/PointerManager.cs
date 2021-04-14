@@ -7,6 +7,8 @@ namespace GUI
     public class PointerManager : Singleton<PointerManager>, MMEventListener<MMGameEvent>
     {
         public KeyCode cursorKey;
+        public GameObject buttonsGUI;
+        private GameObject m_AuxiliarButtonGUI;
 
         public void OnEnable() => this.MMEventStartListening();
 
@@ -22,6 +24,14 @@ namespace GUI
         {
             Cursor.visible = active;
             Cursor.lockState = active ? CursorLockMode.None : CursorLockMode.Locked;
+            if (active)
+            {               
+                m_AuxiliarButtonGUI = GUIManager.Instance.InstantiateUI(buttonsGUI);
+            }
+            else
+            {
+                GUIManager.Instance.RemoveUI(m_AuxiliarButtonGUI);
+            }
         }
 
         public void OnMMEvent(MMGameEvent eventType)

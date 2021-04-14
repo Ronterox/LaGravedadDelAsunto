@@ -52,7 +52,7 @@ namespace Managers
 
         [Header("Menus GameObjects")]
         public GameObject pauseMenu;
-        public GameObject inventoryUi;
+        public GameObject inventoryUi;       
 
         [Header("GUI Animation Settings")]
         [Range(0.1f, 1f)] public float alphaAnimationDuration;
