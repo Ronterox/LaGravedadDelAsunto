@@ -14816,17 +14816,6 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
---- !u!114 &518262720 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3720236894319233994, guid: 6b204319c6bc7b1b19fbb704b483fa5d, type: 3}
-  m_PrefabInstance: {fileID: 8792325524997676080}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 549c4ef59df34dec9b1a3542a979609b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &524380878
 GameObject:
   m_ObjectHideFlags: 0
@@ -16867,17 +16856,6 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!114 &638028577 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4623059567110716713, guid: 6b204319c6bc7b1b19fbb704b483fa5d, type: 3}
-  m_PrefabInstance: {fileID: 8792325524997676080}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db6f434bb11c8e1dc8fa39dfddd6ef3e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!43 &646450659
 Mesh:
   m_ObjectHideFlags: 0
@@ -29326,11 +29304,6 @@ MonoBehaviour:
 Transform:
   m_CorrespondingSourceObject: {fileID: 6729424279741692701, guid: c8d95a7a10c84826dbd1ad3caaa91898, type: 3}
   m_PrefabInstance: {fileID: 6729424278818318823}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &984947322 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2314633673391121283, guid: 9bf673daec5982470bf71b8bc08ca62d, type: 3}
-  m_PrefabInstance: {fileID: 71149840}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &987140444
 GameObject:
@@ -67732,11 +67705,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5617871187225851715, guid: 881f5ea122226be93a0d47628b8a2826, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000016953926
+      value: 0.000000016953926
       objectReference: {fileID: 0}
     - target: {fileID: 5617871187225851715, guid: 881f5ea122226be93a0d47628b8a2826, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0000000029366534
+      value: -0.0000000029366534
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 881f5ea122226be93a0d47628b8a2826, type: 3}
@@ -67922,38 +67895,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 325547153588836211, guid: 6b204319c6bc7b1b19fbb704b483fa5d, type: 3}
-      propertyPath: allCampaigns.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 325547153588836211, guid: 6b204319c6bc7b1b19fbb704b483fa5d, type: 3}
-      propertyPath: allCampaigns.Array.data[0].id
-      value: bambino
-      objectReference: {fileID: 0}
-    - target: {fileID: 325547153588836211, guid: 6b204319c6bc7b1b19fbb704b483fa5d, type: 3}
-      propertyPath: allCampaigns.Array.data[0].campaignQuests.Array.data[0].badQuest
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 325547153588836211, guid: 6b204319c6bc7b1b19fbb704b483fa5d, type: 3}
-      propertyPath: allCampaigns.Array.data[0].campaignQuests.Array.data[0].goodQuest
-      value: 
-      objectReference: {fileID: 638028577}
-    - target: {fileID: 325547153588836211, guid: 6b204319c6bc7b1b19fbb704b483fa5d, type: 3}
-      propertyPath: allCampaigns.Array.data[0].campaignQuests.Array.data[0].mainQuest
-      value: 
-      objectReference: {fileID: 518262720}
-    - target: {fileID: 325547153588836211, guid: 6b204319c6bc7b1b19fbb704b483fa5d, type: 3}
-      propertyPath: allCampaigns.Array.data[0].campaignQuests.Array.data[0].questEndType
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5164704531365980810, guid: 6b204319c6bc7b1b19fbb704b483fa5d, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 960402170}
-    - target: {fileID: 8791522931685928594, guid: 6b204319c6bc7b1b19fbb704b483fa5d, type: 3}
-      propertyPath: events.onQuestStarted.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 984947322}
     - target: {fileID: 8792325526232751510, guid: 6b204319c6bc7b1b19fbb704b483fa5d, type: 3}
       propertyPath: m_Name
       value: Game Manager

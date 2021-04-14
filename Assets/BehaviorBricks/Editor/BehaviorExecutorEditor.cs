@@ -1,9 +1,9 @@
-﻿using UnityEngine;
-using System.Collections;
-using BehaviorBricks;
-using UnityEditor;
+﻿using UnityEditor;
 
-[CustomEditor(typeof(BehaviorExecutor))]
-public class BehaviorExecutorEditor : BBUnity.InternalBehaviorExecutorEditor
+namespace BehaviorBricks.Editor
 {
+    [CustomEditor(typeof(BehaviorExecutor))]
+    public class BehaviorExecutorEditor : BBUnity.InternalBehaviorExecutorEditor
+    {
+    }
 }

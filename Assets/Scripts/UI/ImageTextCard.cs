@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace General.Utilities
+namespace UI
 {
     public class ImageTextCard : MonoBehaviour
     {

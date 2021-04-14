@@ -128,24 +128,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbdd8dff5440990d1b885dcc9045dc54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  questUIHolder: {fileID: 9159773310977129323, guid: f7c48bd8169dab038ba9f5f69f1a295f, type: 3}
+  questUITemplate: {fileID: 238735986028826349, guid: 133c3d891ed2162ba958067fd0792271, type: 3}
   allCampaigns:
-  - id: test
-    campaignQuests:
-    - currentQuest: {fileID: 0}
-      questEndType: 2
-      mainQuest: {fileID: 0}
-      badQuest: {fileID: 0}
-      goodQuest: {fileID: 0}
-    campaignResult: 0
-    onCampaignCompleted:
-      m_PersistentCalls:
-        m_Calls: []
-    onCampaignFailed:
-      m_PersistentCalls:
-        m_Calls: []
-    onCampaignNeutralEnding:
-      m_PersistentCalls:
-        m_Calls: []
   - id: bambino
     campaignQuests:
     - currentQuest: {fileID: 0}

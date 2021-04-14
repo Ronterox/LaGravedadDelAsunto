@@ -10,7 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 35232d3e7334dc93b98712c438e5d588, type: 3}
-  m_Name: Medium Gain
+  m_Name: Cooking Quest Info
   m_EditorClassIdentifier: 
+  questName: Cooking Tucking
+  questDescription: Cook 3 plates of food for Bambino.
   positiveKarma: 5
   negativeKarma: 5
