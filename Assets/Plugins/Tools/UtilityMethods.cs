@@ -163,6 +163,28 @@ namespace Plugins.Tools
             Scene scene = SceneManager.GetSceneByName(sceneName);
             SceneManager.MoveGameObjectToScene(obj, scene.IsValid() ? scene : SceneManager.CreateScene(sceneName));
         }
+
+        /// <summary>
+        /// Returns the decibel value as a volume value from 0 to 1
+        /// </summary>
+        /// <param name="dB"></param>
+        /// <returns></returns>
+        public static float ToVolume(this float dB) => Mathf.Pow(10, dB * 0.05f);
+
+        /// <summary>
+        /// Returns the volume from 0 to 1 as its decibel value
+        /// </summary>
+        /// <param name="volume"></param>
+        /// <returns></returns>
+        public static float ToDecibels(this float volume) => volume > 0 ? Mathf.Log10(volume) * 20 : -80f;
+
+        /// <summary>
+        /// Returns the component of the gameObject if it founds it, else adds the component and returns it
+        /// </summary>
+        /// <param name="gameObject">gameObject</param>
+        /// <typeparam name="T">component type</typeparam>
+        /// <returns></returns>
+        public static T GetComponentSafely<T>(this GameObject gameObject) where T : Component => gameObject.TryGetComponent(out T component) ? component : gameObject.AddComponent<T>();
     }
 
 
