@@ -1,6 +1,5 @@
-﻿using UnityEditor;
-using UnityEngine;
-#if UNITY_EDITOR
+﻿#if UNITY_EDITOR
+using UnityEditor;
 
 #endif
 
@@ -10,7 +9,7 @@ namespace BehaviorBricks
     /// Behavior executor component. Add it to your game objects
     /// to execute BehaviorBrick's behaviors.
     /// </summary>
-    [AddComponentMenu("Behavior Bricks/Behavior executor component")]
+    [UnityEngine.AddComponentMenu("Behavior Bricks/Behavior executor component")]
     public class BehaviorExecutor : BBUnity.InternalBehaviorExecutor
     {
         /// <summary>

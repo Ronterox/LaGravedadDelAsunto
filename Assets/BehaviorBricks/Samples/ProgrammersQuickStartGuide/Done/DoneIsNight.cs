@@ -70,13 +70,10 @@ namespace BehaviorBricks.Samples.ProgrammersQuickStartGuide.Done // Programmers 
             if (!Check())
                 // Light does not exist, or is "on" (daylight). Condition is false.
                 return TaskStatus.FAILED;
-            else
-            {
-                // Light exists, and is "off" (night). We suspend ourselves
-                // until sunrise (when the condition will become false).
-                light.OnChanged += OnSunrise;
-                return TaskStatus.SUSPENDED;
-            }
+            // Light exists, and is "off" (night). We suspend ourselves
+            // until sunrise (when the condition will become false).
+            light.OnChanged += OnSunrise;
+            return TaskStatus.SUSPENDED;
         } // MonitorFailWhenFalse
 
 

@@ -13,19 +13,13 @@ namespace BehaviorBricks.Samples.ProgrammersQuickStartGuide.Done // Programmers 
     /// </summary>
     [Action("Samples/ProgQuickStartGuide/SleepForever")]
     [Help("Low-cost infinite action that never ends. It does not consume CPU at all.")]
-
-  
     public class DoneSleepForever : BasePrimitiveAction
     {
-
         // Main class method, invoked by the execution engine.
         ///<summary>Method of onUpdate of SleepForever.</summary>
         ///<remarks>Change the status of the task.</remarks>
         ///<return>Value of the status of the suspended task.</return>
-        public override TaskStatus OnUpdate()
-        {
-            return TaskStatus.SUSPENDED;
-        } // OnUpdate
+        public override TaskStatus OnUpdate() => TaskStatus.SUSPENDED; // OnUpdate
 
     } // class DoneSleepForever
 

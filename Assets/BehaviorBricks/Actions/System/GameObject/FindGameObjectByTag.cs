@@ -12,16 +12,14 @@ namespace BehaviorBricks.Actions.System.GameObject
     public class FindGameObjectByTag : BasePrimitiveAction
     {
         ///<value>Input Tag of the target game object Parameter.</value>
-        [InParam("tag")]
+        [InParam("Tag")]
         [Help("Tag of the target game object")]
         public string tag;
 
         ///<value>OutPut Found game object Parameter.</value>
-        [OutParam("foundGameObject")]
+        [OutParam("Found GameObject")]
         [Help("Found game object")]
         public UnityEngine.GameObject foundGameObject;
-
-        private float elapsedTime;
 
         /// <summary>Initialization Method of FindGameObjectByTag.</summary>
         /// <remarks>Find the GameObject with the given tag.</remarks>

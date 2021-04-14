@@ -24,14 +24,12 @@ namespace BehaviorBricks.Actions.System.Navigation
         /// <remarks>Check if there is a NavMeshAgent to assign a default one and assign the destination to the NavMeshAgent the given position.</remarks>
         public override void OnStart()
         {
-            navAgent = gameObject.GetComponent<NavMeshAgent>();
-            if (!navAgent)
+            if (!(navAgent = gameObject.GetComponent<NavMeshAgent>()))
             {
                 Debug.LogWarning("The " + gameObject.name + " game object does not have a Nav Mesh Agent component to navigate. One with default values has been added", gameObject);
                 navAgent = gameObject.AddComponent<NavMeshAgent>();
             }
             navAgent.SetDestination(target);
-
             navAgent.isStopped = false;
         }
 

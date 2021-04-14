@@ -15,7 +15,7 @@ MonoBehaviour:
   brickName: Assets/BehaviorBricks/Samples/ProgrammersQuickStartGuide/Done/Resources/Behaviors/DoneEnemyBehavior.asset
   xml: "\uFEFF<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<BehaviorBricks xmlns:ref=\"urn:padaone\"
     version=\"1.0\">\n  <BehaviorTree id=\"0\" />\n  <runtimeInfo>\n    <BehaviorTree
-    id=\"0\" guid=\"cefec543fe1d8774aa0b18d5ab374a84\" nextId=\"11\">\n      <root>\n       
+    id=\"0\" guid=\"cefec543fe1d8774aa0b18d5ab374a84\" nextId=\"14\">\n      <root>\n       
     <RepeatDecorator id=\"1\" />\n      </root>\n      <inputParams>\n        <inputValues>\n         
     <entry name=\"player\" type=\"UnityEngine.GameObject\" isBlackboard=\"False\"
     />\n          <entry name=\"shootPoint\" type=\"UnityEngine.Transform\" isBlackboard=\"False\"
@@ -84,61 +84,61 @@ MonoBehaviour:
     <ConditionEvalNode id=\"8\" />\n          <ActionNode id=\"9\" />\n         
     <ConditionEvalNode id=\"10\" />\n        </nodes>\n      </_nodes>\n      <_selectedNode>\n       
     <ActionNode id=\"9\" />\n      </_selectedNode>\n    </BehaviorTree>\n    <RepeatDecorator
-    id=\"1\">\n      <_data>\n        <data breakpoint=\"0\" selected=\"False\" position=\"530.375
-    134.5\" name=\"Repeat\" description=\"Repeats the execution of its child node\"
+    id=\"1\">\n      <_data>\n        <data breakpoint=\"0\" selected=\"False\" position=\"687.1111
+    354.5514\" name=\"Repeat\" description=\"Repeats the execution of its child node\"
     cardinality=\"1\" hasParent=\"False\">\n          <BehaviorTree id=\"0\" />\n         
     <RepeatDecorator id=\"1\" />\n        </data>\n      </_data>\n    </RepeatDecorator>\n   
     <PrioritySelectorNode id=\"2\">\n      <_data>\n        <data breakpoint=\"0\"
-    selected=\"False\" position=\"476.375 253.5\" name=\"Priority Selector\" description=\"Executes
-    all its children, starting from the one with the highest priority, until one
-    of them is successful\" cardinality=\"-1\" hasParent=\"True\">\n          <BehaviorTree
-    id=\"0\" />\n          <PrioritySelectorNode id=\"2\" />\n          <RepeatDecorator
-    id=\"1\" />\n        </data>\n      </_data>\n    </PrioritySelectorNode>\n   
+    selected=\"False\" position=\"633.1111 473.5513\" name=\"Priority Selector\"
+    description=\"Executes all its children, starting from the one with the highest
+    priority, until one of them is successful\" cardinality=\"-1\" hasParent=\"True\">\n         
+    <BehaviorTree id=\"0\" />\n          <PrioritySelectorNode id=\"2\" />\n         
+    <RepeatDecorator id=\"1\" />\n        </data>\n      </_data>\n    </PrioritySelectorNode>\n   
     <ConditionEvalNode id=\"10\">\n      <_data>\n        <data breakpoint=\"0\"
-    selected=\"False\" position=\"174.375 353.5\" name=\"Samples/ProgQuickStartGuide/IsNight\"
+    selected=\"False\" position=\"331.1108 573.5513\" name=\"Samples/ProgQuickStartGuide/IsNight\"
     description=\"Checks whether it is night. It searches for the first light labeld
     with the 'MainLight' tag, and looks for its DayNightCycle script, returning theinformed
     state. If no light is found, false is returned.\" cardinality=\"0\" hasParent=\"True\">\n         
     <BehaviorTree id=\"0\" />\n          <ConditionEvalNode id=\"10\" />\n         
     <PrioritySelectorNode id=\"2\" />\n        </data>\n      </_data>\n    </ConditionEvalNode>\n   
     <ActionNode id=\"9\">\n      <_data>\n        <data breakpoint=\"0\" selected=\"False\"
-    position=\"174.375 419.5\" name=\"Samples/ProgQuickStartGuide/SleepForever\"
+    position=\"331.1108 639.5511\" name=\"Samples/ProgQuickStartGuide/SleepForever\"
     description=\"Low-cost infinite action that never ends. It does not consume CPU
     at all.\" cardinality=\"0\" hasParent=\"True\">\n          <BehaviorTree id=\"0\"
     />\n          <ActionNode id=\"9\" />\n          <ConditionEvalNode id=\"10\"
     />\n        </data>\n      </_data>\n    </ActionNode>\n    <ConditionEvalNode
-    id=\"8\">\n      <_data>\n        <data breakpoint=\"0\" selected=\"False\" position=\"376.375
-    352.5\" name=\"Perception/IsTargetClose\" description=\"Checks whether a target
+    id=\"8\">\n      <_data>\n        <data breakpoint=\"0\" selected=\"False\" position=\"533.1111
+    572.5513\" name=\"Perception/IsTargetClose\" description=\"Checks whether a target
     is close depending on a given distance\" cardinality=\"0\" hasParent=\"True\">\n         
     <BehaviorTree id=\"0\" />\n          <ConditionEvalNode id=\"8\" />\n         
     <PrioritySelectorNode id=\"2\" />\n        </data>\n      </_data>\n    </ConditionEvalNode>\n   
     <ActionNode id=\"7\">\n      <_data>\n        <data breakpoint=\"0\" selected=\"False\"
-    position=\"376.375 418.5\" name=\"Samples/ProgQuickStartGuide/Shoot\" description=\"Periodically
+    position=\"533.1111 638.5511\" name=\"Samples/ProgQuickStartGuide/Shoot\" description=\"Periodically
     clones a 'bullet' and shoots it throught the Forward axis with the specified
     velocity. This action never ends.\" cardinality=\"0\" hasParent=\"True\">\n         
     <BehaviorTree id=\"0\" />\n          <ActionNode id=\"7\" />\n          <ConditionEvalNode
     id=\"8\" />\n        </data>\n      </_data>\n    </ActionNode>\n    <ConditionEvalNode
-    id=\"6\">\n      <_data>\n        <data breakpoint=\"0\" selected=\"False\" position=\"595.375
-    351.5\" name=\"Perception/IsTargetClose\" description=\"Checks whether a target
+    id=\"6\">\n      <_data>\n        <data breakpoint=\"0\" selected=\"False\" position=\"752.1111
+    571.5513\" name=\"Perception/IsTargetClose\" description=\"Checks whether a target
     is close depending on a given distance\" cardinality=\"0\" hasParent=\"True\">\n         
     <BehaviorTree id=\"0\" />\n          <ConditionEvalNode id=\"6\" />\n         
     <PrioritySelectorNode id=\"2\" />\n        </data>\n      </_data>\n    </ConditionEvalNode>\n   
     <ActionNode id=\"5\">\n      <_data>\n        <data breakpoint=\"0\" selected=\"False\"
-    position=\"595.375 417.5\" name=\"Navigation/MoveToGameObject\" description=\"Moves
+    position=\"752.1111 637.5511\" name=\"Navigation/MoveToGameObject\" description=\"Moves
     the game object towards a given target by using a NavMeshAgent\" cardinality=\"0\"
     hasParent=\"True\">\n          <BehaviorTree id=\"0\" />\n          <ActionNode
     id=\"5\" />\n          <ConditionEvalNode id=\"6\" />\n        </data>\n     
     </_data>\n    </ActionNode>\n    <ConditionEvalNode id=\"4\">\n      <_data>\n       
-    <data breakpoint=\"0\" selected=\"False\" position=\"874.875 343.75\" name=\"AlwaysTrue\"
+    <data breakpoint=\"0\" selected=\"False\" position=\"1031.611 563.8013\" name=\"AlwaysTrue\"
     description=\"\" cardinality=\"0\" hasParent=\"True\">\n          <BehaviorTree
     id=\"0\" />\n          <ConditionEvalNode id=\"4\" />\n          <PrioritySelectorNode
     id=\"2\" />\n        </data>\n      </_data>\n    </ConditionEvalNode>\n    <SubbehaviorNode
     id=\"3\" _name=\"DoneWander\">\n      <_data>\n        <data breakpoint=\"0\"
-    selected=\"False\" position=\"874.875 409.75\" name=\"QuickStartGuide/DoneWander\"
+    selected=\"False\" position=\"1031.611 629.8011\" name=\"QuickStartGuide/DoneWander\"
     description=\"DoneWander\" cardinality=\"0\" hasParent=\"True\">\n          <BehaviorTree
     id=\"0\" />\n          <SubbehaviorNode id=\"3\" />\n          <ConditionEvalNode
     id=\"4\" />\n        </data>\n      </_data>\n    </SubbehaviorNode>\n  </editorInfo>\n</BehaviorBricks>"
-  zoom: 1
+  zoom: 0.9
   subslist:
   - {fileID: 11400000, guid: 8adfddffa70852a45ba1b64354494e3c, type: 2}
   _guid: cefec543fe1d8774aa0b18d5ab374a84
