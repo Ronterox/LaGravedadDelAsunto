@@ -8,24 +8,36 @@ namespace Player
         [Range(0f, 1.0f)]
         public float zoomSpeed = 5f;
         private float m_ScrollWheelMovement;
-        
-        public bool playerControllerInputBlocked;
 
         private Vector2 m_Movement;
         private Vector2 m_Camera;
 
         private bool m_Jump;
         private bool m_Interact;
-        
-        private bool m_ExternalInputBlocked;
 
-        public Vector2 MoveInput => playerControllerInputBlocked || m_ExternalInputBlocked ? Vector2.zero : m_Movement;
+        private bool m_Attack;
+        private bool m_Sprint;
 
-        public Vector2 CameraInput => playerControllerInputBlocked || m_ExternalInputBlocked ? Vector2.zero : m_Camera;
+        private bool m_Walking;
+        private bool m_Inventory;
 
-        public bool JumpInput => m_Jump && !playerControllerInputBlocked && !m_ExternalInputBlocked;
+        public Vector2 MoveInput => InputBlocked ? Vector2.zero : m_Movement;
 
-        public bool Interact => m_Interact && !playerControllerInputBlocked && !m_ExternalInputBlocked;
+        public Vector2 CameraInput => InputBlocked ? Vector2.zero : m_Camera;
+
+        public bool InputBlocked { get; private set; }
+
+        public bool JumpInput => m_Jump && !InputBlocked;
+
+        public bool Interact => m_Interact && !InputBlocked;
+
+        public bool Inventory => m_Inventory && !InputBlocked;
+
+        public bool Attack => m_Attack && !InputBlocked;
+
+        public bool SprintInput => m_Sprint && !IsWalking && !InputBlocked;
+
+        public bool IsWalking { get; private set; }
 
         public bool IsScrollingUp => m_ScrollWheelMovement > 0;
 
@@ -39,16 +51,23 @@ namespace Player
             m_Camera.Set(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
             m_Jump = Input.GetButton("Jump");
 
-            m_Interact = Input.GetButtonDown("Fire1");
-            Pause = Input.GetButtonDown("Submit");
+            m_Interact = Input.GetButtonDown("Interact");
+            m_Attack = Input.GetButtonDown("Fire1");
+            Pause = Input.GetButtonDown("Pause");
 
+            m_Sprint = Input.GetButton("Sprint");
             m_ScrollWheelMovement = Input.GetAxis("Mouse ScrollWheel");
+
+            m_Walking = Input.GetKeyDown(KeyCode.LeftControl);
+            if (m_Walking) IsWalking = !IsWalking;
+
+            m_Inventory = Input.GetButtonDown("Inventory");
         }
 
-        public bool HasControl() => !m_ExternalInputBlocked;
+        public bool HasControl() => !InputBlocked;
 
-        public void BlockInput() => m_ExternalInputBlocked = true;
+        public void BlockInput() => InputBlocked = true;
 
-        public void UnlockedInput() => m_ExternalInputBlocked = false;
+        public void UnlockInput() => InputBlocked = false;
     }
 }

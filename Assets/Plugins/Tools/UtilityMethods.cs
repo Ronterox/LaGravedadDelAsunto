@@ -1,5 +1,9 @@
+using System;
+using System.Collections;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using Random = UnityEngine.Random;
 
 namespace Plugins.Tools
 {
@@ -36,6 +40,152 @@ namespace Plugins.Tools
             return result;
         }
 #endif
+        /// <summary>
+        /// Returns the degrees as radians
+        /// </summary>
+        /// <param name="degrees"></param>
+        /// <returns></returns>
         public static float ToRadians(this float degrees) => Mathf.Rad2Deg * degrees;
+
+        /// <summary>
+        /// Returns the string as a smart color string
+        /// </summary>
+        /// <param name="sentence"></param>
+        /// <param name="color"></param>
+        /// <returns></returns>
+        public static string ToColorString(this string sentence, string color) => $"<color={color}>{sentence}</color>";
+
+        /// <summary>
+        /// Returns a random direction Vector3
+        /// </summary>
+        /// <param name="horizontalDirections"></param>
+        /// <param name="verticalDirections"></param>
+        /// <returns></returns>
+        public static Vector3 GetRandomDirection(bool horizontalDirections, bool verticalDirections) => Random.Range(horizontalDirections ? 0 : 4, verticalDirections ? 6 : 4) switch { 0 => Vector3.forward, 1 => Vector3.back, 2 => Vector3.left, 3 => Vector3.right, 4 => Vector3.up, 5 => Vector3.down, _ => Vector3.zero };
+
+        /// <summary>
+        /// Returns the float, as a percentage of the max value, from 0 to 1;
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="maxValue"></param>
+        /// <returns></returns>
+        public static float GetPercentageValue(this float value, float maxValue) => value / maxValue;
+
+        /// <summary>
+        /// Returns a random vector2 with points between the values passed
+        /// </summary>
+        /// <param name="minValueX"></param>
+        /// <param name="maxValueX"></param>
+        /// <param name="minValueY"></param>
+        /// <param name="maxValueY"></param>
+        /// <returns></returns>
+        public static Vector2 GetRandomVector2(float minValueX, float maxValueX, float minValueY, float maxValueY) => new Vector2(Random.Range(minValueX, maxValueX), Random.Range(minValueY, maxValueY));
+
+        /// <summary>
+        /// Changes the value by a limited amount
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="increment">Positive or negative value to be incremented or decremented with</param>
+        /// <param name="byLimit">the max amount to be limited to</param>
+        public static void ChangeValueLimited(this ref float value, float increment, float byLimit) => value = (value + increment) % byLimit;
+
+        /// <summary>
+        /// Changes the value by a limited amount
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="increment">Positive or negative value to be incremented or decremented with</param>
+        /// <param name="byLimit">the max amount to be limited to</param>
+        public static void ChangeValueLimited(this ref int value, int increment, int byLimit) => value = (value + increment) % byLimit;
+
+        /// <summary>
+        /// Coroutine standard cycle function to be reused
+        /// </summary>
+        /// <param name="whileCondition"></param>
+        /// <param name="loopWaitForSeconds"></param>
+        /// <param name="loopAction"></param>
+        /// <param name="onceStartCoroutine"></param>
+        /// <param name="onceFinishCoroutine"></param>
+        /// <returns></returns>
+        public static IEnumerator FunctionCycleCoroutine(Func<bool> whileCondition, Action loopAction, WaitForSeconds loopWaitForSeconds = null, Action onceStartCoroutine = null, Action onceFinishCoroutine = null)
+        {
+            onceStartCoroutine?.Invoke();
+            while (whileCondition())
+            {
+                loopAction?.Invoke();
+                yield return loopWaitForSeconds;
+            }
+            onceFinishCoroutine?.Invoke();
+        }
+
+        /// <summary>
+        /// Checks if a float approximates other float by a tolerance
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="objective"></param>
+        /// <param name="tolerance"></param>
+        /// <returns></returns>
+        public static bool Approximates(this float value, float objective, float tolerance = 0.01f) => Math.Abs(value - objective) <= tolerance;
+
+
+        /// <summary>
+        /// Checks if a vector3 approximates other vector3 by a tolerance
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="objective"></param>
+        /// <param name="tolerance"></param>
+        /// <returns></returns>
+        public static bool Approximates(this Vector3 value, Vector3 objective, float tolerance = 0.01f) => Vector3.SqrMagnitude(value - objective) <= tolerance;
+
+        /// <summary>
+        /// Lerps a vector3
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="objective"></param>
+        /// <param name="speed">Between 0 and 1</param>
+        public static void Lerp(this ref Vector3 value, Vector3 objective, float speed) => value = Vector3.Lerp(value, objective, speed);
+
+        /// <summary>
+        /// Lerps a float
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="objective"></param>
+        /// <param name="speed">Between 0 and 1</param>
+        public static void Lerp(this ref float value, float objective, float speed) => value = Mathf.Lerp(value, objective, speed);
+
+        /// <summary>
+        /// Moves the gameObject to the exist if exist, if it doesn't it creates the scene
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="sceneName"></param>
+        public static void MoveToScene(this GameObject obj, string sceneName)
+        {
+            if (obj.transform.parent) return;
+            Scene scene = SceneManager.GetSceneByName(sceneName);
+            SceneManager.MoveGameObjectToScene(obj, scene.IsValid() ? scene : SceneManager.CreateScene(sceneName));
+        }
+
+        /// <summary>
+        /// Returns the decibel value as a volume value from 0 to 1
+        /// </summary>
+        /// <param name="dB"></param>
+        /// <returns></returns>
+        public static float ToVolume(this float dB) => Mathf.Pow(10, dB * 0.05f);
+
+        /// <summary>
+        /// Returns the volume from 0 to 1 as its decibel value
+        /// </summary>
+        /// <param name="volume"></param>
+        /// <returns></returns>
+        public static float ToDecibels(this float volume) => volume > 0 ? Mathf.Log10(volume) * 20 : -80f;
+
+        /// <summary>
+        /// Returns the component of the gameObject if it founds it, else adds the component and returns it
+        /// </summary>
+        /// <param name="gameObject">gameObject</param>
+        /// <typeparam name="T">component type</typeparam>
+        /// <returns></returns>
+        public static T GetComponentSafely<T>(this GameObject gameObject) where T : Component => gameObject.TryGetComponent(out T component) ? component : gameObject.AddComponent<T>();
     }
+
+
 }

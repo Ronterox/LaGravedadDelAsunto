@@ -1,43 +1,44 @@
 ﻿using UnityEngine;
 
-namespace Plugins
+namespace Plugins.Tools
 {
     [AddComponentMenu("Penguins Mafia/Tools/FPS Counter")]
     public class FPSCounter : MonoBehaviour
     {
         public float updateInterval = 0.5f;
-        private float timeLeft; // Left time for current interval
+        public Vector2 screenPosOffset = Vector2.zero;
+        private float m_TimeLeft; // Left time for current interval
 
         public int fontSize = 24;
-        private int safeZone;
+        private int m_SafeZone;
         
-        private float fps;
+        private float m_Fps;
         
-        private int frames;        // Frames drawn over the interval
-        private float accumulated; // FPS accumulated over the interval
+        private int m_Frames;        // Frames drawn over the interval
+        private float m_AccumulatedFrames; // FPS accumulated frames over the interval
 
 
         /// <summary>
         /// Start
         /// </summary>
-        public void Start() => safeZone = (int)(Screen.width * 0.05f);
+        public void Start() => m_SafeZone = (int)(Screen.width * 0.05f);
 
         /// <summary>
         /// Update
         /// </summary>
         private void Update()
         {
-            timeLeft -= Time.deltaTime;
-            accumulated += Time.timeScale / Time.deltaTime;
-            ++frames;
+            m_TimeLeft -= Time.deltaTime;
+            m_AccumulatedFrames += Time.timeScale / Time.deltaTime;
+            ++m_Frames;
 
             // Interval ended - update GUI text and start new interval
-            if (timeLeft > 0) return;
+            if (m_TimeLeft > 0) return;
             // display two fractional digits (f2 format)
-            fps = accumulated / frames;
-            timeLeft = updateInterval;
-            accumulated = 0f;
-            frames = 0;
+            m_Fps = m_AccumulatedFrames / m_Frames;
+            m_TimeLeft = updateInterval;
+            m_AccumulatedFrames = 0f;
+            m_Frames = 0;
         }
 
         /// <summary>
@@ -50,13 +51,15 @@ namespace Plugins
             style.alignment = TextAnchor.LowerLeft;
             style.wordWrap = false;
 
-            GUIStyle labeleStyle = GUI.skin.GetStyle("Box");
-            labeleStyle.alignment = TextAnchor.UpperRight;
+            GUIStyle labelStyle = GUI.skin.GetStyle("Box");
+            labelStyle.alignment = TextAnchor.UpperLeft;
+            labelStyle.fontSize = fontSize;
 
-            float height = style.lineHeight + 16;
-            var frameBox = new Rect(Screen.width - 150, 30, 200 - safeZone, height);
-            GUI.Box(frameBox, "FPS", labeleStyle);
-            GUI.Label(frameBox, $"{fps:F2}");
+            float height = style.lineHeight + 16 + fontSize;
+            float width = 200 - m_SafeZone + fontSize * 2.5f;
+            var frameBox = new Rect(Screen.width - ( width + screenPosOffset.x), screenPosOffset.y, width, height);
+            GUI.Box(frameBox, $"FPS, Build v{Application.version}", labelStyle);
+            GUI.Label(frameBox, $"{m_Fps:F2}");
         }
     }
 }
