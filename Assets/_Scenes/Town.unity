@@ -191,7 +191,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh101932
+  m_Name: pb_Mesh21082
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2568,7 +2568,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -3188,37 +3188,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5113823774924818875, guid: d1a74b6ae03c117d4b2e88aefa805230, type: 3}
-      propertyPath: near clip plane
-      value: 0.01
-      objectReference: {fileID: 0}
-    - target: {fileID: 5113823774924818876, guid: d1a74b6ae03c117d4b2e88aefa805230, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.0013905121
-      objectReference: {fileID: 0}
-    - target: {fileID: 5113823774924818876, guid: d1a74b6ae03c117d4b2e88aefa805230, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -2.2361279
-      objectReference: {fileID: 0}
-    - target: {fileID: 5113823774924818876, guid: d1a74b6ae03c117d4b2e88aefa805230, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 3.1411474
-      objectReference: {fileID: 0}
-    - target: {fileID: 5113823774924818876, guid: d1a74b6ae03c117d4b2e88aefa805230, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.9905875
-      objectReference: {fileID: 0}
-    - target: {fileID: 5113823774924818876, guid: d1a74b6ae03c117d4b2e88aefa805230, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0.13688113
-      objectReference: {fileID: 0}
     - target: {fileID: 5113823774924818876, guid: d1a74b6ae03c117d4b2e88aefa805230, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.00017845877
+      value: -0.00017849285
       objectReference: {fileID: 0}
     - target: {fileID: 5113823774924818876, guid: d1a74b6ae03c117d4b2e88aefa805230, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.00002465975
+      value: 0.00002466446
       objectReference: {fileID: 0}
     - target: {fileID: 5113823776833457376, guid: d1a74b6ae03c117d4b2e88aefa805230, type: 3}
       propertyPath: m_Name
@@ -3729,22 +3705,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 325547153588836211, guid: 6b204319c6bc7b1b19fbb704b483fa5d, type: 3}
-      propertyPath: allCampaigns.Array.data[0].campaignQuests.Array.data[0].mainQuest
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5164704531365980810, guid: 6b204319c6bc7b1b19fbb704b483fa5d, type: 3}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5164704531365980811, guid: 6b204319c6bc7b1b19fbb704b483fa5d, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8791522931685928594, guid: 6b204319c6bc7b1b19fbb704b483fa5d, type: 3}
-      propertyPath: events.onQuestStarted.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 8792325526232751510, guid: 6b204319c6bc7b1b19fbb704b483fa5d, type: 3}
       propertyPath: m_Name
       value: Game Manager
@@ -4051,11 +4011,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5617871186160820124, guid: 881f5ea122226be93a0d47628b8a2826, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.00017846731
+      value: -0.00017848435
       objectReference: {fileID: 0}
     - target: {fileID: 5617871186160820124, guid: 881f5ea122226be93a0d47628b8a2826, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.000024660932
+      value: 0.000024663288
       objectReference: {fileID: 0}
     - target: {fileID: 5617871186237568712, guid: 881f5ea122226be93a0d47628b8a2826, type: 3}
       propertyPath: m_Follow

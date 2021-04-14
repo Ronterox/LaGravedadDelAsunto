@@ -3,6 +3,7 @@ using GUI.Minigames.Cook_Plate;
 using Managers;
 using Minigames;
 using Plugins.Tools;
+using UI;
 using UnityEngine;
 using Random = UnityEngine.Random;
 

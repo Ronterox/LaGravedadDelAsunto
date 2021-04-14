@@ -47,8 +47,6 @@ namespace Questing_System
 
         public QuestEvents events;
 
-        protected virtual void Awake() => gameObject.MoveToScene("Quests Scene");
-
         protected virtual void OnEnable()
         {
             events.onQuestStarted.AddListener(OnceQuestStarted);
