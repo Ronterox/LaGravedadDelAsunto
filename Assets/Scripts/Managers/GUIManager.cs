@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using GUI;
@@ -104,7 +103,7 @@ namespace Managers
         /// Opens the gameObject passed as a gui on the main canvas
         /// </summary>
         /// <param name="menu">the gui to instantiate</param>
-        /// <param name="options">menu instantiation effects</param>
+        /// <param name="options">menuScene instantiation effects</param>
         public void OpenGUIMenu(GameObject menu, UIOptions options)
         {
             if (m_IsGuiOpened) return;
@@ -171,7 +170,7 @@ namespace Managers
         }
 
         /// <summary>
-        /// Closes any opened menu instantly
+        /// Closes any opened menuScene instantly
         /// </summary>
         public void CloseGUIMenuInstantly()
         {
@@ -268,7 +267,7 @@ namespace Managers
         }
 
         /// <summary>
-        /// Opens the pause menu
+        /// Opens the pause menuScene
         /// </summary>
         /// <param name="onOpenGUI"></param>
         /// <param name="onCloseGUI"></param>
