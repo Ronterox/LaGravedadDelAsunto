@@ -4794,7 +4794,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: NPC Random GianPaula (1)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4711530918936839510, guid: 018bf24a12a36caa0a900a29628b1470, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 018bf24a12a36caa0a900a29628b1470, type: 3}
 --- !u!1001 &1622282925
 PrefabInstance:
@@ -5850,11 +5851,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5617871187225851715, guid: 881f5ea122226be93a0d47628b8a2826, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.00017740935
+      value: -0.00017739242
       objectReference: {fileID: 0}
     - target: {fileID: 5617871187225851715, guid: 881f5ea122226be93a0d47628b8a2826, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.00003147794
+      value: 0.000031474934
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 881f5ea122226be93a0d47628b8a2826, type: 3}

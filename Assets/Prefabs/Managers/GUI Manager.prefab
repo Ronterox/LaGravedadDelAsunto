@@ -61,5 +61,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cursorKey: 308
-  guiScenes:
-  - MainMenu
+  buttonsGUI: {fileID: 2387234832662494994, guid: 84603fd58e3dfee48ab9707d1337c32d, type: 3}

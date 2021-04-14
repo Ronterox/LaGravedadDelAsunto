@@ -16,7 +16,7 @@ namespace GUI
 
         private void LateUpdate()
         {
-            if (GameManager.Instance.GameIsPaused) return;
+            if (GameManager.Instance.GameIsPaused || GUIManager.Instance.IsGuiOpened) return;
 
             if (Input.GetKeyDown(cursorKey))
             {

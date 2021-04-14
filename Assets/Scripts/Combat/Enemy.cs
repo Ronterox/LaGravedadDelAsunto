@@ -1,6 +1,3 @@
-using General.Utilities;
-using Managers;
-using Player;
 using UnityEngine;
 
 namespace Combat

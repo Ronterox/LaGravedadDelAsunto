@@ -32,13 +32,13 @@ MonoBehaviour:
     <SubbehaviorNode id=\"5\" />\n            </child>\n          </GuardAndNode>\n       
     </elem>\n      </children>\n      <inputParams />\n      <outputParams />\n     
     <localParams />\n    </PrioritySelectorNode>\n    <ConditionEvalNode id=\"4\"
-    policy=\"ATOMIC_CHECK\" name=\"Perception/IsPlayerOnInteractionRange\">\n     
+    policy=\"WAIT_UNTIL_TRUE_AND_COMPLETE\" name=\"Perception/IsPlayerOnInteractionRange\">\n     
     <inputParams>\n        <inputValues>\n          <entry name=\"Interactable\"
     type=\"General.Utilities.Interactable\" isBlackboard=\"True\" blackboard=\"Interactable\"
     />\n        </inputValues>\n      </inputParams>\n      <outputParams />\n     
     <localParams />\n    </ConditionEvalNode>\n    <ActionNode id=\"3\" action=\"Samples/ProgQuickStartGuide/SleepForever\">\n     
     <inputParams />\n      <outputParams />\n      <localParams />\n    </ActionNode>\n   
-    <ConditionEvalNode id=\"6\" policy=\"ATOMIC_CHECK\" name=\"AlwaysTrue\">\n     
+    <ConditionEvalNode id=\"6\" policy=\"WAIT_UNTIL_FALSE_AND_FAIL\" name=\"AlwaysTrue\">\n     
     <inputParams />\n      <outputParams />\n      <localParams />\n    </ConditionEvalNode>\n   
     <SubbehaviorNode id=\"5\">\n      <_guid>8adfddffa70852a45ba1b64354494e3c</_guid>\n     
     <inputParams>\n        <inputValues>\n          <entry name=\"Wander Area\" type=\"UnityEngine.GameObject\"
@@ -59,30 +59,30 @@ MonoBehaviour:
     <ConditionEvalNode id=\"4\" />\n          <SubbehaviorNode id=\"5\" />\n         
     <ConditionEvalNode id=\"6\" />\n        </nodes>\n      </_nodes>\n    </BehaviorTree>\n   
     <RepeatDecorator id=\"1\">\n      <_data>\n        <data breakpoint=\"0\" selected=\"False\"
-    position=\"479.4337 -26.50366\" name=\"Repeat\" description=\"Repeats the execution
+    position=\"459.4337 10.49634\" name=\"Repeat\" description=\"Repeats the execution
     of its child node\" cardinality=\"1\" hasParent=\"False\">\n          <BehaviorTree
     id=\"0\" />\n          <RepeatDecorator id=\"1\" />\n        </data>\n      </_data>\n   
     </RepeatDecorator>\n    <PrioritySelectorNode id=\"2\">\n      <_data>\n       
-    <data breakpoint=\"0\" selected=\"False\" position=\"421.8504 96.16296\" name=\"Priority
+    <data breakpoint=\"0\" selected=\"False\" position=\"401.8504 133.163\" name=\"Priority
     Selector\" description=\"\" cardinality=\"1\" hasParent=\"True\">\n         
     <BehaviorTree id=\"0\" />\n          <PrioritySelectorNode id=\"2\" />\n         
     <RepeatDecorator id=\"1\" />\n        </data>\n      </_data>\n    </PrioritySelectorNode>\n   
     <ConditionEvalNode id=\"4\">\n      <_data>\n        <data breakpoint=\"0\" selected=\"True\"
-    position=\"409.1619 516.0496\" name=\"Perception/IsPlayerOnInteractionRange\"
+    position=\"389.1619 553.0496\" name=\"Perception/IsPlayerOnInteractionRange\"
     description=\"Eval\" cardinality=\"1\" hasParent=\"True\">\n          <BehaviorTree
     id=\"0\" />\n          <ConditionEvalNode id=\"4\" />\n          <PrioritySelectorNode
     id=\"2\" />\n        </data>\n      </_data>\n    </ConditionEvalNode>\n    <ActionNode
-    id=\"3\">\n      <_data>\n        <data breakpoint=\"0\" selected=\"False\" position=\"198.5497
-    260.7436\" name=\"Samples/ProgQuickStartGuide/SleepForever\" description=\"Low-cost
+    id=\"3\">\n      <_data>\n        <data breakpoint=\"0\" selected=\"False\" position=\"178.5497
+    297.7436\" name=\"Samples/ProgQuickStartGuide/SleepForever\" description=\"Low-cost
     infinite action that never ends. It does not consume CPU at all.\" cardinality=\"0\"
     hasParent=\"False\">\n          <BehaviorTree id=\"0\" />\n          <ActionNode
     id=\"3\" />\n        </data>\n      </_data>\n    </ActionNode>\n    <ConditionEvalNode
-    id=\"6\">\n      <_data>\n        <data breakpoint=\"0\" selected=\"False\" position=\"970.7938
-    510.3764\" name=\"AlwaysTrue\" description=\"Eval\" cardinality=\"1\" hasParent=\"True\">\n         
+    id=\"6\">\n      <_data>\n        <data breakpoint=\"0\" selected=\"False\" position=\"950.7938
+    547.3764\" name=\"AlwaysTrue\" description=\"Eval\" cardinality=\"1\" hasParent=\"True\">\n         
     <BehaviorTree id=\"0\" />\n          <ConditionEvalNode id=\"6\" />\n         
     <PrioritySelectorNode id=\"2\" />\n        </data>\n      </_data>\n    </ConditionEvalNode>\n   
     <SubbehaviorNode id=\"5\">\n      <_data>\n        <data breakpoint=\"0\" selected=\"False\"
-    position=\"568.5499 258.7437\" name=\"QuickStartGuide/DoneWander\" description=\"Wanders
+    position=\"548.5499 295.7437\" name=\"QuickStartGuide/DoneWander\" description=\"Wanders
     to random positions around a NavMesh area.\" cardinality=\"-1\" hasParent=\"False\">\n         
     <BehaviorTree id=\"0\" />\n          <SubbehaviorNode id=\"5\" />\n        </data>\n     
     </_data>\n    </SubbehaviorNode>\n  </editorInfo>\n</BehaviorBricks>"

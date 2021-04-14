@@ -10,9 +10,8 @@ namespace General.Utilities
         public bool infiniteInteractions;
 
         protected int m_InteractTimes;
-        private bool m_PlayerOnRange;
 
-        public bool IsPlayerOnRange => m_PlayerOnRange;
+        public bool IsPlayerOnRange { get; private set; }
 
         protected virtual void Awake() => gameObject.MoveToScene("Interactables Scene");
 
@@ -31,13 +30,13 @@ namespace General.Utilities
 
         protected virtual void Update()
         {
-            if (m_PlayerOnRange && PlayerInput.Instance.Interact) IncrementInteraction();
+            if (IsPlayerOnRange && PlayerInput.Instance.Interact) IncrementInteraction();
         }
 
         private void OnTriggerEnter(Collider other)
         {
             if (!other.CompareTag("Player")) return;
-            m_PlayerOnRange = true;
+            IsPlayerOnRange = true;
             m_InteractTimes = 0;
             OnEnterTrigger(other);
         }
@@ -45,7 +44,7 @@ namespace General.Utilities
         private void OnTriggerExit(Collider other)
         {
             if (!other.CompareTag("Player")) return;
-            m_PlayerOnRange = false;
+            IsPlayerOnRange = false;
             OnExitTrigger(other);
         }
     }

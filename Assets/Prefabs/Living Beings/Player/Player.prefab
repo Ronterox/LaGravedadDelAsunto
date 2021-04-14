@@ -43,6 +43,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.48300457, y: 1.3429766, z: 0.38645187}
   m_Center: {x: 0.06841672, y: 0.45769188, z: -0.05548588}
+--- !u!114 &5731042464289745033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6254781461005160538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1dd948e4c0cd66647a971d605d77f39a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AttackCollider: {fileID: 7181072255239292277}
+  damage: 10
 --- !u!1 &6614662400965703640
 GameObject:
   m_ObjectHideFlags: 0
@@ -152,7 +166,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   zoomSpeed: 0.1
-  playerControllerInputBlocked: 0
 --- !u!114 &6729424279741692700
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -207,12 +220,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e210cccbe3568d44af39c92e6a7ca0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponHolder: {fileID: 0}
-  attackSpeed: 1
-  attackDelay: 0.6
-  combatCooldown: 2
-  lastAttackTime: 0
-  damage: 0
+  weaponHolder: {fileID: 5120064983168819818}
+  sword: {fileID: 5731042464289745033}
 --- !u!114 &5678576151616417647
 MonoBehaviour:
   m_ObjectHideFlags: 0

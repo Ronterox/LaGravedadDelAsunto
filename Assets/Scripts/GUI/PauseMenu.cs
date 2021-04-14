@@ -1,4 +1,3 @@
-using System;
 using Managers;
 using Plugins.Audio;
 using Plugins.Properties;

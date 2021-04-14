@@ -14,7 +14,39 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   npcName: Random
   description: Just say random things
-  dialoguesIds: []
+  dialoguesIds:
+  - hello
+  - random
+  - bambino
+  - Move
+  - hello
+  - random
+  - bambino
+  - Move
+  - hello
+  - random
+  - bambino
+  - Move
+  - hello
+  - random
+  - bambino
+  - Move
+  - hello
+  - random
+  - bambino
+  - Move
+  - hello
+  - random
+  - bambino
+  - Move
+  - hello
+  - random
+  - bambino
+  - Move
+  - hello
+  - random
+  - bambino
+  - Move
   campaignID: 
   dialogues:
   - groupName: Things

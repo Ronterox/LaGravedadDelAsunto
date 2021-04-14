@@ -61,7 +61,7 @@ namespace Managers
         private GameObject m_CurrentGUI;
 
         private Action<GameObject> m_OnCloseGUI;
-        private bool m_IsGuiOpened;
+        public bool IsGuiOpened { get; private set; }
 
         private readonly List<GameObject> m_InstantiatedObjects = new List<GameObject>();
         private GameObject m_CanvasInstance;
@@ -72,13 +72,13 @@ namespace Managers
 
         private void Update()
         {
-            if (m_IsGuiOpened && !m_JustOpenedGUI && PlayerInput.Instance.Pause) CloseGUIMenu();
+            if (IsGuiOpened && !m_JustOpenedGUI && PlayerInput.Instance.Pause) CloseGUIMenu();
             if (m_JustOpenedGUI) m_JustOpenedGUI = false;
         }
 
         public void InitializeCanvasInstance()
         {
-            m_IsGuiOpened = false;
+            IsGuiOpened = false;
 
             if (m_CanvasInstance) Destroy(m_CanvasInstance);
 
@@ -106,9 +106,9 @@ namespace Managers
         /// <param name="options">menuScene instantiation effects</param>
         public void OpenGUIMenu(GameObject menu, UIOptions options)
         {
-            if (m_IsGuiOpened) return;
+            if (IsGuiOpened) return;
 
-            m_IsGuiOpened = true;
+            IsGuiOpened = true;
             m_JustOpenedGUI = true;
 
             m_CurrentGUI = Instantiate(menu, m_CanvasInstance.transform);
@@ -144,7 +144,7 @@ namespace Managers
         /// <param name="animate">whether to animate with fade the gui to close</param>
         public void CloseGUIMenu(bool animate = true)
         {
-            if (!m_IsGuiOpened) return;
+            if (!IsGuiOpened) return;
 
             Time.timeScale = 1f;
 
@@ -162,7 +162,7 @@ namespace Managers
                 m_OnCloseGUI?.Invoke(m_CurrentGUI);
                 m_OnCloseGUI = null;
 
-                m_IsGuiOpened = false;
+                IsGuiOpened = false;
             }
 
             if (animate) AnimateAlpha(m_CurrentGUICanvasGroup, 0f, alphaAnimationDuration, OnceFinishAnimation);
@@ -176,7 +176,7 @@ namespace Managers
         {
             Time.timeScale = 1f;
             Destroy(m_CurrentGUI);
-            m_IsGuiOpened = false;
+            IsGuiOpened = false;
         }
 
         /// <summary>
