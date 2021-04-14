@@ -1,4 +1,3 @@
-using System;
 using General.Utilities;
 using Managers;
 using Questing_System;
@@ -42,10 +41,15 @@ namespace NPCs
                     onCampaignCompletedInteraction?.Invoke();
                 }
             }
-            else if (!npcCampaign.IsStarted) GameManager.Instance.questManager.StartNewCampaign(npcScriptable.campaignID);
             OnInteraction(npcCampaign);
         }
 
-        public void Say(string dialogueID) => GameManager.Instance.dialogueManager.Type(npcScriptable.GetDialogue(dialogueID).line, textPosition.position);
+        public void Say(string dialogueID)
+        {
+            Dialogue dialogue = npcScriptable.GetDialogue(dialogueID);
+            
+            if(dialogue != null) GameManager.Instance.dialogueManager.Type(dialogue.line, textPosition.position);
+            else Debug.LogError($"Dialogue Id {dialogueID} doesn't exist!");
+        }
     }
 }

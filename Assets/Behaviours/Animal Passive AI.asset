@@ -93,40 +93,40 @@ MonoBehaviour:
     <ActionNode id=\"9\" />\n          <ConditionEvalNode id=\"12\" />\n         
     <ConditionEvalNode id=\"15\" />\n        </nodes>\n      </_nodes>\n    </BehaviorTree>\n   
     <RepeatDecorator id=\"5\">\n      <_data>\n        <data breakpoint=\"0\" selected=\"False\"
-    position=\"388.7225 208.4216\" name=\"Repeat\" description=\"Repeats the execution
+    position=\"601.5796 68.42161\" name=\"Repeat\" description=\"Repeats the execution
     of its child node\" cardinality=\"1\" hasParent=\"False\">\n          <BehaviorTree
     id=\"0\" />\n          <RepeatDecorator id=\"5\" />\n        </data>\n      </_data>\n   
     </RepeatDecorator>\n    <PrioritySelectorNode id=\"10\">\n      <_data>\n       
-    <data breakpoint=\"0\" selected=\"False\" position=\"328.6062 382.0088\" name=\"Priority
+    <data breakpoint=\"0\" selected=\"False\" position=\"541.4634 242.0088\" name=\"Priority
     Selector\" description=\"\" cardinality=\"1\" hasParent=\"True\">\n         
     <BehaviorTree id=\"0\" />\n          <PrioritySelectorNode id=\"10\" />\n         
     <RepeatDecorator id=\"5\" />\n        </data>\n      </_data>\n    </PrioritySelectorNode>\n   
     <ConditionEvalNode id=\"16\">\n      <_data>\n        <data breakpoint=\"0\"
-    selected=\"True\" position=\"36.3195 600.8478\" name=\"Basic/IsGameObjectNull\"
+    selected=\"False\" position=\"249.1767 460.8477\" name=\"Basic/IsGameObjectNull\"
     description=\"Eval\" cardinality=\"1\" hasParent=\"True\">\n          <BehaviorTree
     id=\"0\" />\n          <ConditionEvalNode id=\"16\" />\n          <PrioritySelectorNode
     id=\"10\" />\n        </data>\n      </_data>\n    </ConditionEvalNode>\n   
     <ActionNode id=\"7\">\n      <_data>\n        <data breakpoint=\"0\" selected=\"False\"
-    position=\"27.18311 543.0612\" name=\"GameObject/FindByTag\" description=\"Finds
+    position=\"240.0403 403.0612\" name=\"GameObject/FindByTag\" description=\"Finds
     a game object by name\" cardinality=\"0\" hasParent=\"False\">\n          <BehaviorTree
     id=\"0\" />\n          <ActionNode id=\"7\" />\n        </data>\n      </_data>\n   
     </ActionNode>\n    <ConditionEvalNode id=\"15\">\n      <_data>\n        <data
-    breakpoint=\"0\" selected=\"False\" position=\"355.1548 633.7966\" name=\"Perception/IsTargetClose\"
+    breakpoint=\"0\" selected=\"False\" position=\"568.0119 493.7964\" name=\"Perception/IsTargetClose\"
     description=\"Eval\" cardinality=\"1\" hasParent=\"True\">\n          <BehaviorTree
     id=\"0\" />\n          <ConditionEvalNode id=\"15\" />\n          <PrioritySelectorNode
     id=\"10\" />\n        </data>\n      </_data>\n    </ConditionEvalNode>\n   
     <ActionNode id=\"9\">\n      <_data>\n        <data breakpoint=\"0\" selected=\"False\"
-    position=\"319.8337 579.3304\" name=\"Navigation/MoveAwayFromTransform\" description=\"Moves
+    position=\"532.6909 439.3303\" name=\"Navigation/MoveAwayFromTransform\" description=\"Moves
     the game object to the contrary position of a transform by using a NavMeshAgent\"
     cardinality=\"0\" hasParent=\"False\">\n          <BehaviorTree id=\"0\" />\n         
     <ActionNode id=\"9\" />\n        </data>\n      </_data>\n    </ActionNode>\n   
     <ConditionEvalNode id=\"12\">\n      <_data>\n        <data breakpoint=\"0\"
-    selected=\"False\" position=\"718.374 611.323\" name=\"AlwaysTrue\" description=\"Eval\"
+    selected=\"False\" position=\"931.2311 471.3229\" name=\"AlwaysTrue\" description=\"Eval\"
     cardinality=\"1\" hasParent=\"True\">\n          <BehaviorTree id=\"0\" />\n         
     <ConditionEvalNode id=\"12\" />\n          <PrioritySelectorNode id=\"10\" />\n       
     </data>\n      </_data>\n    </ConditionEvalNode>\n    <SubbehaviorNode id=\"2\">\n     
-    <_data>\n        <data breakpoint=\"0\" selected=\"False\" position=\"652.5965
-    561.7832\" name=\"QuickStartGuide/DoneWander\" description=\"Wanders to random
+    <_data>\n        <data breakpoint=\"0\" selected=\"True\" position=\"865.4536
+    421.7831\" name=\"QuickStartGuide/DoneWander\" description=\"Wanders to random
     positions around a NavMesh area.\" cardinality=\"-1\" hasParent=\"False\">\n         
     <BehaviorTree id=\"2\" />\n        </data>\n      </_data>\n    </SubbehaviorNode>\n 
     </editorInfo>\n  <runtimeInfo>\n    <BehaviorTree id=\"2\" nextId=\"1\">\n     
@@ -134,7 +134,7 @@ MonoBehaviour:
     </runtimeInfo>\n  <editorInfo>\n    <BehaviorTree id=\"2\" _removeIfClosed=\"False\">\n     
     <_rootList />\n      <_nodes>\n        <nodes />\n      </_nodes>\n    </BehaviorTree>\n 
     </editorInfo>\n</BehaviorBricks>"
-  zoom: 0.8
+  zoom: 0.7
   subslist:
   - {fileID: 11400000, guid: 8adfddffa70852a45ba1b64354494e3c, type: 2}
   _guid: bc450c485722b576ab5d5bb6d53eec5f

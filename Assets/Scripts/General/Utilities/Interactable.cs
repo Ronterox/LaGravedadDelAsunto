@@ -12,6 +12,8 @@ namespace General.Utilities
         protected int m_InteractTimes;
         private bool m_PlayerOnRange;
 
+        public bool IsPlayerOnRange => m_PlayerOnRange;
+
         protected virtual void Awake() => gameObject.MoveToScene("Interactables Scene");
 
         public abstract void Interact();

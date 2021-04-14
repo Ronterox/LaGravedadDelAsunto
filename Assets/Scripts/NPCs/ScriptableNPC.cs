@@ -9,7 +9,7 @@ namespace NPCs
         [Header("NPC")] public string npcName;
         [Space] [TextArea] public string description;
 
-        public List<string> dialoguesIds;
+        [HideInInspector] public List<string> dialoguesIds;
 
         public string campaignID;
 
