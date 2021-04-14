@@ -1,18 +1,23 @@
+using Managers;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TravellingUI : MonoBehaviour
+namespace GUI
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
+    public class TravellingUI : MonoBehaviour
     {
-        
+        public void Pause()
+        {
+            GUIManager.Instance.RemoveUIInstantly(gameObject);
+            GameManager.Instance.PauseGame();           
+        }
+
+        public void OpenInventory()
+        {
+            GUIManager.Instance.RemoveUIInstantly(gameObject);
+            GameManager.Instance.inventory.OpenInventory();
+        }
     }
 }

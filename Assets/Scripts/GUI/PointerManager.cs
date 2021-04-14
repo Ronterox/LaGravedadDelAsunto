@@ -22,10 +22,14 @@ namespace GUI
 
         public void SetCursorActive(bool active = true)
         {
+            if (GameManager.Instance.GameIsPaused)
+            {
+                return;
+            }
             Cursor.visible = active;
-            Cursor.lockState = active ? CursorLockMode.None : CursorLockMode.Locked;
+            Cursor.lockState = active ? CursorLockMode.None : CursorLockMode.Locked;            
             if (active)
-            {               
+            {                          
                 m_AuxiliarButtonGUI = GUIManager.Instance.InstantiateUI(buttonsGUI);
             }
             else

@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 2387234832662494995}
   - component: {fileID: 2387234832662494993}
   - component: {fileID: 2387234832662494992}
+  - component: {fileID: 6715900503037451486}
+  - component: {fileID: 8703290104205209243}
   m_Layer: 5
   m_Name: GUI Buttons
   m_TagString: Untagged
@@ -77,6 +79,30 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &6715900503037451486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2387234832662494994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa432a09084ddd141bf497853b32dad1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!225 &8703290104205209243
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2387234832662494994}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &2387234833682395848
 GameObject:
   m_ObjectHideFlags: 0
@@ -88,7 +114,7 @@ GameObject:
   - component: {fileID: 2387234833682395849}
   - component: {fileID: 2387234833682395855}
   - component: {fileID: 2387234833682395854}
-  - component: {fileID: 2387234833682395852}
+  - component: {fileID: 8427701617061208063}
   m_Layer: 5
   m_Name: PauseButton
   m_TagString: Untagged
@@ -153,7 +179,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &2387234833682395852
+--- !u!114 &8427701617061208063
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -162,7 +188,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2387234833682395848}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Script: {fileID: 11500000, guid: f21d654f6375dbcc197e374afa736f3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
@@ -196,6 +222,24 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2387234833682395854}
   m_OnClick:
     m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6715900503037451486}
+        m_TargetAssemblyTypeName: GUI.TravellingUI, Assembly-CSharp
+        m_MethodName: Pause
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onSelect:
+    m_PersistentCalls:
+      m_Calls: []
+  onDeselect:
+    m_PersistentCalls:
       m_Calls: []
 --- !u!1 &2387234833699134870
 GameObject:
@@ -208,7 +252,7 @@ GameObject:
   - component: {fileID: 2387234833699134871}
   - component: {fileID: 2387234833699134869}
   - component: {fileID: 2387234833699134868}
-  - component: {fileID: 2387234833699134858}
+  - component: {fileID: 8290295884654073931}
   m_Layer: 5
   m_Name: InventoryButton
   m_TagString: Untagged
@@ -273,7 +317,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &2387234833699134858
+--- !u!114 &8290295884654073931
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -282,7 +326,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2387234833699134870}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Script: {fileID: 11500000, guid: f21d654f6375dbcc197e374afa736f3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
@@ -315,5 +359,23 @@ MonoBehaviour:
   m_Interactable: 1
   m_TargetGraphic: {fileID: 2387234833699134868}
   m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6715900503037451486}
+        m_TargetAssemblyTypeName: GUI.TravellingUI, Assembly-CSharp
+        m_MethodName: OpenInventory
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onSelect:
+    m_PersistentCalls:
+      m_Calls: []
+  onDeselect:
     m_PersistentCalls:
       m_Calls: []

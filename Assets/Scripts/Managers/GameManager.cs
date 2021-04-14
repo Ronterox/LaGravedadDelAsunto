@@ -19,14 +19,19 @@ namespace Managers
         {
             if (!PlayerInput.Instance.Pause) return;
 
-            if (GameIsPaused) GUIManager.Instance.CloseGUIMenu();
-            else GUIManager.Instance.OpenPauseMenu(() => GameIsPaused = true, () => GameIsPaused = false);
+            PauseGame();
         }
 
         public void OnMMEvent(MMGameEvent eventType)
         {
             if (m_Instance || !eventType.Equals(MMGameEvent.LOAD)) return;
             if (LevelLoadManager.Instance.SceneIsGUI) Destroy(m_Instance.gameObject);
+        }
+
+        public void PauseGame()
+        {
+            if (GameIsPaused) GUIManager.Instance.CloseGUIMenu();
+            else GUIManager.Instance.OpenPauseMenu(() => GameIsPaused = true, () => GameIsPaused = false);           
         }
 
         public void OnEnable() => this.MMEventStartListening();
