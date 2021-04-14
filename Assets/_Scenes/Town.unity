@@ -122,7 +122,7 @@ NavMeshSettings:
     preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: 74ff8487d0bb7032eb663b11cb66651d, type: 2}
 --- !u!1001 &5688888
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -174,6 +174,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4711530918936839510, guid: 018bf24a12a36caa0a900a29628b1470, type: 3}
+      propertyPath: blackboard.objectParams.Array.data[1]
+      value: 
+      objectReference: {fileID: 766494290}
     - target: {fileID: 8735179896297263103, guid: 018bf24a12a36caa0a900a29628b1470, type: 3}
       propertyPath: m_Name
       value: NPC Random GianPaula
@@ -192,6 +196,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1273756525}
     m_Modifications:
+    - target: {fileID: 245456064356869464, guid: cf94fae8f02ac4c46a98178dacb6cc0c, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 245456064356869464, guid: cf94fae8f02ac4c46a98178dacb6cc0c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 1128540025896556420, guid: cf94fae8f02ac4c46a98178dacb6cc0c, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -253,7 +265,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh37420
+  m_Name: pb_Mesh25434
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -530,6 +542,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 802609935}
     m_Modifications:
+    - target: {fileID: 1517335024195010814, guid: 0999d4d2c97dcf555a60b71851239505, type: 3}
+      propertyPath: blackboard.objectParams.Array.data[1]
+      value: 
+      objectReference: {fileID: 766494290}
     - target: {fileID: 3266666189719964247, guid: 0999d4d2c97dcf555a60b71851239505, type: 3}
       propertyPath: m_Name
       value: NPC Random GianMarco
@@ -592,6 +608,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 802609935}
     m_Modifications:
+    - target: {fileID: 3772637969896811919, guid: 17cb672c8bd6ed44581819b3940f5c5c, type: 3}
+      propertyPath: blackboard.objectParams.Array.data[0]
+      value: 
+      objectReference: {fileID: 766494290}
     - target: {fileID: 4816271802366776031, guid: 17cb672c8bd6ed44581819b3940f5c5c, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -649,6 +669,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1273756525}
     m_Modifications:
+    - target: {fileID: 245456064356869464, guid: cf94fae8f02ac4c46a98178dacb6cc0c, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 245456064356869464, guid: cf94fae8f02ac4c46a98178dacb6cc0c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 1128540025896556420, guid: cf94fae8f02ac4c46a98178dacb6cc0c, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -793,6 +821,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5893121933745736763, guid: b147217fc3e23ec4b929a71df50a88be, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5893121933745736763, guid: b147217fc3e23ec4b929a71df50a88be, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 6749107929543744142, guid: b147217fc3e23ec4b929a71df50a88be, type: 3}
       propertyPath: m_Name
       value: Puesto mercadillo lila
@@ -895,6 +931,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Casa doble
       objectReference: {fileID: 0}
+    - target: {fileID: 5376517211409776671, guid: df4f0b3765c55e74899e3f9ab2e67e96, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5376517211409776671, guid: df4f0b3765c55e74899e3f9ab2e67e96, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df4f0b3765c55e74899e3f9ab2e67e96, type: 3}
 --- !u!1001 &338936996
@@ -951,6 +995,14 @@ PrefabInstance:
     - target: {fileID: 4884892617955908709, guid: 8a2c8eafc08cbc249a787c5a04c71712, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5695916795928196394, guid: 8a2c8eafc08cbc249a787c5a04c71712, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5695916795928196394, guid: 8a2c8eafc08cbc249a787c5a04c71712, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a2c8eafc08cbc249a787c5a04c71712, type: 3}
@@ -1052,6 +1104,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Casa doble (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 5376517211409776671, guid: df4f0b3765c55e74899e3f9ab2e67e96, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5376517211409776671, guid: df4f0b3765c55e74899e3f9ab2e67e96, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df4f0b3765c55e74899e3f9ab2e67e96, type: 3}
 --- !u!4 &439049424 stripped
@@ -1066,6 +1126,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 802609935}
     m_Modifications:
+    - target: {fileID: 630700452834070827, guid: 7ca5c6a46edcf304ca851f64e4bc54b4, type: 3}
+      propertyPath: blackboard.objectParams.Array.data[0]
+      value: 
+      objectReference: {fileID: 766494290}
     - target: {fileID: 3921715313116988129, guid: 7ca5c6a46edcf304ca851f64e4bc54b4, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -1176,6 +1240,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Casa doble (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 5376517211409776671, guid: df4f0b3765c55e74899e3f9ab2e67e96, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5376517211409776671, guid: df4f0b3765c55e74899e3f9ab2e67e96, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df4f0b3765c55e74899e3f9ab2e67e96, type: 3}
 --- !u!4 &509111732 stripped
@@ -1190,6 +1262,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 802609935}
     m_Modifications:
+    - target: {fileID: 630700452834070827, guid: 7ca5c6a46edcf304ca851f64e4bc54b4, type: 3}
+      propertyPath: blackboard.objectParams.Array.data[0]
+      value: 
+      objectReference: {fileID: 766494290}
     - target: {fileID: 3921715313116988129, guid: 7ca5c6a46edcf304ca851f64e4bc54b4, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -1247,6 +1323,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1038670824}
     m_Modifications:
+    - target: {fileID: 2158463360991080835, guid: 7e6e6c1182de49544ae27c41b373ef34, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2158463360991080835, guid: 7e6e6c1182de49544ae27c41b373ef34, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 3320611471816800212, guid: 7e6e6c1182de49544ae27c41b373ef34, type: 3}
       propertyPath: m_Name
       value: Puesto mercadillo rojo doble (1)
@@ -1385,6 +1469,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Casa doble (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 5376517211409776671, guid: df4f0b3765c55e74899e3f9ab2e67e96, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5376517211409776671, guid: df4f0b3765c55e74899e3f9ab2e67e96, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df4f0b3765c55e74899e3f9ab2e67e96, type: 3}
 --- !u!4 &547925583 stripped
@@ -1509,6 +1601,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5695916795928196394, guid: 8a2c8eafc08cbc249a787c5a04c71712, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5695916795928196394, guid: 8a2c8eafc08cbc249a787c5a04c71712, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a2c8eafc08cbc249a787c5a04c71712, type: 3}
 --- !u!4 &584880011 stripped
@@ -1570,6 +1670,14 @@ PrefabInstance:
     - target: {fileID: 4884892617955908709, guid: 8a2c8eafc08cbc249a787c5a04c71712, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5695916795928196394, guid: 8a2c8eafc08cbc249a787c5a04c71712, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5695916795928196394, guid: 8a2c8eafc08cbc249a787c5a04c71712, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a2c8eafc08cbc249a787c5a04c71712, type: 3}
@@ -1656,6 +1764,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: NPC Random Felicia
       objectReference: {fileID: 0}
+    - target: {fileID: 3020546145373906109, guid: 0e71f9b09b0144c77b14355873d6d19c, type: 3}
+      propertyPath: blackboard.objectParams.Array.data[1]
+      value: 
+      objectReference: {fileID: 766494290}
     - target: {fileID: 8015847313140398136, guid: 0e71f9b09b0144c77b14355873d6d19c, type: 3}
       propertyPath: m_RootOrder
       value: 16
@@ -1753,6 +1865,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5893121933745736763, guid: b147217fc3e23ec4b929a71df50a88be, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5893121933745736763, guid: b147217fc3e23ec4b929a71df50a88be, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 6749107929543744142, guid: b147217fc3e23ec4b929a71df50a88be, type: 3}
       propertyPath: m_Name
       value: Puesto mercadillo lila (1)
@@ -1844,7 +1964,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!65 &766494291
 BoxCollider:
@@ -2385,6 +2505,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1273756525}
     m_Modifications:
+    - target: {fileID: 245456064356869464, guid: cf94fae8f02ac4c46a98178dacb6cc0c, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 245456064356869464, guid: cf94fae8f02ac4c46a98178dacb6cc0c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 1128540025896556420, guid: cf94fae8f02ac4c46a98178dacb6cc0c, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -2447,6 +2575,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 904956752}
     m_Modifications:
+    - target: {fileID: 5226213823697579145, guid: 9b87214c42a063240a5ae93941ed2cd6, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5226213823697579145, guid: 9b87214c42a063240a5ae93941ed2cd6, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 6616289770819812302, guid: 9b87214c42a063240a5ae93941ed2cd6, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -2595,6 +2731,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pig
       objectReference: {fileID: 0}
+    - target: {fileID: 9128773670026757337, guid: 4f351a8cf3cb48f4b82c58b0ebbe52da, type: 3}
+      propertyPath: blackboard.objectParams.Array.data[0]
+      value: 
+      objectReference: {fileID: 766494290}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4f351a8cf3cb48f4b82c58b0ebbe52da, type: 3}
 --- !u!1001 &947736435
@@ -2604,6 +2744,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1273756525}
     m_Modifications:
+    - target: {fileID: 245456064356869464, guid: cf94fae8f02ac4c46a98178dacb6cc0c, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 245456064356869464, guid: cf94fae8f02ac4c46a98178dacb6cc0c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 1128540025896556420, guid: cf94fae8f02ac4c46a98178dacb6cc0c, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -2666,6 +2814,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 802609935}
     m_Modifications:
+    - target: {fileID: 1448751631, guid: 7c66ac22a0f106844ab5000c1d49605e, type: 3}
+      propertyPath: blackboard.objectParams.Array.data[0]
+      value: 
+      objectReference: {fileID: 766494290}
     - target: {fileID: 2956182146623465730, guid: 7c66ac22a0f106844ab5000c1d49605e, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -2733,6 +2885,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 904956752}
     m_Modifications:
+    - target: {fileID: 5226213823697579145, guid: 9b87214c42a063240a5ae93941ed2cd6, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5226213823697579145, guid: 9b87214c42a063240a5ae93941ed2cd6, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 6616289770819812302, guid: 9b87214c42a063240a5ae93941ed2cd6, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -2888,6 +3048,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pozo
       objectReference: {fileID: 0}
+    - target: {fileID: 7626047969268912566, guid: 0df1413e881dcec469c23b2c3cffba46, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7626047969268912566, guid: 0df1413e881dcec469c23b2c3cffba46, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 7959353099558101636, guid: 0df1413e881dcec469c23b2c3cffba46, type: 3}
       propertyPath: m_RootOrder
       value: 11
@@ -2941,6 +3109,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1038670824}
     m_Modifications:
+    - target: {fileID: 2158463360991080835, guid: 7e6e6c1182de49544ae27c41b373ef34, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2158463360991080835, guid: 7e6e6c1182de49544ae27c41b373ef34, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 3320611471816800212, guid: 7e6e6c1182de49544ae27c41b373ef34, type: 3}
       propertyPath: m_Name
       value: Puesto mercadillo rojo doble
@@ -3075,6 +3251,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 802609935}
     m_Modifications:
+    - target: {fileID: 630700452834070827, guid: 7ca5c6a46edcf304ca851f64e4bc54b4, type: 3}
+      propertyPath: blackboard.objectParams.Array.data[0]
+      value: 
+      objectReference: {fileID: 766494290}
     - target: {fileID: 3921715313116988129, guid: 7ca5c6a46edcf304ca851f64e4bc54b4, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -3204,6 +3384,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 802609935}
     m_Modifications:
+    - target: {fileID: 64266793729244023, guid: b943cbd6d2261ff0a9ad478e2fb0365e, type: 3}
+      propertyPath: blackboard.objectParams.Array.data[1]
+      value: 
+      objectReference: {fileID: 766494290}
     - target: {fileID: 4089125470102827486, guid: b943cbd6d2261ff0a9ad478e2fb0365e, type: 3}
       propertyPath: m_Name
       value: NPC Random Homerini
@@ -3579,6 +3763,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5695916795928196394, guid: 8a2c8eafc08cbc249a787c5a04c71712, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5695916795928196394, guid: 8a2c8eafc08cbc249a787c5a04c71712, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a2c8eafc08cbc249a787c5a04c71712, type: 3}
 --- !u!4 &1389468973 stripped
@@ -3669,6 +3861,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Casa doble (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5376517211409776671, guid: df4f0b3765c55e74899e3f9ab2e67e96, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5376517211409776671, guid: df4f0b3765c55e74899e3f9ab2e67e96, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df4f0b3765c55e74899e3f9ab2e67e96, type: 3}
 --- !u!4 &1397007431 stripped
@@ -3683,6 +3883,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 802609935}
     m_Modifications:
+    - target: {fileID: 2016089950653870642, guid: 609fe11837ed077ce9f54b1fbf43de40, type: 3}
+      propertyPath: blackboard.objectParams.Array.data[1]
+      value: 
+      objectReference: {fileID: 766494290}
     - target: {fileID: 2567536247087823003, guid: 609fe11837ed077ce9f54b1fbf43de40, type: 3}
       propertyPath: m_Name
       value: NPC Random Andiamo
@@ -3925,6 +4129,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: NPC Random Massimo
       objectReference: {fileID: 0}
+    - target: {fileID: 7944246521576214934, guid: aea0ca96dbc83e56fbd9d5cf4e0eee82, type: 3}
+      propertyPath: blackboard.objectParams.Array.data[1]
+      value: 
+      objectReference: {fileID: 766494290}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aea0ca96dbc83e56fbd9d5cf4e0eee82, type: 3}
 --- !u!1001 &1449492983
@@ -3934,6 +4142,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 904956752}
     m_Modifications:
+    - target: {fileID: 5226213823697579145, guid: 9b87214c42a063240a5ae93941ed2cd6, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5226213823697579145, guid: 9b87214c42a063240a5ae93941ed2cd6, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 6616289770819812302, guid: 9b87214c42a063240a5ae93941ed2cd6, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -4044,6 +4260,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: NPC Bambino
       objectReference: {fileID: 0}
+    - target: {fileID: 8758782499386066106, guid: 9c3fb648e2cf8792cb443c5d0fec0ad2, type: 3}
+      propertyPath: blackboard.objectParams.Array.data[1]
+      value: 
+      objectReference: {fileID: 766494290}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9c3fb648e2cf8792cb443c5d0fec0ad2, type: 3}
 --- !u!1001 &1482149570
@@ -4097,6 +4317,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5893121933745736763, guid: b147217fc3e23ec4b929a71df50a88be, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5893121933745736763, guid: b147217fc3e23ec4b929a71df50a88be, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 6749107929543744142, guid: b147217fc3e23ec4b929a71df50a88be, type: 3}
       propertyPath: m_Name
       value: Puesto mercadillo lila (2)
@@ -4122,11 +4350,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5113823774924818876, guid: d1a74b6ae03c117d4b2e88aefa805230, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.00017849285
+      value: -0.00017845877
       objectReference: {fileID: 0}
     - target: {fileID: 5113823774924818876, guid: d1a74b6ae03c117d4b2e88aefa805230, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.00002466446
+      value: 0.00002465975
       objectReference: {fileID: 0}
     - target: {fileID: 5113823776833457376, guid: d1a74b6ae03c117d4b2e88aefa805230, type: 3}
       propertyPath: m_Name
@@ -4364,6 +4592,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Casa doble (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 5376517211409776671, guid: df4f0b3765c55e74899e3f9ab2e67e96, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5376517211409776671, guid: df4f0b3765c55e74899e3f9ab2e67e96, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df4f0b3765c55e74899e3f9ab2e67e96, type: 3}
 --- !u!4 &1527298665 stripped
@@ -4440,6 +4676,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 802609935}
     m_Modifications:
+    - target: {fileID: 630700452834070827, guid: 7ca5c6a46edcf304ca851f64e4bc54b4, type: 3}
+      propertyPath: blackboard.objectParams.Array.data[0]
+      value: 
+      objectReference: {fileID: 766494290}
     - target: {fileID: 3921715313116988129, guid: 7ca5c6a46edcf304ca851f64e4bc54b4, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -4546,6 +4786,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4711530918936839510, guid: 018bf24a12a36caa0a900a29628b1470, type: 3}
+      propertyPath: blackboard.objectParams.Array.data[1]
+      value: 
+      objectReference: {fileID: 766494290}
     - target: {fileID: 8735179896297263103, guid: 018bf24a12a36caa0a900a29628b1470, type: 3}
       propertyPath: m_Name
       value: NPC Random GianPaula (1)
@@ -4616,6 +4860,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1273756525}
     m_Modifications:
+    - target: {fileID: 245456064356869464, guid: cf94fae8f02ac4c46a98178dacb6cc0c, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 245456064356869464, guid: cf94fae8f02ac4c46a98178dacb6cc0c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 1128540025896556420, guid: cf94fae8f02ac4c46a98178dacb6cc0c, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -4792,6 +5044,14 @@ PrefabInstance:
     - target: {fileID: 4884892617955908709, guid: 8a2c8eafc08cbc249a787c5a04c71712, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5695916795928196394, guid: 8a2c8eafc08cbc249a787c5a04c71712, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5695916795928196394, guid: 8a2c8eafc08cbc249a787c5a04c71712, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a2c8eafc08cbc249a787c5a04c71712, type: 3}
@@ -5061,6 +5321,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1273756525}
     m_Modifications:
+    - target: {fileID: 245456064356869464, guid: cf94fae8f02ac4c46a98178dacb6cc0c, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 245456064356869464, guid: cf94fae8f02ac4c46a98178dacb6cc0c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 1128540025896556420, guid: cf94fae8f02ac4c46a98178dacb6cc0c, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -5198,6 +5466,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 802609935}
     m_Modifications:
+    - target: {fileID: 1448751631, guid: 7c66ac22a0f106844ab5000c1d49605e, type: 3}
+      propertyPath: blackboard.objectParams.Array.data[0]
+      value: 
+      objectReference: {fileID: 766494290}
     - target: {fileID: 2956182146623465730, guid: 7c66ac22a0f106844ab5000c1d49605e, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -5255,6 +5527,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 802609935}
     m_Modifications:
+    - target: {fileID: 3772637969896811919, guid: 17cb672c8bd6ed44581819b3940f5c5c, type: 3}
+      propertyPath: blackboard.objectParams.Array.data[0]
+      value: 
+      objectReference: {fileID: 766494290}
     - target: {fileID: 4816271802366776031, guid: 17cb672c8bd6ed44581819b3940f5c5c, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -5449,6 +5725,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5695916795928196394, guid: 8a2c8eafc08cbc249a787c5a04c71712, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5695916795928196394, guid: 8a2c8eafc08cbc249a787c5a04c71712, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a2c8eafc08cbc249a787c5a04c71712, type: 3}
 --- !u!4 &2018180205 stripped
@@ -5478,11 +5762,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5617871185371070069, guid: 881f5ea122226be93a0d47628b8a2826, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.00017929601
+      value: -0.00017927263
       objectReference: {fileID: 0}
     - target: {fileID: 5617871185371070069, guid: 881f5ea122226be93a0d47628b8a2826, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.000017892697
+      value: 0.000017890363
       objectReference: {fileID: 0}
     - target: {fileID: 5617871186160820124, guid: 881f5ea122226be93a0d47628b8a2826, type: 3}
       propertyPath: m_LocalRotation.w
@@ -5494,11 +5778,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5617871186160820124, guid: 881f5ea122226be93a0d47628b8a2826, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.0001784652
+      value: -0.00017846731
       objectReference: {fileID: 0}
     - target: {fileID: 5617871186160820124, guid: 881f5ea122226be93a0d47628b8a2826, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.000024660641
+      value: 0.000024660932
       objectReference: {fileID: 0}
     - target: {fileID: 5617871186237568712, guid: 881f5ea122226be93a0d47628b8a2826, type: 3}
       propertyPath: m_Follow
@@ -5566,11 +5850,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5617871187225851715, guid: 881f5ea122226be93a0d47628b8a2826, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.00017739242
+      value: -0.00017740935
       objectReference: {fileID: 0}
     - target: {fileID: 5617871187225851715, guid: 881f5ea122226be93a0d47628b8a2826, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.000031474934
+      value: 0.00003147794
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 881f5ea122226be93a0d47628b8a2826, type: 3}
@@ -5640,6 +5924,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5695916795928196394, guid: 8a2c8eafc08cbc249a787c5a04c71712, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5695916795928196394, guid: 8a2c8eafc08cbc249a787c5a04c71712, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a2c8eafc08cbc249a787c5a04c71712, type: 3}
 --- !u!1001 &2135021721
@@ -5649,6 +5941,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 802609935}
     m_Modifications:
+    - target: {fileID: 630700452834070827, guid: 7ca5c6a46edcf304ca851f64e4bc54b4, type: 3}
+      propertyPath: blackboard.objectParams.Array.data[0]
+      value: 
+      objectReference: {fileID: 766494290}
     - target: {fileID: 3921715313116988129, guid: 7ca5c6a46edcf304ca851f64e4bc54b4, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -5706,6 +6002,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1273756525}
     m_Modifications:
+    - target: {fileID: 245456064356869464, guid: cf94fae8f02ac4c46a98178dacb6cc0c, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 245456064356869464, guid: cf94fae8f02ac4c46a98178dacb6cc0c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 1128540025896556420, guid: cf94fae8f02ac4c46a98178dacb6cc0c, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -5868,6 +6172,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Taberna
       objectReference: {fileID: 0}
+    - target: {fileID: 4269019167581162327, guid: df12a39f97115e54787ac3ae8031cc14, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4269019167581162327, guid: df12a39f97115e54787ac3ae8031cc14, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df12a39f97115e54787ac3ae8031cc14, type: 3}
 --- !u!1001 &4736366295415550476
@@ -5982,6 +6294,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Casa grande
       objectReference: {fileID: 0}
+    - target: {fileID: 5634604106649760354, guid: 15c5745eac056db478424553989edf2b, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5634604106649760354, guid: 15c5745eac056db478424553989edf2b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 15c5745eac056db478424553989edf2b, type: 3}
 --- !u!1001 &4884892616567522662
@@ -6038,6 +6358,14 @@ PrefabInstance:
     - target: {fileID: 4884892617955908709, guid: 8a2c8eafc08cbc249a787c5a04c71712, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5695916795928196394, guid: 8a2c8eafc08cbc249a787c5a04c71712, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5695916795928196394, guid: 8a2c8eafc08cbc249a787c5a04c71712, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a2c8eafc08cbc249a787c5a04c71712, type: 3}
@@ -6219,6 +6547,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1284985028}
     m_Modifications:
+    - target: {fileID: 7150169134264201003, guid: 3fa076d23f2e2824baa3dd99128d45cc, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7150169134264201003, guid: 3fa076d23f2e2824baa3dd99128d45cc, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8069299482253688160, guid: 3fa076d23f2e2824baa3dd99128d45cc, type: 3}
       propertyPath: m_RootOrder
       value: 7

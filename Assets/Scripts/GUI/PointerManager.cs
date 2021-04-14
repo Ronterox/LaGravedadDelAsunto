@@ -16,26 +16,24 @@ namespace GUI
 
         private void LateUpdate()
         {
-            if (Input.GetKeyDown(cursorKey)) SetCursorActive();
-            else if (Input.GetKeyUp(cursorKey)) SetCursorActive(false);
+            if (GameManager.Instance.GameIsPaused) return;
+
+            if (Input.GetKeyDown(cursorKey))
+            {
+                m_AuxiliarButtonGUI = GUIManager.Instance.InstantiateUI(buttonsGUI);
+                SetCursorActive();
+            }
+            else if (Input.GetKeyUp(cursorKey))
+            {
+                GUIManager.Instance.RemoveUI(m_AuxiliarButtonGUI);
+                SetCursorActive(false);
+            }
         }
 
         public void SetCursorActive(bool active = true)
         {
-            if (GameManager.Instance.GameIsPaused)
-            {
-                return;
-            }
             Cursor.visible = active;
-            Cursor.lockState = active ? CursorLockMode.None : CursorLockMode.Locked;            
-            if (active)
-            {                          
-                m_AuxiliarButtonGUI = GUIManager.Instance.InstantiateUI(buttonsGUI);
-            }
-            else
-            {
-                GUIManager.Instance.RemoveUI(m_AuxiliarButtonGUI);
-            }
+            Cursor.lockState = active ? CursorLockMode.None : CursorLockMode.Locked;
         }
 
         public void OnMMEvent(MMGameEvent eventType)

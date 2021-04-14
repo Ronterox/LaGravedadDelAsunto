@@ -30,7 +30,6 @@ namespace Inventory_System
         private void Update()
         {
             if (!PlayerInput.Instance.Inventory) return;
-
             OpenInventory();
         }
 

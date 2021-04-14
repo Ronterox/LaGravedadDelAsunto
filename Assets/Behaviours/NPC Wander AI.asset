@@ -67,22 +67,22 @@ MonoBehaviour:
     Selector\" description=\"\" cardinality=\"1\" hasParent=\"True\">\n         
     <BehaviorTree id=\"0\" />\n          <PrioritySelectorNode id=\"2\" />\n         
     <RepeatDecorator id=\"1\" />\n        </data>\n      </_data>\n    </PrioritySelectorNode>\n   
-    <ConditionEvalNode id=\"4\">\n      <_data>\n        <data breakpoint=\"0\" selected=\"False\"
-    position=\"409.1619 517.0496\" name=\"Perception/IsPlayerOnInteractionRange\"
+    <ConditionEvalNode id=\"4\">\n      <_data>\n        <data breakpoint=\"0\" selected=\"True\"
+    position=\"409.1619 516.0496\" name=\"Perception/IsPlayerOnInteractionRange\"
     description=\"Eval\" cardinality=\"1\" hasParent=\"True\">\n          <BehaviorTree
     id=\"0\" />\n          <ConditionEvalNode id=\"4\" />\n          <PrioritySelectorNode
     id=\"2\" />\n        </data>\n      </_data>\n    </ConditionEvalNode>\n    <ActionNode
     id=\"3\">\n      <_data>\n        <data breakpoint=\"0\" selected=\"False\" position=\"198.5497
-    261.7436\" name=\"Samples/ProgQuickStartGuide/SleepForever\" description=\"Low-cost
+    260.7436\" name=\"Samples/ProgQuickStartGuide/SleepForever\" description=\"Low-cost
     infinite action that never ends. It does not consume CPU at all.\" cardinality=\"0\"
     hasParent=\"False\">\n          <BehaviorTree id=\"0\" />\n          <ActionNode
     id=\"3\" />\n        </data>\n      </_data>\n    </ActionNode>\n    <ConditionEvalNode
     id=\"6\">\n      <_data>\n        <data breakpoint=\"0\" selected=\"False\" position=\"970.7938
-    512.3764\" name=\"AlwaysTrue\" description=\"Eval\" cardinality=\"1\" hasParent=\"True\">\n         
+    510.3764\" name=\"AlwaysTrue\" description=\"Eval\" cardinality=\"1\" hasParent=\"True\">\n         
     <BehaviorTree id=\"0\" />\n          <ConditionEvalNode id=\"6\" />\n         
     <PrioritySelectorNode id=\"2\" />\n        </data>\n      </_data>\n    </ConditionEvalNode>\n   
-    <SubbehaviorNode id=\"5\">\n      <_data>\n        <data breakpoint=\"0\" selected=\"True\"
-    position=\"568.5499 260.7437\" name=\"QuickStartGuide/DoneWander\" description=\"Wanders
+    <SubbehaviorNode id=\"5\">\n      <_data>\n        <data breakpoint=\"0\" selected=\"False\"
+    position=\"568.5499 258.7437\" name=\"QuickStartGuide/DoneWander\" description=\"Wanders
     to random positions around a NavMesh area.\" cardinality=\"-1\" hasParent=\"False\">\n         
     <BehaviorTree id=\"0\" />\n          <SubbehaviorNode id=\"5\" />\n        </data>\n     
     </_data>\n    </SubbehaviorNode>\n  </editorInfo>\n</BehaviorBricks>"
