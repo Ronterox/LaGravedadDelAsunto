@@ -31,6 +31,11 @@ namespace Inventory_System
         {
             if (!PlayerInput.Instance.Inventory) return;
 
+            OpenInventory();
+        }
+
+        public void OpenInventory()
+        {
             if (m_InInventory) GUIManager.Instance.CloseGUIMenu();
             else GUIManager.Instance.OpenInventory(() => m_InInventory = true, () => m_InInventory = false);
         }
