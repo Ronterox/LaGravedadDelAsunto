@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+=======
+using Combat;
+using GUI;
+>>>>>>> LGA-2738
 using Inventory_System;
 using Karma_System;
 using Player;
@@ -13,7 +18,14 @@ namespace Managers
         public DialogueManager dialogueManager;
         public Inventory inventory;
 
+<<<<<<< HEAD
         public bool GameIsPaused { get; private set; }
+=======
+        public PointerManager pointerManager;
+
+
+        public bool GameIsPaused;
+>>>>>>> LGA-2738
 
         private void Update()
         {

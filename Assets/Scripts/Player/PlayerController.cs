@@ -44,6 +44,7 @@ namespace Player
         private readonly int SPEED_ANIMATION_HASH = Animator.StringToHash("Speed");
         private readonly int JUMP_ANIMATION_HASH = Animator.StringToHash("Jump");
         private readonly int FALLING_ANIMATION_HASH = Animator.StringToHash("IsFalling");
+        readonly int m_HashStateTime = Animator.StringToHash("StateTime");
 
         private const float STICKING_GRAVITY_PROPORTION = 3;
         private const float JUMP_ABORT_SPEED = 10;
@@ -80,8 +81,9 @@ namespace Player
 
         private void FixedUpdate()
         {
+            m_Animator.SetFloat(m_HashStateTime, Mathf.Repeat(m_Animator.GetCurrentAnimatorStateInfo(0).normalizedTime, 1f));
             if (m_MovementBlocked) return;
-
+           
             AnimatePlayer();
             SetRotation();
             CalculateVerticalMovement();
@@ -136,6 +138,7 @@ namespace Player
 
         private void AnimatePlayer()
         {
+            
             if (m_IsGrounded)
             {
                 if (IsMoving)
