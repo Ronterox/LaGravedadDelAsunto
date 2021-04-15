@@ -56,6 +56,6 @@ namespace Managers
             m_QuestUIGameObjects.Add(questUI.gameObject);
         }
 
-        public Campaign GetCampaign(string id) => m_Campaigns[id];
+        public Campaign GetCampaign(string id) => m_Campaigns.TryGetValue(id, out Campaign value)? value : null;
     }
 }

@@ -127,9 +127,11 @@ MonoBehaviour:
     objectParams:
     - {fileID: 0}
     - {fileID: 0}
+    - {fileID: 5166158972405946881}
     objectParamsNames:
     - Interactable
     - Wander Area
+    - Agent Navigation
     objectParamsLostDefaultValue: 
     layerMaskParams: []
     layerMaskParamsNames: []

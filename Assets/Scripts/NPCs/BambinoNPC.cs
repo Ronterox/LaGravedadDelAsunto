@@ -32,7 +32,7 @@ namespace NPCs
             else
             {
                 Quest current = campaign.GetCurrentQuest();
-                if (current.questID.GetHashCode().Equals(MAIN_QUEST_ID.GetHashCode()))
+                if (current.questID.Equals(MAIN_QUEST_ID))
                 {
                     switch (m_InteractTimes)
                     {

@@ -8,6 +8,7 @@ namespace GUI
     {
         public KeyCode cursorKey;
         public GameObject buttonsGUI;
+        
         private GameObject m_AuxiliarButtonGUI;
 
         public void OnEnable() => this.MMEventStartListening();
