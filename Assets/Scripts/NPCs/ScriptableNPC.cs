@@ -9,8 +9,6 @@ namespace NPCs
         [Header("NPC")] public string npcName;
         [Space] [TextArea] public string description;
 
-        [HideInInspector] public List<string> dialoguesIds;
-
         public string campaignID;
 
         public DialogueGroup[] dialogues;
@@ -21,11 +19,7 @@ namespace NPCs
         private void OnEnable()
         {
             foreach (DialogueGroup dialogueGroup in dialogues)
-                foreach (Dialogue dialogue in dialogueGroup.dialogues)
-                {
-                    dialoguesIds.Add(dialogue.id);
-                    m_Dialogues.Add(dialogue.id, dialogue);
-                }
+                foreach (Dialogue dialogue in dialogueGroup.dialogues) m_Dialogues.Add(dialogue.id, dialogue);
         }
 
         private void OnDisable() => m_Dialogues.Clear();

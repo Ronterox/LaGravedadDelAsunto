@@ -12,14 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5605cc1566e6239cab8b912e46a5ce0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberOfInteractionsOnPlace: 10
+  numberOfInteractionsOnPlace: 3
   infiniteInteractions: 0
   npcScriptable: {fileID: 11400000, guid: 6ab3cacebb13c2a9b862fced6d7235c1, type: 2}
   onCampaignCompletedInteraction:
     m_PersistentCalls:
       m_Calls: []
   textPosition: {fileID: 6744255874392950034}
+  rotationAxis: {x: 0, y: 1, z: 0}
   infiniteCompletedEventCall: 0
+  dialogueIds: []
 --- !u!1 &4771896026885306648
 GameObject:
   m_ObjectHideFlags: 0
@@ -44,7 +46,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4771896026885306648}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalPosition: {x: 0, y: 5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5407792277029403247}
@@ -102,9 +104,25 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5555523462607335440, guid: 30d98f9ea5b76a819add923134390759, type: 3}
+      propertyPath: blackboard.objectParams.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5555523462607335440, guid: 30d98f9ea5b76a819add923134390759, type: 3}
       propertyPath: blackboard.objectParams.Array.data[0]
       value: 
       objectReference: {fileID: 111630883455792755}
+    - target: {fileID: 5555523462607335440, guid: 30d98f9ea5b76a819add923134390759, type: 3}
+      propertyPath: blackboard.objectParamsNames.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5555523462607335440, guid: 30d98f9ea5b76a819add923134390759, type: 3}
+      propertyPath: blackboard.objectParamsNames.Array.data[2]
+      value: Agent Navigation
+      objectReference: {fileID: 0}
+    - target: {fileID: 7591053012257062705, guid: 30d98f9ea5b76a819add923134390759, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8449316514445687481, guid: 30d98f9ea5b76a819add923134390759, type: 3}
       propertyPath: m_Name
       value: NPC Random

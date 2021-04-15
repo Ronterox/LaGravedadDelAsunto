@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Internal;
 using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
@@ -174,8 +175,8 @@ namespace Plugins.Tools
         /// <summary>
         /// Returns the volume from 0 to 1 as its decibel value
         /// </summary>
-        /// <param name="volume"></param>
-        /// <returns></returns>
+        /// <param name="volume">from 0 to 1</param>
+        /// <returns>volume on decibels</returns>
         public static float ToDecibels(this float volume) => volume > 0 ? Mathf.Log10(volume) * 20 : -80f;
 
         /// <summary>
@@ -185,6 +186,45 @@ namespace Plugins.Tools
         /// <typeparam name="T">component type</typeparam>
         /// <returns></returns>
         public static T GetComponentSafely<T>(this GameObject gameObject) where T : Component => gameObject.TryGetComponent(out T component) ? component : gameObject.AddComponent<T>();
+
+
+        /// <summary>
+        /// Rotates a transform towards the other transform by only the selected axis
+        /// </summary>
+        /// <param name="transform">my transform</param>
+        /// <param name="otherTransform">other transform</param>
+        /// <param name="axis">axis to rotate Example: Vector3.up for Y axis</param>
+        public static void RotateTowards(this Transform transform, Transform otherTransform, [DefaultValue("Vector3.up")] Vector3 axis) => RotateTowards(transform, otherTransform.position, axis);
+
+        /// <summary>
+        /// Rotates a transform towards the other transform by only the selected axis
+        /// </summary>
+        /// <param name="transform">my transform</param>
+        /// <param name="direction">target direction</param>
+        /// <param name="axis">axis to rotate Example: Vector3.up for Y axis</param>
+        public static void RotateTowards(this Transform transform, Vector3 direction, [DefaultValue("Vector3.up")] Vector3 axis)
+        {
+            Vector3 position = transform.position;
+            
+            if (axis.x != 0) direction.x = position.x;
+            else if (axis.y != 0) direction.y = position.y;
+            else if (axis.z != 0) direction.z = position.z;
+            
+            transform.LookAt(direction);
+        }
+
+        /// <summary>
+        /// Rotates a transform towards the other transform only by the y axis
+        /// </summary>
+        /// <param name="transform">my transform</param>
+        /// <param name="otherTransform">other transform</param>
+        public static void RotateTowards(this Transform transform, Transform otherTransform) => RotateTowards(transform, otherTransform, Vector3.up);
+        /// <summary>
+        /// Rotates a transform towards the other transform only by the y axis
+        /// </summary>
+        /// <param name="transform">my transform</param>
+        /// <param name="direction">target direction</param>
+        public static void RotateTowards(this Transform transform, Vector3 direction) => RotateTowards(transform, direction, Vector3.up);
     }
 
 

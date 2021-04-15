@@ -6,6 +6,7 @@ namespace General.Utilities
 {
     public abstract class Interactable : MonoBehaviour
     {
+        [Header("Interaction Settings")]
         public int numberOfInteractionsOnPlace = 1;
         public bool infiniteInteractions;
 
@@ -19,11 +20,9 @@ namespace General.Utilities
 
         private void IncrementInteraction()
         {
-            if (infiniteInteractions || m_InteractTimes++ < numberOfInteractionsOnPlace) Interact();
+            if (infiniteInteractions || ++m_InteractTimes < numberOfInteractionsOnPlace) Interact();
         }
         
-        //Fix parameters of inspector, i don't like interactions on place name
-
         protected abstract void OnEnterTrigger(Collider other);
 
         protected abstract void OnExitTrigger(Collider other);

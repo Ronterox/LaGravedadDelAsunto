@@ -24,6 +24,12 @@ namespace Managers
             m_TextTransform.position = position;
             TypeInto(textInstance, text);
         }
+        
+        public void Type(string text, Transform parent)
+        {
+            m_TextTransform.SetParent(parent, false);;
+            Type(text, parent.position);
+        }
 
         public void TypeInto(TMP_Text textMeshPro, string text)
         {
