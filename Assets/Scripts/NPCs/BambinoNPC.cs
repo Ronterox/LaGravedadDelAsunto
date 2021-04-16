@@ -20,10 +20,9 @@ namespace NPCs
             {
                 switch (m_InteractTimes)
                 {
-                    case 1: Say("My name"); break;
-                    case 2: Say("Welcome"); break;
+                    case 1: Say("Welcome"); break;
+                    case 2: Say("Quest 1"); break;
                     case 3:
-                        Say("Quest 1");
                         GameManager.Instance.questManager.StartNewCampaign(npcScriptable.campaignID);
                         m_InteractTimes = 0;
                         break;

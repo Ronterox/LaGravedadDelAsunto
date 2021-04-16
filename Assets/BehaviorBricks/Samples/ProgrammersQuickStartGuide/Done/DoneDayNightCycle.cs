@@ -21,21 +21,26 @@ namespace BehaviorBricks.Samples.ProgrammersQuickStartGuide.Done // Programmers 
         public bool isNight { get; private set; }
 
 		// Private field with the day color. It is set to the initial light color.
-		private Color dayColor;
+		private Color m_DayColor;
+		private Color m_SkyColor;
 
 		// Private field with the hard-coded night color.
-		private readonly Color nightColor = Color.white * 0.1f;
+		private readonly Color m_NightColor = Color.white * 0.1f;
 
 		// Reference to the Light component
-		private Light lightComponent;
+		private Light m_LightComponent;
+		private Camera m_MainCamera;
 
         /// <summary>DoneDayNightCycle Initialization Method.</summary>
         /// <remarks>Search the light component and set color light.</remarks>
         private void Start()
-		{
-			lightComponent = GetComponent<Light>();
-			dayColor = lightComponent.color;
-		} // Start
+        {
+	        m_MainCamera = GameObject.FindWithTag("MainCamera").GetComponent<Camera>();
+			m_LightComponent = GetComponent<Light>();
+
+			m_SkyColor = m_MainCamera.backgroundColor;
+			m_DayColor = m_LightComponent.color;
+		}
 
         /// <summary>DoneDayNightCycle Update Method.</summary>
         /// <remarks>Calculate the intensity of the light with the time elapsed and 
@@ -48,7 +53,9 @@ namespace BehaviorBricks.Samples.ProgrammersQuickStartGuide.Done // Programmers 
 				isNight = !isNight;
 				OnChanged?.Invoke(this, System.EventArgs.Empty);
 			}
-			lightComponent.color = Color.Lerp(nightColor, dayColor, lightIntensity);
+			
+			m_LightComponent.color = Color.Lerp(m_NightColor, m_DayColor, lightIntensity);
+			m_MainCamera.backgroundColor = Color.Lerp(m_NightColor, m_SkyColor, lightIntensity);
 		} // Update
 
 	} // class DoneDayNightCycle

@@ -17,18 +17,17 @@ namespace GUI
 
         private void LateUpdate()
         {
-            if (GameManager.Instance.GameIsPaused || GUIManager.Instance.IsGuiOpened) return;
-
-            if (Input.GetKeyDown(cursorKey))
-            {
-                m_AuxiliarButtonGUI = GUIManager.Instance.InstantiateUI(buttonsGUI);
-                SetCursorActive();
-            }
-            else if (Input.GetKeyUp(cursorKey))
+            if (Input.GetKeyUp(cursorKey) && m_AuxiliarButtonGUI)
             {
                 GUIManager.Instance.RemoveUI(m_AuxiliarButtonGUI);
                 SetCursorActive(false);
             }
+            if (GameManager.Instance.GameIsPaused || GUIManager.Instance.IsGuiOpened) return;
+
+            if (!Input.GetKeyDown(cursorKey)) return;
+            
+            m_AuxiliarButtonGUI = GUIManager.Instance.InstantiateUI(buttonsGUI);
+            SetCursorActive();
         }
 
         public void SetCursorActive(bool active = true)

@@ -62,6 +62,7 @@ namespace NPCs
                 Write($"Hello I'm {npcScriptable.name}, I'm {npcScriptable.description}");
                 m_IsFirstInteraction = false;
                 m_InteractTimes = 0;
+                return;
             }
             
             Campaign npcCampaign = GameManager.Instance.questManager.GetCampaign(npcScriptable.campaignID);
