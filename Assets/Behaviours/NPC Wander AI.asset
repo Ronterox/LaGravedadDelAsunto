@@ -33,7 +33,7 @@ MonoBehaviour:
     <child>\n              <SubbehaviorNode id=\"5\" />\n            </child>\n         
     </GuardAndNode>\n        </elem>\n      </children>\n      <inputParams />\n     
     <outputParams />\n      <localParams />\n    </PrioritySelectorNode>\n    <ConditionEvalNode
-    id=\"9\" policy=\"ATOMIC_CHECK\" name=\"Perception/IsPlayerOnInteractionRange\">\n     
+    id=\"9\" policy=\"WAIT_UNTIL_TRUE_AND_COMPLETE\" name=\"Perception/IsPlayerOnInteractionRange\">\n     
     <inputParams>\n        <inputValues>\n          <entry name=\"Interactable\"
     type=\"General.Utilities.Interactable\" isBlackboard=\"True\" blackboard=\"Interactable\"
     />\n        </inputValues>\n      </inputParams>\n      <outputParams />\n     
@@ -70,44 +70,44 @@ MonoBehaviour:
     <ConditionEvalNode id=\"6\" />\n          <SequenceNode id=\"8\" />\n         
     <ActionNode id=\"10\" />\n        </nodes>\n      </_nodes>\n    </BehaviorTree>\n   
     <RepeatDecorator id=\"1\">\n      <_data>\n        <data breakpoint=\"0\" selected=\"False\"
-    position=\"642.2441 117.2815\" name=\"Repeat\" description=\"Repeats the execution
+    position=\"496.7404 163.4763\" name=\"Repeat\" description=\"Repeats the execution
     of its child node\" cardinality=\"1\" hasParent=\"False\">\n          <BehaviorTree
     id=\"0\" />\n          <RepeatDecorator id=\"1\" />\n        </data>\n      </_data>\n   
     </RepeatDecorator>\n    <PrioritySelectorNode id=\"2\">\n      <_data>\n       
-    <data breakpoint=\"0\" selected=\"False\" position=\"584.6609 239.9482\" name=\"Priority
+    <data breakpoint=\"0\" selected=\"False\" position=\"439.1572 286.143\" name=\"Priority
     Selector\" description=\"\" cardinality=\"1\" hasParent=\"True\">\n         
     <BehaviorTree id=\"0\" />\n          <PrioritySelectorNode id=\"2\" />\n         
     <RepeatDecorator id=\"1\" />\n        </data>\n      </_data>\n    </PrioritySelectorNode>\n   
     <ConditionEvalNode id=\"9\">\n      <_data>\n        <data breakpoint=\"0\" selected=\"False\"
-    position=\"533.2656 479.1834\" name=\"Perception/IsPlayerOnInteractionRange\"
-    description=\"Eval\" cardinality=\"1\" hasParent=\"False\">\n          <BehaviorTree
-    id=\"0\" />\n          <ConditionEvalNode id=\"9\" />\n        </data>\n     
-    </_data>\n    </ConditionEvalNode>\n    <SequenceNode id=\"8\">\n      <_data>\n       
-    <data breakpoint=\"0\" selected=\"False\" position=\"385.7142 324.2855\" name=\"Sequence\"
-    description=\"Executes all its children in sequence until all of them are successful\"
-    cardinality=\"-1\" hasParent=\"False\">\n          <BehaviorTree id=\"0\" />\n         
-    <SequenceNode id=\"8\" />\n        </data>\n      </_data>\n    </SequenceNode>\n   
-    <ConditionEvalNode id=\"6\">\n      <_data>\n        <data breakpoint=\"0\" selected=\"False\"
-    position=\"1133.604 654.1616\" name=\"AlwaysTrue\" description=\"Eval\" cardinality=\"1\"
-    hasParent=\"True\">\n          <BehaviorTree id=\"0\" />\n          <ConditionEvalNode
-    id=\"6\" />\n          <PrioritySelectorNode id=\"2\" />\n        </data>\n     
-    </_data>\n    </ConditionEvalNode>\n    <SubbehaviorNode id=\"5\">\n      <_data>\n       
-    <data breakpoint=\"0\" selected=\"False\" position=\"731.3604 402.529\" name=\"QuickStartGuide/DoneWander\"
-    description=\"Wanders to random positions around a NavMesh area.\" cardinality=\"-1\"
-    hasParent=\"False\">\n          <BehaviorTree id=\"0\" />\n          <SubbehaviorNode
-    id=\"5\" />\n        </data>\n      </_data>\n    </SubbehaviorNode>\n    <ActionNode
-    id=\"10\">\n      <_data>\n        <data breakpoint=\"0\" selected=\"False\"
-    position=\"231.4287 540.0001\" name=\"Navigation/StopNavigationAgentMesh\" description=\"Stops
-    the navigation agent movement if found\" cardinality=\"0\" hasParent=\"True\">\n         
-    <BehaviorTree id=\"0\" />\n          <ActionNode id=\"10\" />\n          <SequenceNode
-    id=\"8\" />\n        </data>\n      </_data>\n    </ActionNode>\n    <ActionNode
-    id=\"3\">\n      <_data>\n        <data breakpoint=\"0\" selected=\"False\" position=\"588.5031
-    668.2427\" name=\"Samples/ProgQuickStartGuide/SleepForever\" description=\"Low-cost
-    infinite action that never ends. It does not consume CPU at all.\" cardinality=\"0\"
+    position=\"387.762 525.3782\" name=\"Perception/IsPlayerOnInteractionRange\"
+    description=\"Eval\" cardinality=\"1\" hasParent=\"True\">\n          <BehaviorTree
+    id=\"0\" />\n          <ConditionEvalNode id=\"9\" />\n          <PrioritySelectorNode
+    id=\"2\" />\n        </data>\n      </_data>\n    </ConditionEvalNode>\n    <SequenceNode
+    id=\"8\">\n      <_data>\n        <data breakpoint=\"0\" selected=\"False\" position=\"240.2105
+    370.4803\" name=\"Sequence\" description=\"Executes all its children in sequence
+    until all of them are successful\" cardinality=\"-1\" hasParent=\"False\">\n         
+    <BehaviorTree id=\"0\" />\n          <SequenceNode id=\"8\" />\n        </data>\n     
+    </_data>\n    </SequenceNode>\n    <ConditionEvalNode id=\"6\">\n      <_data>\n       
+    <data breakpoint=\"0\" selected=\"False\" position=\"988.1003 700.3565\" name=\"AlwaysTrue\"
+    description=\"Eval\" cardinality=\"1\" hasParent=\"True\">\n          <BehaviorTree
+    id=\"0\" />\n          <ConditionEvalNode id=\"6\" />\n          <PrioritySelectorNode
+    id=\"2\" />\n        </data>\n      </_data>\n    </ConditionEvalNode>\n    <SubbehaviorNode
+    id=\"5\">\n      <_data>\n        <data breakpoint=\"0\" selected=\"False\" position=\"585.8568
+    448.7238\" name=\"QuickStartGuide/DoneWander\" description=\"Wanders to random
+    positions around a NavMesh area.\" cardinality=\"-1\" hasParent=\"False\">\n         
+    <BehaviorTree id=\"0\" />\n          <SubbehaviorNode id=\"5\" />\n        </data>\n     
+    </_data>\n    </SubbehaviorNode>\n    <ActionNode id=\"10\">\n      <_data>\n       
+    <data breakpoint=\"0\" selected=\"True\" position=\"85.92503 586.195\" name=\"Navigation/StopNavigationAgentMesh\"
+    description=\"Stops the navigation agent movement if found\" cardinality=\"0\"
     hasParent=\"True\">\n          <BehaviorTree id=\"0\" />\n          <ActionNode
-    id=\"3\" />\n          <SequenceNode id=\"8\" />\n        </data>\n      </_data>\n   
-    </ActionNode>\n  </editorInfo>\n</BehaviorBricks>"
-  zoom: 0.7
+    id=\"10\" />\n          <SequenceNode id=\"8\" />\n        </data>\n      </_data>\n   
+    </ActionNode>\n    <ActionNode id=\"3\">\n      <_data>\n        <data breakpoint=\"0\"
+    selected=\"False\" position=\"411.5709 591.5801\" name=\"Samples/ProgQuickStartGuide/SleepForever\"
+    description=\"Low-cost infinite action that never ends. It does not consume CPU
+    at all.\" cardinality=\"0\" hasParent=\"True\">\n          <BehaviorTree id=\"0\"
+    />\n          <ActionNode id=\"3\" />\n          <SequenceNode id=\"8\" />\n       
+    </data>\n      </_data>\n    </ActionNode>\n  </editorInfo>\n</BehaviorBricks>"
+  zoom: 0.6
   subslist:
   - {fileID: 11400000, guid: 8adfddffa70852a45ba1b64354494e3c, type: 2}
   _guid: e5001e3336eb7d6e2b4e9c3e7b6222ed
