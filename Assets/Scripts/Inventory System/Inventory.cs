@@ -12,8 +12,8 @@ namespace Inventory_System
         public List<Item> items = new List<Item>();
 
         [Header("Drop Settings")]
-        public float force;
-        public float offset;
+        public float dropForce;
+        public float dropOffset;
 
         private int m_InventorySpace = 20;
         private bool m_InInventory;
@@ -71,8 +71,8 @@ namespace Inventory_System
         public void Drop(Item item)
         {
             Vector3 direction = UtilityMethods.GetRandomDirection(true, false);
-            GameObject obj = Instantiate(item.itemRef, CameraManager.Instance.playerTransform.position + direction * offset, Quaternion.identity);
-            obj.GetComponent<Rigidbody>()?.AddForce(direction * force, ForceMode.Impulse);
+            GameObject obj = Instantiate(item.itemRef, CameraManager.Instance.playerTransform.position + direction * dropOffset, Quaternion.identity);
+            obj.GetComponent<Rigidbody>()?.AddForce(direction * dropForce, ForceMode.Impulse);
             Remove(item);
         }
     }

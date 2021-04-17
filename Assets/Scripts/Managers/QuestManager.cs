@@ -15,7 +15,7 @@ namespace Managers
         public Campaign[] allCampaigns;
 
         private readonly Dictionary<string, Campaign> m_Campaigns = new Dictionary<string, Campaign>();
-        private readonly HashSet<Campaign> onGoingCampaigns = new HashSet<Campaign>();
+        public readonly HashSet<Campaign> onGoingCampaigns = new HashSet<Campaign>();
 
         private readonly List<GameObject> m_QuestUIGameObjects = new List<GameObject>();
         private GameObject m_InstanceQuestHolder;
