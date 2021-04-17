@@ -12,6 +12,9 @@ namespace General.Utilities
 
         protected int m_InteractTimes;
 
+        public delegate void OnInteractionEvent();
+        public event OnInteractionEvent onInteraction;
+
         public bool IsPlayerOnRange { get; private set; }
 
         protected virtual void Awake() => gameObject.MoveToScene("Interactables Scene");
@@ -20,7 +23,11 @@ namespace General.Utilities
 
         private void IncrementInteraction()
         {
-            if (infiniteInteractions || ++m_InteractTimes < numberOfInteractionsOnPlace) Interact();
+            if (infiniteInteractions || ++m_InteractTimes < numberOfInteractionsOnPlace)
+            {
+                onInteraction?.Invoke();
+                Interact();
+            }
         }
         
         protected abstract void OnEnterTrigger(Collider other);
