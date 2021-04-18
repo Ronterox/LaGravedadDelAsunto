@@ -32,7 +32,7 @@ ModelImporter:
     second: CharacterArmature|Victory
   - first:
       74: -5599002979973759676
-    second: CharacterArmature|Walk
+    second: Bambino|Walk
   - first:
       74: -2469224417514991532
     second: CharacterArmature|Walk_Carry
@@ -376,7 +376,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: CharacterArmature|Walk
+      name: Bambino|Walk
       takeName: CharacterArmature|Walk
       internalID: 0
       firstFrame: 0
