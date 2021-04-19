@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8252910307976724692}
   - component: {fileID: -1306595112184999136}
-  - component: {fileID: -5493598220809326005}
   m_Layer: 0
   m_Name: Campanario
   m_TagString: Untagged
@@ -49,20 +48,20 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 5, z: 0}
   m_TimeToStationary: 0.5
---- !u!64 &-5493598220809326005
+--- !u!64 &6210903050972172469
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8252910307976724693}
+  m_GameObject: {fileID: 9099896755255547931}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
+  m_Mesh: {fileID: 7248542918122357775, guid: 5cf74090d56545045a69db4129801cff, type: 3}
 --- !u!1001 &8252910309244773706
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -132,6 +131,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5cf74090d56545045a69db4129801cff, type: 3}
+--- !u!1 &9099896755255547931 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 5cf74090d56545045a69db4129801cff, type: 3}
+  m_PrefabInstance: {fileID: 8252910309244773706}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8431445824211042977 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 5cf74090d56545045a69db4129801cff, type: 3}

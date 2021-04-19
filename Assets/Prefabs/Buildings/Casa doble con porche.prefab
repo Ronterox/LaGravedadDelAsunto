@@ -1,5 +1,19 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!64 &1333323504440091580
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 245456064356869464}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 7848286734571013013, guid: 3fd7caa94d3ddaf4a9461633933e66d3, type: 3}
 --- !u!1 &1128540025896556423
 GameObject:
   m_ObjectHideFlags: 0
@@ -10,7 +24,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1128540025896556420}
   - component: {fileID: 6128619460105479992}
-  - component: {fileID: -4030679609284626301}
   m_Layer: 0
   m_Name: Casa doble con porche
   m_TagString: Untagged
@@ -49,20 +62,6 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 4, z: 0}
   m_TimeToStationary: 0.5
---- !u!64 &-4030679609284626301
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1128540025896556423}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
 --- !u!1001 &1128540025789208585
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -132,6 +131,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3fd7caa94d3ddaf4a9461633933e66d3, type: 3}
+--- !u!1 &245456064356869464 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 3fd7caa94d3ddaf4a9461633933e66d3, type: 3}
+  m_PrefabInstance: {fileID: 1128540025789208585}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &586550222805843938 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3fd7caa94d3ddaf4a9461633933e66d3, type: 3}
