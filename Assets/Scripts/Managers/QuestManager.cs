@@ -56,5 +56,6 @@ namespace Managers
         }
 
         public Quest GetQuest(string id) => m_Quests.TryGetValue(id, out Quest value) ? value : null;
+        public Quest GetQuestRandom() => allQuests[Random.Range(0, allQuests.Length)];
     }
 }

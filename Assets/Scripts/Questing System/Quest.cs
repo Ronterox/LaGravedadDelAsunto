@@ -34,11 +34,11 @@ namespace Questing_System
         public string questID;
         public QuestInfo questInfo;
         [Space] 
-        private QuestState questState = QuestState.NotStarted;
+        [HideInInspector]
+        public QuestState questState = QuestState.NotStarted;
         [HideInInspector]
         public QuestEndType questEndType = QuestEndType.NeutralEnding;
 
-        public bool isFinalQuest, startsInstantly;
         public bool IsCompleted => questState == QuestState.Completed;
         public bool IsOnGoing => questState == QuestState.OnGoing;
         public bool IsStarted => questState != QuestState.NotStarted;

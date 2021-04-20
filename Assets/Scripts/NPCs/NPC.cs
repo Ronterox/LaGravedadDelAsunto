@@ -8,19 +8,40 @@ using UnityEngine.Events;
 
 namespace NPCs
 {
+    public enum DialogueAction { DoNothing, StartQuest, EndQuestGood, EndQuestBad }
+
+    [System.Serializable]
+    public struct QuestDialogueID
+    {
+        public string dialogueID;
+        public DialogueAction action;
+        [Space]
+        public string questRelatedId;
+    }
+
     public abstract class NPC : Interactable
     {
+        [Header("NPC")] public string npcName;
+        [Space] [TextArea] public string description;
+        public string questID;
+
         [Header("NPC Settings")]
         public ScriptableNPC npcScriptable;
         [Space] public UnityEvent onQuestCompletedInteraction;
-        
+
         [Header("Speaking Settings")]
         public Transform textPosition;
         public Vector3 rotationAxis = Vector3.up;
 
         public bool infiniteCompletedEventCall;
         private bool m_CalledQuestEventOnce;
-        
+
+        [Header("Dialogues IDs")]
+        [Tooltip("The ids are called on order")]
+        public QuestDialogueID[] notStartedDialogues;
+        public QuestDialogueID[] onGoingDialogues;
+        public QuestDialogueID[] completedDialogues;
+
         private Transform m_Player;
         private NavMeshAgent m_Agent;
 
@@ -35,8 +56,8 @@ namespace NPCs
         protected override void Update()
         {
             base.Update();
-            if(IsPlayerOnRange) transform.RotateTowards(m_Player, rotationAxis);
-            else if(m_Agent && !m_Agent.isStopped) transform.RotateTowards(m_Agent.destination);
+            if (IsPlayerOnRange) transform.RotateTowards(m_Player, rotationAxis);
+            else if (m_Agent && !m_Agent.isStopped) transform.RotateTowards(m_Agent.destination);
         }
 
         protected abstract void OnQuestCompletedInteraction(Quest quest);
@@ -50,22 +71,22 @@ namespace NPCs
         protected override void OnEnterTrigger(Collider other)
         {
             if (!m_Player) m_Player = other.transform;
-            OnInteractionRangeEnter(GameManager.Instance.questManager.GetQuest(npcScriptable.questID));
+            OnInteractionRangeEnter(GameManager.Instance.questManager.GetQuest(questID));
         }
 
-        protected override void OnExitTrigger(Collider other) => OnInteractionRangeExit(GameManager.Instance.questManager.GetQuest(npcScriptable.questID));
+        protected override void OnExitTrigger(Collider other) => OnInteractionRangeExit(GameManager.Instance.questManager.GetQuest(questID));
 
         public override void Interact()
         {
             if (m_IsFirstInteraction)
             {
-                Write($"Hello I'm {npcScriptable.name}, I'm {npcScriptable.description}");
+                Write($"Hello I'm {npcName}, I'm {description}");
                 m_IsFirstInteraction = false;
                 m_InteractTimes = 0;
                 return;
             }
-            
-            Quest npcQuest = GameManager.Instance.questManager.GetQuest(npcScriptable.questID);
+
+            Quest npcQuest = string.IsNullOrEmpty(questID) ? GameManager.Instance.questManager.GetQuestRandom() : GameManager.Instance.questManager.GetQuest(questID);
             if (npcQuest && npcQuest.IsCompleted)
             {
                 if (infiniteCompletedEventCall || !m_CalledQuestEventOnce)
@@ -78,11 +99,18 @@ namespace NPCs
             OnInteraction(npcQuest);
         }
 
+        public QuestDialogueID GetQuestDialogueID(QuestState questState) => questState switch
+        {
+            QuestState.NotStarted => m_InteractTimes < notStartedDialogues.Length ? notStartedDialogues[m_InteractTimes] : new QuestDialogueID(),
+            QuestState.OnGoing => m_InteractTimes < onGoingDialogues.Length ? onGoingDialogues[m_InteractTimes] : new QuestDialogueID(),
+            _ => m_InteractTimes < completedDialogues.Length ? completedDialogues[m_InteractTimes] : new QuestDialogueID()
+        };
+
         public void Say(string dialogueID)
         {
             Dialogue dialogue = npcScriptable.GetDialogue(dialogueID);
-            
-            if(dialogue != null) Write(dialogue.line);
+
+            if (dialogue != null) Write(dialogue.line);
             else Debug.LogError($"Dialogue Id {dialogueID} doesn't exist!");
         }
 

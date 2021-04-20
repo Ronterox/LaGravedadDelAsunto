@@ -1,22 +1,23 @@
 using System.Collections.Generic;
+using System.Linq;
 using Managers;
+using Plugins.Tools;
 using Questing_System;
-using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace NPCs
 {
     public class RandomNpc : NPC
     {
-        public List<string> dialogueIds = new List<string>();
-
-        private const string GATHER_HUNTING = "gather_hunting";
+        private readonly List<string> m_DialogueIds = new List<string>();
 
         protected override void Awake()
         {
             base.Awake();
-            
+
             foreach (DialogueGroup dialogueGroup in npcScriptable.dialogues)
-                foreach (Dialogue dialogue in dialogueGroup.dialogues) dialogueIds.Add(dialogue.id);
+                foreach (Dialogue dialogue in dialogueGroup.dialogues)
+                    m_DialogueIds.Add(dialogue.id);
         }
 
         protected override void OnQuestCompletedInteraction(Quest quest) => SayRandomThing();
@@ -27,23 +28,21 @@ namespace NPCs
 
         protected override void OnInteraction(Quest quest)
         {
-            if (GameManager.Instance.questManager.onGoingQuests.Count > 0)
-            {
-                foreach (Quest questManagerONGoingQuest in GameManager.Instance.questManager.onGoingQuests) CheckQuest(questManagerONGoingQuest);
-            }
+            QuestManager questManager = GameManager.Instance.questManager;
+            Quest randomQuest = questManager.GetQuestRandom();
+            
+            if (questManager.onGoingQuests.Count > 0) Say(GetQuestRelatedDialogueID(randomQuest).dialogueID);
             else SayRandomThing();
         }
 
-        private void CheckQuest(Quest quest)
+        public QuestDialogueID GetQuestRelatedDialogueID(Quest quest) => quest.questState switch
         {
-            switch (quest.questID)
-            {
-                case GATHER_HUNTING: 
-                    //DO something
-                    break;
-            }
-        }
+            QuestState.NotStarted => notStartedDialogues.Where(questDialogue => questDialogue.questRelatedId.Equals(quest.questID)).ToArray().Shuffle().FirstOrDefault(), 
+            QuestState.OnGoing => onGoingDialogues.Where(questDialogue => questDialogue.questRelatedId.Equals(quest.questID)).ToArray().Shuffle().FirstOrDefault(), 
+            QuestState.Completed => completedDialogues.Where(questDialogue => questDialogue.questRelatedId.Equals(quest.questID)).ToArray().Shuffle().FirstOrDefault(), 
+            _ => new QuestDialogueID()
+        };
 
-        private void SayRandomThing() => Say(dialogueIds[Random.Range(0, dialogueIds.Count)]);
+        private void SayRandomThing() => Say(m_DialogueIds[Random.Range(0, m_DialogueIds.Count)]);
     }
 }

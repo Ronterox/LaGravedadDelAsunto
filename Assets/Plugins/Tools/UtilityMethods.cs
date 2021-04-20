@@ -205,11 +205,11 @@ namespace Plugins.Tools
         public static void RotateTowards(this Transform transform, Vector3 direction, [DefaultValue("Vector3.up")] Vector3 axis)
         {
             Vector3 position = transform.position;
-            
+
             if (axis.x != 0) direction.x = position.x;
             else if (axis.y != 0) direction.y = position.y;
             else if (axis.z != 0) direction.z = position.z;
-            
+
             transform.LookAt(direction);
         }
 
@@ -225,6 +225,32 @@ namespace Plugins.Tools
         /// <param name="transform">my transform</param>
         /// <param name="direction">target direction</param>
         public static void RotateTowards(this Transform transform, Vector3 direction) => RotateTowards(transform, direction, Vector3.up);
+
+        /// <summary>
+        /// Best random shuffle method
+        /// </summary>
+        /// <param name="rng">seed of randomness</param>
+        /// <param name="array"></param>
+        /// <typeparam name="T"></typeparam>
+        public static T[] Shuffle<T>(this T[] array, System.Random rng)
+        {
+            int n = array.Length;
+            while (n > 1)
+            {
+                int k = rng.Next(n--);
+                T temp = array[n];
+                array[n] = array[k];
+                array[k] = temp;
+            }
+            return array;
+        }
+        
+        /// <summary>
+        /// Best random shuffle method
+        /// </summary>
+        /// <param name="array"></param>
+        /// <typeparam name="T"></typeparam>
+        public static T[] Shuffle<T>(this T[] array) => Shuffle(array, new System.Random());
     }
 
 
