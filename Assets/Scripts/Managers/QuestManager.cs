@@ -11,36 +11,35 @@ namespace Managers
         public GameObject questUIHolder;
         public GameObject questUITemplate;
 
-        [Header("Campaigns")]
-        public Campaign[] allCampaigns;
+        [Header("Quests")]
+        public Quest[] allQuests;
 
-        private readonly Dictionary<string, Campaign> m_Campaigns = new Dictionary<string, Campaign>();
-        public readonly HashSet<Campaign> onGoingCampaigns = new HashSet<Campaign>();
+        private readonly Dictionary<string, Quest> m_Quests = new Dictionary<string, Quest>();
+        public readonly HashSet<Quest> onGoingQuests = new HashSet<Quest>();
 
         private readonly List<GameObject> m_QuestUIGameObjects = new List<GameObject>();
         private GameObject m_InstanceQuestHolder;
 
         private void Awake()
         {
-            foreach (Campaign campaign in allCampaigns) m_Campaigns.Add(campaign.id, campaign);
+            foreach (Quest quest in allQuests) m_Quests.Add(quest.questID, quest);
         }
 
-        public void UpdateCampaigns()
+        public void UpdateQuests()
         {
-            foreach (Campaign onGoingCampaign in onGoingCampaigns) onGoingCampaign.UpdateCampaign();
-            onGoingCampaigns.RemoveWhere(campaign => campaign.IsCompleted);
+            onGoingQuests.RemoveWhere(quest => quest.IsCompleted);
 
             m_QuestUIGameObjects.ForEach(ui => GUIManager.Instance.RemoveUI(ui));
-            foreach (Campaign onGoingCampaign in onGoingCampaigns) AddQuestUI(onGoingCampaign.GetCurrentQuest());
+            foreach (Quest onGoingQuest in onGoingQuests) AddQuestUI(onGoingQuest);
         }
 
-        public void StartNewCampaign(string campaignID)
+        public void StartNewQuest(string questID)
         {
-            if (!m_Campaigns.TryGetValue(campaignID, out Campaign result)) return;
-            result.StartCampaignQuest(0);
-            onGoingCampaigns.Add(result);
-
-            AddQuestUI(result.GetCurrentQuest());
+            if (!m_Quests.TryGetValue(questID, out Quest result)) return;
+            result.StartQuest();
+            
+            onGoingQuests.Add(result);
+            AddQuestUI(result);
         }
 
         public void AddQuestUI(Quest quest)
@@ -49,13 +48,13 @@ namespace Managers
             GameObject inst = GUIManager.Instance.InstantiateUI(questUITemplate);
 
             var questUI = inst.GetComponent<QuestUI>();
-            
+
             questUI.SetInfo(quest.questInfo.questName, quest.questInfo.questDescription);
             questUI.transform.parent = m_InstanceQuestHolder.transform;
 
             m_QuestUIGameObjects.Add(questUI.gameObject);
         }
 
-        public Campaign GetCampaign(string id) => m_Campaigns.TryGetValue(id, out Campaign value)? value : null;
+        public Quest GetQuest(string id) => m_Quests.TryGetValue(id, out Quest value) ? value : null;
     }
 }

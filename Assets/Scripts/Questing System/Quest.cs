@@ -41,6 +41,7 @@ namespace Questing_System
         public bool isFinalQuest, startsInstantly;
         public bool IsCompleted => questState == QuestState.Completed;
         public bool IsOnGoing => questState == QuestState.OnGoing;
+        public bool IsStarted => questState != QuestState.NotStarted;
 
         private bool m_JustStarted;
 
@@ -118,7 +119,7 @@ namespace Questing_System
                 GameManager.Instance.karmaController.ChangeKarma(-questInfo.negativeKarma);
             }
             
-            GameManager.Instance.questManager.UpdateCampaigns();
+            GameManager.Instance.questManager.UpdateQuests();
             gameObject.SetActive(false);
             m_JustStarted = false;
         }

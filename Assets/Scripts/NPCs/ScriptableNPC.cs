@@ -9,7 +9,7 @@ namespace NPCs
         [Header("NPC")] public string npcName;
         [Space] [TextArea] public string description;
 
-        public string campaignID;
+        public string questID;
 
         public DialogueGroup[] dialogues;
         private readonly Dictionary<string, Dialogue> m_Dialogues = new Dictionary<string, Dialogue>();

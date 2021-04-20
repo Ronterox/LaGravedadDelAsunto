@@ -12,14 +12,14 @@ namespace NPCs
     {
         [Header("NPC Settings")]
         public ScriptableNPC npcScriptable;
-        [Space] public UnityEvent onCampaignCompletedInteraction;
+        [Space] public UnityEvent onQuestCompletedInteraction;
         
         [Header("Speaking Settings")]
         public Transform textPosition;
         public Vector3 rotationAxis = Vector3.up;
 
         public bool infiniteCompletedEventCall;
-        private bool m_CalledCampaignEventOnce;
+        private bool m_CalledQuestEventOnce;
         
         private Transform m_Player;
         private NavMeshAgent m_Agent;
@@ -39,21 +39,21 @@ namespace NPCs
             else if(m_Agent && !m_Agent.isStopped) transform.RotateTowards(m_Agent.destination);
         }
 
-        protected abstract void OnCampaignCompletedInteraction(Campaign campaign);
+        protected abstract void OnQuestCompletedInteraction(Quest quest);
 
-        protected abstract void OnInteractionRangeEnter(Campaign campaign);
+        protected abstract void OnInteractionRangeEnter(Quest quest);
 
-        protected abstract void OnInteractionRangeExit(Campaign campaign);
+        protected abstract void OnInteractionRangeExit(Quest quest);
 
-        protected abstract void OnInteraction(Campaign campaign);
+        protected abstract void OnInteraction(Quest quest);
 
         protected override void OnEnterTrigger(Collider other)
         {
             if (!m_Player) m_Player = other.transform;
-            OnInteractionRangeEnter(GameManager.Instance.questManager.GetCampaign(npcScriptable.campaignID));
+            OnInteractionRangeEnter(GameManager.Instance.questManager.GetQuest(npcScriptable.questID));
         }
 
-        protected override void OnExitTrigger(Collider other) => OnInteractionRangeExit(GameManager.Instance.questManager.GetCampaign(npcScriptable.campaignID));
+        protected override void OnExitTrigger(Collider other) => OnInteractionRangeExit(GameManager.Instance.questManager.GetQuest(npcScriptable.questID));
 
         public override void Interact()
         {
@@ -65,17 +65,17 @@ namespace NPCs
                 return;
             }
             
-            Campaign npcCampaign = GameManager.Instance.questManager.GetCampaign(npcScriptable.campaignID);
-            if (npcCampaign != null && npcCampaign.IsCompleted)
+            Quest npcQuest = GameManager.Instance.questManager.GetQuest(npcScriptable.questID);
+            if (npcQuest && npcQuest.IsCompleted)
             {
-                if (infiniteCompletedEventCall || !m_CalledCampaignEventOnce)
+                if (infiniteCompletedEventCall || !m_CalledQuestEventOnce)
                 {
-                    m_CalledCampaignEventOnce = true;
-                    OnCampaignCompletedInteraction(npcCampaign);
-                    onCampaignCompletedInteraction?.Invoke();
+                    m_CalledQuestEventOnce = true;
+                    OnQuestCompletedInteraction(npcQuest);
+                    onQuestCompletedInteraction?.Invoke();
                 }
             }
-            OnInteraction(npcCampaign);
+            OnInteraction(npcQuest);
         }
 
         public void Say(string dialogueID)

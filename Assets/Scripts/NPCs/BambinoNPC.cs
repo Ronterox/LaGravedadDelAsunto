@@ -8,30 +8,29 @@ namespace NPCs
         public const string MAIN_QUEST_ID = "gathering";
         public const string GOOD_QUEST_ID = "bambino_cooking";
 
-        protected override void OnCampaignCompletedInteraction(Campaign campaign) { }
+        protected override void OnQuestCompletedInteraction(Quest quest) { }
 
-        protected override void OnInteractionRangeEnter(Campaign campaign) => Say(campaign.IsStarted ? "How are you?" : "Greetings");
+        protected override void OnInteractionRangeEnter(Quest quest) => Say(quest.IsStarted ? "How are you?" : "Greetings");
 
-        protected override void OnInteractionRangeExit(Campaign campaign) => Say(campaign.IsStarted ? "Cya" : "...");
+        protected override void OnInteractionRangeExit(Quest quest) => Say(quest.IsStarted ? "Cya" : "...");
 
-        protected override void OnInteraction(Campaign campaign)
+        protected override void OnInteraction(Quest quest)
         {
-            if (!campaign.IsStarted)
+            if (!quest.IsOnGoing)
             {
                 switch (m_InteractTimes)
                 {
                     case 1: Say("Welcome"); break;
                     case 2: Say("Quest 1"); break;
                     case 3:
-                        GameManager.Instance.questManager.StartNewCampaign(npcScriptable.campaignID);
+                        GameManager.Instance.questManager.StartNewQuest(npcScriptable.questID);
                         m_InteractTimes = 0;
                         break;
                 }
             }
             else
             {
-                Quest current = campaign.GetCurrentQuest();
-                if (current.questID.Equals(MAIN_QUEST_ID))
+                if (quest.questID.Equals(MAIN_QUEST_ID))
                 {
                     switch (m_InteractTimes)
                     {

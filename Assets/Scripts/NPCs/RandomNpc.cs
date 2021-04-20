@@ -19,25 +19,24 @@ namespace NPCs
                 foreach (Dialogue dialogue in dialogueGroup.dialogues) dialogueIds.Add(dialogue.id);
         }
 
-        protected override void OnCampaignCompletedInteraction(Campaign campaign) => SayRandomThing();
+        protected override void OnQuestCompletedInteraction(Quest quest) => SayRandomThing();
 
-        protected override void OnInteractionRangeEnter(Campaign campaign) => SayRandomThing();
+        protected override void OnInteractionRangeEnter(Quest quest) => SayRandomThing();
 
-        protected override void OnInteractionRangeExit(Campaign campaign) => SayRandomThing();
+        protected override void OnInteractionRangeExit(Quest quest) => SayRandomThing();
 
-        protected override void OnInteraction(Campaign campaign)
+        protected override void OnInteraction(Quest quest)
         {
-            if (GameManager.Instance.questManager.onGoingCampaigns.Count > 0)
+            if (GameManager.Instance.questManager.onGoingQuests.Count > 0)
             {
-                foreach (Campaign questManagerONGoingCampaign in GameManager.Instance.questManager.onGoingCampaigns) CheckCampaign(questManagerONGoingCampaign);
+                foreach (Quest questManagerONGoingQuest in GameManager.Instance.questManager.onGoingQuests) CheckQuest(questManagerONGoingQuest);
             }
             else SayRandomThing();
         }
 
-        private void CheckCampaign(Campaign campaign)
+        private void CheckQuest(Quest quest)
         {
-            Quest currentQuest = campaign.GetCurrentQuest();
-            switch (currentQuest.questID)
+            switch (quest.questID)
             {
                 case GATHER_HUNTING: 
                     //DO something

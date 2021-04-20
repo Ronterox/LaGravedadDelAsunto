@@ -12,24 +12,23 @@ namespace NPCs
             Say("greetings");
         }
 
-        protected override void OnCampaignCompletedInteraction(Campaign campaign)
+        protected override void OnQuestCompletedInteraction(Quest quest)
         {
-            if (campaign.campaignResult == QuestEndType.NeutralEnding) Say("neutral ending");
-            else Say(campaign.campaignResult == QuestEndType.DoneGood ? "good ending" : "bad ending");
+            if (quest.questEndType == QuestEndType.NeutralEnding) Say("neutral ending");
+            else Say(quest.questEndType == QuestEndType.DoneGood ? "good ending" : "bad ending");
         }
 
-        protected override void OnInteractionRangeEnter(Campaign campaign) => Say("interaction enter");
+        protected override void OnInteractionRangeEnter(Quest quest) => Say("interaction enter");
 
-        protected override void OnInteractionRangeExit(Campaign campaign) => Say("interaction exit");
+        protected override void OnInteractionRangeExit(Quest quest) => Say("interaction exit");
 
-        protected override void OnInteraction(Campaign campaign)
+        protected override void OnInteraction(Quest quest)
         {
-            Quest currentQuest = campaign.GetCurrentQuest();
 
-            if (currentQuest && !currentQuest.questID.Equals(GATHERING_QUEST_ID)) return;
+            if (quest && !quest.questID.Equals(GATHERING_QUEST_ID)) return;
 
-            if (currentQuest.IsJustStarted()) Say("look around");
-            else if (currentQuest.IsOnGoing) Say("collect");
+            if (quest.IsJustStarted()) Say("look around");
+            else if (quest.IsOnGoing) Say("collect");
         }
 
     }
