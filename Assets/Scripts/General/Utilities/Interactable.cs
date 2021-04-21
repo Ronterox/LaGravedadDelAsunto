@@ -23,7 +23,7 @@ namespace General.Utilities
 
         private void IncrementInteraction()
         {
-            if (infiniteInteractions || ++m_InteractTimes < numberOfInteractionsOnPlace)
+            if (infiniteInteractions || m_InteractTimes++ < numberOfInteractionsOnPlace)
             {
                 onInteraction?.Invoke();
                 Interact();

@@ -144,8 +144,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   items: []
-  dropForce: 0
-  dropOffset: 0
+  dropForce: 2
+  dropOffset: 1
 --- !u!1001 &5047459579279478065
 PrefabInstance:
   m_ObjectHideFlags: 0
