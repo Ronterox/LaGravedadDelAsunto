@@ -1,51 +1,36 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using Player;
 
-namespace Ragdoll
+namespace Animations
 {
     public class RagdollScript : MonoBehaviour
     {
+        private Collider m_RagCollider;
+        private Rigidbody m_Rigidbody;
 
-        private Collider ragcollider;
-        private Rigidbody rigibody;
-
-        private Collider[] childrencolliders;
-        private Rigidbody[] childrenrigibodies;
-
-        PlayerInput input;
-
+        private Collider[] m_ChildrenColliders;
+        private Rigidbody[] m_ChildrenRigibodies;
 
         private void Awake()
         {
+            m_RagCollider = GetComponent<Collider>();
+            m_Rigidbody = GetComponent<Rigidbody>();
 
-            ragcollider = GetComponent<Collider>();
-            rigibody = GetComponent<Rigidbody>();
-
-            childrencolliders = GetComponentsInChildren<Collider>();
-            childrenrigibodies = GetComponentsInChildren<Rigidbody>();
-            enableRagdoll(false);
-
+            m_ChildrenColliders = GetComponentsInChildren<Collider>();
+            m_ChildrenRigibodies = GetComponentsInChildren<Rigidbody>();
+            
+            EnableRagdoll(false);
         }
-        public void enableRagdoll(bool enabled)
+        public void EnableRagdoll(bool enable = true)
         {
-            foreach (var collider in childrencolliders)
+            foreach (Collider coll in m_ChildrenColliders) coll.enabled = enable;
+            
+            foreach (Rigidbody rigibdy in m_ChildrenRigibodies)
             {
-                collider.enabled = enabled;
+                rigibdy.detectCollisions = enable;
+                rigibdy.isKinematic = !enable;
             }
-            foreach (var rigibody in childrenrigibodies)
-            {
-                rigibody.detectCollisions = enabled;
-                rigibody.isKinematic = !enabled;
-            }
-
-
-            rigibody.isKinematic = enabled;
-            ragcollider.enabled = !enabled;
-
+            m_Rigidbody.isKinematic = enable;
+            m_RagCollider.enabled = !enable;
         }
-
-
     }
 }

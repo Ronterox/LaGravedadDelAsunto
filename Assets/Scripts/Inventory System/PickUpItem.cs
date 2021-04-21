@@ -2,22 +2,15 @@ using General.Utilities;
 using Managers;
 using Plugins.Audio;
 using UnityEngine;
-using Ragdoll;
 
 namespace Inventory_System
 {
     public class PickUpItem : Interactable
     {
         public Item item;
-        private RagdollScript ragdollref;
 
         [Header("Sfx")]
         public AudioClip pickSfx;
-
-        private void Awake()
-        {
-            ragdollref = GetComponent<RagdollScript>();
-        }
 
         public override void Interact() => PickUp();
 
@@ -28,11 +21,7 @@ namespace Inventory_System
         private void PickUp()
         {
             SoundManager.Instance.PlaySound(pickSfx, transform.position);
-            if (GameManager.Instance.inventory.Add(item))
-            {
-                ragdollref.enableRagdoll(true);
-                Destroy(gameObject);
-            }
+            if (GameManager.Instance.inventory.Add(item)) gameObject.SetActive(false);
         }
     }
 }
