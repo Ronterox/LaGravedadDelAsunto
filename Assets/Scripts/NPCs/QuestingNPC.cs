@@ -8,16 +8,19 @@ namespace NPCs
     {
         protected override void OnQuestCompletedInteraction(Quest quest) { }
 
-        protected override void OnInteractionRangeEnter(Quest quest) => Say(quest.IsStarted ? "How are you?" : "Greetings");
+        protected override void OnInteractionRangeEnter(Quest quest) => SayQuestRelatedDialogue(quest);
 
-        protected override void OnInteractionRangeExit(Quest quest) => Say(quest.IsStarted ? "Cya" : "...");
+        protected override void OnInteractionRangeExit(Quest quest) => SayQuestRelatedDialogue(quest);
 
-        protected override void OnInteraction(Quest quest)
+        protected override void OnInteraction(Quest quest) => CheckForAction(SayQuestRelatedDialogue(quest).action);
+
+        private QuestDialogueID SayQuestRelatedDialogue(Quest quest)
         {
             QuestDialogueID questDialogueID = GetQuestDialogueID(quest.questState);
 
             Say(questDialogueID.dialogueID);
-            CheckForAction(questDialogueID.action);
+            
+            return questDialogueID;
         }
 
         private void CheckForAction(DialogueAction action)
