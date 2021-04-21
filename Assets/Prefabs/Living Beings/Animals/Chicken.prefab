@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 533074034242108175}
   - component: {fileID: 630700452834070827}
   - component: {fileID: 4017227025978597924}
+  - component: {fileID: 2101608325077162479}
+  - component: {fileID: 2509267645831382504}
   m_Layer: 0
   m_Name: Chicken
   m_TagString: Untagged
@@ -155,6 +157,33 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 2
+--- !u!114 &2101608325077162479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3921715313116988135}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7a2fba38f636124a9f80d4f9c649dca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+--- !u!114 &2509267645831382504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3921715313116988135}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e09bfa178f4cf6f43b05a19060f5be9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myHealth: {fileID: -2150642963484075566, guid: 17cb672c8bd6ed44581819b3940f5c5c, type: 3}
+  dropItem: {fileID: 11400000, guid: cac61f811b1b32a4d8ae1d8e6e8e116a, type: 2}
 --- !u!1 &8791639099639422002
 GameObject:
   m_ObjectHideFlags: 0

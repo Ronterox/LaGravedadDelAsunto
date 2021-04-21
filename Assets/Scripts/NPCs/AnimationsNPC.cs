@@ -8,7 +8,7 @@ namespace NPCs
     {
         private Animator m_Animator;
         private NavMeshAgent m_Agent;
-        private Enemy m_Enemy;
+        private Damageable m_Damageable;
 
         private const float SPEED_DAMP_TIME = 0.15f;
         private readonly int SPEED_ANIMATION_HASH = Animator.StringToHash("Speed");
@@ -17,7 +17,7 @@ namespace NPCs
         {
             m_Animator = GetComponent<Animator>();
             m_Agent = GetComponent<NavMeshAgent>();
-            m_Enemy = GetComponent<Enemy>();
+            m_Damageable = GetComponent<Damageable>();
         }
 
         private void FixedUpdate() => AnimateNPC();
@@ -25,7 +25,7 @@ namespace NPCs
         private void AnimateNPC()
         {
             if (m_Agent && m_Agent.isStopped) m_Animator.SetFloat(SPEED_ANIMATION_HASH, 0f, SPEED_DAMP_TIME, Time.deltaTime);
-            else m_Animator.SetFloat(SPEED_ANIMATION_HASH, m_Enemy.InCombat ? 1f : 0.5f, SPEED_DAMP_TIME, Time.deltaTime);
+            else m_Animator.SetFloat(SPEED_ANIMATION_HASH, m_Damageable.InCombat ? 1f : 0.5f, SPEED_DAMP_TIME, Time.deltaTime);
         }
     }
 }

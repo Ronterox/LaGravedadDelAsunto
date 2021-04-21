@@ -68,10 +68,12 @@ namespace Inventory_System
             if (m_InInventory) UpdateUI();
         }
 
-        public void Drop(Item item)
+        public void Drop(Item item) => Drop(item, CameraManager.Instance.playerTransform.position );
+
+        public void Drop(Item item, Vector3 position)
         {
             Vector3 direction = UtilityMethods.GetRandomDirection(true, false);
-            GameObject obj = Instantiate(item.itemRef, CameraManager.Instance.playerTransform.position + direction * dropOffset, Quaternion.identity);
+            GameObject obj = Instantiate(item.itemRef, position + direction * dropOffset, Quaternion.identity);
             obj.GetComponent<Rigidbody>()?.AddForce(direction * dropForce, ForceMode.Impulse);
             Remove(item);
         }

@@ -6,6 +6,9 @@ namespace Combat
     {
         public int maxHealth = 100;
         public int currentHealth { get; private set; }
+        
+        public delegate void DieEvent();
+        public event DieEvent die;
 
         private void Awake() => currentHealth = maxHealth;
 
@@ -13,9 +16,7 @@ namespace Combat
         {
             currentHealth -= damageValue;
             Debug.Log(transform.name + "takes" + damageValue + "damage");
-            if (currentHealth <= 0) Die();
+            if (currentHealth <= 0) die?.Invoke();
         }
-
-        public virtual void Die() => Destroy(gameObject);
     }
 }
