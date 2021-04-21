@@ -7,6 +7,11 @@ namespace Combat
         public BoxCollider AttackCollider;
         public int damage;
 
+        private void Awake()
+        {
+            SetCollider(false);
+        }
+
         public void Attack(CharacterHealth targetHealth) => targetHealth.TakeDamage(damage);
 
         public void SetCollider(bool isEnable) => AttackCollider.enabled = isEnable;
