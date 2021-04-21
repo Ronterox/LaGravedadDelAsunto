@@ -1,5 +1,6 @@
 ﻿using Managers;
 using Plugins.Tools;
+using Plugins.Tools.Events;
 using UnityEngine;
 
 namespace GUI

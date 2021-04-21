@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace Plugins.Tools
+namespace Plugins.Tools.Events
 {
     /// <summary>
     /// MMGameEvents are used throughout the game for general match events
