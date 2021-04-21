@@ -1,50 +1,34 @@
-using System.Collections.Generic;
+using System.Linq;
 using Managers;
+using Plugins.Tools;
 using Questing_System;
-using UnityEngine;
 
 namespace NPCs
 {
     public class RandomNpc : NPC
     {
-        public List<string> dialogueIds = new List<string>();
+        protected override void OnQuestCompletedInteraction(Quest quest) => SayRandomThing();
 
-        private const string GATHER_HUNTING = "gather_hunting";
+        protected override void OnInteractionRangeEnter(Quest quest) => SayRandomThing();
 
-        protected override void Awake()
+        protected override void OnInteractionRangeExit(Quest quest) => SayRandomThing();
+
+        protected override void OnInteraction(Quest quest) => SayRandomThing();
+
+        private void SayRandomThing()
         {
-            base.Awake();
+            QuestManager questManager = GameManager.Instance.questManager;
+            Quest randomQuest = questManager.GetQuestRandom();
             
-            foreach (DialogueGroup dialogueGroup in npcScriptable.dialogues)
-                foreach (Dialogue dialogue in dialogueGroup.dialogues) dialogueIds.Add(dialogue.id);
+            Say(GetQuestRelatedDialogueID(randomQuest).dialogueID);
         }
 
-        protected override void OnCampaignCompletedInteraction(Campaign campaign) => SayRandomThing();
-
-        protected override void OnInteractionRangeEnter(Campaign campaign) => SayRandomThing();
-
-        protected override void OnInteractionRangeExit(Campaign campaign) => SayRandomThing();
-
-        protected override void OnInteraction(Campaign campaign)
+        public QuestDialogueID GetQuestRelatedDialogueID(Quest quest) => quest.questState switch
         {
-            if (GameManager.Instance.questManager.onGoingCampaigns.Count > 0)
-            {
-                foreach (Campaign questManagerONGoingCampaign in GameManager.Instance.questManager.onGoingCampaigns) CheckCampaign(questManagerONGoingCampaign);
-            }
-            else SayRandomThing();
-        }
-
-        private void CheckCampaign(Campaign campaign)
-        {
-            Quest currentQuest = campaign.GetCurrentQuest();
-            switch (currentQuest.questID)
-            {
-                case GATHER_HUNTING: 
-                    //DO something
-                    break;
-            }
-        }
-
-        private void SayRandomThing() => Say(dialogueIds[Random.Range(0, dialogueIds.Count)]);
+            QuestState.NotStarted => notStartedDialogues.Where(questDialogue => questDialogue.questRelatedId.Equals(quest.questID)).ToArray().Shuffle().FirstOrDefault(), 
+            QuestState.OnGoing => onGoingDialogues.Where(questDialogue => questDialogue.questRelatedId.Equals(quest.questID)).ToArray().Shuffle().FirstOrDefault(), 
+            QuestState.Completed => completedDialogues.Where(questDialogue => questDialogue.questRelatedId.Equals(quest.questID)).ToArray().Shuffle().FirstOrDefault(), 
+            _ => new QuestDialogueID()
+        };
     }
 }
