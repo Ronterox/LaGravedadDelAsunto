@@ -14,14 +14,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numberOfInteractionsOnPlace: 3
   infiniteInteractions: 0
+  npcName: 
+  description: 
+  questID: 
   npcScriptable: {fileID: 11400000, guid: 6ab3cacebb13c2a9b862fced6d7235c1, type: 2}
-  onCampaignCompletedInteraction:
+  onQuestCompletedInteraction:
     m_PersistentCalls:
       m_Calls: []
   textPosition: {fileID: 6744255874392950034}
   rotationAxis: {x: 0, y: 1, z: 0}
   infiniteCompletedEventCall: 0
-  dialogueIds: []
+  notStartedDialogues:
+  - dialogueID: hello
+    action: 0
+    questRelatedId: cooking
+  - dialogueID: random
+    action: 0
+    questRelatedId: gathering
+  onGoingDialogues:
+  - dialogueID: hello
+    action: 0
+    questRelatedId: cooking
+  - dialogueID: random
+    action: 0
+    questRelatedId: gathering
+  completedDialogues:
+  - dialogueID: hello
+    action: 0
+    questRelatedId: cooking
+  - dialogueID: random
+    action: 0
+    questRelatedId: gathering
 --- !u!1 &4771896026885306648
 GameObject:
   m_ObjectHideFlags: 0

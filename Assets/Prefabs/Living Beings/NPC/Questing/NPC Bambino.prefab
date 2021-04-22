@@ -55,6 +55,58 @@ PrefabInstance:
       propertyPath: m_Name
       value: NPC Bambino
       objectReference: {fileID: 0}
+    - target: {fileID: 7889288736500921926, guid: 50ea3bb5d3ade221db5002d3ceaca1ad, type: 3}
+      propertyPath: npcName
+      value: Bambino
+      objectReference: {fileID: 0}
+    - target: {fileID: 7889288736500921926, guid: 50ea3bb5d3ade221db5002d3ceaca1ad, type: 3}
+      propertyPath: questID
+      value: cooking
+      objectReference: {fileID: 0}
+    - target: {fileID: 7889288736500921926, guid: 50ea3bb5d3ade221db5002d3ceaca1ad, type: 3}
+      propertyPath: description
+      value: Head chef of the village
+      objectReference: {fileID: 0}
+    - target: {fileID: 7889288736500921926, guid: 50ea3bb5d3ade221db5002d3ceaca1ad, type: 3}
+      propertyPath: onGoingDialogues.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7889288736500921926, guid: 50ea3bb5d3ade221db5002d3ceaca1ad, type: 3}
+      propertyPath: completedDialogues.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7889288736500921926, guid: 50ea3bb5d3ade221db5002d3ceaca1ad, type: 3}
+      propertyPath: notStartedDialogues.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7889288736500921926, guid: 50ea3bb5d3ade221db5002d3ceaca1ad, type: 3}
+      propertyPath: notStartedDialogues.Array.data[0].action
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7889288736500921926, guid: 50ea3bb5d3ade221db5002d3ceaca1ad, type: 3}
+      propertyPath: onGoingDialogues.Array.data[0].dialogueID
+      value: How are you?
+      objectReference: {fileID: 0}
+    - target: {fileID: 7889288736500921926, guid: 50ea3bb5d3ade221db5002d3ceaca1ad, type: 3}
+      propertyPath: completedDialogues.Array.data[0].dialogueID
+      value: How are you?
+      objectReference: {fileID: 0}
+    - target: {fileID: 7889288736500921926, guid: 50ea3bb5d3ade221db5002d3ceaca1ad, type: 3}
+      propertyPath: notStartedDialogues.Array.data[0].dialogueID
+      value: Quest 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7889288736500921926, guid: 50ea3bb5d3ade221db5002d3ceaca1ad, type: 3}
+      propertyPath: onGoingDialogues.Array.data[0].questRelatedId
+      value: cooking
+      objectReference: {fileID: 0}
+    - target: {fileID: 7889288736500921926, guid: 50ea3bb5d3ade221db5002d3ceaca1ad, type: 3}
+      propertyPath: completedDialogues.Array.data[0].questRelatedId
+      value: cooking
+      objectReference: {fileID: 0}
+    - target: {fileID: 7889288736500921926, guid: 50ea3bb5d3ade221db5002d3ceaca1ad, type: 3}
+      propertyPath: notStartedDialogues.Array.data[0].questRelatedId
+      value: cooking
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 50ea3bb5d3ade221db5002d3ceaca1ad, type: 3}
 --- !u!4 &4218570483470217093 stripped

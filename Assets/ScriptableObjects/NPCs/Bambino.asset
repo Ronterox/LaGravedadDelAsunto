@@ -12,60 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 868c84339560e3f8fb67d0daef7c2c66, type: 3}
   m_Name: Bambino
   m_EditorClassIdentifier: 
-  npcName: Bambino
-  description: The head chef of the only restaurant of the town
-  dialoguesIds:
-  - 
-  - 
-  - 
-  - 
-  - My name
-  - Welcome
-  - Quest 1
-  - Go gather
-  - Animals drop
-  - Leave me
-  - My name
-  - Welcome
-  - Quest 1
-  - Go gather
-  - Animals drop
-  - Leave me
-  - My name
-  - Welcome
-  - Quest 1
-  - Go gather
-  - Animals drop
-  - Leave me
-  - My name
-  - Welcome
-  - Quest 1
-  - Go gather
-  - Animals drop
-  - Leave me
-  campaignID: bambino
   dialogues:
   - groupName: First Introduction
     dialogues:
-    - id: My name
-      line: Hello, I'm Bambino, chef head of the town!
-      options: []
     - id: Welcome
       line: Welcome to the Town ... why are you here for?
       options: []
     - id: Quest 1
       line: Wanna help me? I will give you some food if you do
-      options: []
-  - groupName: Gathering Quest
-    dialogues:
-    - id: Go gather
-      line: Now go get me some ingredients from out there
-      options: []
-    - id: Animals drop
-      line: Where?, Well, you can collect plants or hunt a wild animal
-      options: []
-    - id: Leave me
-      line: I have work to do, now come back when you have everything
       options: []
   - groupName: Range Interactions
     dialogues:

@@ -7,6 +7,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 111630883455792755, guid: a17e4922392bc6d52a77e342f00b74b5, type: 3}
+      propertyPath: npcName
+      value: Felicia
+      objectReference: {fileID: 0}
+    - target: {fileID: 111630883455792755, guid: a17e4922392bc6d52a77e342f00b74b5, type: 3}
+      propertyPath: description
+      value: no description
+      objectReference: {fileID: 0}
     - target: {fileID: 2997302969225718219, guid: a17e4922392bc6d52a77e342f00b74b5, type: 3}
       propertyPath: m_RootOrder
       value: 2
