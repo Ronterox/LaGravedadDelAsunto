@@ -214,9 +214,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myHealth: {fileID: -1834133627302451676}
-  secondsToDisappear: 5
-  dropItem: {fileID: 0}
-  quantityToDrop: 1
+  secondsToDisappear: 2
+  dropItem: {fileID: 11400000, guid: cac61f811b1b32a4d8ae1d8e6e8e116a, type: 2}
+  quantityToDrop: 10
   timer: {fileID: 5262963706950080009}
 --- !u!114 &8507476064247547195
 MonoBehaviour:

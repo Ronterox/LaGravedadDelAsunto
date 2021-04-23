@@ -59,8 +59,8 @@ namespace Combat
         {
             if (dropItem) GameManager.Instance.inventory.SpawnItems(dropItem, transform.position, quantityToDrop);
             if (m_RagdollScript) m_RagdollScript.EnableRagdoll();
-            ExitCombat();
             StartCoroutine(SetActive(gameObject, false, secondsToDisappear));
+            ExitCombat();
         }
 
         private IEnumerator SetActive(GameObject obj, bool active, float delay)

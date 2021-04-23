@@ -6,6 +6,7 @@ using Questing_System;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
+using Random = UnityEngine.Random;
 
 namespace NPCs
 {
@@ -43,6 +44,8 @@ namespace NPCs
         public QuestDialogueID[] notStartedDialogues;
         public QuestDialogueID[] onGoingDialogues;
         public QuestDialogueID[] completedDialogues;
+        [Space]
+        public string[] onCombatDialogues;
 
         private Transform m_Player;
         private NavMeshAgent m_Agent;
@@ -57,6 +60,10 @@ namespace NPCs
             m_Agent = GetComponent<NavMeshAgent>();
             if (!damageable) damageable = GetComponent<Damageable>();
         }
+
+        private void OnEnable() => damageable.myHealth.AddListeners(null, SayCombatDialogue);
+        
+        private void OnDisable() => damageable.myHealth.RemoveListeners(null, SayCombatDialogue);
 
         protected override void Update()
         {
@@ -112,6 +119,8 @@ namespace NPCs
             QuestState.OnGoing => m_InteractTimes < onGoingDialogues.Length ? onGoingDialogues[m_InteractTimes] : new QuestDialogueID(),
             _ => m_InteractTimes < completedDialogues.Length ? completedDialogues[m_InteractTimes] : new QuestDialogueID()
         };
+
+        public void SayCombatDialogue() => Say(onCombatDialogues[Random.Range(0, onCombatDialogues.Length)]);
 
         public void Say(string dialogueID)
         {
