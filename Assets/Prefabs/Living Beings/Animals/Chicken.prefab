@@ -170,6 +170,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
+  onDieEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onTakeDamageEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2509267645831382504
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -183,7 +189,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myHealth: {fileID: -2150642963484075566, guid: 17cb672c8bd6ed44581819b3940f5c5c, type: 3}
+  secondsToDisappear: 5
   dropItem: {fileID: 11400000, guid: cac61f811b1b32a4d8ae1d8e6e8e116a, type: 2}
+  quantityToDrop: 1
+  timer: {fileID: 0}
 --- !u!1 &8791639099639422002
 GameObject:
   m_ObjectHideFlags: 0

@@ -30,6 +30,7 @@ namespace Animations
                 rigibdy.isKinematic = !enable;
             }
             m_Rigidbody.isKinematic = enable;
+            m_Rigidbody.detectCollisions = !enable;
             m_RagCollider.enabled = !enable;
         }
     }

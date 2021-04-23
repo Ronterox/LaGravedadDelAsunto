@@ -102,12 +102,12 @@ MonoBehaviour:
     <BehaviorTree id=\"0\" />\n          <PrioritySelectorNode id=\"10\" />\n         
     <RepeatDecorator id=\"5\" />\n        </data>\n      </_data>\n    </PrioritySelectorNode>\n   
     <ConditionEvalNode id=\"16\">\n      <_data>\n        <data breakpoint=\"0\"
-    selected=\"False\" position=\"249.1767 460.8477\" name=\"Basic/IsGameObjectNull\"
+    selected=\"False\" position=\"249.1767 459.4191\" name=\"Basic/IsGameObjectNull\"
     description=\"Eval\" cardinality=\"1\" hasParent=\"True\">\n          <BehaviorTree
     id=\"0\" />\n          <ConditionEvalNode id=\"16\" />\n          <PrioritySelectorNode
     id=\"10\" />\n        </data>\n      </_data>\n    </ConditionEvalNode>\n   
     <ActionNode id=\"7\">\n      <_data>\n        <data breakpoint=\"0\" selected=\"False\"
-    position=\"240.0403 403.0612\" name=\"GameObject/FindByTag\" description=\"Finds
+    position=\"240.0403 401.6326\" name=\"GameObject/FindByTag\" description=\"Finds
     a game object by name\" cardinality=\"0\" hasParent=\"False\">\n          <BehaviorTree
     id=\"0\" />\n          <ActionNode id=\"7\" />\n        </data>\n      </_data>\n   
     </ActionNode>\n    <ConditionEvalNode id=\"15\">\n      <_data>\n        <data
@@ -125,7 +125,7 @@ MonoBehaviour:
     cardinality=\"1\" hasParent=\"True\">\n          <BehaviorTree id=\"0\" />\n         
     <ConditionEvalNode id=\"12\" />\n          <PrioritySelectorNode id=\"10\" />\n       
     </data>\n      </_data>\n    </ConditionEvalNode>\n    <SubbehaviorNode id=\"2\">\n     
-    <_data>\n        <data breakpoint=\"0\" selected=\"True\" position=\"865.4536
+    <_data>\n        <data breakpoint=\"0\" selected=\"False\" position=\"865.4536
     421.7831\" name=\"QuickStartGuide/DoneWander\" description=\"Wanders to random
     positions around a NavMesh area.\" cardinality=\"-1\" hasParent=\"False\">\n         
     <BehaviorTree id=\"2\" />\n        </data>\n      </_data>\n    </SubbehaviorNode>\n 

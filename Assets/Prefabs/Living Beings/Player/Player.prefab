@@ -55,8 +55,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dd948e4c0cd66647a971d605d77f39a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AttackCollider: {fileID: 7181072255239292277}
-  damage: 10
+  attackCollider: {fileID: 7181072255239292277}
+  damage: 50
 --- !u!1 &6614662400965703640
 GameObject:
   m_ObjectHideFlags: 0
@@ -226,6 +226,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
+  onDieEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onTakeDamageEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &6488591161851407627
 PrefabInstance:
   m_ObjectHideFlags: 0

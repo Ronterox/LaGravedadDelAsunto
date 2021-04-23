@@ -764,6 +764,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
+  onDieEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onTakeDamageEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &-1325446182990113097
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -777,7 +783,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myHealth: {fileID: -2150642963484075566}
+  secondsToDisappear: 5
   dropItem: {fileID: 11400000, guid: b675ed13758a4ce439bb43814e239f81, type: 2}
+  quantityToDrop: 3
+  timer: {fileID: 0}
 --- !u!54 &381017807
 Rigidbody:
   m_ObjectHideFlags: 0

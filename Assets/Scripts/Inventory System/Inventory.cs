@@ -72,10 +72,20 @@ namespace Inventory_System
 
         public void Drop(Item item, Vector3 position)
         {
+            SpawnItem(item, position);
+            Remove(item);
+        }
+
+        public void SpawnItem(Item item, Vector3 position)
+        {
             Vector3 direction = UtilityMethods.GetRandomDirection(true, false);
             GameObject obj = Instantiate(item.itemRef, position + direction * dropOffset, Quaternion.identity);
             obj.GetComponent<Rigidbody>()?.AddForce(direction * dropForce, ForceMode.Impulse);
-            Remove(item);
+        }
+
+        public void SpawnItems(Item item, Vector3 position, int quantity)
+        {
+            for (var i = 0; i < quantity; i++) SpawnItem(item, position);
         }
     }
 }

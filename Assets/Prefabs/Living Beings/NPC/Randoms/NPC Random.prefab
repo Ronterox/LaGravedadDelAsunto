@@ -128,7 +128,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5555523462607335440, guid: 30d98f9ea5b76a819add923134390759, type: 3}
       propertyPath: blackboard.objectParams.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5555523462607335440, guid: 30d98f9ea5b76a819add923134390759, type: 3}
       propertyPath: blackboard.objectParams.Array.data[0]
@@ -136,7 +136,7 @@ PrefabInstance:
       objectReference: {fileID: 111630883455792755}
     - target: {fileID: 5555523462607335440, guid: 30d98f9ea5b76a819add923134390759, type: 3}
       propertyPath: blackboard.objectParamsNames.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5555523462607335440, guid: 30d98f9ea5b76a819add923134390759, type: 3}
       propertyPath: blackboard.objectParamsNames.Array.data[2]

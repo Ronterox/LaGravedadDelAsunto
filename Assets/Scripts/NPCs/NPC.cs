@@ -1,3 +1,4 @@
+using Combat;
 using General.Utilities;
 using Managers;
 using Plugins.Tools;
@@ -19,6 +20,7 @@ namespace NPCs
         public string questRelatedId;
     }
 
+    [RequireComponent(typeof(Damageable))]
     public abstract class NPC : Interactable
     {
         [Header("NPC")] public string npcName;
@@ -45,16 +47,21 @@ namespace NPCs
         private Transform m_Player;
         private NavMeshAgent m_Agent;
 
+        public Damageable damageable;
+
         private bool m_IsFirstInteraction = true;
 
         protected override void Awake()
         {
             base.Awake();
             m_Agent = GetComponent<NavMeshAgent>();
+            if (!damageable) damageable = GetComponent<Damageable>();
         }
 
         protected override void Update()
         {
+            if(damageable.InCombat) return;
+            
             base.Update();
             if (IsPlayerOnRange) transform.RotateTowards(m_Player, rotationAxis);
             else if (m_Agent && !m_Agent.isStopped) transform.RotateTowards(m_Agent.destination);

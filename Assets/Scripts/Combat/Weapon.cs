@@ -1,28 +1,28 @@
+using Plugins.Tools;
 using UnityEngine;
 
 namespace Combat
 {
+    [RequireComponent(typeof(Collider))]
     public class Weapon : MonoBehaviour
     {
-        public BoxCollider AttackCollider;
+        public Collider attackCollider;
         public int damage;
 
         private void Awake()
         {
+            if (!attackCollider) attackCollider = gameObject.GetComponentSafely<Collider>();
             SetCollider(false);
         }
 
         public void Attack(CharacterHealth targetHealth) => targetHealth.TakeDamage(damage);
 
-        public void SetCollider(bool isEnable) => AttackCollider.enabled = isEnable;
+        public void SetCollider(bool isEnable) => attackCollider.enabled = isEnable;
 
         private void OnTriggerEnter(Collider other)
         {
-            var enemy = other.GetComponent<Damageable>();
-            if (enemy)
-            {
-                Attack(enemy.myHealth);
-            }
+            var damageable = other.GetComponent<Damageable>();
+            if (damageable) Attack(damageable.myHealth);
         }
     }
 
