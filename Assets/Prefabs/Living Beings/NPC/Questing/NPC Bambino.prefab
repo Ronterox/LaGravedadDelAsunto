@@ -72,12 +72,20 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7889288736500921926, guid: 50ea3bb5d3ade221db5002d3ceaca1ad, type: 3}
+      propertyPath: onCombatDialogues.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7889288736500921926, guid: 50ea3bb5d3ade221db5002d3ceaca1ad, type: 3}
       propertyPath: completedDialogues.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7889288736500921926, guid: 50ea3bb5d3ade221db5002d3ceaca1ad, type: 3}
       propertyPath: notStartedDialogues.Array.size
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7889288736500921926, guid: 50ea3bb5d3ade221db5002d3ceaca1ad, type: 3}
+      propertyPath: onCombatDialogues.Array.data[0]
+      value: How are you?
       objectReference: {fileID: 0}
     - target: {fileID: 7889288736500921926, guid: 50ea3bb5d3ade221db5002d3ceaca1ad, type: 3}
       propertyPath: notStartedDialogues.Array.data[0].action

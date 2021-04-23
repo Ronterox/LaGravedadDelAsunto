@@ -57,6 +57,7 @@ MonoBehaviour:
   notStartedDialogues: []
   onGoingDialogues: []
   completedDialogues: []
+  damageable: {fileID: 160699882601740516}
 --- !u!1001 &3788755859176060074
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -132,3 +133,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 850071170595269781, guid: 30d98f9ea5b76a819add923134390759, type: 3}
   m_PrefabInstance: {fileID: 3788755859176060074}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &160699882601740516 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3940287729793895502, guid: 30d98f9ea5b76a819add923134390759, type: 3}
+  m_PrefabInstance: {fileID: 3788755859176060074}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4744082590783114771}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e09bfa178f4cf6f43b05a19060f5be9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
