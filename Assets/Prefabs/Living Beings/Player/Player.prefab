@@ -55,6 +55,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dd948e4c0cd66647a971d605d77f39a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  knockBackForce: 5
   attackCollider: {fileID: 7181072255239292277}
   damage: 50
 --- !u!1 &6614662400965703640

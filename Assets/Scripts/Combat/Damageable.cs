@@ -7,12 +7,16 @@ using UnityEngine;
 
 namespace Combat
 {
+    public enum GuyType { Goodguy, Badguy }
     [RequireComponent(typeof(CharacterHealth))]
     [RequireComponent(typeof(Timer))]
     public class Damageable : MonoBehaviour
     {
         public CharacterHealth myHealth;
         
+        public GuyType type;
+        public int karmaOnAttack, karmaOnKill;
+
         [Header("When Dead")]
         public float secondsToDisappear;
         public Item dropItem;
@@ -48,6 +52,7 @@ namespace Combat
             if (InCombat) timer.ResetTimer();
             else
             {
+                ChangeKarma(karmaOnAttack);
                 InCombat = true;
                 timer.StartTimer();
             }
@@ -55,13 +60,16 @@ namespace Combat
 
         private void ExitCombat() => InCombat = false;
 
-        public virtual void Die()
+        public void Die()
         {
             if (dropItem) GameManager.Instance.inventory.SpawnItems(dropItem, transform.position, quantityToDrop);
             if (m_RagdollScript) m_RagdollScript.EnableRagdoll();
             StartCoroutine(SetActive(gameObject, false, secondsToDisappear));
+            ChangeKarma(karmaOnKill);
             ExitCombat();
         }
+
+        private void ChangeKarma(int quantity) => GameManager.Instance.karmaController.ChangeKarma(type == GuyType.Goodguy? -quantity : quantity);
 
         private IEnumerator SetActive(GameObject obj, bool active, float delay)
         {

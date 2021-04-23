@@ -1,9 +1,11 @@
+using System;
 using UnityEngine;
 using UnityEngine.AI;
 using Combat;
 
 namespace NPCs
 {
+    [RequireComponent(typeof(Damageable))]
     public class AnimationsNPC : MonoBehaviour
     {
         private Animator m_Animator;
@@ -12,6 +14,7 @@ namespace NPCs
 
         private const float SPEED_DAMP_TIME = 0.15f;
         private readonly int SPEED_ANIMATION_HASH = Animator.StringToHash("Speed");
+        private readonly int HIT_ANIMATION_HASH = Animator.StringToHash("Hit");
 
         protected void Awake()
         {
@@ -20,7 +23,13 @@ namespace NPCs
             m_Damageable = GetComponent<Damageable>();
         }
 
+        private void OnEnable() => m_Damageable.myHealth.AddListeners(null, HitAnimation);
+        
+        private void OnDisable() => m_Damageable.myHealth.RemoveListeners(null, HitAnimation);
+
         private void FixedUpdate() => AnimateNPC();
+
+        private void HitAnimation() => m_Animator.SetTrigger(HIT_ANIMATION_HASH);
 
         private void AnimateNPC()
         {

@@ -167,7 +167,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.0123923, y: -0.00079532526, z: 0.018730894}
+  m_ConnectedAnchor: {x: 0.012392338, y: -0.0007953234, z: 0.018730933}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 1, z: 0}
   m_TwistLimitSpring:
@@ -243,7 +243,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.00030468704, y: 0.021036545, z: 0.0029015515}
+  m_ConnectedAnchor: {x: -0.0003046723, y: 0.021036545, z: 0.002901591}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 1, z: 0}
   m_TwistLimitSpring:
@@ -319,7 +319,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.011775981, y: -0.00079532526, z: 0.018730894}
+  m_ConnectedAnchor: {x: -0.011775981, y: -0.0007953234, z: 0.018730933}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 1, z: 0}
   m_TwistLimitSpring:
@@ -395,7 +395,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.00023141108, y: 0.02210288, z: -0.0059759356}
+  m_ConnectedAnchor: {x: 0.0002314492, y: 0.022102876, z: -0.0059759286}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 1, z: 0}
   m_TwistLimitSpring:
@@ -471,7 +471,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.009983417, y: 0.00050002337, z: -0.026103083}
+  m_ConnectedAnchor: {x: -0.009983455, y: 0.00050002337, z: -0.026103046}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 1, z: 0}
   m_TwistLimitSpring:
@@ -547,7 +547,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.00011366756, y: 0.022102885, z: -0.005979324}
+  m_ConnectedAnchor: {x: -0.0001136675, y: 0.022102881, z: -0.005979322}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 1, z: 0}
   m_TwistLimitSpring:
@@ -623,7 +623,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.000110746434, y: 0.02103652, z: 0.002915475}
+  m_ConnectedAnchor: {x: 0.00011076371, y: 0.021036528, z: 0.0029154378}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 1, z: 0}
   m_TwistLimitSpring:
@@ -699,7 +699,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.010599736, y: 0.0005000122, z: -0.026103083}
+  m_ConnectedAnchor: {x: 0.010599736, y: 0.0005000122, z: -0.026103042}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 1, z: 0}
   m_TwistLimitSpring:
@@ -749,6 +749,7 @@ GameObject:
   - component: {fileID: 2055789449}
   - component: {fileID: 9098585030827364900}
   - component: {fileID: 5438874943194434631}
+  - component: {fileID: 9211161508065033738}
   m_Layer: 0
   m_Name: Pig
   m_TagString: Untagged
@@ -793,7 +794,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8478542564726814983}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 10
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
@@ -935,10 +936,38 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myHealth: {fileID: -2150642963484075566, guid: 17cb672c8bd6ed44581819b3940f5c5c, type: 3}
+  type: 0
+  karmaOnAttack: 5
+  karmaOnKill: 5
   secondsToDisappear: 5
   dropItem: {fileID: 11400000, guid: b675ed13758a4ce439bb43814e239f81, type: 2}
   quantityToDrop: 2
-  timer: {fileID: 0}
+  timer: {fileID: 9211161508065033738}
+--- !u!114 &9211161508065033738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8478542564726814983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 479c1b16341d356b0a096bd8a4c776c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
+  timerTime: 0
+  resetOnEnd: 0
+  events:
+    onTimerStart:
+      m_PersistentCalls:
+        m_Calls: []
+    onTimerStop:
+      m_PersistentCalls:
+        m_Calls: []
+    onTimerEnd:
+      m_PersistentCalls:
+        m_Calls: []
 --- !u!1001 &33995019840257518
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1008,29 +1037,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 26f7c7b81a6dd7440a275b849cda7b96, type: 3}
---- !u!1 &3333327529750184438 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3331148528972971032, guid: 26f7c7b81a6dd7440a275b849cda7b96, type: 3}
-  m_PrefabInstance: {fileID: 33995019840257518}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &5495437250465037018 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: -3730263232991000780, guid: 26f7c7b81a6dd7440a275b849cda7b96, type: 3}
-  m_PrefabInstance: {fileID: 33995019840257518}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &4144380223336416817 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: -5045424042531947553, guid: 26f7c7b81a6dd7440a275b849cda7b96, type: 3}
-  m_PrefabInstance: {fileID: 33995019840257518}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &572659977484278277 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 26f7c7b81a6dd7440a275b849cda7b96, type: 3}
   m_PrefabInstance: {fileID: 33995019840257518}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &149122434979956672 stripped
+--- !u!1 &3333327529750184438 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 173683645019617838, guid: 26f7c7b81a6dd7440a275b849cda7b96, type: 3}
+  m_CorrespondingSourceObject: {fileID: 3331148528972971032, guid: 26f7c7b81a6dd7440a275b849cda7b96, type: 3}
   m_PrefabInstance: {fileID: 33995019840257518}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &3667576730600247646 stripped
@@ -1038,9 +1052,19 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3647106253808692400, guid: 26f7c7b81a6dd7440a275b849cda7b96, type: 3}
   m_PrefabInstance: {fileID: 33995019840257518}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &149122434979956672 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 173683645019617838, guid: 26f7c7b81a6dd7440a275b849cda7b96, type: 3}
+  m_PrefabInstance: {fileID: 33995019840257518}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &4155879685495881165 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4167061951337955363, guid: 26f7c7b81a6dd7440a275b849cda7b96, type: 3}
+  m_PrefabInstance: {fileID: 33995019840257518}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5495437250465037018 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -3730263232991000780, guid: 26f7c7b81a6dd7440a275b849cda7b96, type: 3}
   m_PrefabInstance: {fileID: 33995019840257518}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &5210951866932410210 stripped
@@ -1048,13 +1072,18 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5199902024876935820, guid: 26f7c7b81a6dd7440a275b849cda7b96, type: 3}
   m_PrefabInstance: {fileID: 33995019840257518}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &3798914842681855791 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -5422137523781029183, guid: 26f7c7b81a6dd7440a275b849cda7b96, type: 3}
+  m_PrefabInstance: {fileID: 33995019840257518}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &7920686930685418381 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7895699128122910307, guid: 26f7c7b81a6dd7440a275b849cda7b96, type: 3}
   m_PrefabInstance: {fileID: 33995019840257518}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &3798914842681855791 stripped
+--- !u!1 &4144380223336416817 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: -5422137523781029183, guid: 26f7c7b81a6dd7440a275b849cda7b96, type: 3}
+  m_CorrespondingSourceObject: {fileID: -5045424042531947553, guid: 26f7c7b81a6dd7440a275b849cda7b96, type: 3}
   m_PrefabInstance: {fileID: 33995019840257518}
   m_PrefabAsset: {fileID: 0}

@@ -6,6 +6,7 @@ namespace Combat
     [RequireComponent(typeof(Collider))]
     public class Weapon : MonoBehaviour
     {
+        public float knockBackForce;
         public Collider attackCollider;
         public int damage;
 
@@ -22,7 +23,11 @@ namespace Combat
         private void OnTriggerEnter(Collider other)
         {
             var damageable = other.GetComponent<Damageable>();
-            if (damageable) Attack(damageable.myHealth);
+            if (!damageable) return;
+            
+            Attack(damageable.myHealth);
+            Vector3 direction = (transform.position - other.transform.position).normalized;
+            other.GetComponent<Rigidbody>().AddForce(direction * knockBackForce);
         }
     }
 
