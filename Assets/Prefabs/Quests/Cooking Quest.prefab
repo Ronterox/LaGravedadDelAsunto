@@ -45,11 +45,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db6f434bb11c8e1dc8fa39dfddd6ef3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  questID: bambino_cooking
+  questID: cooking
   questInfo: {fileID: 11400000, guid: 9167e3a76d8efa4078134345de0751ee, type: 2}
+  questState: 0
   questEndType: 2
-  isFinalQuest: 0
-  startsInstantly: 0
   events:
     onQuestDoneGood:
       m_PersistentCalls:
@@ -77,6 +76,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 460704000516947509}
     m_Modifications:
+    - target: {fileID: 638100142519139599, guid: 9b674e86972803873aec9913dd98909b, type: 3}
+      propertyPath: m_fontSize
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4804892870121092977, guid: 9b674e86972803873aec9913dd98909b, type: 3}
       propertyPath: numberOfPresses
       value: 4
@@ -157,6 +160,10 @@ PrefabInstance:
     - target: {fileID: 2128010003266286048, guid: e3464fac6fe7e0fa09a21f14718dc319, type: 3}
       propertyPath: m_Alpha
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6471262914927967562, guid: e3464fac6fe7e0fa09a21f14718dc319, type: 3}
+      propertyPath: m_fontSize
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6471262914927967565, guid: e3464fac6fe7e0fa09a21f14718dc319, type: 3}
       propertyPath: player

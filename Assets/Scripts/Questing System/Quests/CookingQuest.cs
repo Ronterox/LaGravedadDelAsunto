@@ -1,7 +1,9 @@
+using System.Collections.Generic;
 using GUI.Minigames.Cook_Plate;
 using Managers;
 using Minigames;
 using Plugins.Tools;
+using Plugins.Tools.Events;
 using UI;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -38,19 +40,13 @@ namespace Questing_System.Quests
 
         private const int COOK_INCREMENT = 10;
 
-        protected override void OnEnable()
-        {
-            base.OnEnable();
-
-            foreach (CookingQTEInteractable cookingQteInteractable in cookingQteInteractables)
-            {
-                cookingQteInteractable.onCorrectPress = CookPlateAction;
-                cookingQteInteractable.onWrongPress = BurnPlateAction;
-            }
-        }
-
         public void StartCooking()
         {
+            foreach (CookingQTEInteractable qte in cookingQteInteractables)
+            {
+                qte.onCorrectPress = CookPlateAction;
+                qte.onWrongPress = BurnPlateAction;   
+            }
             SetTimerActive();
             SetPlateActive();
         }

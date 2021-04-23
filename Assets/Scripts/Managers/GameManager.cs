@@ -2,6 +2,7 @@ using Inventory_System;
 using Karma_System;
 using Player;
 using Plugins.Tools;
+using Plugins.Tools.Events;
 
 namespace Managers
 {
