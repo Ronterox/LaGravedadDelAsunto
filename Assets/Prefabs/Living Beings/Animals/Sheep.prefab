@@ -708,8 +708,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.4960098, y: 1.8499517, z: 1}
-  m_Center: {x: 0, y: -0.7, z: 0}
+  m_Size: {x: 2.4960098, y: 1.8499517, z: 3.1518714}
+  m_Center: {x: 0, y: -0.70000005, z: 0.11750758}
 --- !u!54 &866687581802343401
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -859,7 +859,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e09bfa178f4cf6f43b05a19060f5be9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myHealth: {fileID: -2150642963484075566, guid: 17cb672c8bd6ed44581819b3940f5c5c, type: 3}
+  myHealth: {fileID: -6254614984287203772}
   type: 0
   karmaOnAttack: 5
   karmaOnKill: 5

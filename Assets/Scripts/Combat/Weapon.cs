@@ -24,7 +24,7 @@ namespace Combat
         {
             var damageable = other.GetComponent<Damageable>();
             if (!damageable) return;
-            
+
             Attack(damageable.myHealth);
             Vector3 direction = (transform.position - other.transform.position).normalized;
             other.GetComponent<Rigidbody>().AddForce(direction * knockBackForce);
