@@ -146,7 +146,7 @@ GameObject:
   - component: {fileID: 5569495670859807687}
   - component: {fileID: 5569495670859807686}
   m_Layer: 5
-  m_Name: Timer
+  m_Name: Button Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -220,9 +220,9 @@ GameObject:
   - component: {fileID: 5569495671233990027}
   - component: {fileID: 5569495671233990021}
   - component: {fileID: 5569495671233990020}
-  - component: {fileID: 64890981266920347}
+  - component: {fileID: 6354207846884158212}
   m_Layer: 5
-  m_Name: Cooking QTE Button
+  m_Name: QTE Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -287,7 +287,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &64890981266920347
+--- !u!114 &6354207846884158212
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -296,14 +296,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 5569495671233990026}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e387b8122a33e06bc977e4fa59a97525, type: 3}
+  m_Script: {fileID: 11500000, guid: 88570f8fbd4ad1cd1a34696c557877d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   timerProgressFilledImage: {fileID: 5569495671233990020}
   qteText: {fileID: 5569495670399009472}
-  numberOfPresses: 5
-  keys: 0900000061000000660000006a000000
-  timeForEach: 2
+  numberOfPresses: 6
+  keys: 77000000610000006400000073000000
+  timeForEach: 3
   onQTEStart:
     m_PersistentCalls:
       m_Calls: []
@@ -316,3 +316,5 @@ MonoBehaviour:
   onCorrectPressEvent:
     m_PersistentCalls:
       m_Calls: []
+  totalWrong: 0
+  totalCorrect: 0

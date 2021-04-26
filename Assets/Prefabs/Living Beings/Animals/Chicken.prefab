@@ -210,7 +210,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
-  timerTime: 0
+  timerTime: 10
   resetOnEnd: 0
   events:
     onTimerStart:

@@ -1,4 +1,3 @@
-using General.Minigames;
 using General.Utilities;
 using Inventory_System;
 using Managers;
@@ -26,12 +25,16 @@ namespace Minigames
 
         public override void OnInterfaceOpen(GameObject gui)
         {
-            var quickTimeEvent = gui.GetComponentInChildren<CookingQTE>();
+            var quickTimeEvent = gui.GetComponentInChildren<QuickTimeEvent>();
 
             quickTimeEvent.onCorrectPressEvent.AddListener(onCorrectPress);
             quickTimeEvent.onWrongPressEvent.AddListener(onWrongPress);
 
-            quickTimeEvent.onQTEStop.AddListener(() => GameManager.Instance.inventory.Remove(ingredientToCook));
+            quickTimeEvent.onQTEStop.AddListener(() =>
+            {
+                GameManager.Instance.inventory.Remove(ingredientToCook);
+                GUIManager.Instance.CloseGUIMenu();
+            });
 
             quickTimeEvent.StartQuickTimeEvent();
         }

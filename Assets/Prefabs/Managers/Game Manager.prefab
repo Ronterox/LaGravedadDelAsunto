@@ -146,6 +146,182 @@ MonoBehaviour:
   items: []
   dropForce: 2
   dropOffset: 1
+--- !u!1001 &1642036421
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 4623059567110716718}
+    m_Modifications:
+    - target: {fileID: 638100142519139599, guid: 9b674e86972803873aec9913dd98909b, type: 3}
+      propertyPath: m_fontSize
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2350681130636181428, guid: 9b674e86972803873aec9913dd98909b, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2350681130636181428, guid: 9b674e86972803873aec9913dd98909b, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2350681130636181428, guid: 9b674e86972803873aec9913dd98909b, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4804892870121092977, guid: 9b674e86972803873aec9913dd98909b, type: 3}
+      propertyPath: numberOfPresses
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6411161574915633200, guid: 9b674e86972803873aec9913dd98909b, type: 3}
+      propertyPath: m_Name
+      value: Cooking QTE Kitchen (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7223678410507454810, guid: 9b674e86972803873aec9913dd98909b, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7223678410507454810, guid: 9b674e86972803873aec9913dd98909b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -434.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7223678410507454810, guid: 9b674e86972803873aec9913dd98909b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -237.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 7223678410507454810, guid: 9b674e86972803873aec9913dd98909b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 7.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 7223678410507454810, guid: 9b674e86972803873aec9913dd98909b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7223678410507454810, guid: 9b674e86972803873aec9913dd98909b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7223678410507454810, guid: 9b674e86972803873aec9913dd98909b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7223678410507454810, guid: 9b674e86972803873aec9913dd98909b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7223678410507454810, guid: 9b674e86972803873aec9913dd98909b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7223678410507454810, guid: 9b674e86972803873aec9913dd98909b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7223678410507454810, guid: 9b674e86972803873aec9913dd98909b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9b674e86972803873aec9913dd98909b, type: 3}
+--- !u!114 &7852353562350714441 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7852353563973943948, guid: 9b674e86972803873aec9913dd98909b, type: 3}
+  m_PrefabInstance: {fileID: 1642036421}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36c45c519213b986086dd4878a691f13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1001 &2138245978
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 4623059567110716718}
+    m_Modifications:
+    - target: {fileID: 638100142519139599, guid: 9b674e86972803873aec9913dd98909b, type: 3}
+      propertyPath: m_fontSize
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2350681130636181428, guid: 9b674e86972803873aec9913dd98909b, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2350681130636181428, guid: 9b674e86972803873aec9913dd98909b, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2350681130636181428, guid: 9b674e86972803873aec9913dd98909b, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4804892870121092977, guid: 9b674e86972803873aec9913dd98909b, type: 3}
+      propertyPath: numberOfPresses
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6411161574915633200, guid: 9b674e86972803873aec9913dd98909b, type: 3}
+      propertyPath: m_Name
+      value: Cooking QTE Kitchen (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7223678410507454810, guid: 9b674e86972803873aec9913dd98909b, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7223678410507454810, guid: 9b674e86972803873aec9913dd98909b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -434.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7223678410507454810, guid: 9b674e86972803873aec9913dd98909b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -237.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 7223678410507454810, guid: 9b674e86972803873aec9913dd98909b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 7223678410507454810, guid: 9b674e86972803873aec9913dd98909b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7223678410507454810, guid: 9b674e86972803873aec9913dd98909b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7223678410507454810, guid: 9b674e86972803873aec9913dd98909b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7223678410507454810, guid: 9b674e86972803873aec9913dd98909b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7223678410507454810, guid: 9b674e86972803873aec9913dd98909b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7223678410507454810, guid: 9b674e86972803873aec9913dd98909b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7223678410507454810, guid: 9b674e86972803873aec9913dd98909b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9b674e86972803873aec9913dd98909b, type: 3}
+--- !u!114 &7852353561836095958 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7852353563973943948, guid: 9b674e86972803873aec9913dd98909b, type: 3}
+  m_PrefabInstance: {fileID: 2138245978}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36c45c519213b986086dd4878a691f13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5047459579279478065
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -207,11 +383,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 71f8e4e8ba14728d3ae7d6647bf235ff, type: 3}
---- !u!4 &625807129306206946 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5666511269145649107, guid: 71f8e4e8ba14728d3ae7d6647bf235ff, type: 3}
-  m_PrefabInstance: {fileID: 5047459579279478065}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &3720236894319233994 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8479365503942117115, guid: 71f8e4e8ba14728d3ae7d6647bf235ff, type: 3}
@@ -223,6 +394,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 549c4ef59df34dec9b1a3542a979609b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &625807129306206946 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5666511269145649107, guid: 71f8e4e8ba14728d3ae7d6647bf235ff, type: 3}
+  m_PrefabInstance: {fileID: 5047459579279478065}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5065661133796606747
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -230,6 +406,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1563794918188635970}
     m_Modifications:
+    - target: {fileID: 460704000516947506, guid: 31f4487950f2db128aa319497b32f907, type: 3}
+      propertyPath: cookingQteInteractables.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 460704000516947506, guid: 31f4487950f2db128aa319497b32f907, type: 3}
+      propertyPath: cookingQteInteractables.Array.data[1]
+      value: 
+      objectReference: {fileID: 7852353562350714441}
+    - target: {fileID: 460704000516947506, guid: 31f4487950f2db128aa319497b32f907, type: 3}
+      propertyPath: cookingQteInteractables.Array.data[2]
+      value: 
+      objectReference: {fileID: 7852353561836095958}
     - target: {fileID: 460704000516947507, guid: 31f4487950f2db128aa319497b32f907, type: 3}
       propertyPath: m_Name
       value: Cooking Quest
@@ -277,6 +465,10 @@ PrefabInstance:
     - target: {fileID: 460704000516947509, guid: 31f4487950f2db128aa319497b32f907, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5858478998539066886, guid: 31f4487950f2db128aa319497b32f907, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 7.75
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31f4487950f2db128aa319497b32f907, type: 3}
@@ -405,11 +597,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d55ddfae84316ce69a12516ece1f8c8f, type: 3}
---- !u!224 &6256480162038225621 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 4442847295197502036, guid: d55ddfae84316ce69a12516ece1f8c8f, type: 3}
-  m_PrefabInstance: {fileID: 7744873715843481729}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &6256480162038225623 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4442847295197502038, guid: d55ddfae84316ce69a12516ece1f8c8f, type: 3}
@@ -421,3 +608,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9541d86e2fd84c1d9990edf0852d74ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!224 &6256480162038225621 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 4442847295197502036, guid: d55ddfae84316ce69a12516ece1f8c8f, type: 3}
+  m_PrefabInstance: {fileID: 7744873715843481729}
+  m_PrefabAsset: {fileID: 0}
