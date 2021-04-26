@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using Questing_System;
 using UI;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Managers
 {

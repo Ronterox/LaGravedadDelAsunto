@@ -3,6 +3,7 @@ using General.Utilities;
 using Inventory_System;
 using Managers;
 using Plugins.Tools;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -13,11 +14,14 @@ namespace Minigames
         [Space]
         public Item ingredientToCook;
         public UnityAction onWrongPress, onCorrectPress;
+        
+        [Header("Feedback")]
+        public TMP_Text tmpText;
 
         public override void Interact()
         {
             if (GameManager.Instance.inventory.Has(ingredientToCook)) base.Interact();
-            else Debug.Log($"Player doesn't have ingredient {ingredientToCook.itemName}".ToColorString("red"));
+            else GameManager.Instance.dialogueManager.TypeInto(tmpText, $"You don't have ingredient {ingredientToCook.itemName} yet!".ToColorString("red"));
         }
 
         public override void OnInterfaceOpen(GameObject gui)
