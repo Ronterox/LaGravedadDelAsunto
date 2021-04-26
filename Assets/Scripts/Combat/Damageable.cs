@@ -66,6 +66,7 @@ namespace Combat
             if (m_RagdollScript) m_RagdollScript.EnableRagdoll();
             StartCoroutine(SetActive(gameObject, false, secondsToDisappear));
             ChangeKarma(karmaOnKill);
+            ArchievementsManager.archievementsManagerInstance.updateAchievement("trophy1", 1);
             ExitCombat();
         }
 
