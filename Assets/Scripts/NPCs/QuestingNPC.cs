@@ -18,14 +18,14 @@ namespace NPCs
         {
             QuestDialogueID questDialogueID = GetQuestDialogueID(quest.questState);
 
-            if(questDialogueID.dialogueID != null) Say(questDialogueID.dialogueID);
-            
+            Say(questDialogueID.dialogueID);
+
             return questDialogueID;
         }
-        
+
         public QuestDialogueID GetQuestDialogueID(QuestState questState)
         {
-            int interactions = m_InteractTimes > 0? m_InteractTimes - 1 : 0;
+            int interactions = m_InteractTimes > 0 ? m_InteractTimes - 1 : 0;
             return questState switch
             {
                 QuestState.NotStarted => interactions < notStartedDialogues.Length ? notStartedDialogues[interactions] : new QuestDialogueID(),

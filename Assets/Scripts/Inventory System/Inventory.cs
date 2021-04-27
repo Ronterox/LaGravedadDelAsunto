@@ -19,6 +19,9 @@ namespace Inventory_System
         private bool m_InInventory;
 
         private InventorySlot[] m_InventorySlots;
+        
+        public delegate void InventoryChangeEvent();
+        public event InventoryChangeEvent onInventoryChanged;
 
         public void InitializeInventory(GameObject inventory)
         {
@@ -56,6 +59,7 @@ namespace Inventory_System
                 return false;
             }
             items.Add(item);
+            onInventoryChanged?.Invoke();
             if (m_InInventory) UpdateUI();
             return true;
         }
@@ -65,6 +69,7 @@ namespace Inventory_System
         public void Remove(Item item)
         {
             items.Remove(item);
+            onInventoryChanged?.Invoke();
             if (m_InInventory) UpdateUI();
         }
 
