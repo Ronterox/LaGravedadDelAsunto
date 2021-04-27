@@ -264,6 +264,4 @@ namespace Plugins.Tools
             foreach (T x1 in array) action.Invoke(x1);
         }
     }
-
-
 }
