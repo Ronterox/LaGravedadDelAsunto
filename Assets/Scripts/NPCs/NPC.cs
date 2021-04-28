@@ -123,6 +123,6 @@ namespace NPCs
             else Debug.LogError($"Dialogue Id {dialogueID} doesn't exist!");
         }
 
-        private void Write(string text) => GameManager.Instance.dialogueManager.Type(text, textPosition);
+        public void Write(string text) => GameManager.Instance.dialogueManager.Type(text, textPosition);
     }
 }
