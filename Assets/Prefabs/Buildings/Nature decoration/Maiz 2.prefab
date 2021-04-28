@@ -1,19 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!64 &8387844428158580438
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 885677007542676610}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 5897048965737103008, guid: 0f0b22b5b5a94c84b827f4010b131c93, type: 3}
 --- !u!1 &39379397632705624
 GameObject:
   m_ObjectHideFlags: 0
@@ -28,7 +14,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &39379397632705623
 Transform:
@@ -45,6 +31,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!64 &8387844428158580438
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 885677007542676610}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 5897048965737103008, guid: 0f0b22b5b5a94c84b827f4010b131c93, type: 3}
 --- !u!1001 &39379396976628179
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -111,6 +111,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 0f0b22b5b5a94c84b827f4010b131c93, type: 3}
       propertyPath: m_Name
       value: Maiz2
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0f0b22b5b5a94c84b827f4010b131c93, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f0b22b5b5a94c84b827f4010b131c93, type: 3}
