@@ -245,13 +245,24 @@ namespace Plugins.Tools
             }
             return array;
         }
-        
+
         /// <summary>
         /// Best random shuffle method
         /// </summary>
         /// <param name="array"></param>
         /// <typeparam name="T"></typeparam>
         public static T[] Shuffle<T>(this T[] array) => Shuffle(array, new System.Random());
+
+        /// <summary>
+        /// Foreach extension method for arrays
+        /// </summary>
+        /// <param name="array"></param>
+        /// <param name="action"></param>
+        /// <typeparam name="T"></typeparam>
+        public static void ForEach<T>(this IEnumerable<T> array, Action<T> action)
+        {
+            foreach (T x1 in array) action.Invoke(x1);
+        }
 
         /// <summary>
         /// Gets a random value from an array

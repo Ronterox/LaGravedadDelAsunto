@@ -196,6 +196,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c024ad85576cbf0d90735c705052e52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_TimerText: {fileID: 7056149782818361361}
-  resetOnEnd: 0
+  type: 1
   timerTime: 0
+  resetOnEnd: 0
+  events:
+    onTimerStart:
+      m_PersistentCalls:
+        m_Calls: []
+    onTimerStop:
+      m_PersistentCalls:
+        m_Calls: []
+    onTimerEnd:
+      m_PersistentCalls:
+        m_Calls: []
+  m_TimerText: {fileID: 7056149782818361361}

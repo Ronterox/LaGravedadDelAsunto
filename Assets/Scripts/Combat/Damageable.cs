@@ -9,6 +9,7 @@ using UnityEngine;
 namespace Combat
 {
     public enum GuyType { Goodguy, Badguy }
+    
     [RequireComponent(typeof(CharacterHealth))]
     [RequireComponent(typeof(Timer))]
     public class Damageable : MonoBehaviour

@@ -7,7 +7,7 @@ using Random = UnityEngine.Random;
 
 namespace General.Utilities
 {
-    public abstract class QuickTimeEvent : MonoBehaviour
+    public class QuickTimeEvent : MonoBehaviour
     {
         public Image timerProgressFilledImage;
         public TMP_Text qteText;
@@ -29,7 +29,8 @@ namespace General.Utilities
         private bool m_QTEStarted;
         private KeyCode m_CorrectKeycode;
 
-        protected int m_TotalWrong, m_TotalCorrect;
+        [HideInInspector]
+        public int totalWrong, totalCorrect;
 
         private void OnEnable()
         {
@@ -52,10 +53,10 @@ namespace General.Utilities
         public void StartQuickTimeEvent()
         {
             m_QTEStarted = true;
-            m_TotalWrong = 0;
-            m_TotalCorrect = 0;
+            totalWrong = 0;
+            totalCorrect = 0;
             onQTEStart?.Invoke();
-            SetRandomCookQTE();
+            SetRandomPositionQTE();
         }
 
         public void StopQuickTimeEvent()
@@ -64,7 +65,7 @@ namespace General.Utilities
             onQTEStop?.Invoke();
         }
 
-        private void SetRandomCookQTE()
+        private void SetRandomPositionQTE()
         {
             m_CorrectKeycode = keys[Random.Range(0, keys.Length)];
             qteText.text = $"[\"{m_CorrectKeycode}\"]";
@@ -74,16 +75,16 @@ namespace General.Utilities
 
         private void WrongPress()
         {
-            m_TotalWrong++;
+            totalWrong++;
             onWrongPressEvent?.Invoke();
             StopIfFinish();
         }
 
-        private void StopIfFinish() { if(m_TotalWrong + m_TotalCorrect >= numberOfPresses) StopQuickTimeEvent(); }
+        private void StopIfFinish() { if(totalWrong + totalCorrect >= numberOfPresses) StopQuickTimeEvent(); }
         
         private void CorrectPress()
         {
-            m_TotalCorrect++;
+            totalCorrect++;
             onCorrectPressEvent?.Invoke();
             StopIfFinish();
         }
@@ -94,7 +95,7 @@ namespace General.Utilities
 
             if (m_Timer <= 0)
             {
-                SetRandomCookQTE();
+                SetRandomPositionQTE();
                 WrongPress();
             }
             else if (Input.anyKeyDown)
@@ -102,7 +103,7 @@ namespace General.Utilities
                 if (Input.GetKeyDown(m_CorrectKeycode)) CorrectPress();
                 else WrongPress();
 
-                SetRandomCookQTE();
+                SetRandomPositionQTE();
             }
             else SetTimer(m_Timer - Time.deltaTime);
         }
@@ -113,12 +114,12 @@ namespace General.Utilities
             timerProgressFilledImage.fillAmount = m_Timer.GetPercentageValue(timeForEach);
         }
 
-        protected abstract void OnWrongPress();
+        protected virtual void OnWrongPress() {}
 
-        protected abstract void OnCorrectPress();
+        protected virtual void OnCorrectPress() {}
 
-        protected abstract void OnQTEStop();
-        protected abstract void OnQTEStart();
+        protected virtual void OnQTEStop() {}
+        protected virtual void OnQTEStart() {}
     }
 
 }

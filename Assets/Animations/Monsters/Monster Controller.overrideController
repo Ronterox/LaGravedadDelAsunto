@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Monster Controller
+  m_Controller: {fileID: 9100000, guid: 7e0c3b82b33c6ac84a64320eb73fdfa7, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 9061338213343248790, guid: 87852b37be1652d26ac61b0a3e9a7196, type: 3}
+    m_OverrideClip: {fileID: -6453809224675677941, guid: ea5118cdbc56f1f2dbe625b4c2759809, type: 3}
+  - m_OriginalClip: {fileID: -5599002979973759676, guid: 87852b37be1652d26ac61b0a3e9a7196, type: 3}
+    m_OverrideClip: {fileID: 4022358733612687441, guid: ea5118cdbc56f1f2dbe625b4c2759809, type: 3}
+  - m_OriginalClip: {fileID: -203655887218126122, guid: 5d394449bdd86501889a87a00f3f8bac, type: 3}
+    m_OverrideClip: {fileID: 4022358733612687441, guid: ea5118cdbc56f1f2dbe625b4c2759809, type: 3}
+  - m_OriginalClip: {fileID: -4856542728082765067, guid: 87852b37be1652d26ac61b0a3e9a7196, type: 3}
+    m_OverrideClip: {fileID: 6936222140302613368, guid: ea5118cdbc56f1f2dbe625b4c2759809, type: 3}

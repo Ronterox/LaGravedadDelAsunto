@@ -1,0 +1,68 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4057147142777279165
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3495519431391934053}
+  - component: {fileID: 5681815754582224942}
+  m_Layer: 0
+  m_Name: HuntCollectQuest
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3495519431391934053
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4057147142777279165}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5681815754582224942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4057147142777279165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae58f2d91327df2ecb901ac1763c5c1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  questID: collect
+  questInfo: {fileID: 11400000, guid: f21d2bfb445bb8d2ca62e8636fd9b44d, type: 2}
+  questState: 0
+  questEndType: 2
+  events:
+    onQuestDoneGood:
+      m_PersistentCalls:
+        m_Calls: []
+    onQuestDoneBad:
+      m_PersistentCalls:
+        m_Calls: []
+    onQuestStarted:
+      m_PersistentCalls:
+        m_Calls: []
+  quantityIngredientsToComplete: 0
+  goodIngredients:
+  - {fileID: 11400000, guid: cac61f811b1b32a4d8ae1d8e6e8e116a, type: 2}
+  - {fileID: 11400000, guid: b675ed13758a4ce439bb43814e239f81, type: 2}
+  - {fileID: 11400000, guid: 24e062c2302728d4d8108b4ecdfe9c27, type: 2}
+  badIngredients:
+  - {fileID: 11400000, guid: 88d38f4a3f8023b9493547f80da9f22c, type: 2}
+  - {fileID: 11400000, guid: dd703033f403041bd943d93fd8ecf8d9, type: 2}
+  - {fileID: 11400000, guid: 14dfc2d1ef006906985d664711b00d49, type: 2}
