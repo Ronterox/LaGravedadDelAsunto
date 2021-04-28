@@ -57,7 +57,9 @@ MonoBehaviour:
   notStartedDialogues: []
   onGoingDialogues: []
   completedDialogues: []
+  onCombatDialogues: []
   damageable: {fileID: 160699882601740516}
+  itemsToGive: []
 --- !u!1001 &3788755859176060074
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -109,8 +111,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3870139770080457928, guid: 30d98f9ea5b76a819add923134390759, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5555523462607335440, guid: 30d98f9ea5b76a819add923134390759, type: 3}
       propertyPath: blackboard.objectParams.Array.data[0]
+      value: 
+      objectReference: {fileID: 7889288736500921926}
+    - target: {fileID: 5555523462607335440, guid: 30d98f9ea5b76a819add923134390759, type: 3}
+      propertyPath: blackboard.objectParams.Array.data[5]
       value: 
       objectReference: {fileID: 7889288736500921926}
     - target: {fileID: 7591053012257062705, guid: 30d98f9ea5b76a819add923134390759, type: 3}

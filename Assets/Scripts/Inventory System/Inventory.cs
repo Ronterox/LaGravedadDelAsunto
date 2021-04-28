@@ -52,7 +52,7 @@ namespace Inventory_System
         {
             if (items.Count >= m_InventorySpace)
             {
-                Debug.Log($"Inventory is full couldn't add item {item.itemName}".ToColorString("red"));
+                Debug.Log($"Inventory is full couldn't add destroyable {item.itemName}".ToColorString("red"));
                 return false;
             }
             items.Add(item);

@@ -1,6 +1,8 @@
 using Combat;
 using General.Utilities;
+using Inventory_System;
 using Managers;
+using Pada1.BBCore;
 using Plugins.Tools;
 using Questing_System;
 using UnityEngine;
@@ -51,6 +53,9 @@ namespace NPCs
         private NavMeshAgent m_Agent;
 
         public Damageable damageable;
+
+        [Header("Behaviour Tree")]
+        public Item[] itemsToGive;
 
         private bool m_IsFirstInteraction = true;
 

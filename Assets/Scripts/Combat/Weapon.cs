@@ -10,6 +10,8 @@ namespace Combat
         public Collider attackCollider;
         public int damage;
 
+        public Damageable myDamageable;
+
         private void Awake()
         {
             if (!attackCollider) attackCollider = gameObject.GetComponentSafely<Collider>();
@@ -23,8 +25,8 @@ namespace Combat
         private void OnTriggerEnter(Collider other)
         {
             var damageable = other.GetComponent<Damageable>();
-            if (!damageable) return;
-
+            if (!damageable || damageable == myDamageable) return;
+            
             Attack(damageable.myHealth);
             Vector3 direction = (transform.position - other.transform.position).normalized;
             other.GetComponent<Rigidbody>().AddForce(direction * knockBackForce);

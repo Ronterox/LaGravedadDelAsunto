@@ -1,5 +1,82 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1774071753421780458
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3870139770080457928}
+  - component: {fileID: 6533899910747937757}
+  - component: {fileID: 542017796359367553}
+  - component: {fileID: 4641236067807494258}
+  m_Layer: 0
+  m_Name: Hand
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3870139770080457928
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1774071753421780458}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.904, z: 1.68}
+  m_LocalScale: {x: 1.5, y: 0.5, z: 2}
+  m_Children: []
+  m_Father: {fileID: 850071170595269781}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &6533899910747937757
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1774071753421780458}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &542017796359367553
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1774071753421780458}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &4641236067807494258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1774071753421780458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1dd948e4c0cd66647a971d605d77f39a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  knockBackForce: 3
+  attackCollider: {fileID: 6533899910747937757}
+  damage: 50
 --- !u!1 &8449316514445687481
 GameObject:
   m_ObjectHideFlags: 0
@@ -18,6 +95,7 @@ GameObject:
   - component: {fileID: 3940287729793895502}
   - component: {fileID: 8507476064247547195}
   - component: {fileID: 5262963706950080009}
+  - component: {fileID: 5978184902871754773}
   m_Layer: 0
   m_Name: NPCModel
   m_TagString: Untagged
@@ -37,6 +115,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7591053012257062705}
+  - {fileID: 3870139770080457928}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -48,7 +127,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8449316514445687481}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1.5, y: 3, z: 0.85}
@@ -111,8 +190,10 @@ MonoBehaviour:
   paused: 0
   restartWhenFinished: 0
   blackboard:
-    intParams: 
-    intParamsNames: []
+    intParams: e7ffffff19000000
+    intParamsNames:
+    - Minimum Karma Attack
+    - Maximum Karma Attack
     intParamsLostDefaultValue: 
     boolParams: 
     boolParamsNames: []
@@ -131,11 +212,13 @@ MonoBehaviour:
     - {fileID: 0}
     - {fileID: 5166158972405946881}
     - {fileID: 3940287729793895502}
+    - {fileID: 4509327223925317492}
     objectParamsNames:
     - Interactable
     - Wander Area
     - Agent Navigation
     - Damageable
+    - Animator
     objectParamsLostDefaultValue: 
     layerMaskParams: []
     layerMaskParamsNames: []
@@ -258,6 +341,20 @@ MonoBehaviour:
     onTimerEnd:
       m_PersistentCalls:
         m_Calls: []
+--- !u!114 &5978184902871754773
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8449316514445687481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b05eb7a535c8b61d3b7e1e6c18d39404, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponHolder: {fileID: 850071170595269781}
+  sword: {fileID: 4641236067807494258}
 --- !u!1 &9182287846278445744
 GameObject:
   m_ObjectHideFlags: 0

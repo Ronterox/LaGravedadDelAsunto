@@ -1,19 +1,12 @@
-using Managers;
-using Player;
 using UnityEngine;
 
 namespace Combat
 {
-    [RequireComponent(typeof(CharacterHealth))]
-    public class CharacterCombat : MonoBehaviour
+    public class NPCombat : MonoBehaviour
     {
         public Transform weaponHolder;
 
         public Weapon sword;
-
-        private Animator m_Animator;
-
-        private readonly int ATTACK_HASH = Animator.StringToHash("Attack");
 
         private void Start() => SetWeapon();
 
@@ -25,15 +18,6 @@ namespace Combat
             sword.myDamageable = GetComponent<Damageable>();
         }
 
-        private void Awake() => m_Animator = GetComponent<Animator>();
-
-        private void Update()
-        {
-            if (GUIManager.Instance.IsGuiOpened) return;
-
-            if (PlayerInput.Instance.Attack) m_Animator.SetTrigger(ATTACK_HASH);
-        }
-        
         public void Attack(int isAttacking) => sword.SetCollider(isAttacking == 1);
     }
 }
