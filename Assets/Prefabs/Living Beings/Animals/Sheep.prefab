@@ -674,6 +674,8 @@ GameObject:
   - component: {fileID: -6254614984287203772}
   - component: {fileID: -4453279871139699685}
   - component: {fileID: 3708639748332686869}
+  - component: {fileID: -2280811509523479646}
+  - component: {fileID: 2209557987200987563}
   m_Layer: 0
   m_Name: Sheep
   m_TagString: Untagged
@@ -750,7 +752,7 @@ MonoBehaviour:
     boolParamsNames: []
     boolParamsLostDefaultValue: 
     floatParams:
-    - 0
+    - 2
     floatParamsNames:
     - Seconds Between Movements
     floatParamsLostDefaultValue: 
@@ -896,6 +898,37 @@ MonoBehaviour:
     onTimerEnd:
       m_PersistentCalls:
         m_Calls: []
+--- !u!95 &-2280811509523479646
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6736607408979626713}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 22100000, guid: cbdae58e5c47fffbeb1bf18294566309, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &2209557987200987563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6736607408979626713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf112b79f4708a2468836da36c762481, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!54 &3280657281928067598
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1041,14 +1074,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fcb66589a20d75c49ac4e7cb92491a77, type: 3}
---- !u!1 &6233485528257490377 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: -3730263232991000780, guid: fcb66589a20d75c49ac4e7cb92491a77, type: 3}
-  m_PrefabInstance: {fileID: 1926057767463578365}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &3783066180021114597 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3331148528972971032, guid: fcb66589a20d75c49ac4e7cb92491a77, type: 3}
+  m_PrefabInstance: {fileID: 1926057767463578365}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6233485528257490377 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -3730263232991000780, guid: fcb66589a20d75c49ac4e7cb92491a77, type: 3}
   m_PrefabInstance: {fileID: 1926057767463578365}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &2893462177733346893 stripped
