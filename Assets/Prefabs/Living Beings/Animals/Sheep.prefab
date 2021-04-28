@@ -750,7 +750,7 @@ MonoBehaviour:
     boolParamsNames: []
     boolParamsLostDefaultValue: 
     floatParams:
-    - 2
+    - 0
     floatParamsNames:
     - Seconds Between Movements
     floatParamsLostDefaultValue: 
@@ -762,8 +762,12 @@ MonoBehaviour:
     colorParamsLostDefaultValue: 
     objectParams:
     - {fileID: 0}
+    - {fileID: -4453279871139699685}
+    - {fileID: 1448751632}
     objectParamsNames:
     - Wander Area
+    - Damageable
+    - Agent Navigation
     objectParamsLostDefaultValue: 
     layerMaskParams: []
     layerMaskParamsNames: []

@@ -48,6 +48,7 @@ MonoBehaviour:
   onCombatDialogues:
   - hello
   damageable: {fileID: 8534021698849315508}
+  itemsToGive: []
 --- !u!1 &4771896026885306648
 GameObject:
   m_ObjectHideFlags: 0
@@ -131,15 +132,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5555523462607335440, guid: 30d98f9ea5b76a819add923134390759, type: 3}
       propertyPath: blackboard.objectParams.Array.size
-      value: 4
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5555523462607335440, guid: 30d98f9ea5b76a819add923134390759, type: 3}
       propertyPath: blackboard.objectParams.Array.data[0]
       value: 
       objectReference: {fileID: 111630883455792755}
     - target: {fileID: 5555523462607335440, guid: 30d98f9ea5b76a819add923134390759, type: 3}
+      propertyPath: blackboard.objectParams.Array.data[5]
+      value: 
+      objectReference: {fileID: 111630883455792755}
+    - target: {fileID: 5555523462607335440, guid: 30d98f9ea5b76a819add923134390759, type: 3}
       propertyPath: blackboard.objectParamsNames.Array.size
-      value: 4
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5555523462607335440, guid: 30d98f9ea5b76a819add923134390759, type: 3}
       propertyPath: blackboard.objectParamsNames.Array.data[2]
@@ -147,7 +152,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7591053012257062705, guid: 30d98f9ea5b76a819add923134390759, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8449316514445687481, guid: 30d98f9ea5b76a819add923134390759, type: 3}
       propertyPath: m_Name
