@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Inventory_System
 {
-    [CreateAssetMenu(fileName = "New item", menuName = "Penguins Mafia/Items/Item")]
+    [CreateAssetMenu(fileName = "New destroyable", menuName = "Penguins Mafia/Items/Item")]
     public class Item : ScriptableObject
     {
         [Header("Item Settings")]

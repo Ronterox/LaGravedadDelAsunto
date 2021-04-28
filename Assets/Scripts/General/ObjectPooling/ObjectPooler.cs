@@ -107,7 +107,7 @@ namespace General.ObjectPooling
         }
 
         /// <summary>
-        /// Transform pooled item to pooled obj
+        /// Transform pooled destroyable to pooled obj
         /// </summary>
         /// <param name="index"></param>
         private void ObjectPoolItemToPooledObject(int index)

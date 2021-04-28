@@ -4,7 +4,7 @@ using Pada1.BBCore.Framework;
 
 namespace Behaviours
 {
-    [Condition("Basic/IsInCombat")]
+    [Condition("Status/IsInCombat")]
     [Help("Checks whether the damageable is in combat")]
     public class CheckInCombat : ConditionBase
     {

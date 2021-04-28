@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Internal;
@@ -251,7 +252,21 @@ namespace Plugins.Tools
         /// <param name="array"></param>
         /// <typeparam name="T"></typeparam>
         public static T[] Shuffle<T>(this T[] array) => Shuffle(array, new System.Random());
+
+        /// <summary>
+        /// Gets a random value from an array
+        /// </summary>
+        /// <param name="array"></param>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        public static T GetRandom<T>(this T[] array) => array[Random.Range(0, array.Length)];
+        
+        /// <summary>
+        /// Gets a random value from a List
+        /// </summary>
+        /// <param name="array"></param>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        public static T GetRandom<T>(this List<T> array) => array[Random.Range(0, array.Count)];
     }
-
-
 }
