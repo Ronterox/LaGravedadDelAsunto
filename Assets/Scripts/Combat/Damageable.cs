@@ -1,5 +1,6 @@
 using System.Collections;
 using Animations;
+using GUI;
 using Inventory_System;
 using Managers;
 using Plugins.Tools;
@@ -62,6 +63,7 @@ namespace Combat
 
         public void Die()
         {
+            ArchievementsManager.Instance.UpdateAchievement("trophy1", 1);
             if (dropItem) GameManager.Instance.inventory.SpawnItems(dropItem, transform.position, quantityToDrop);
             if (m_RagdollScript) m_RagdollScript.EnableRagdoll();
             StartCoroutine(SetActive(gameObject, false, secondsToDisappear));
