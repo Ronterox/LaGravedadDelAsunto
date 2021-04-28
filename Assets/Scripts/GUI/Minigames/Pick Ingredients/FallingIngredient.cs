@@ -1,5 +1,6 @@
 using Inventory_System;
 using Managers;
+using Player;
 using UnityEngine;
 
 namespace GUI.Minigames.Pick_Ingredients
@@ -22,7 +23,7 @@ namespace GUI.Minigames.Pick_Ingredients
 
         private void _GivePlayer()
         {
-            GameManager.Instance.inventory.Add(itemIngredient);
+            if(!GameManager.Instance.inventory.Add(itemIngredient)) GameManager.Instance.inventory.SpawnItem(itemIngredient, PlayerInput.Instance.transform.position);
             gameObject.SetActive(false);
         }
     }

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6533899910747937757}
   - component: {fileID: 542017796359367553}
   - component: {fileID: 4641236067807494258}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Hand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41,7 +41,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1774071753421780458}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -97,10 +97,10 @@ GameObject:
   - component: {fileID: 8507476064247547195}
   - component: {fileID: 5262963706950080009}
   - component: {fileID: 5978184902871754773}
-  - component: {fileID: 7991703122792324112}
-  m_Layer: 0
+  - component: {fileID: 1036278531985847681}
+  m_Layer: 6
   m_Name: NPCModel
-  m_TagString: Untagged
+  m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -129,7 +129,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8449316514445687481}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1.5, y: 3, z: 0.85}
@@ -359,7 +359,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponHolder: {fileID: 850071170595269781}
   sword: {fileID: 4641236067807494258}
---- !u!114 &7991703122792324112
+--- !u!114 &1036278531985847681
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -371,6 +371,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4202ab99932c2a14a8b4074c55f2090b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ignoredColliders:
+  - {fileID: 6128758496918703306}
+  - {fileID: 6533899910747937757}
+  ignoredRigidbodies:
+  - {fileID: 542017796359367553}
 --- !u!1 &9182287846278445744
 GameObject:
   m_ObjectHideFlags: 0

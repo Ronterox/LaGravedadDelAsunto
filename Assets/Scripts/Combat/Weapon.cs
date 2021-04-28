@@ -22,6 +22,15 @@ namespace Combat
 
         public void SetCollider(bool isEnable) => attackCollider.enabled = isEnable;
 
+        private void OnDrawGizmos()
+        {
+            if(!attackCollider.enabled) return;
+            
+            Gizmos.color = Color.red;
+            Bounds bounds = attackCollider.bounds;
+            Gizmos.DrawWireCube(bounds.center, bounds.size);
+        }
+
         private void OnTriggerEnter(Collider other)
         {
             var damageable = other.GetComponent<Damageable>();
