@@ -14,4 +14,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Scenes/Town.unity
     guid: 646da86a9245047488095fa9d50f1bbf
+  - enabled: 1
+    path: Assets/_Scenes/Kitchen.unity
+    guid: f9f09db3ffc81a955abf22339e41c504
+  - enabled: 1
+    path: Assets/_Scenes/Empty Room.unity
+    guid: 68988051eb7cd7b2e9dad3ec21a39bf4
   m_configObjects: {}

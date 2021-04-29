@@ -9,13 +9,35 @@ using Random = UnityEngine.Random;
 
 namespace Plugins.Tools
 {
+    public class UtilityMonoBehaviour : MonoBehaviour { }
+
     /// <summary>
     /// A class with useful methods for every type of special case
     /// </summary>
     public static class UtilityMethods
     {
+        public static UtilityMonoBehaviour monoBehaviour;
+
         /// <summary>
-        /// Activates or deactivates the children the gameObject
+        /// Obtains a monobehaviour if existent else creates one
+        /// </summary>
+        /// <returns>the monobehaviour</returns>
+        private static UtilityMonoBehaviour GetMonoBehaviour() => monoBehaviour ? monoBehaviour : monoBehaviour = new GameObject { name = "UtilityMethods_GameObject" }.AddComponent<UtilityMonoBehaviour>();
+
+
+        /// <summary>
+        /// Obtains a monobehaviour if existent else creates one, but also makes it persistent
+        /// </summary>
+        /// <returns>the monobehaviour</returns>
+        private static UtilityMonoBehaviour GetPersistentMonoBehaviour()
+        {
+            UtilityMonoBehaviour behaviour = GetMonoBehaviour();
+            UnityEngine.Object.DontDestroyOnLoad(behaviour.gameObject);
+            return behaviour;
+        }
+
+        /// <summary>
+        /// Activates or deactivates the children the myGameObject
         /// </summary>
         /// <param name="parent"></param>
         /// <param name="active">Whether to activate or deactivate its children</param>
@@ -26,7 +48,7 @@ namespace Plugins.Tools
 
 #if UNITY_EDITOR
         /// <summary>
-        /// Instantiates an actual prefab instead of a gameObject
+        /// Instantiates an actual prefab instead of a myGameObject
         /// </summary>
         /// <param name="prefab"></param>
         /// <param name="position"></param>
@@ -108,7 +130,7 @@ namespace Plugins.Tools
         /// <param name="onceStartCoroutine"></param>
         /// <param name="onceFinishCoroutine"></param>
         /// <returns></returns>
-        public static IEnumerator FunctionCycleCoroutine(Func<bool> whileCondition, Action loopAction, WaitForSeconds loopWaitForSeconds = null, Action onceStartCoroutine = null, Action onceFinishCoroutine = null)
+        public static IEnumerator FunctionCycleCoroutine(this Func<bool> whileCondition, Action loopAction, WaitForSeconds loopWaitForSeconds = null, Action onceStartCoroutine = null, Action onceFinishCoroutine = null)
         {
             onceStartCoroutine?.Invoke();
             while (whileCondition())
@@ -117,6 +139,25 @@ namespace Plugins.Tools
                 yield return loopWaitForSeconds;
             }
             onceFinishCoroutine?.Invoke();
+        }
+
+        /// <summary>
+        /// Delays an action, by a quantity of seconds
+        /// </summary>
+        /// <param name="action"></param>
+        /// <param name="delay"></param>
+        public static void DelayAction(this Action action, float delay) => GetMonoBehaviour().StartCoroutine(DelayActionCoroutine(action, delay));
+
+        /// <summary>
+        /// A coroutine that delays an action
+        /// </summary>
+        /// <param name="action"></param>
+        /// <param name="delay"></param>
+        /// <returns></returns>
+        public static IEnumerator DelayActionCoroutine(this Action action, float delay)
+        {
+            yield return new WaitForSeconds(delay);
+            action?.Invoke();
         }
 
         /// <summary>
@@ -155,7 +196,7 @@ namespace Plugins.Tools
         public static void Lerp(this ref float value, float objective, float speed) => value = Mathf.Lerp(value, objective, speed);
 
         /// <summary>
-        /// Moves the gameObject to the exist if exist, if it doesn't it creates the scene
+        /// Moves the myGameObject to the exist if exist, if it doesn't it creates the scene
         /// </summary>
         /// <param name="obj"></param>
         /// <param name="sceneName"></param>
@@ -181,12 +222,12 @@ namespace Plugins.Tools
         public static float ToDecibels(this float volume) => volume > 0 ? Mathf.Log10(volume) * 20 : -80f;
 
         /// <summary>
-        /// Returns the component of the gameObject if it founds it, else adds the component and returns it
+        /// Returns the component of the myGameObject if it founds it, else adds the component and returns it
         /// </summary>
-        /// <param name="gameObject">gameObject</param>
+        /// <param name="myGameObject">myGameObject</param>
         /// <typeparam name="T">component type</typeparam>
         /// <returns></returns>
-        public static T GetComponentSafely<T>(this GameObject gameObject) where T : Component => gameObject.TryGetComponent(out T component) ? component : gameObject.AddComponent<T>();
+        public static T GetComponentSafely<T>(this GameObject myGameObject) where T : Component => myGameObject.TryGetComponent(out T component) ? component : myGameObject.AddComponent<T>();
 
 
         /// <summary>
@@ -271,7 +312,7 @@ namespace Plugins.Tools
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
         public static T GetRandom<T>(this T[] array) => array[Random.Range(0, array.Length)];
-        
+
         /// <summary>
         /// Gets a random value from a List
         /// </summary>
