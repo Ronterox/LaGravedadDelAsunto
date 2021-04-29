@@ -37,8 +37,6 @@ namespace GUI
             quitButton.SetActions(QuitGame, PlaySelectSound);
         }
 
-        private void OnDisable() => SoundManager.Instance.StopBackgroundMusic();
-
         public void StartNewGame() => Load(playScene);
 
         public void ContinueGame()
