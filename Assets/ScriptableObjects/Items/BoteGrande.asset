@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b85dcc4fbed054147903f5dc82a5ece3, type: 3}
+  m_Name: BoteGrande
+  m_EditorClassIdentifier: 
+  itemName: Bote grande
+  itemType: 0
+  icon: {fileID: 21300000, guid: d8f46fd4458b3bb44bade04e274be3c3, type: 3}
+  itemRef: {fileID: 8663431990160125252, guid: a6c1855667ac55c49ac2d038d37ba7e4, type: 3}
