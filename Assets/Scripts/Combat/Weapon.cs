@@ -11,6 +11,7 @@ namespace Combat
         public int damage;
 
         public Damageable myDamageable;
+        public ParticleSystem swordParticle;
 
         private void Awake()
         {
@@ -20,15 +21,13 @@ namespace Combat
 
         public void Attack(CharacterHealth targetHealth) => targetHealth.TakeDamage(damage);
 
-        public void SetCollider(bool isEnable) => attackCollider.enabled = isEnable;
-
-        private void OnDrawGizmos()
+        public void SetCollider(bool isEnable)
         {
-            if(!attackCollider.enabled) return;
-            
-            Gizmos.color = Color.red;
-            Bounds bounds = attackCollider.bounds;
-            Gizmos.DrawWireCube(bounds.center, bounds.size);
+            attackCollider.enabled = isEnable;
+            if (isEnable)
+            {
+                swordParticle.Play();
+            }
         }
 
         private void OnTriggerEnter(Collider other)
