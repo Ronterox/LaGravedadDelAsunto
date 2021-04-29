@@ -110,7 +110,7 @@ namespace Plugins.Tools
 
     public static class TimerExtensions
     {
-        public static Timer CreateInstance(this GameObject caller)
+        public static Timer CreateTimerInstance(this GameObject caller)
         {
             var timerGameObject = new GameObject { name = $"Timer of {caller.name}" };
             timerGameObject.transform.parent = caller.transform;

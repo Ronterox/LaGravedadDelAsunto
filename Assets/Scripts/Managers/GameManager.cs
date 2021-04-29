@@ -6,7 +6,7 @@ using Plugins.Tools.Events;
 
 namespace Managers
 {
-    public class GameManager : PersistentSingleton<GameManager>, MMEventListener<MMGameEvent>
+    public class GameManager : Singleton<GameManager>, MMEventListener<MMGameEvent>
     {
         public KarmaController karmaController;
         public QuestManager questManager;

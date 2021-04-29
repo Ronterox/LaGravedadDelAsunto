@@ -27,7 +27,7 @@ namespace Plugins.Tools
         /// There is a previous saved data
         /// </summary>
         /// <returns></returns>
-        public static bool SaveExists(string saveName, string folderName)
+        public static bool SaveExists(string saveName, string folderName = DEFAULT_FOLDER_NAME)
         {
             string savePath = DetermineSavePath(folderName);
 

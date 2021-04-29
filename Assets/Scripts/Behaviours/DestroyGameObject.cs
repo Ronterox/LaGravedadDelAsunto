@@ -5,11 +5,11 @@ using UnityEngine;
 namespace Behaviours
 {
     [Action("Basic/DestroyGameObject")]
-    [Help("Destroys a gameObject")]
+    [Help("Destroys a monoBehaviour")]
     public class DestroyGameObject : BasePrimitiveAction
     {
         [InParam("GameObject")]
-        [Help("The gameObject to be destroyed")]
+        [Help("The monoBehaviour to be destroyed")]
         public GameObject destroyable;
 
         [InParam("Delay")]

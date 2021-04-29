@@ -1,11 +1,12 @@
 using Plugins.Audio;
+using Plugins.Persistence;
 using Plugins.Tools;
 using UnityEngine;
 
 namespace Player
 {
     [RequireComponent(typeof(CharacterController))]
-    public class PlayerController : Singleton<PlayerController>
+    public class PlayerController : Singleton<PlayerController>, IDataPersister
     {
         [Header("Requirements")]
         public Transform mainCamera;
@@ -57,13 +58,22 @@ namespace Player
 
         private bool m_MovementBlocked;
 
+        [Header("Persistence")]
+        public DataSettings dataSettings;
+
         protected override void Awake()
         {
             base.Awake();
             m_CharCtrl = GetComponent<CharacterController>();
             m_Input = GetComponent<PlayerInput>();
             m_Animator = GetComponent<Animator>();
+
+            dataSettings.GenerateId(gameObject);
         }
+
+        private void OnDisable() => PersistentDataManager.SavePersistedData(this);
+
+        private void OnEnable() => PersistentDataManager.LoadPersistedData(this);
 
         public void BlockMovement(bool blockMovement) => m_MovementBlocked = blockMovement;
 
@@ -82,9 +92,9 @@ namespace Player
         private void FixedUpdate()
         {
             m_Animator.SetFloat(HASH_STATE_TIME, Mathf.Repeat(m_Animator.GetCurrentAnimatorStateInfo(0).normalizedTime, 1f));
-            
+
             if (m_MovementBlocked) return;
-           
+
             AnimatePlayer();
             SetRotation();
             CalculateVerticalMovement();
@@ -152,9 +162,25 @@ namespace Player
             }
             m_Animator.SetBool(FALLING_ANIMATION_HASH, !m_IsGrounded);
         }
-        
-        private void PlayFootStepSound() => SoundManager.Instance.PlayNonDiegeticRandomPitchSound(stepSfx,1f, .2f);
 
-        private void PlayJumpSound() => SoundManager.Instance.PlayNonDiegeticRandomPitchSound(jumpSfx,1f, .2f);
+        private void PlayFootStepSound() => SoundManager.Instance.PlayNonDiegeticRandomPitchSound(stepSfx, 1f, .2f);
+
+        private void PlayJumpSound() => SoundManager.Instance.PlayNonDiegeticRandomPitchSound(jumpSfx, 1f, .2f);
+
+        #region PERSISTENCE
+
+        public DataSettings GetDataSettings() => dataSettings;
+
+        public void SetDataSettings(ushort dataId, DataSettings.PersistenceType persistenceType)
+        {
+            dataSettings.dataId = dataId;
+            dataSettings.type = persistenceType;
+        }
+
+        public Data SaveData() => new Data<Vector3>(transform.position);
+
+        public void LoadData(Data data) => transform.position = ((Data<Vector3>)data).value;
+
+        #endregion
     }
 }

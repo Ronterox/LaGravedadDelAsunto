@@ -20,7 +20,7 @@ namespace BehaviorBricks.Actions.System.GameObject
         private Transform targetTransform;
 
         /// <summary>Initialization Method of LookAt.</summary>
-        /// <remarks>Check if you have an objective gameObject associated with it.</remarks>
+        /// <remarks>Check if you have an objective monoBehaviour associated with it.</remarks>
         public override void OnStart()
         {
             if (!target)

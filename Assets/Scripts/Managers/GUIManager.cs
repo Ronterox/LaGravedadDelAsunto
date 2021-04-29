@@ -100,7 +100,7 @@ namespace Managers
         }
 
         /// <summary>
-        /// Opens the gameObject passed as a gui on the main canvas
+        /// Opens the monoBehaviour passed as a gui on the main canvas
         /// </summary>
         /// <param name="menu">the gui to instantiate</param>
         /// <param name="options">menuScene instantiation effects</param>
