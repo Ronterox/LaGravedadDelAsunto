@@ -2,7 +2,6 @@ using Combat;
 using General.Utilities;
 using Inventory_System;
 using Managers;
-using Pada1.BBCore;
 using Plugins.Tools;
 using Questing_System;
 using UnityEngine;
@@ -118,13 +117,6 @@ namespace NPCs
             OnInteraction(npcQuest);
         }
 
-        public QuestDialogueID GetQuestDialogueID(QuestState questState) => questState switch
-        {
-            QuestState.NotStarted => m_InteractTimes < notStartedDialogues.Length ? notStartedDialogues[m_InteractTimes] : new QuestDialogueID(),
-            QuestState.OnGoing => m_InteractTimes < onGoingDialogues.Length ? onGoingDialogues[m_InteractTimes] : new QuestDialogueID(),
-            _ => m_InteractTimes < completedDialogues.Length ? completedDialogues[m_InteractTimes] : new QuestDialogueID()
-        };
-
         public void SayCombatDialogue() => Say(onCombatDialogues[Random.Range(0, onCombatDialogues.Length)]);
 
         public void Say(string dialogueID)
@@ -135,6 +127,6 @@ namespace NPCs
             else Debug.LogError($"Dialogue Id {dialogueID} doesn't exist!");
         }
 
-        private void Write(string text) => GameManager.Instance.dialogueManager.Type(text, textPosition);
+        public void Write(string text) => GameManager.Instance.dialogueManager.Type(text, textPosition);
     }
 }

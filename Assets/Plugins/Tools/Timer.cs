@@ -40,7 +40,7 @@ namespace Plugins.Tools
         [Space]
         public TimerEvents events;
         public bool IsTimerStarted { get; private set; }
-        
+
         protected virtual void Update()
         {
             if (!IsTimerStarted) return;
@@ -95,16 +95,26 @@ namespace Plugins.Tools
 
         public void AddListeners(UnityAction onTimerStart, UnityAction onTimerEnd = null, UnityAction onTimerStop = null)
         {
-            if(onTimerStart != null) events.onTimerStart.AddListener(onTimerStart);
-            if(onTimerEnd != null) events.onTimerEnd.AddListener(onTimerEnd);
-            if(onTimerStop != null) events.onTimerStop.AddListener(onTimerStop);
+            if (onTimerStart != null) events.onTimerStart.AddListener(onTimerStart);
+            if (onTimerEnd != null) events.onTimerEnd.AddListener(onTimerEnd);
+            if (onTimerStop != null) events.onTimerStop.AddListener(onTimerStop);
         }
 
         public void RemoveListeners(UnityAction onTimerStart, UnityAction onTimerEnd = null, UnityAction onTimerStop = null)
         {
-            if(onTimerStart != null) events.onTimerStart.RemoveListener(onTimerStart);
-            if(onTimerEnd != null) events.onTimerEnd.RemoveListener(onTimerEnd);
-            if(onTimerStop != null) events.onTimerStop.RemoveListener(onTimerStop);
+            if (onTimerStart != null) events.onTimerStart.RemoveListener(onTimerStart);
+            if (onTimerEnd != null) events.onTimerEnd.RemoveListener(onTimerEnd);
+            if (onTimerStop != null) events.onTimerStop.RemoveListener(onTimerStop);
+        }
+    }
+
+    public static class TimerExtensions
+    {
+        public static Timer CreateTimerInstance(this GameObject caller)
+        {
+            var timerGameObject = new GameObject { name = $"Timer of {caller.name}" };
+            timerGameObject.transform.parent = caller.transform;
+            return timerGameObject.AddComponent<Timer>();
         }
     }
 }

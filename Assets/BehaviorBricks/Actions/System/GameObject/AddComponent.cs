@@ -13,9 +13,9 @@ namespace BehaviorBricks.Actions.System.GameObject
     public class AddComponent : GOAction
     {
         /// <summary>All Input Parameters of PlayAnimation action.</summary>
-        ///<value>Type of the component that must be added.</value>
+        ///<value>type of the component that must be added.</value>
         [InParam("type")]
-        [Help("Type of the component that must be added")]
+        [Help("type of the component that must be added")]
         public string type;
 
         ///<value>Game object to add the component.</value>

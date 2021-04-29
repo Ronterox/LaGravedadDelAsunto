@@ -19,8 +19,19 @@ namespace NPCs
             QuestDialogueID questDialogueID = GetQuestDialogueID(quest.questState);
 
             Say(questDialogueID.dialogueID);
-            
+
             return questDialogueID;
+        }
+
+        public QuestDialogueID GetQuestDialogueID(QuestState questState)
+        {
+            int interactions = m_InteractTimes > 0 ? m_InteractTimes - 1 : 0;
+            return questState switch
+            {
+                QuestState.NotStarted => interactions < notStartedDialogues.Length ? notStartedDialogues[interactions] : new QuestDialogueID(),
+                QuestState.OnGoing => interactions < onGoingDialogues.Length ? onGoingDialogues[interactions] : new QuestDialogueID(),
+                _ => interactions < completedDialogues.Length ? completedDialogues[interactions] : new QuestDialogueID()
+            };
         }
 
         private void CheckForAction(DialogueAction action)

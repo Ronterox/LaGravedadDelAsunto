@@ -8,11 +8,11 @@ using UnityEngine.AI;
 namespace Behaviours
 {
     [Action("Navigation/MoveToGameObjectMinimumDistance")]
-    [Help("Moves to the targeted gameObject")]
+    [Help("Moves to the targeted monoBehaviour")]
     public class MoveToGameObjectMinimumDistance : GOAction
     {
         [InParam("Target GameObject")]
-        [Help("The target gameObject to go to")]
+        [Help("The target monoBehaviour to go to")]
         public GameObject target;
         private Transform m_TargetTransform;
 

@@ -144,9 +144,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numberOfInteractionsOnPlace: 1
-  infiniteInteractions: 0
-  roomScene: TestZone
+  infiniteInteractions: 1
+  interfaceGameObject: {fileID: 874706191583687095, guid: 5d771d4ec094bd90e8b4e6dbef38c8f4, type: 3}
+  roomScene: Empty Room
   helpMessagePosition: {fileID: 339345325539464474}
+  isUnlock: 0
+  dataSettings:
+    dataId: 38036
+    type: 3
 --- !u!65 &7151318707929793443
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using Plugins.Tools;
 using TMPro;
@@ -7,6 +8,7 @@ using UnityEngine.UI;
 
 namespace Managers
 {
+    [AddComponentMenu("Penguins Mafia/Managers/Achievement Manager")]
     public class ArchievementsManager : Singleton<ArchievementsManager>
     {
         [System.Serializable]
@@ -15,46 +17,77 @@ namespace Managers
             public string id;
             public Sprite image;
             public string title, description;
+            public AchievementStatus status;
+        }
+        
+        public struct AchievementStatus
+        {
+            public string relatedId;
             public int current, goal;
             public bool unlocked;
         }
 
-        [SerializeField]
         public Achievement[] achievements;
 
-        public GameObject achievementObj;
+        public GameObject achievementObjTemplate;
+
+        protected override void Awake()
+        {
+            base.Awake();
+            
+            achievements.ForEach(achievement => achievement.status.relatedId = achievement.id);
+        }
+
+        public List<AchievementStatus> Serialize()
+        {
+            var list = new List<AchievementStatus>();
+            achievements.ForEach(achievement => list.Add(achievement.status));
+            return list;
+        }
+
+        public void Deserialize(List<AchievementStatus> achievementStatuses) =>
+            achievements.ForEach(achievement =>
+            {
+                achievement.status = achievementStatuses.Find(x => x.relatedId == achievement.id);
+            });
 
         public void UpdateAchievement(string id, int value)
         {
             Achievement achievement = achievements.FirstOrDefault(x => x.id == id);
 
-            if (achievement.unlocked) return;
+            if (!achievements.Contains(achievement))
+            {
+                Debug.LogError($"Achievement by id {id} was not found!");
+                return;
+            }
 
-            achievement.current += value;
+            AchievementStatus status = achievement.status;
+            
+            if (status.unlocked) return;
 
-            if (achievement.current < achievement.goal) return;
+            status.current += value;
 
-            achievement.current = achievement.goal;
-            achievement.unlocked = true;
+            if (status.current < status.goal) return;
+
+            status.current = status.goal;
+            status.unlocked = true;
             
             StartCoroutine(ShowAchievement(achievement, 3));
         }
 
         private IEnumerator ShowAchievement(Achievement achievement, float seconds)
         {
-            achievementObj.SetActive(true);
-            var icon = achievementObj.transform.Find("Image").GetComponent<Image>();
+            achievementObjTemplate.SetActive(true);
+            var icon = achievementObjTemplate.transform.Find("Image").GetComponent<Image>();
             icon.sprite = achievement.image;
 
-            var title = achievementObj.transform.Find("Title").GetComponent<TextMeshProUGUI>();
+            var title = achievementObjTemplate.transform.Find("Title").GetComponent<TextMeshProUGUI>();
             title.text = achievement.title;
 
-            var description = achievementObj.transform.Find("Description").GetComponent<TextMeshProUGUI>();
+            var description = achievementObjTemplate.transform.Find("Description").GetComponent<TextMeshProUGUI>();
             description.text = achievement.description;
             yield return new WaitForSeconds(seconds);
-            achievementObj.SetActive(false);
+            achievementObjTemplate.SetActive(false);
         }
-
-
     }
 }

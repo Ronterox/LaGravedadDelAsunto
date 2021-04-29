@@ -12,7 +12,7 @@ namespace General.Utilities
 
         protected int m_InteractTimes;
 
-        public delegate void OnInteractionEvent();
+        public delegate void OnInteractionEvent(Interactable interactable);
         public event OnInteractionEvent onInteraction;
 
         public bool IsPlayerOnRange { get; private set; }
@@ -25,7 +25,7 @@ namespace General.Utilities
         {
             if (infiniteInteractions || m_InteractTimes++ < numberOfInteractionsOnPlace)
             {
-                onInteraction?.Invoke();
+                onInteraction?.Invoke(this);
                 Interact();
             }
         }

@@ -710,8 +710,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.4960098, y: 1.8499517, z: 3.1518714}
-  m_Center: {x: 0, y: -0.70000005, z: 0.11750758}
+  m_Size: {x: 1.5224606, y: 2.3365338, z: 3.1518714}
+  m_Center: {x: 0.040759325, y: -0.45670903, z: 0.11750758}
 --- !u!54 &866687581802343401
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -834,6 +834,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4202ab99932c2a14a8b4074c55f2090b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ignoredColliders:
+  - {fileID: 1156285425647225726}
+  ignoredRigidbodies: []
 --- !u!114 &-6254614984287203772
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -886,7 +889,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
-  timerTime: 0
+  timerTime: 10
   resetOnEnd: 0
   events:
     onTimerStart:
@@ -907,7 +910,7 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6736607408979626713}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
+  m_Avatar: {fileID: 9000000, guid: fcb66589a20d75c49ac4e7cb92491a77, type: 3}
   m_Controller: {fileID: 22100000, guid: cbdae58e5c47fffbeb1bf18294566309, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0

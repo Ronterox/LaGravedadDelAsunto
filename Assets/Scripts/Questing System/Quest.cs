@@ -100,7 +100,7 @@ namespace Questing_System
         /// <summary>
         /// Ends the quest by passing it the ending type, and proceeds to call ending related methods
         /// </summary>
-        /// <param name="endingType">Type of completion of the quest</param>
+        /// <param name="endingType">type of completion of the quest</param>
         public void EndQuest(QuestEndType endingType)
         {
             if(questState == QuestState.Completed) return;

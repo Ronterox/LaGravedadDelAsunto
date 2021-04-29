@@ -9,7 +9,7 @@ namespace NPCs
         public DialogueGroup[] dialogues;
         private readonly Dictionary<string, Dialogue> m_Dialogues = new Dictionary<string, Dialogue>();
 
-        public Dialogue GetDialogue(string dialogueID) => m_Dialogues.TryGetValue(dialogueID, out Dialogue value) ? value : new Dialogue();
+        public Dialogue GetDialogue(string dialogueID) => m_Dialogues.TryGetValue(dialogueID, out Dialogue value) ? value : null;
 
         private void OnEnable()
         {
