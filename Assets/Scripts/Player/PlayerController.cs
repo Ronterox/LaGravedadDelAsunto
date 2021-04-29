@@ -57,7 +57,10 @@ namespace Player
         private bool IsSprinting => m_Input.SprintInput && m_IsGrounded;
 
         private bool m_MovementBlocked;
+        public Transform particleSpawn;
 
+        public ParticleSystem jumpfx;
+        
         [Header("Persistence")]
         public DataSettings dataSettings;
 
@@ -73,7 +76,12 @@ namespace Player
 
         private void OnDisable() => PersistentDataManager.SavePersistedData(this);
 
-        private void OnEnable() => PersistentDataManager.LoadPersistedData(this);
+        private void OnEnable()
+        {
+            PersistentDataManager.LoadPersistedData(this);
+            
+            jumpfx.transform.parent = null;
+        }
 
         public void BlockMovement(bool blockMovement) => m_MovementBlocked = blockMovement;
 
@@ -129,6 +137,7 @@ namespace Player
                 m_VerticalSpeed = jumpForce;
                 m_IsGrounded = false;
                 m_CanJump = false;
+                PlayParticle();
                 PlayJumpSound();
             }
             else
@@ -163,6 +172,12 @@ namespace Player
             m_Animator.SetBool(FALLING_ANIMATION_HASH, !m_IsGrounded);
         }
 
+        private void PlayParticle()
+        {
+            jumpfx.transform.position = particleSpawn.position;
+            jumpfx.Play();
+
+        }
         private void PlayFootStepSound() => SoundManager.Instance.PlayNonDiegeticRandomPitchSound(stepSfx, 1f, .2f);
 
         private void PlayJumpSound() => SoundManager.Instance.PlayNonDiegeticRandomPitchSound(jumpSfx, 1f, .2f);
