@@ -20,7 +20,7 @@ namespace Karma_System
         {
             int oldKarmaQuantity = karma;
 
-            if ((karma += increment) > maxKarmaValue) karma = maxKarmaValue;
+            if ((karma += increment + (int)StatusEffectManager.Instance.karmaAffection) > maxKarmaValue) karma = maxKarmaValue;
             else if (karma < -maxKarmaValue) karma = -maxKarmaValue;
 
             var m_KarmaBarInstance = GUIManager.Instance.InstantiateUI(karmaBarGameObject).GetComponent<Karmabar>();

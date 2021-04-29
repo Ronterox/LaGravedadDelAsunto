@@ -758,6 +758,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4202ab99932c2a14a8b4074c55f2090b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ignoredColliders:
+  - {fileID: 7162076331244686926}
+  ignoredRigidbodies: []
 --- !u!114 &-2150642963484075566
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -831,7 +834,7 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7407773519543042951}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
+  m_Avatar: {fileID: 9000000, guid: 6b4d3ade067c37244afff08eed843773, type: 3}
   m_Controller: {fileID: 22100000, guid: 944b069d6d8cfec76b6afe76462f6e91, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
