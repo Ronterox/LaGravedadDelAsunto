@@ -19,9 +19,13 @@ namespace GUI
         [Header("Sound Effects")]
         public AudioClip selectAudio;
         public AudioClip pressAudio;
+        [Space]
+        public AudioClip menuMusic;
 
         private void OnEnable()
         {
+            SoundManager.Instance.PlayBackgroundMusic(menuMusic);
+            
             void PlaySelectSound() => PlayAudio(selectAudio);
             
             continueButton.gameObject.SetActive(SaveLoadManager.SaveExists("playerData"));
@@ -32,6 +36,8 @@ namespace GUI
             settingsButton.SetActions(OpenSettings, PlaySelectSound);
             quitButton.SetActions(QuitGame, PlaySelectSound);
         }
+
+        private void OnDisable() => SoundManager.Instance.StopBackgroundMusic();
 
         public void StartNewGame() => Load(playScene);
 

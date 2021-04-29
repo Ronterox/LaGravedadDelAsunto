@@ -29,7 +29,7 @@ namespace Plugins.Tools
         /// <returns></returns>
         public static bool SaveExists(string saveName, string folderName = DEFAULT_FOLDER_NAME)
         {
-            string savePath = DetermineSavePath(folderName);
+            string savePath = folderName.DetermineSavePath();
 
             return File.Exists(savePath + saveName + FILE_EXTENSION);
         }
@@ -76,7 +76,7 @@ namespace Plugins.Tools
         /// <param name="folderName">Folder's name.</param>
         public static T Load<T>(string fileName, string folderName = DEFAULT_FOLDER_NAME)
         {
-            string savePath = DetermineSavePath(folderName);
+            string savePath = folderName.DetermineSavePath();
             string saveFileName = savePath + fileName + FILE_EXTENSION;
 
             T returnObject;
@@ -103,7 +103,7 @@ namespace Plugins.Tools
         /// <param name="folderName">Folder name.</param>
         public static void DeleteSave(string fileName, string folderName = DEFAULT_FOLDER_NAME)
         {
-            string savePath = DetermineSavePath(folderName);
+            string savePath = folderName.DetermineSavePath();
             string saveFileName = fileName + FILE_EXTENSION;
             File.Delete(savePath + saveFileName);
         }
@@ -115,7 +115,7 @@ namespace Plugins.Tools
         public static void DeleteSaveFolder(string folderName = DEFAULT_FOLDER_NAME)
         {
 #if UNITY_EDITOR
-            string savePath = DetermineSavePath(folderName);
+            string savePath = folderName.DetermineSavePath();
             FileUtil.DeleteFileOrDirectory(savePath);
 #endif
         }

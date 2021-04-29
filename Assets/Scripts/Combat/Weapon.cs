@@ -1,3 +1,4 @@
+using Plugins.Audio;
 using Inventory_System;
 using Managers;
 using Plugins.Tools;
@@ -12,7 +13,9 @@ namespace Combat
         public Collider attackCollider;
         public int damage;
 
+
         public Damageable myDamageable;
+        public AudioClip hitAudio;
         public ParticleSystem swordParticle;
 
         public bool isPlayer;
@@ -36,10 +39,11 @@ namespace Combat
         public void SetCollider(bool isEnable)
         {
             attackCollider.enabled = isEnable;
-            if (isEnable)
-            {
-                swordParticle.Play();
-            }
+
+            if (!isEnable) return;
+
+            swordParticle.Play();
+            SoundManager.Instance.PlaySound(hitAudio, transform.position, 1, false, 1, 10);
         }
 
         private void OnDrawGizmos()
@@ -61,5 +65,4 @@ namespace Combat
             other.GetComponent<Rigidbody>().AddForce(direction * knockBackForce);
         }
     }
-
 }

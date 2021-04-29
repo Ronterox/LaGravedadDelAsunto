@@ -58,6 +58,8 @@ MonoBehaviour:
   knockBackForce: 5
   attackCollider: {fileID: 7181072255239292277}
   damage: 50
+  myDamageable: {fileID: 0}
+  hitAudio: {fileID: 8300000, guid: 32cd31fa26556184ab7588b0c1f6c808, type: 3}
 --- !u!1 &6614662400965703640
 GameObject:
   m_ObjectHideFlags: 0
@@ -176,11 +178,14 @@ MonoBehaviour:
   jumpForce: 10
   gravity: 20
   turnSmoothTime: 0.1
-  stepSfx: {fileID: 8300000, guid: 888d305d245642b72bf4eba0fd00ee13, type: 3}
-  jumpSfx: {fileID: 8300000, guid: 42e0b6fa88cdaf2ce97f62405e983ddb, type: 3}
+  stepSfx: {fileID: 8300000, guid: 54d2d2c71f2fd834882c359e536d9f6e, type: 3}
+  jumpSfx: {fileID: 8300000, guid: 5a63ad2cf7dd1b440b21e3288a7a913b, type: 3}
   timeBtwSteps: 0.3
   timeBtwStepsSprint: 0.2
   timeBtwStepsWalk: 0.65
+  dataSettings:
+    dataId: 20065
+    type: 3
 --- !u!95 &6729424279741692697
 Animator:
   serializedVersion: 3
