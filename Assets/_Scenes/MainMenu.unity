@@ -1457,11 +1457,12 @@ MonoBehaviour:
   testZone: TestZone
   settings: MainMenu
   playGameButton: {fileID: 208260247}
+  continueButton: {fileID: 0}
   testZoneButton: {fileID: 573211316}
   settingsButton: {fileID: 1064575449}
   quitButton: {fileID: 2055681716}
-  selectAudio: {fileID: 8300000, guid: 888d305d245642b72bf4eba0fd00ee13, type: 3}
-  pressAudio: {fileID: 8300000, guid: 42e0b6fa88cdaf2ce97f62405e983ddb, type: 3}
+  selectAudio: {fileID: 8300000, guid: 08cb0824b4e2ddf4ebfa8291e8856db5, type: 3}
+  pressAudio: {fileID: 8300000, guid: 38d53b06ce50dec4c9a11cc2af83aaeb, type: 3}
 --- !u!1 &1980108866
 GameObject:
   m_ObjectHideFlags: 0

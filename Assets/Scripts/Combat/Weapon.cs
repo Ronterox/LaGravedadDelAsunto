@@ -1,3 +1,4 @@
+using Plugins.Audio;
 using Plugins.Tools;
 using UnityEngine;
 
@@ -10,7 +11,9 @@ namespace Combat
         public Collider attackCollider;
         public int damage;
 
+
         public Damageable myDamageable;
+        public AudioClip hitAudio;
 
         private void Awake()
         {
@@ -18,9 +21,21 @@ namespace Combat
             SetCollider(false);
         }
 
-        public void Attack(CharacterHealth targetHealth) => targetHealth.TakeDamage(damage);
+        public void Attack(CharacterHealth targetHealth)
+        {
+            targetHealth.TakeDamage(damage);
+         
 
-        public void SetCollider(bool isEnable) => attackCollider.enabled = isEnable;
+        }
+
+        public void SetCollider(bool isEnable){
+            attackCollider.enabled = isEnable;
+            if (isEnable)
+            {
+                SoundManager.Instance.PlaySound(hitAudio, transform.position, 1, false, 1, 10);
+            }
+            
+        }
 
         private void OnDrawGizmos()
         {

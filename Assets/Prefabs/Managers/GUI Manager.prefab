@@ -48,6 +48,7 @@ MonoBehaviour:
   pauseMenu: {fileID: 5873792240648600600, guid: c5945f73167ac6ba2957b26bbf175e39, type: 3}
   inventoryUi: {fileID: 4812793505276247951, guid: 036f00ce4491e0d8b82582fa29760a3c, type: 3}
   alphaAnimationDuration: 0.5
+  openUIAudio: {fileID: 8300000, guid: befd5816c5594cd48b1d42cd40af6484, type: 3}
 --- !u!114 &595173530420329776
 MonoBehaviour:
   m_ObjectHideFlags: 0

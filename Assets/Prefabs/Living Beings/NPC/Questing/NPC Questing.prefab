@@ -59,6 +59,7 @@ MonoBehaviour:
   completedDialogues: []
   onCombatDialogues: []
   damageable: {fileID: 160699882601740516}
+  npcTalkSound: {fileID: 8300000, guid: fdd092ba6ec4cb441b1aa6b22169b850, type: 3}
   itemsToGive: []
 --- !u!1001 &3788755859176060074
 PrefabInstance:

@@ -29,7 +29,9 @@ MonoBehaviour:
   completedDialogues: []
   onCombatDialogues: []
   damageable: {fileID: 2045779576280092543}
+  itemsToGive: []
   favoriteFood: {fileID: 0}
+  monsterSound: {fileID: 8300000, guid: e55f98304c190cc4295f00cf5b97932f, type: 3}
 --- !u!1001 &3083461062211568433
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -48,6 +48,7 @@ MonoBehaviour:
   onCombatDialogues:
   - hello
   damageable: {fileID: 8534021698849315508}
+  npcTalkSound: {fileID: 8300000, guid: fdd092ba6ec4cb441b1aa6b22169b850, type: 3}
   itemsToGive: []
 --- !u!1 &4771896026885306648
 GameObject:

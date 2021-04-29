@@ -269,7 +269,7 @@ namespace Plugins.Audio
         /// <summary>
         /// Mute all current sfx
         /// </summary>
-        private void StopAllSfx()
+        public void StopAllSfx()
         {
             m_SoundsPool.Stop();
             m_CurrentInGamePooler.Stop();

@@ -2,6 +2,7 @@ using Combat;
 using General.Utilities;
 using Inventory_System;
 using Managers;
+using Plugins.Audio;
 using Plugins.Tools;
 using Questing_System;
 using UnityEngine;
@@ -52,6 +53,7 @@ namespace NPCs
         private NavMeshAgent m_Agent;
 
         public Damageable damageable;
+        public AudioClip npcTalkSound;
 
         [Header("Behaviour Tree")]
         public Item[] itemsToGive;
@@ -96,6 +98,7 @@ namespace NPCs
 
         public override void Interact()
         {
+            SoundManager.Instance.PlayNonDiegeticRandomPitchSound(npcTalkSound);
             if (m_IsFirstInteraction)
             {
                 Write($"Hello I'm {npcName}, I'm {description}");
