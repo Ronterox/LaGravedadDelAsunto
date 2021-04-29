@@ -234,8 +234,8 @@ MonoBehaviour:
   resumeButton: {fileID: 5560250747097849830}
   settingsButton: {fileID: 2943956072396152378}
   mainMenuButton: {fileID: 4321519024769468190}
-  selectAudio: {fileID: 8300000, guid: 888d305d245642b72bf4eba0fd00ee13, type: 3}
-  pressAudio: {fileID: 8300000, guid: 42e0b6fa88cdaf2ce97f62405e983ddb, type: 3}
+  selectAudio: {fileID: 8300000, guid: 08cb0824b4e2ddf4ebfa8291e8856db5, type: 3}
+  pressAudio: {fileID: 8300000, guid: 38d53b06ce50dec4c9a11cc2af83aaeb, type: 3}
 --- !u!114 &3207036813413688738
 MonoBehaviour:
   m_ObjectHideFlags: 0
