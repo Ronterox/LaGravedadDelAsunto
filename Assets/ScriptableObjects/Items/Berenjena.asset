@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b85dcc4fbed054147903f5dc82a5ece3, type: 3}
+  m_Name: Berenjena
+  m_EditorClassIdentifier: 
+  itemName: Berenjena
+  itemType: 0
+  icon: {fileID: 21300000, guid: db9fe5c418693e244a0154ccfde620ba, type: 3}
+  itemRef: {fileID: 6814158139355220777, guid: f14eb7f56be444e458bc9508659c9e05, type: 3}

@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e7d7a90274f7ee109f52c9247b01887, type: 3}
+  m_Name: "Hacha peque\xF1a"
+  m_EditorClassIdentifier: 
+  itemName: "Hacha peque\xF1a"
+  itemType: 0
+  icon: {fileID: 21300000, guid: 964c8c799457b8f49b1b8cb6925b6da7, type: 3}
+  itemRef: {fileID: 3116877975407631014, guid: bf773908850b48b4bac917f83f5e200b, type: 3}

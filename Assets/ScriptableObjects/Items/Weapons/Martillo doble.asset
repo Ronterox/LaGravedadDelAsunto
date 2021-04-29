@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e7d7a90274f7ee109f52c9247b01887, type: 3}
+  m_Name: Martillo doble
+  m_EditorClassIdentifier: 
+  itemName: Martillo doble
+  itemType: 0
+  icon: {fileID: 21300000, guid: 3a0bd65589626db4cb669b9d7a50886a, type: 3}
+  itemRef: {fileID: 5535945852226625820, guid: 7eb96622bca98e64b835311a87856a4c, type: 3}
