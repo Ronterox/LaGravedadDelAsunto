@@ -20,7 +20,7 @@ namespace Inventory_System
 
         private void PickUp()
         {
-            SoundManager.Instance.PlaySound(pickSfx, transform.position);
+            if(pickSfx) SoundManager.Instance.PlaySound(pickSfx, transform.position);
             if (GameManager.Instance.inventory.Add(item)) gameObject.SetActive(false);
         }
     }

@@ -1,3 +1,5 @@
+using Inventory_System;
+using Managers;
 using Plugins.Tools;
 using UnityEngine;
 
@@ -13,13 +15,23 @@ namespace Combat
         public Damageable myDamageable;
         public ParticleSystem swordParticle;
 
+        public bool isPlayer;
+        private StatusEffectManager m_StatusEffectManager;
+
+        public WeaponItem weaponItem;
+
         private void Awake()
         {
             if (!attackCollider) attackCollider = gameObject.GetComponentSafely<Collider>();
             SetCollider(false);
         }
 
-        public void Attack(CharacterHealth targetHealth) => targetHealth.TakeDamage(damage);
+        private void Start()
+        {
+            if (isPlayer) m_StatusEffectManager = StatusEffectManager.Instance;
+        }
+
+        public void Attack(CharacterHealth targetHealth) => targetHealth.TakeDamage(damage + (int)m_StatusEffectManager.damageAffection);
 
         public void SetCollider(bool isEnable)
         {
@@ -30,11 +42,20 @@ namespace Combat
             }
         }
 
+        private void OnDrawGizmos()
+        {
+            if (!attackCollider || !attackCollider.enabled) return;
+
+            Gizmos.color = Color.red;
+            Bounds bounds = attackCollider.bounds;
+            Gizmos.DrawWireCube(bounds.center, bounds.size);
+        }
+
         private void OnTriggerEnter(Collider other)
         {
             var damageable = other.GetComponent<Damageable>();
             if (!damageable || damageable == myDamageable) return;
-            
+
             Attack(damageable.myHealth);
             Vector3 direction = (transform.position - other.transform.position).normalized;
             other.GetComponent<Rigidbody>().AddForce(direction * knockBackForce);

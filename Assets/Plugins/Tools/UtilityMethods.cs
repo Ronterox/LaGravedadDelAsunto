@@ -320,5 +320,11 @@ namespace Plugins.Tools
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
         public static T GetRandom<T>(this List<T> array) => array[Random.Range(0, array.Count)];
+
+        /// <summary>
+        /// Returns the negative value of a positive and the other way around
+        /// </summary>
+        /// <returns></returns>
+        public static float ContraryValue(this float value) => value > 0 ? -value : value * -1;
     }
 }

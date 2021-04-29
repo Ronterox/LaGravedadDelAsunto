@@ -9,12 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9478f00c655a45ba93702d0fc07778a5, type: 3}
-  m_Name: Speed Buff
+  m_Script: {fileID: 11500000, guid: 7e7d7a90274f7ee109f52c9247b01887, type: 3}
+  m_Name: Sword
   m_EditorClassIdentifier: 
-  statAffected: 1
-  valueOfAffection: 10
-  isTemporal: 1
-  secondsAffected: 60
-  sprite: {fileID: 21300000, guid: e9693e667ff5c364786205cdf58d2798, type: 3}
-  effectName: Speed Buff
+  itemName: Sword
+  itemType: 1
+  icon: {fileID: 21300000, guid: e9693e667ff5c364786205cdf58d2798, type: 3}
+  itemRef: {fileID: 919132149155446097, guid: 343be1039f37be14e9d6ad6cf7568835, type: 3}

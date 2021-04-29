@@ -1,3 +1,4 @@
+using Managers;
 using Plugins.Audio;
 using Plugins.Persistence;
 using Plugins.Tools;
@@ -59,11 +60,14 @@ namespace Player
         private bool m_MovementBlocked;
         public Transform particleSpawn;
 
+        [Header("Particles")]
         public ParticleSystem jumpfx;
-        
+
         [Header("Persistence")]
         public DataSettings dataSettings;
 
+        private StatusEffectManager m_StatusEffectManager;
+        
         protected override void Awake()
         {
             base.Awake();
@@ -73,6 +77,8 @@ namespace Player
 
             dataSettings.GenerateId(gameObject);
         }
+
+        private void Start() => m_StatusEffectManager = StatusEffectManager.Instance;
 
         private void OnDisable() => PersistentDataManager.SavePersistedData(this);
 
@@ -112,7 +118,9 @@ namespace Player
         {
             if (m_MovementBlocked) return;
 
-            float stateSpeed = IsWalking ? speed * .5f : IsSprinting || m_WasSprinting ? speed * sprintMultiplier : speed;
+            float actualSpeed = speed + m_StatusEffectManager.speedAffection;
+
+            float stateSpeed = IsWalking ? actualSpeed * .5f : IsSprinting || m_WasSprinting ? actualSpeed * sprintMultiplier : actualSpeed;
 
             Vector3 movement = IsMoving ? Time.deltaTime * stateSpeed * transform.forward : Vector3.zero;
             movement += m_VerticalSpeed * Time.deltaTime * Vector3.up;

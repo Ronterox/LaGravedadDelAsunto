@@ -1,3 +1,4 @@
+using Managers;
 using UnityEngine;
 
 namespace General
@@ -15,22 +16,26 @@ namespace General
         public bool isTemporal;
         public float secondsAffected;
 
+        [Header("Visual Feedback")]
+        public Sprite sprite;
+        public string effectName;
+
         public void ApplyStatus()
         {
-            float secs = isTemporal ? secondsAffected : 0;
             switch (statAffected)
             {
                 case Stat.Health:
                     //StatusEffectManager.Instance.ReduceHealthBy(valueOfAffection, secs);
+                    Debug.LogWarning("Not implemented health status");
                     break;
                 case Stat.Speed:
-                    //StatusEffectManager.Instance.LimitSpeedBy(valueOfAffection, secs);
+                    StatusEffectManager.Instance.LimitSpeedBy(this);
                     break;
                 case Stat.Damage:
-                    //StatusEffectManager.Instance.ReduceDamageBy(valueOfAffection, secs);
+                    StatusEffectManager.Instance.ReduceDamageBy(this);
                     break;
                 case Stat.KarmaGaining:
-                    //StatusEffectManager.Instance.LimitKarmaBy(valueOfAffection, secs);
+                    StatusEffectManager.Instance.LimitKarmaBy(this);
                     break;
                 default:
                     Debug.Log("Status Effect is not set");
