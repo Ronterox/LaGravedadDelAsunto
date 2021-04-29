@@ -72,7 +72,7 @@ namespace Plugins.Audio
         {
             base.Awake();
 
-            m_BackgroundMusic = GetComponent<AudioSource>();
+            m_BackgroundMusic = gameObject.GetComponentSafely<AudioSource>();
             m_SoundsPool = GetComponent<SoundPooler>();
         }
 
