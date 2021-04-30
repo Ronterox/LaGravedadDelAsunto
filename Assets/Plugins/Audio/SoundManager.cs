@@ -72,7 +72,7 @@ namespace Plugins.Audio
         {
             base.Awake();
 
-            m_BackgroundMusic = GetComponent<AudioSource>();
+            m_BackgroundMusic = gameObject.GetComponentSafely<AudioSource>();
             m_SoundsPool = GetComponent<SoundPooler>();
         }
 
@@ -269,7 +269,7 @@ namespace Plugins.Audio
         /// <summary>
         /// Mute all current sfx
         /// </summary>
-        private void StopAllSfx()
+        public void StopAllSfx()
         {
             m_SoundsPool.Stop();
             m_CurrentInGamePooler.Stop();

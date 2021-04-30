@@ -9,7 +9,7 @@ namespace BehaviorBricks.Actions.System.Navigation
     /// <summary>
     /// It is an action to move towards the given goal using a NavMeshAgent.
     /// </summary>
-    [Action("Navigation/MoveToGameObject")]
+    [Action("Navigation/MoveToGameObjectMinimumDistance")]
     [Help("Moves the game object towards a given target by using a NavMeshAgent")]
     public class MoveToGameObject : GOAction
     {
@@ -22,7 +22,7 @@ namespace BehaviorBricks.Actions.System.Navigation
 
         private Transform targetTransform;
 
-        /// <summary>Initialization Method of MoveToGameObject.</summary>
+        /// <summary>Initialization Method of MoveToGameObjectMinimumDistance.</summary>
         /// <remarks>Check if GameObject object exists and NavMeshAgent, if there is no NavMeshAgent, the default one is added.</remarks>
         public override void OnStart()
         {
@@ -44,7 +44,7 @@ namespace BehaviorBricks.Actions.System.Navigation
             navAgent.isStopped = false;
         }
 
-        /// <summary>Method of Update of MoveToGameObject.</summary>
+        /// <summary>Method of Update of MoveToGameObjectMinimumDistance.</summary>
         /// <remarks>Verify the status of the task, if there is no objective fails, if it has traveled the road or is near the goal it is completed
         /// y, the task is running, if it is still moving to the target.</remarks>
         public override TaskStatus OnUpdate()
@@ -54,7 +54,7 @@ namespace BehaviorBricks.Actions.System.Navigation
             if (navAgent.destination != targetTransform.position) navAgent.SetDestination(targetTransform.position);
             return TaskStatus.RUNNING;
         }
-        /// <summary>Abort method of MoveToGameObject </summary>
+        /// <summary>Abort method of MoveToGameObjectMinimumDistance </summary>
         /// <remarks>When the task is aborted, it stops the navAgentMesh.</remarks>
         public override void OnAbort()
         {

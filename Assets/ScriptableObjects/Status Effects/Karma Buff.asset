@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9478f00c655a45ba93702d0fc07778a5, type: 3}
+  m_Name: Karma Buff
+  m_EditorClassIdentifier: 
+  statAffected: 3
+  valueOfAffection: 5
+  isTemporal: 1
+  secondsAffected: 60
+  sprite: {fileID: 21300000, guid: 16beba6ce0a3f17408acfce3ae980e81, type: 3}
+  effectName: Karma Buff

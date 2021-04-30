@@ -156,7 +156,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numberOfInteractionsOnPlace: 1
   infiniteInteractions: 0
-  item: {fileID: 11400000, guid: 6ae42ef2e42f1c3499b5d50b17ec0d37, type: 2}
+  item: {fileID: 11400000, guid: 56e576946874bcb49a58b407b2f22bc4, type: 2}
   pickSfx: {fileID: 8300000, guid: 42e0b6fa88cdaf2ce97f62405e983ddb, type: 3}
 --- !u!54 &2314633671886054668
 Rigidbody:

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Combat
 {
@@ -6,16 +7,37 @@ namespace Combat
     {
         public int maxHealth = 100;
         public int currentHealth { get; private set; }
+        
+        public UnityEvent onDieEvent;
+        public UnityEvent onTakeDamageEvent;
+
+        public bool IsDead { get; private set; }
 
         private void Awake() => currentHealth = maxHealth;
 
         public void TakeDamage(int damageValue)
         {
+            if(IsDead) return;
+            
             currentHealth -= damageValue;
-            Debug.Log(transform.name + "takes" + damageValue + "damage");
-            if (currentHealth <= 0) Die();
+            if (currentHealth <= 0)
+            {
+                onDieEvent?.Invoke();
+                IsDead = true;
+            }
+            else onTakeDamageEvent?.Invoke();
         }
 
-        public virtual void Die() => Destroy(gameObject);
+        public void AddListeners(UnityAction onDie, UnityAction onTakeDamage)
+        {
+            if(onDie != null) onDieEvent.AddListener(onDie);
+            if(onTakeDamage != null) onTakeDamageEvent.AddListener(onTakeDamage);
+        }
+        
+        public void RemoveListeners(UnityAction onDie, UnityAction onTakeDamage)
+        {
+            if(onDie != null) onDieEvent.RemoveListener(onDie);
+            if(onTakeDamage != null) onTakeDamageEvent.RemoveListener(onTakeDamage);
+        }
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using DG.Tweening;
 using GUI;
 using Player;
+using Plugins.Audio;
 using Plugins.DOTween.Modules;
 using Plugins.Tools;
 using UnityEngine;
@@ -68,6 +69,8 @@ namespace Managers
 
         private bool m_JustOpenedGUI;
 
+        public AudioClip openUIAudio;
+
         private void Start() => InitializeCanvasInstance();
 
         private void Update()
@@ -100,7 +103,7 @@ namespace Managers
         }
 
         /// <summary>
-        /// Opens the gameObject passed as a gui on the main canvas
+        /// Opens the monoBehaviour passed as a gui on the main canvas
         /// </summary>
         /// <param name="menu">the gui to instantiate</param>
         /// <param name="options">menuScene instantiation effects</param>
@@ -108,6 +111,7 @@ namespace Managers
         {
             if (IsGuiOpened) return;
 
+            SoundManager.Instance.PlayNonDiegeticRandomPitchSound(openUIAudio);
             IsGuiOpened = true;
             m_JustOpenedGUI = true;
 
@@ -145,6 +149,7 @@ namespace Managers
         public void CloseGUIMenu(bool animate = true)
         {
             if (!IsGuiOpened) return;
+            SoundManager.Instance.PlayNonDiegeticRandomPitchSound(openUIAudio);
 
             Time.timeScale = 1f;
 

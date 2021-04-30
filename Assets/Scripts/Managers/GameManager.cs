@@ -2,16 +2,18 @@ using Inventory_System;
 using Karma_System;
 using Player;
 using Plugins.Tools;
+using Plugins.Tools.Events;
 
 namespace Managers
 {
-    public class GameManager : PersistentSingleton<GameManager>, MMEventListener<MMGameEvent>
+    public class GameManager : Singleton<GameManager>, MMEventListener<MMGameEvent>
     {
         public KarmaController karmaController;
         public QuestManager questManager;
 
         public DialogueManager dialogueManager;
         public Inventory inventory;
+        
         public bool GameIsPaused { get; private set; }
 
         private void Update()
@@ -29,7 +31,7 @@ namespace Managers
         public void PauseGame()
         {
             if (GameIsPaused) GUIManager.Instance.CloseGUIMenu();
-            else GUIManager.Instance.OpenPauseMenu(() => GameIsPaused = true, () => GameIsPaused = false);           
+            else GUIManager.Instance.OpenPauseMenu(() => GameIsPaused = true, () => GameIsPaused = false);
         }
 
         public void OnEnable() => this.MMEventStartListening();

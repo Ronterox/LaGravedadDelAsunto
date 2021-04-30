@@ -1,3 +1,4 @@
+using Plugins.Tools;
 using UnityEngine;
 
 namespace General.Utilities
@@ -13,7 +14,7 @@ namespace General.Utilities
 
         private void LateUpdate()
         {
-            if (player) transform.LookAt(player);
+            if (player) transform.RotateTowards(player);
         }
     }
 }

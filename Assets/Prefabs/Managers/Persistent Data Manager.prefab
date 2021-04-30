@@ -1,0 +1,137 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &356121325092908871
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5651790287781934091}
+  - component: {fileID: 995679125055449737}
+  - component: {fileID: 5543228174980203789}
+  - component: {fileID: 1406829772113662000}
+  m_Layer: 0
+  m_Name: Persistent Data Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5651790287781934091
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 356121325092908871}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 8.402342, y: 17.380117, z: 12.081087}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &995679125055449737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 356121325092908871}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 844d8605cc8336942a941f86c28c4481, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5543228174980203789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 356121325092908871}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c8845a9aeb711e419aaa83f6d6450cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  achievements:
+  - id: achievement1
+    image: {fileID: 21300000, guid: 16beba6ce0a3f17408acfce3ae980e81, type: 3}
+    title: The start of new adventure
+    description: You have entered the town
+    status:
+      relatedId: achievement1
+      current: 0
+      goal: 1
+      unlocked: 0
+  - id: achievement2
+    image: {fileID: 21300000, guid: 48808efbf93b9da49961f6ec9acda091, type: 3}
+    title: Restart from zero
+    description: You completed your first quest
+    status:
+      relatedId: achievement2
+      current: 0
+      goal: 1
+      unlocked: 0
+  - id: achievement3
+    image: {fileID: 21300000, guid: e9693e667ff5c364786205cdf58d2798, type: 3}
+    title: Really Do you come too far?
+    description: You go to the mountain for nothing
+    status:
+      relatedId: achievement3
+      current: 0
+      goal: 1
+      unlocked: 0
+  - id: achievement4
+    image: {fileID: 21300000, guid: 8643646388ffc354d867f58ad377cb7f, type: 3}
+    title: Nathan Drake
+    description: Find all the chests
+    status:
+      relatedId: achievement4
+      current: 0
+      goal: 11
+      unlocked: 0
+  - id: tutorial
+    image: {fileID: 21300000, guid: 16beba6ce0a3f17408acfce3ae980e81, type: 3}
+    title: Tutorial
+    description: Good job, you learned how to follow instructions!
+    status:
+      relatedId: achievement4
+      current: 0
+      goal: 1
+      unlocked: 0
+  - id: no tutorial
+    image: {fileID: 21300000, guid: 16beba6ce0a3f17408acfce3ae980e81, type: 3}
+    title: Don't need tutorials
+    description: Good job, you don't care about no tutorial!
+    status:
+      relatedId: achievement4
+      current: 0
+      goal: 1
+      unlocked: 0
+  - id: murder
+    image: {fileID: 21300000, guid: 16beba6ce0a3f17408acfce3ae980e81, type: 3}
+    title: Murderer
+    description: You killed an innocent creature
+    status:
+      relatedId: achievement4
+      current: 0
+      goal: 1
+      unlocked: 0
+  achievementObjTemplate: {fileID: 1473843560591671524, guid: f583251b3599c174497bc91828dba055, type: 3}
+  achievementSound: {fileID: 8300000, guid: 650a369b9e640f205a9b46cf1f79084e, type: 3}
+--- !u!114 &1406829772113662000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 356121325092908871}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 001510c4da473342086a88f14fe41ed2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

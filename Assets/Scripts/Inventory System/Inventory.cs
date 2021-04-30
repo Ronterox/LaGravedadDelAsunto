@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using Cameras;
 using Managers;
 using Player;
+using Plugins.Audio;
 using Plugins.Tools;
 using UnityEngine;
 
@@ -12,13 +13,19 @@ namespace Inventory_System
         public List<Item> items = new List<Item>();
 
         [Header("Drop Settings")]
-        public float force;
-        public float offset;
+        public float dropForce;
+        public float dropOffset;
 
         private int m_InventorySpace = 20;
         private bool m_InInventory;
 
         private InventorySlot[] m_InventorySlots;
+
+        [Header("Sfx")]
+        public AudioClip onChangeSound;
+        
+        public delegate void InventoryChangeEvent();
+        public event InventoryChangeEvent onInventoryChanged;
 
         public void InitializeInventory(GameObject inventory)
         {
@@ -52,28 +59,47 @@ namespace Inventory_System
         {
             if (items.Count >= m_InventorySpace)
             {
-                Debug.Log($"Inventory is full couldn't add item {item.itemName}".ToColorString("red"));
+                Debug.Log($"Inventory is full couldn't add destroyable {item.itemName}".ToColorString("red"));
                 return false;
             }
             items.Add(item);
-            if (m_InInventory) UpdateUI();
+            CheckForUpdate();
             return true;
         }
 
         public bool Has(Item item) => items.Contains(item);
 
-        public void Remove(Item item)
+        private void CheckForUpdate()
         {
-            items.Remove(item);
+            onInventoryChanged?.Invoke();
+            SoundManager.Instance.PlayNonDiegeticSound(onChangeSound);
             if (m_InInventory) UpdateUI();
         }
 
-        public void Drop(Item item)
+        public void Remove(Item item)
+        {
+            items.Remove(item);
+            CheckForUpdate();
+        }
+
+        public void Drop(Item item) => Drop(item, CameraManager.Instance.playerTransform.position );
+
+        public void Drop(Item item, Vector3 position)
+        {
+            SpawnItem(item, position);
+            Remove(item);
+        }
+
+        public void SpawnItem(Item item, Vector3 position)
         {
             Vector3 direction = UtilityMethods.GetRandomDirection(true, false);
-            GameObject obj = Instantiate(item.itemRef, CameraManager.Instance.playerTransform.position + direction * offset, Quaternion.identity);
-            obj.GetComponent<Rigidbody>()?.AddForce(direction * force, ForceMode.Impulse);
-            Remove(item);
+            GameObject obj = Instantiate(item.itemRef, position + direction * dropOffset, Quaternion.identity);
+            obj.GetComponentSafely<Rigidbody>().AddForce(direction * dropForce, ForceMode.Impulse);
+        }
+
+        public void SpawnItems(Item item, Vector3 position, int quantity)
+        {
+            for (var i = 0; i < quantity; i++) SpawnItem(item, position);
         }
     }
 }

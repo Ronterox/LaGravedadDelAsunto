@@ -38,19 +38,13 @@ namespace Questing_System.Quests
 
         private const int COOK_INCREMENT = 10;
 
-        protected override void OnEnable()
-        {
-            base.OnEnable();
-
-            foreach (CookingQTEInteractable cookingQteInteractable in cookingQteInteractables)
-            {
-                cookingQteInteractable.onCorrectPress = CookPlateAction;
-                cookingQteInteractable.onWrongPress = BurnPlateAction;
-            }
-        }
-
         public void StartCooking()
         {
+            foreach (CookingQTEInteractable qte in cookingQteInteractables)
+            {
+                qte.onCorrectPress = CookPlateAction;
+                qte.onWrongPress = BurnPlateAction;   
+            }
             SetTimerActive();
             SetPlateActive();
         }
@@ -59,7 +53,7 @@ namespace Questing_System.Quests
         {
             if (setActive)
             {
-                m_PlateCard = GUIManager.Instance.InstantiateUI(plateCardTemplate, .8f).GetComponent<ImageTextCard>();
+                m_PlateCard = GUIManager.Instance.InstantiateUI(plateCardTemplate, false, .8f).GetComponent<ImageTextCard>();
 
                 m_PlateCard.image.sprite = availablePlates[m_PlateIndex].icon;
                 m_PlateCard.canvasGroup.interactable = false;
@@ -73,7 +67,7 @@ namespace Questing_System.Quests
         {
             if (setActive)
             {
-                m_TimerInstance = GUIManager.Instance.InstantiateUI(timerGameObject);
+                m_TimerInstance = GUIManager.Instance.InstantiateUI(timerGameObject, false);
 
                 var timerUI = m_TimerInstance.GetComponent<TimerUI>();
 

@@ -1,22 +1,34 @@
+using System.Linq;
+using Managers;
+using Plugins.Tools;
 using Questing_System;
-using UnityEngine;
 
 namespace NPCs
 {
     public class RandomNpc : NPC
     {
-        protected override void OnCampaignCompletedInteraction(Campaign campaign) => SayRandomThing();
+        protected override void OnQuestCompletedInteraction(Quest quest) => SayRandomThing();
 
-        protected override void OnInteractionRangeEnter(Campaign campaign) => SayRandomThing();
+        protected override void OnInteractionRangeEnter(Quest quest) => SayRandomThing();
 
-        protected override void OnInteractionRangeExit(Campaign campaign) => SayRandomThing();
+        protected override void OnInteractionRangeExit(Quest quest) => SayRandomThing();
 
-        protected override void OnInteraction(Campaign campaign)
+        protected override void OnInteraction(Quest quest) => SayRandomThing();
+
+        private void SayRandomThing()
         {
-            print("Hello");
-            SayRandomThing();
+            QuestManager questManager = GameManager.Instance.questManager;
+            Quest randomQuest = questManager.GetQuestRandom();
+            
+            Say(GetQuestRelatedDialogueID(randomQuest).dialogueID);
         }
 
-        private void SayRandomThing() => Say(npcScriptable.dialoguesIds[Random.Range(0, npcScriptable.dialoguesIds.Count)]);
+        public QuestDialogueID GetQuestRelatedDialogueID(Quest quest) => quest.questState switch
+        {
+            QuestState.NotStarted => notStartedDialogues.Where(questDialogue => questDialogue.questRelatedId.Equals(quest.questID)).ToArray().Shuffle().FirstOrDefault(), 
+            QuestState.OnGoing => onGoingDialogues.Where(questDialogue => questDialogue.questRelatedId.Equals(quest.questID)).ToArray().Shuffle().FirstOrDefault(), 
+            QuestState.Completed => completedDialogues.Where(questDialogue => questDialogue.questRelatedId.Equals(quest.questID)).ToArray().Shuffle().FirstOrDefault(), 
+            _ => new QuestDialogueID()
+        };
     }
 }

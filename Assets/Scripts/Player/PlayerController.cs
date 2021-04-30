@@ -1,11 +1,13 @@
+using Managers;
 using Plugins.Audio;
+using Plugins.Persistence;
 using Plugins.Tools;
 using UnityEngine;
 
 namespace Player
 {
     [RequireComponent(typeof(CharacterController))]
-    public class PlayerController : Singleton<PlayerController>
+    public class PlayerController : Singleton<PlayerController>, IDataPersister
     {
         [Header("Requirements")]
         public Transform mainCamera;
@@ -41,10 +43,10 @@ namespace Player
 
         private bool m_IsGrounded, m_CanJump, m_WasSprinting;
 
+        private readonly int FALLING_ANIMATION_HASH = Animator.StringToHash("IsFalling");
         private readonly int SPEED_ANIMATION_HASH = Animator.StringToHash("Speed");
         private readonly int JUMP_ANIMATION_HASH = Animator.StringToHash("Jump");
-        private readonly int FALLING_ANIMATION_HASH = Animator.StringToHash("IsFalling");
-        readonly int m_HashStateTime = Animator.StringToHash("StateTime");
+        private readonly int HASH_STATE_TIME = Animator.StringToHash("StateTime");
 
         private const float STICKING_GRAVITY_PROPORTION = 3;
         private const float JUMP_ABORT_SPEED = 10;
@@ -56,13 +58,35 @@ namespace Player
         private bool IsSprinting => m_Input.SprintInput && m_IsGrounded;
 
         private bool m_MovementBlocked;
+        public Transform particleSpawn;
 
+        [Header("Particles")]
+        public ParticleSystem jumpfx;
+
+        [Header("Persistence")]
+        public DataSettings dataSettings;
+
+        private StatusEffectManager m_StatusEffectManager;
+        
         protected override void Awake()
         {
             base.Awake();
             m_CharCtrl = GetComponent<CharacterController>();
             m_Input = GetComponent<PlayerInput>();
             m_Animator = GetComponent<Animator>();
+
+            dataSettings.GenerateId(gameObject);
+        }
+
+        private void Start() => m_StatusEffectManager = StatusEffectManager.Instance;
+
+        private void OnDisable() => PersistentDataManager.SavePersistedData(this);
+
+        private void OnEnable()
+        {
+            PersistentDataManager.LoadPersistedData(this);
+            
+            jumpfx.transform.parent = null;
         }
 
         public void BlockMovement(bool blockMovement) => m_MovementBlocked = blockMovement;
@@ -81,9 +105,10 @@ namespace Player
 
         private void FixedUpdate()
         {
-            m_Animator.SetFloat(m_HashStateTime, Mathf.Repeat(m_Animator.GetCurrentAnimatorStateInfo(0).normalizedTime, 1f));
+            m_Animator.SetFloat(HASH_STATE_TIME, Mathf.Repeat(m_Animator.GetCurrentAnimatorStateInfo(0).normalizedTime, 1f));
+
             if (m_MovementBlocked) return;
-           
+
             AnimatePlayer();
             SetRotation();
             CalculateVerticalMovement();
@@ -93,7 +118,9 @@ namespace Player
         {
             if (m_MovementBlocked) return;
 
-            float stateSpeed = IsWalking ? speed * .5f : IsSprinting || m_WasSprinting ? speed * sprintMultiplier : speed;
+            float actualSpeed = speed + m_StatusEffectManager.speedAffection;
+
+            float stateSpeed = IsWalking ? actualSpeed * .5f : IsSprinting || m_WasSprinting ? actualSpeed * sprintMultiplier : actualSpeed;
 
             Vector3 movement = IsMoving ? Time.deltaTime * stateSpeed * transform.forward : Vector3.zero;
             movement += m_VerticalSpeed * Time.deltaTime * Vector3.up;
@@ -118,6 +145,7 @@ namespace Player
                 m_VerticalSpeed = jumpForce;
                 m_IsGrounded = false;
                 m_CanJump = false;
+                PlayParticle();
                 PlayJumpSound();
             }
             else
@@ -138,7 +166,6 @@ namespace Player
 
         private void AnimatePlayer()
         {
-            
             if (m_IsGrounded)
             {
                 if (IsMoving)
@@ -152,9 +179,31 @@ namespace Player
             }
             m_Animator.SetBool(FALLING_ANIMATION_HASH, !m_IsGrounded);
         }
-        
-        private void PlayFootStepSound() => SoundManager.Instance.PlayNonDiegeticRandomPitchSound(stepSfx,1f, .2f);
 
-        private void PlayJumpSound() => SoundManager.Instance.PlayNonDiegeticRandomPitchSound(jumpSfx,1f, .2f);
+        private void PlayParticle()
+        {
+            jumpfx.transform.position = particleSpawn.position;
+            jumpfx.Play();
+
+        }
+        private void PlayFootStepSound() => SoundManager.Instance.PlayNonDiegeticRandomPitchSound(stepSfx, 1f, .2f);
+
+        private void PlayJumpSound() => SoundManager.Instance.PlayNonDiegeticRandomPitchSound(jumpSfx, 1f, .2f);
+
+        #region PERSISTENCE
+
+        public DataSettings GetDataSettings() => dataSettings;
+
+        public void SetDataSettings(ushort dataId, DataSettings.PersistenceType persistenceType)
+        {
+            dataSettings.dataId = dataId;
+            dataSettings.type = persistenceType;
+        }
+
+        public Data SaveData() => new Data<Vector3>(transform.position);
+
+        public void LoadData(Data data) => transform.position = ((Data<Vector3>)data).value;
+
+        #endregion
     }
 }

@@ -107,7 +107,7 @@ namespace BehaviorBricks.Samples.ProgrammersQuickStartGuide.Done // Programmers 
             EndMonitorWithFailure();
         } // OnSunrise
 
-        /// <summary>Abort method of MoveToGameObject.</summary>
+        /// <summary>Abort method of MoveToGameObjectMinimumDistance.</summary>
         /// <remarks>DoneDayNightCycle component exits we remove ourselves from the event.</remarks>
         public override void OnAbort()
         {

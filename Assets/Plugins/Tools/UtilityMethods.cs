@@ -1,19 +1,43 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Internal;
 using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
 namespace Plugins.Tools
 {
+    public class UtilityMonoBehaviour : MonoBehaviour { }
+
     /// <summary>
     /// A class with useful methods for every type of special case
     /// </summary>
     public static class UtilityMethods
     {
+        public static UtilityMonoBehaviour monoBehaviour;
+
         /// <summary>
-        /// Activates or deactivates the children the gameObject
+        /// Obtains a monobehaviour if existent else creates one
+        /// </summary>
+        /// <returns>the monobehaviour</returns>
+        private static UtilityMonoBehaviour GetMonoBehaviour() => monoBehaviour ? monoBehaviour : monoBehaviour = new GameObject { name = "UtilityMethods_GameObject" }.AddComponent<UtilityMonoBehaviour>();
+
+
+        /// <summary>
+        /// Obtains a monobehaviour if existent else creates one, but also makes it persistent
+        /// </summary>
+        /// <returns>the monobehaviour</returns>
+        private static UtilityMonoBehaviour GetPersistentMonoBehaviour()
+        {
+            UtilityMonoBehaviour behaviour = GetMonoBehaviour();
+            UnityEngine.Object.DontDestroyOnLoad(behaviour.gameObject);
+            return behaviour;
+        }
+
+        /// <summary>
+        /// Activates or deactivates the children the myGameObject
         /// </summary>
         /// <param name="parent"></param>
         /// <param name="active">Whether to activate or deactivate its children</param>
@@ -24,7 +48,7 @@ namespace Plugins.Tools
 
 #if UNITY_EDITOR
         /// <summary>
-        /// Instantiates an actual prefab instead of a gameObject
+        /// Instantiates an actual prefab instead of a myGameObject
         /// </summary>
         /// <param name="prefab"></param>
         /// <param name="position"></param>
@@ -106,7 +130,7 @@ namespace Plugins.Tools
         /// <param name="onceStartCoroutine"></param>
         /// <param name="onceFinishCoroutine"></param>
         /// <returns></returns>
-        public static IEnumerator FunctionCycleCoroutine(Func<bool> whileCondition, Action loopAction, WaitForSeconds loopWaitForSeconds = null, Action onceStartCoroutine = null, Action onceFinishCoroutine = null)
+        public static IEnumerator FunctionCycleCoroutine(this Func<bool> whileCondition, Action loopAction, WaitForSeconds loopWaitForSeconds = null, Action onceStartCoroutine = null, Action onceFinishCoroutine = null)
         {
             onceStartCoroutine?.Invoke();
             while (whileCondition())
@@ -115,6 +139,25 @@ namespace Plugins.Tools
                 yield return loopWaitForSeconds;
             }
             onceFinishCoroutine?.Invoke();
+        }
+
+        /// <summary>
+        /// Delays an action, by a quantity of seconds
+        /// </summary>
+        /// <param name="action"></param>
+        /// <param name="delay"></param>
+        public static void DelayAction(this Action action, float delay) => GetMonoBehaviour().StartCoroutine(DelayActionCoroutine(action, delay));
+
+        /// <summary>
+        /// A coroutine that delays an action
+        /// </summary>
+        /// <param name="action"></param>
+        /// <param name="delay"></param>
+        /// <returns></returns>
+        public static IEnumerator DelayActionCoroutine(this Action action, float delay)
+        {
+            yield return new WaitForSeconds(delay);
+            action?.Invoke();
         }
 
         /// <summary>
@@ -153,7 +196,7 @@ namespace Plugins.Tools
         public static void Lerp(this ref float value, float objective, float speed) => value = Mathf.Lerp(value, objective, speed);
 
         /// <summary>
-        /// Moves the gameObject to the exist if exist, if it doesn't it creates the scene
+        /// Moves the myGameObject to the exist if exist, if it doesn't it creates the scene
         /// </summary>
         /// <param name="obj"></param>
         /// <param name="sceneName"></param>
@@ -174,18 +217,114 @@ namespace Plugins.Tools
         /// <summary>
         /// Returns the volume from 0 to 1 as its decibel value
         /// </summary>
-        /// <param name="volume"></param>
-        /// <returns></returns>
+        /// <param name="volume">from 0 to 1</param>
+        /// <returns>volume on decibels</returns>
         public static float ToDecibels(this float volume) => volume > 0 ? Mathf.Log10(volume) * 20 : -80f;
 
         /// <summary>
-        /// Returns the component of the gameObject if it founds it, else adds the component and returns it
+        /// Returns the component of the myGameObject if it founds it, else adds the component and returns it
         /// </summary>
-        /// <param name="gameObject">gameObject</param>
+        /// <param name="myGameObject">myGameObject</param>
         /// <typeparam name="T">component type</typeparam>
         /// <returns></returns>
-        public static T GetComponentSafely<T>(this GameObject gameObject) where T : Component => gameObject.TryGetComponent(out T component) ? component : gameObject.AddComponent<T>();
+        public static T GetComponentSafely<T>(this GameObject myGameObject) where T : Component => myGameObject.TryGetComponent(out T component) ? component : myGameObject.AddComponent<T>();
+
+
+        /// <summary>
+        /// Rotates a transform towards the other transform by only the selected axis
+        /// </summary>
+        /// <param name="transform">my transform</param>
+        /// <param name="otherTransform">other transform</param>
+        /// <param name="axis">axis to rotate Example: Vector3.up for Y axis</param>
+        public static void RotateTowards(this Transform transform, Transform otherTransform, [DefaultValue("Vector3.up")] Vector3 axis) => RotateTowards(transform, otherTransform.position, axis);
+
+        /// <summary>
+        /// Rotates a transform towards the other transform by only the selected axis
+        /// </summary>
+        /// <param name="transform">my transform</param>
+        /// <param name="direction">target direction</param>
+        /// <param name="axis">axis to rotate Example: Vector3.up for Y axis</param>
+        public static void RotateTowards(this Transform transform, Vector3 direction, [DefaultValue("Vector3.up")] Vector3 axis)
+        {
+            Vector3 position = transform.position;
+
+            if (axis.x != 0) direction.x = position.x;
+            else if (axis.y != 0) direction.y = position.y;
+            else if (axis.z != 0) direction.z = position.z;
+
+            transform.LookAt(direction);
+        }
+
+        /// <summary>
+        /// Rotates a transform towards the other transform only by the y axis
+        /// </summary>
+        /// <param name="transform">my transform</param>
+        /// <param name="otherTransform">other transform</param>
+        public static void RotateTowards(this Transform transform, Transform otherTransform) => RotateTowards(transform, otherTransform, Vector3.up);
+        /// <summary>
+        /// Rotates a transform towards the other transform only by the y axis
+        /// </summary>
+        /// <param name="transform">my transform</param>
+        /// <param name="direction">target direction</param>
+        public static void RotateTowards(this Transform transform, Vector3 direction) => RotateTowards(transform, direction, Vector3.up);
+
+        /// <summary>
+        /// Best random shuffle method
+        /// </summary>
+        /// <param name="rng">seed of randomness</param>
+        /// <param name="array"></param>
+        /// <typeparam name="T"></typeparam>
+        public static T[] Shuffle<T>(this T[] array, System.Random rng)
+        {
+            int n = array.Length;
+            while (n > 1)
+            {
+                int k = rng.Next(n--);
+                T temp = array[n];
+                array[n] = array[k];
+                array[k] = temp;
+            }
+            return array;
+        }
+
+        /// <summary>
+        /// Best random shuffle method
+        /// </summary>
+        /// <param name="array"></param>
+        /// <typeparam name="T"></typeparam>
+        public static T[] Shuffle<T>(this T[] array) => Shuffle(array, new System.Random());
+
+        /// <summary>
+        /// Foreach extension method for arrays
+        /// </summary>
+        /// <param name="array"></param>
+        /// <param name="action"></param>
+        /// <typeparam name="T"></typeparam>
+        public static void ForEach<T>(this IEnumerable<T> array, Action<T> action)
+        {
+            foreach (T x1 in array) action.Invoke(x1);
+        }
+
+        /// <summary>
+        /// Gets a random value from an array
+        /// </summary>
+        /// <param name="array"></param>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        public static T GetRandom<T>(this T[] array) => array[Random.Range(0, array.Length)];
+
+        /// <summary>
+        /// Gets a random value from a List
+        /// </summary>
+        /// <param name="array"></param>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        public static T GetRandom<T>(this List<T> array) => array[Random.Range(0, array.Count)];
+
+        /// <summary>
+        /// Returns the negative value of a positive and the other way around
+        /// </summary>
+        /// <returns></returns>
+        public static float ContraryValue(this float value) => value > 0 ? -value : value * -1;
     }
-
-
 }

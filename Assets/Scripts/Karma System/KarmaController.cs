@@ -1,4 +1,5 @@
 using Managers;
+using Plugins.Audio;
 using UnityEngine;
 
 namespace Karma_System
@@ -10,6 +11,9 @@ namespace Karma_System
         public int maxKarmaValue = 50;
         public int karma;
 
+        [Header("Audio")]
+        public AudioClip karmaSound;
+
         private void Update()
         {
             if(Input.GetKeyDown(KeyCode.K)) ChangeKarma(10);
@@ -18,9 +22,11 @@ namespace Karma_System
 
         public void ChangeKarma(int increment)
         {
+            SoundManager.Instance.PlayNonDiegeticSound(karmaSound);
+            
             int oldKarmaQuantity = karma;
 
-            if ((karma += increment) > maxKarmaValue) karma = maxKarmaValue;
+            if ((karma += increment + (int)StatusEffectManager.Instance.karmaAffection) > maxKarmaValue) karma = maxKarmaValue;
             else if (karma < -maxKarmaValue) karma = -maxKarmaValue;
 
             var m_KarmaBarInstance = GUIManager.Instance.InstantiateUI(karmaBarGameObject).GetComponent<Karmabar>();

@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4735469082643689253
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4475384278831500883}
+  - component: {fileID: 7111591546024432452}
+  m_Layer: 0
+  m_Name: DeliveringQuest
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4475384278831500883
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4735469082643689253}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7111591546024432452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4735469082643689253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f71c7bedbc1965259c0f18fb3d7e107, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  questID: delivery
+  questInfo: {fileID: 11400000, guid: 01256dc93e6cc88ceb2d2ff19fdf0e41, type: 2}
+  questState: 0
+  questEndType: 2
+  events:
+    onQuestDoneGood:
+      m_PersistentCalls:
+        m_Calls: []
+    onQuestDoneBad:
+      m_PersistentCalls:
+        m_Calls: []
+    onQuestStarted:
+      m_PersistentCalls:
+        m_Calls: []
+  foodPlates:
+  - {fileID: 11400000, guid: 56e576946874bcb49a58b407b2f22bc4, type: 2}
+  numberOfDeliveries: 5
+  randomNpcs: []
+  npcCardTemplate: {fileID: 6817841697210359278, guid: 3417fe26d15ab2d418120279afba647f, type: 3}

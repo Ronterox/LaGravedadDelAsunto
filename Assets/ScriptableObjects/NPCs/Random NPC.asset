@@ -12,54 +12,97 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 868c84339560e3f8fb67d0daef7c2c66, type: 3}
   m_Name: Random NPC
   m_EditorClassIdentifier: 
-  npcName: Random
-  description: Just say random things
-  dialoguesIds:
-  - hello
-  - random
-  - bambino
-  - Move
-  - hello
-  - random
-  - bambino
-  - Move
-  - hello
-  - random
-  - bambino
-  - Move
-  - hello
-  - random
-  - bambino
-  - Move
-  - hello
-  - random
-  - bambino
-  - Move
-  - hello
-  - random
-  - bambino
-  - Move
-  - hello
-  - random
-  - bambino
-  - Move
-  - hello
-  - random
-  - bambino
-  - Move
-  campaignID: 
   dialogues:
   - groupName: Things
     dialogues:
-    - id: hello
-      line: Hello, I like turtles
+    - id: kon
+      line: Konichiwa
       options: []
-    - id: random
-      line: How is it going?
+    - id: hack
+      line: WTF DOINB RYZE HACK
       options: []
     - id: bambino
       line: Bambino is looking for someone to help him, maybe you should go
       options: []
-    - id: Move
-      line: Move away, I'm walking here
+    - id: runnning
+      line: Why are you running
+      options: []
+  - groupName: Things
+    dialogues:
+    - id: hola
+      line: Hola como estas
+      options: []
+    - id: betis
+      line: Viva el betis
+      options: []
+    - id: "espa\xF1ita"
+      line: "Aparta que no escucho el himno de mi espa\xF1ita"
+      options: []
+  - groupName: Things
+    dialogues:
+    - id: hi
+      line: Hiiii
+      options: []
+    - id: week
+      line: What a week, huh
+      options: []
+    - id: bye
+      line: Bye
+      options: []
+  - groupName: Things
+    dialogues:
+    - id: how
+      line: Hiiii, how are you
+      options: []
+    - id: wednesday
+      line: Captain it's wednesday
+      options: []
+    - id: byebye
+      line: Bye Bye
+      options: []
+  - groupName: Things
+    dialogues:
+    - id: jamau
+      line: Let's goooo jamau
+      options: []
+    - id: furgol
+      line: furgol
+      options: []
+    - id: noites
+      line: Boas noites
+      options: []
+  - groupName: Things
+    dialogues:
+    - id: no good days
+      line: There are no good days only days
+      options: []
+    - id: comediantes
+      line: "Comediantes son las personas que comen un d\xEDa antes"
+      options: []
+    - id: war
+      line: 'The war the war never changes....
+
+'
+      options: []
+  - groupName: Things
+    dialogues:
+    - id: alone
+      line: I want to be alone
+      options: []
+    - id: people die
+      line: People die if they are killed
+      options: []
+    - id: leave
+      line: leave me alone
+      options: []
+  - groupName: Things
+    dialogues:
+    - id: king
+      line: Altoke my king
+      options: []
+    - id: text
+      line: too much text
+      options: []
+    - id: excuse
+      line: if you excuse me im gonna proceed to xDDDDD
       options: []

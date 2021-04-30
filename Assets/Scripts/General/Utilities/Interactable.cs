@@ -4,12 +4,17 @@ using UnityEngine;
 
 namespace General.Utilities
 {
+    [RequireComponent(typeof(Rigidbody))]
     public abstract class Interactable : MonoBehaviour
     {
+        [Header("Interaction Settings")]
         public int numberOfInteractionsOnPlace = 1;
         public bool infiniteInteractions;
 
         protected int m_InteractTimes;
+
+        public delegate void OnInteractionEvent(Interactable interactable);
+        public event OnInteractionEvent onInteraction;
 
         public bool IsPlayerOnRange { get; private set; }
 
@@ -19,11 +24,13 @@ namespace General.Utilities
 
         private void IncrementInteraction()
         {
-            if (infiniteInteractions || m_InteractTimes++ < numberOfInteractionsOnPlace) Interact();
+            if (infiniteInteractions || m_InteractTimes++ < numberOfInteractionsOnPlace)
+            {
+                onInteraction?.Invoke(this);
+                Interact();
+            }
         }
         
-        //Fix parameters of inspector, i don't like interactions on place name
-
         protected abstract void OnEnterTrigger(Collider other);
 
         protected abstract void OnExitTrigger(Collider other);

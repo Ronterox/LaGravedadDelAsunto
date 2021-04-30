@@ -34,13 +34,14 @@ namespace Questing_System
         public string questID;
         public QuestInfo questInfo;
         [Space] 
-        private QuestState questState = QuestState.NotStarted;
+        [HideInInspector]
+        public QuestState questState = QuestState.NotStarted;
         [HideInInspector]
         public QuestEndType questEndType = QuestEndType.NeutralEnding;
 
-        public bool isFinalQuest, startsInstantly;
         public bool IsCompleted => questState == QuestState.Completed;
         public bool IsOnGoing => questState == QuestState.OnGoing;
+        public bool IsStarted => questState != QuestState.NotStarted;
 
         private bool m_JustStarted;
 
@@ -99,7 +100,7 @@ namespace Questing_System
         /// <summary>
         /// Ends the quest by passing it the ending type, and proceeds to call ending related methods
         /// </summary>
-        /// <param name="endingType">Type of completion of the quest</param>
+        /// <param name="endingType">type of completion of the quest</param>
         public void EndQuest(QuestEndType endingType)
         {
             if(questState == QuestState.Completed) return;
@@ -118,7 +119,8 @@ namespace Questing_System
                 GameManager.Instance.karmaController.ChangeKarma(-questInfo.negativeKarma);
             }
             
-            GameManager.Instance.questManager.UpdateCampaigns();
+            GameManager.Instance.questManager.UpdateQuests();
+            ArchievementsManager.Instance.UpdateAchievement("achievement2", 1);
             gameObject.SetActive(false);
             m_JustStarted = false;
         }

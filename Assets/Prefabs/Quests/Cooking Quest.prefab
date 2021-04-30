@@ -45,11 +45,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db6f434bb11c8e1dc8fa39dfddd6ef3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  questID: bambino_cooking
+  questID: cooking
   questInfo: {fileID: 11400000, guid: 9167e3a76d8efa4078134345de0751ee, type: 2}
+  questState: 0
   questEndType: 2
-  isFinalQuest: 0
-  startsInstantly: 0
   events:
     onQuestDoneGood:
       m_PersistentCalls:
@@ -67,7 +66,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 56e576946874bcb49a58b407b2f22bc4, type: 2}
   cookingQteInteractables:
   - {fileID: 6452531643260720592}
-  plateCardTemplate: {fileID: 6817841697210359278, guid: ec8acf24c2e2e6c728a857d306095e04, type: 3}
+  plateCardTemplate: {fileID: 6817841697210359278, guid: 3417fe26d15ab2d418120279afba647f, type: 3}
   timerGameObject: {fileID: 7854772032020463413, guid: fea39767077e86ac2983c4bdd6c122e3, type: 3}
   secondsToCook: 180
 --- !u!1001 &3851376621788682076
@@ -77,6 +76,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 460704000516947509}
     m_Modifications:
+    - target: {fileID: 638100142519139599, guid: 9b674e86972803873aec9913dd98909b, type: 3}
+      propertyPath: m_fontSize
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2350681130636181428, guid: 9b674e86972803873aec9913dd98909b, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2350681130636181428, guid: 9b674e86972803873aec9913dd98909b, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2350681130636181428, guid: 9b674e86972803873aec9913dd98909b, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 4804892870121092977, guid: 9b674e86972803873aec9913dd98909b, type: 3}
       propertyPath: numberOfPresses
       value: 4
@@ -91,15 +106,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7223678410507454810, guid: 9b674e86972803873aec9913dd98909b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -430.09097
+      value: -429.15
       objectReference: {fileID: 0}
     - target: {fileID: 7223678410507454810, guid: 9b674e86972803873aec9913dd98909b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -235.56493
+      value: -237.75
       objectReference: {fileID: 0}
     - target: {fileID: 7223678410507454810, guid: 9b674e86972803873aec9913dd98909b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 9.269424
+      value: 8.35
       objectReference: {fileID: 0}
     - target: {fileID: 7223678410507454810, guid: 9b674e86972803873aec9913dd98909b, type: 3}
       propertyPath: m_LocalRotation.w
@@ -168,15 +183,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7234647176139726436, guid: e3464fac6fe7e0fa09a21f14718dc319, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -430.09097
+      value: -427.57
       objectReference: {fileID: 0}
     - target: {fileID: 7234647176139726436, guid: e3464fac6fe7e0fa09a21f14718dc319, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -235.56493
+      value: -237.04
       objectReference: {fileID: 0}
     - target: {fileID: 7234647176139726436, guid: e3464fac6fe7e0fa09a21f14718dc319, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 4.269424
+      value: 0.57
       objectReference: {fileID: 0}
     - target: {fileID: 7234647176139726436, guid: e3464fac6fe7e0fa09a21f14718dc319, type: 3}
       propertyPath: m_LocalRotation.w
@@ -209,6 +224,22 @@ PrefabInstance:
     - target: {fileID: 7234647176139726439, guid: e3464fac6fe7e0fa09a21f14718dc319, type: 3}
       propertyPath: m_Name
       value: Pick Ingredients Minigame
+      objectReference: {fileID: 0}
+    - target: {fileID: 7234647176334076259, guid: e3464fac6fe7e0fa09a21f14718dc319, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7234647176334076259, guid: e3464fac6fe7e0fa09a21f14718dc319, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7234647176334076259, guid: e3464fac6fe7e0fa09a21f14718dc319, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7234647176334076259, guid: e3464fac6fe7e0fa09a21f14718dc319, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.66
       objectReference: {fileID: 0}
     - target: {fileID: 8367965801697119707, guid: e3464fac6fe7e0fa09a21f14718dc319, type: 3}
       propertyPath: m_IsActive

@@ -18,7 +18,7 @@ namespace Minigames
         public override void Use()
         {
             statusEffect.ApplyStatus();
-            GameManager.Instance.inventory.Remove(this);
+            if (itemType == ItemType.Consumable) GameManager.Instance.inventory.Remove(this);
         }
     }
 }
