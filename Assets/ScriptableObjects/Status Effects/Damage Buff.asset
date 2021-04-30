@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   statAffected: 2
   valueOfAffection: 5
-  isTemporal: 1
+  isTemporal: 0
   secondsAffected: 60
-  sprite: {fileID: 21300000, guid: a624626ef53b10940a03ba6f6d0f480b, type: 3}
+  sprite: {fileID: 21300000, guid: b70e3d18e7a5a694a9e9bf3e0729d785, type: 3}
   effectName: Damage Buff

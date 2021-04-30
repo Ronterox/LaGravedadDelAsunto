@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   statAffected: 3
   valueOfAffection: 5
-  isTemporal: 1
+  isTemporal: 0
   secondsAffected: 60
-  sprite: {fileID: 21300000, guid: 16beba6ce0a3f17408acfce3ae980e81, type: 3}
+  sprite: {fileID: 21300000, guid: 796bd76dd9c3fca4da47cbd4e3a189d6, type: 3}
   effectName: Karma Buff
