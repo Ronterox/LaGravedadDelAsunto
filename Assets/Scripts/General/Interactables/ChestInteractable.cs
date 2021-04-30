@@ -34,6 +34,7 @@ namespace General.Interactables
         public override void Interact()
         {
             GameManager.Instance.inventory.SpawnItem(items.GetRandom(), transform.position);
+            ArchievementsManager.Instance.UpdateAchievement("achievement4", 1);
             Action deactivate = () => gameObject.SetActive(false);
             deactivate.DelayAction(2f);
         }
