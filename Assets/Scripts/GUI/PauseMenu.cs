@@ -32,7 +32,11 @@ namespace GUI
             GUIManager.Instance.CloseGUIMenu();
         }
 
-        public void LoadMainMenu() => Load(menuScene);
+        public void LoadMainMenu()
+        {
+            Load(menuScene);
+            GUIManager.Instance.CloseGUIMenu();
+        }
 
         public void OpenSettings() => Load(settingsScene);
         

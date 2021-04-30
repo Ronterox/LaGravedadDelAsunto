@@ -12,42 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 868c84339560e3f8fb67d0daef7c2c66, type: 3}
   m_Name: Random NPC
   m_EditorClassIdentifier: 
-  npcName: Random
-  description: Just say random things
-  dialoguesIds:
-  - hello
-  - random
-  - bambino
-  - Move
-  - hello
-  - random
-  - bambino
-  - Move
-  - hello
-  - random
-  - bambino
-  - Move
-  - hello
-  - random
-  - bambino
-  - Move
-  - hello
-  - random
-  - bambino
-  - Move
-  - hello
-  - random
-  - bambino
-  - Move
-  - hello
-  - random
-  - bambino
-  - Move
-  - hello
-  - random
-  - bambino
-  - Move
-  campaignID: 
   dialogues:
   - groupName: Things
     dialogues:

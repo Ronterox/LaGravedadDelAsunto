@@ -49,7 +49,38 @@ MonoBehaviour:
   - hello
   damageable: {fileID: 8534021698849315508}
   npcTalkSound: {fileID: 8300000, guid: fdd092ba6ec4cb441b1aa6b22169b850, type: 3}
-  itemsToGive: []
+  itemsToGive:
+  - {fileID: 11400000, guid: 8b7a4f3024343ab47aa0474b01203b1d, type: 2}
+  - {fileID: 11400000, guid: 3289acda9f24acb4d9f1ad6ab0e4107b, type: 2}
+  - {fileID: 11400000, guid: dafd9cd8fd4e9fe46adb86984fd56d1d, type: 2}
+  - {fileID: 11400000, guid: 5ea0d688697ebb94d949f04b14b03546, type: 2}
+  - {fileID: 11400000, guid: b4fd5ea5928d3644e85caad511d6c0e6, type: 2}
+  - {fileID: 11400000, guid: d5449c29bfb3bcb4d8d0046951e2cf5e, type: 2}
+  - {fileID: 11400000, guid: 284abe2d97d647b48845e7ad59b64c2d, type: 2}
+  - {fileID: 11400000, guid: f94c75eda707acf4980492cab140a8f1, type: 2}
+  - {fileID: 11400000, guid: 0a45d66cce218b549b55049487be2c4e, type: 2}
+  - {fileID: 11400000, guid: af1d2c5483650a246a89ac8066ea3b1f, type: 2}
+  - {fileID: 11400000, guid: cac61f811b1b32a4d8ae1d8e6e8e116a, type: 2}
+  - {fileID: 11400000, guid: 0b00588d054d7464cb0dde5d5134cfee, type: 2}
+  - {fileID: 11400000, guid: 1de3cb74152a0e543a84f653f796495c, type: 2}
+  - {fileID: 11400000, guid: 9da7c9c235634cf48a661e561d53784b, type: 2}
+  - {fileID: 11400000, guid: 03c67d08567b2cf4298e61ba2b1418fa, type: 2}
+  - {fileID: 11400000, guid: 6ae95c3ef1d87e341816a242135e8971, type: 2}
+  - {fileID: 11400000, guid: b675ed13758a4ce439bb43814e239f81, type: 2}
+  - {fileID: 11400000, guid: 7aab514ffe2973f4fba53bf23bf751d4, type: 2}
+  - {fileID: 11400000, guid: e0c112c7e0cd28f4683d3d4345dec0f0, type: 2}
+  - {fileID: 11400000, guid: 6ae42ef2e42f1c3499b5d50b17ec0d37, type: 2}
+  - {fileID: 11400000, guid: e7b8e921fcbc4914094821a098ec23b5, type: 2}
+  - {fileID: 11400000, guid: 273cebc3a7f749440ba6362511e45c9a, type: 2}
+  - {fileID: 11400000, guid: e8077cc31fd07a345ab28986b0fc67f0, type: 2}
+  - {fileID: 11400000, guid: e368bb8fe34691d4286f7bac6996b955, type: 2}
+  - {fileID: 11400000, guid: 9b82dd2d293e50e45875468c37177d29, type: 2}
+  - {fileID: 11400000, guid: 74a424516953180498b70a8731bcac3b, type: 2}
+  - {fileID: 11400000, guid: 7adafe49420285a4faed07558bd9da58, type: 2}
+  - {fileID: 11400000, guid: a1c8c852eca80eb4a8df62db5a8ff951, type: 2}
+  - {fileID: 11400000, guid: 24e062c2302728d4d8108b4ecdfe9c27, type: 2}
+  - {fileID: 11400000, guid: 062d0389f66b64c44869e9bdce757b0b, type: 2}
+  - {fileID: 11400000, guid: 080f0d3a3636f984092a13affec91c2d, type: 2}
 --- !u!1 &4771896026885306648
 GameObject:
   m_ObjectHideFlags: 0

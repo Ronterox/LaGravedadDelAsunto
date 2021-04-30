@@ -5,6 +5,7 @@ using Plugins.Tools;
 
 namespace Managers
 {
+    [System.Serializable]
     public struct PlayerData
     {
         public string scene;
