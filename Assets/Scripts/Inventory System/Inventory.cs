@@ -1,14 +1,16 @@
+using System;
 using System.Collections.Generic;
 using Cameras;
 using Managers;
 using Player;
 using Plugins.Audio;
+using Plugins.Persistence;
 using Plugins.Tools;
 using UnityEngine;
 
 namespace Inventory_System
 {
-    public class Inventory : MonoBehaviour
+    public class Inventory : MonoBehaviour, IDataPersister
     {
         public List<Item> items = new List<Item>();
 
@@ -23,8 +25,11 @@ namespace Inventory_System
 
         [Header("Sfx")]
         public AudioClip onChangeSound;
-        
+
+        public DataSettings dataSettings;
+
         public delegate void InventoryChangeEvent();
+
         public event InventoryChangeEvent onInventoryChanged;
 
         public void InitializeInventory(GameObject inventory)
@@ -33,6 +38,10 @@ namespace Inventory_System
             m_InventorySpace = m_InventorySlots.Length;
             UpdateUI();
         }
+
+        private void OnEnable() => PersistentDataManager.LoadPersistedData(this);
+
+        private void OnDisable() => PersistentDataManager.SavePersistedData(this);
 
         private void Update()
         {
@@ -82,7 +91,7 @@ namespace Inventory_System
             CheckForUpdate();
         }
 
-        public void Drop(Item item) => Drop(item, CameraManager.Instance.playerTransform.position );
+        public void Drop(Item item) => Drop(item, CameraManager.Instance.playerTransform.position);
 
         public void Drop(Item item, Vector3 position)
         {
@@ -101,5 +110,21 @@ namespace Inventory_System
         {
             for (var i = 0; i < quantity; i++) SpawnItem(item, position);
         }
+
+        #region Persistence
+
+        public DataSettings GetDataSettings() => dataSettings;
+
+        public void SetDataSettings(ushort dataId, DataSettings.PersistenceType persistenceType)
+        {
+            dataSettings.dataId = dataId;
+            dataSettings.type = persistenceType;
+        }
+
+        public Data SaveData() => new Data<List<Item>>(items);
+
+        public void LoadData(Data data) => items = ((Data<List<Item>>)data).value;
+
+        #endregion
     }
 }

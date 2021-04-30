@@ -16,11 +16,6 @@ namespace Managers
 
     public class DataManager : PersistentSingleton<DataManager>
     {
-        private void OnDestroy()
-        {
-            if (Instance == this) Serialize();
-        }
-
         public void Serialize()
         {
             var data = new PlayerData

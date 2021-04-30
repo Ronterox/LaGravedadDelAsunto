@@ -53,7 +53,7 @@ namespace Managers
 
         [Header("Menus GameObjects")]
         public GameObject pauseMenu;
-        public GameObject inventoryUi;       
+        public GameObject inventoryUi;
 
         [Header("GUI Animation Settings")]
         [Range(0.1f, 1f)] public float alphaAnimationDuration;
@@ -71,10 +71,18 @@ namespace Managers
 
         public AudioClip openUIAudio;
 
-        private void Start() => InitializeCanvasInstance();
+        private LevelLoadManager m_LevelLoadManager;
+
+        private void Start()
+        {
+            InitializeCanvasInstance();
+            m_LevelLoadManager = LevelLoadManager.Instance;
+        }
 
         private void Update()
         {
+            if (m_LevelLoadManager.SceneIsGUI) return;
+
             if (IsGuiOpened && !m_JustOpenedGUI && PlayerInput.Instance.Pause) CloseGUIMenu();
             if (m_JustOpenedGUI) m_JustOpenedGUI = false;
         }

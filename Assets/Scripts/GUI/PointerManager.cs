@@ -1,4 +1,5 @@
-﻿using Managers;
+﻿using System;
+using Managers;
 using Plugins.Tools;
 using Plugins.Tools.Events;
 using UnityEngine;
@@ -11,13 +12,19 @@ namespace GUI
         public GameObject buttonsGUI;
         
         private GameObject m_AuxiliarButtonGUI;
+        
+        private LevelLoadManager m_LevelLoadManager;
 
         public void OnEnable() => this.MMEventStartListening();
 
         public void OnDisable() => this.MMEventStopListening();
 
+        private void Start() => m_LevelLoadManager = LevelLoadManager.Instance;
+
         private void LateUpdate()
         {
+            if (m_LevelLoadManager.SceneIsGUI) return;
+            
             if (Input.GetKeyUp(cursorKey) && m_AuxiliarButtonGUI)
             {
                 GUIManager.Instance.RemoveUI(m_AuxiliarButtonGUI);
