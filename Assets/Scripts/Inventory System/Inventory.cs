@@ -85,7 +85,7 @@ namespace Inventory_System
         {
             Vector3 direction = UtilityMethods.GetRandomDirection(true, false);
             GameObject obj = Instantiate(item.itemRef, position + direction * dropOffset, Quaternion.identity);
-            obj.GetComponent<Rigidbody>()?.AddForce(direction * dropForce, ForceMode.Impulse);
+            obj.GetComponentSafely<Rigidbody>().AddForce(direction * dropForce, ForceMode.Impulse);
         }
 
         public void SpawnItems(Item item, Vector3 position, int quantity)

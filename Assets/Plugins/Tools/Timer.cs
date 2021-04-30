@@ -112,8 +112,8 @@ namespace Plugins.Tools
     {
         public static Timer CreateTimerInstance(this GameObject caller)
         {
-            var timerGameObject = new GameObject { name = $"Timer of {caller.name}" };
-            timerGameObject.transform.parent = caller.transform;
+            var timerGameObject = new GameObject { name = $"Timer_{caller.name}" };
+            timerGameObject.transform.SetParent(caller.transform);
             return timerGameObject.AddComponent<Timer>();
         }
     }

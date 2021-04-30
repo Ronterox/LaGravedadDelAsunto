@@ -16,7 +16,7 @@ MonoBehaviour:
   itemType: 2
   icon: {fileID: 21300000, guid: 47fa37beddc882b4381e0245bbd96545, type: 3}
   itemRef: {fileID: 613295264620131512, guid: 1d4839a51ff00904098729862e165363, type: 3}
-  statusEffect: {fileID: 0}
+  statusEffect: {fileID: 11400000, guid: 704e8b22fa25201f1a0d97e469ba7fb4, type: 2}
   ingredients:
   - {fileID: 11400000, guid: e8077cc31fd07a345ab28986b0fc67f0, type: 2}
   - {fileID: 11400000, guid: 0b00588d054d7464cb0dde5d5134cfee, type: 2}

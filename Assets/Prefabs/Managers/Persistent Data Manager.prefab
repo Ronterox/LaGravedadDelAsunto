@@ -57,8 +57,44 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c8845a9aeb711e419aaa83f6d6450cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  achievements: []
-  achievementObjTemplate: {fileID: 0}
+  achievements:
+  - id: achievement1
+    image: {fileID: 21300000, guid: 16beba6ce0a3f17408acfce3ae980e81, type: 3}
+    title: The start of new adventure
+    description: You have exit the town
+    status:
+      relatedId: achievement1
+      current: 0
+      goal: 1
+      unlocked: 0
+  - id: achievement2
+    image: {fileID: 21300000, guid: 48808efbf93b9da49961f6ec9acda091, type: 3}
+    title: Restart from zero
+    description: You completed your first quest
+    status:
+      relatedId: achievement2
+      current: 0
+      goal: 1
+      unlocked: 0
+  - id: achievement3
+    image: {fileID: 21300000, guid: e9693e667ff5c364786205cdf58d2798, type: 3}
+    title: Really Do you come too far?
+    description: You go to the mountain for nothing
+    status:
+      relatedId: achievement3
+      current: 0
+      goal: 1
+      unlocked: 0
+  - id: achievement4
+    image: {fileID: 21300000, guid: 8643646388ffc354d867f58ad377cb7f, type: 3}
+    title: Nathan Drake
+    description: Find all the chests
+    status:
+      relatedId: achievement4
+      current: 0
+      goal: 11
+      unlocked: 0
+  achievementObjTemplate: {fileID: 1473843560591671524, guid: f583251b3599c174497bc91828dba055, type: 3}
 --- !u!114 &1406829772113662000
 MonoBehaviour:
   m_ObjectHideFlags: 0

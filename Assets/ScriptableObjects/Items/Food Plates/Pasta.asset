@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Pasta
   itemType: 2
-  icon: {fileID: 21300000, guid: e9693e667ff5c364786205cdf58d2798, type: 3}
-  itemRef: {fileID: 6528765871127474381, guid: c43666cbb403261438d7bf0be3070fed, type: 3}
-  statusEffect: {fileID: 11400000, guid: 704e8b22fa25201f1a0d97e469ba7fb4, type: 2}
+  icon: {fileID: 21300000, guid: 796bd76dd9c3fca4da47cbd4e3a189d6, type: 3}
+  itemRef: {fileID: 545100858066114967, guid: 49eda05d36b41454ab52d880c5f9cf88, type: 3}
+  statusEffect: {fileID: 11400000, guid: cee0ee231a34beee3acafb02cb0b4ecf, type: 2}
   ingredients:
   - {fileID: 11400000, guid: cac61f811b1b32a4d8ae1d8e6e8e116a, type: 2}
   - {fileID: 11400000, guid: b675ed13758a4ce439bb43814e239f81, type: 2}

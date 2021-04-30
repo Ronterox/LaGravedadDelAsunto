@@ -46,5 +46,5 @@ MonoBehaviour:
   speedAffection: 0
   damageAffection: 0
   karmaAffection: 0
-  statusHolder: {fileID: 9159773310977129323, guid: f7c48bd8169dab038ba9f5f69f1a295f, type: 3}
-  statusTemplate: {fileID: 6817841697210359278, guid: ec8acf24c2e2e6c728a857d306095e04, type: 3}
+  statusHolder: {fileID: 6817841697210359278, guid: 98c11a2abfb548855a0cbf61e276c113, type: 3}
+  statusTemplate: {fileID: 6817841697210359278, guid: 0eef77115b6b8658d95d2fd3b27f6e8a, type: 3}

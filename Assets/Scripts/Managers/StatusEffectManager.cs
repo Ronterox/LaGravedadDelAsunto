@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Managers
 {
-    public class StatusEffectManager : Singleton<StatusEffectManager>
+    public class StatusEffectManager : PersistentSingleton<StatusEffectManager>
     {
         public float speedAffection, damageAffection, karmaAffection;
 
@@ -15,11 +15,6 @@ namespace Managers
         private GameObject m_HolderInstance;
         
         public GameObject statusTemplate;
-
-        private void Start()
-        {
-            if(m_HolderInstance) m_HolderInstance = GUIManager.Instance.InstantiateUI(statusHolder);
-        }
 
         public void LimitSpeedBy(StatusEffect statusEffect)
         {
@@ -72,8 +67,10 @@ namespace Managers
         
         public GameObject ShowStatus(string status, Sprite img)
         {
+            if(!m_HolderInstance) m_HolderInstance = GUIManager.Instance.InstantiateUI(statusHolder);
+            
             GameObject insta = GUIManager.Instance.InstantiateUI(statusTemplate, false);
-            insta.transform.parent = m_HolderInstance.transform;
+            insta.transform.SetParent( m_HolderInstance.transform);
 
             var card = insta.GetComponent<ImageTextCard>();
             card.Set(img, status);
