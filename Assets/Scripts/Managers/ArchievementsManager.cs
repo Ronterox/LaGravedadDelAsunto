@@ -19,8 +19,9 @@ namespace Managers
             public string title, description;
             public AchievementStatus status;
         }
-        
-        public struct AchievementStatus
+
+        [System.Serializable]
+        public class AchievementStatus
         {
             public string relatedId;
             public int current, goal;
@@ -77,17 +78,18 @@ namespace Managers
 
         private IEnumerator ShowAchievement(Achievement achievement, float seconds)
         {
-            achievementObjTemplate.SetActive(true);
-            var icon = achievementObjTemplate.transform.Find("Image").GetComponent<Image>();
+            GameObject temp = GUIManager.Instance.InstantiateUI(achievementObjTemplate);
+           
+            var icon = temp.transform.Find("Image").GetComponent<Image>();
             icon.sprite = achievement.image;
 
-            var title = achievementObjTemplate.transform.Find("Title").GetComponent<TextMeshProUGUI>();
+            var title = temp.transform.Find("Title").GetComponent<TextMeshProUGUI>();
             title.text = achievement.title;
 
-            var description = achievementObjTemplate.transform.Find("Description").GetComponent<TextMeshProUGUI>();
+            var description = temp.transform.Find("Description").GetComponent<TextMeshProUGUI>();
             description.text = achievement.description;
             yield return new WaitForSeconds(seconds);
-            achievementObjTemplate.SetActive(false);
+            GUIManager.Instance.RemoveUI(temp);
         }
     }
 }
