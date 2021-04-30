@@ -77,7 +77,7 @@ namespace Managers
             status.current = status.goal;
             status.unlocked = true;
 
-            SoundManager.Instance.PlaySound(achievementSound, transform.position, 1, false, 1, 10);
+            SoundManager.Instance.PlayNonDiegeticSound(achievementSound);
             
             StartCoroutine(ShowAchievement(achievement, 3));
         }

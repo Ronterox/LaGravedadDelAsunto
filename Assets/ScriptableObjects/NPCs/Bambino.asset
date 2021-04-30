@@ -35,3 +35,17 @@ MonoBehaviour:
     - id: ...
       line: ...
       options: []
+  - groupName: Demo Venditore
+    dialogues:
+    - id: monsters
+      line: There are monsters around!
+      options: []
+    - id: help
+      line: Please help me get rid of them
+      options: []
+    - id: compensate
+      line: I will compensate you
+      options: []
+    - id: ...
+      line: ...
+      options: []

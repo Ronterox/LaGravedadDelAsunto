@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using Cameras;
 using Managers;
 using Player;
+using Plugins.Audio;
 using Plugins.Tools;
 using UnityEngine;
 
@@ -19,6 +20,9 @@ namespace Inventory_System
         private bool m_InInventory;
 
         private InventorySlot[] m_InventorySlots;
+
+        [Header("Sfx")]
+        public AudioClip onChangeSound;
         
         public delegate void InventoryChangeEvent();
         public event InventoryChangeEvent onInventoryChanged;
@@ -59,18 +63,23 @@ namespace Inventory_System
                 return false;
             }
             items.Add(item);
-            onInventoryChanged?.Invoke();
-            if (m_InInventory) UpdateUI();
+            CheckForUpdate();
             return true;
         }
 
         public bool Has(Item item) => items.Contains(item);
 
+        private void CheckForUpdate()
+        {
+            onInventoryChanged?.Invoke();
+            SoundManager.Instance.PlayNonDiegeticSound(onChangeSound);
+            if (m_InInventory) UpdateUI();
+        }
+
         public void Remove(Item item)
         {
             items.Remove(item);
-            onInventoryChanged?.Invoke();
-            if (m_InInventory) UpdateUI();
+            CheckForUpdate();
         }
 
         public void Drop(Item item) => Drop(item, CameraManager.Instance.playerTransform.position );

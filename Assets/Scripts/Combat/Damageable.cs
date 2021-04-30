@@ -64,7 +64,7 @@ namespace Combat
 
         public void Die()
         {
-            ArchievementsManager.Instance.UpdateAchievement("trophy1", 1);
+            ArchievementsManager.Instance.UpdateAchievement("murder", 1);
             
             if (dropItem) GameManager.Instance.inventory.SpawnItems(dropItem, transform.position, quantityToDrop);
             if (m_RagdollScript) m_RagdollScript.EnableRagdoll();

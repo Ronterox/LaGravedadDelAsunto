@@ -82,7 +82,10 @@ namespace Plugins.Tools
             T returnObject;
 
             // if the MMSaves directory or the save file doesn't exist, there's nothing to load, we do nothing and exit
-            if (!Directory.Exists(savePath) || !File.Exists(saveFileName)) throw new SavedGameNotFoundException(saveFileName);
+            if (!Directory.Exists(savePath) || !File.Exists(saveFileName))
+            {
+                Debug.LogError("File doesn't exist" + saveFileName);
+            }
 
             try
             {

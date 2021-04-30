@@ -94,6 +94,33 @@ MonoBehaviour:
       current: 0
       goal: 11
       unlocked: 0
+  - id: tutorial
+    image: {fileID: 21300000, guid: 16beba6ce0a3f17408acfce3ae980e81, type: 3}
+    title: Tutorial
+    description: Good job, you learned how to follow instructions!
+    status:
+      relatedId: achievement4
+      current: 0
+      goal: 1
+      unlocked: 0
+  - id: no tutorial
+    image: {fileID: 21300000, guid: 16beba6ce0a3f17408acfce3ae980e81, type: 3}
+    title: Don't need tutorials
+    description: Good job, you don't care about no tutorial!
+    status:
+      relatedId: achievement4
+      current: 0
+      goal: 1
+      unlocked: 0
+  - id: murder
+    image: {fileID: 21300000, guid: 16beba6ce0a3f17408acfce3ae980e81, type: 3}
+    title: Murderer
+    description: You killed an innocent creature
+    status:
+      relatedId: achievement4
+      current: 0
+      goal: 1
+      unlocked: 0
   achievementObjTemplate: {fileID: 1473843560591671524, guid: f583251b3599c174497bc91828dba055, type: 3}
   achievementSound: {fileID: 8300000, guid: 650a369b9e640f205a9b46cf1f79084e, type: 3}
 --- !u!114 &1406829772113662000

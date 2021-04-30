@@ -25,28 +25,81 @@ MonoBehaviour:
   rotationAxis: {x: 0, y: 1, z: 0}
   infiniteCompletedEventCall: 0
   notStartedDialogues:
-  - dialogueID: hello
+  - dialogueID: bambino
     action: 0
     questRelatedId: cooking
-  - dialogueID: random
+  - dialogueID: kon
     action: 0
-    questRelatedId: gathering
+    questRelatedId: hunting
+  - dialogueID: bye
+    action: 0
+    questRelatedId: hunting
+  - dialogueID: byebye
+    action: 0
+    questRelatedId: cooking
+  - dialogueID: war
+    action: 0
+    questRelatedId: hunting
+  - dialogueID: noites
+    action: 0
+    questRelatedId: cooking
+  - dialogueID: furgol
+    action: 0
+    questRelatedId: hunting
+  - dialogueID: jamau
+    action: 0
+    questRelatedId: cooking
+  - dialogueID: people die
+    action: 0
+    questRelatedId: hunting
+  - dialogueID: leave
+    action: 0
+    questRelatedId: cooking
+  - dialogueID: king
+    action: 0
+    questRelatedId: cooking
+  - dialogueID: excuse
+    action: 0
+    questRelatedId: hunting
+  - dialogueID: kon
+    action: 0
+    questRelatedId: hunting
   onGoingDialogues:
-  - dialogueID: hello
+  - dialogueID: hola
     action: 0
     questRelatedId: cooking
-  - dialogueID: random
+  - dialogueID: "espa\xF1ita"
     action: 0
-    questRelatedId: gathering
+    questRelatedId: hunting
+  - dialogueID: wednesday
+    action: 0
+    questRelatedId: cooking
+  - dialogueID: how
+    action: 0
+    questRelatedId: hunting
+  - dialogueID: alone
+    action: 0
+    questRelatedId: cooking
   completedDialogues:
-  - dialogueID: hello
+  - dialogueID: week
+    action: 0
+    questRelatedId: hunting
+  - dialogueID: hi
     action: 0
     questRelatedId: cooking
-  - dialogueID: random
+  - dialogueID: no good days
     action: 0
-    questRelatedId: gathering
+    questRelatedId: cooking
+  - dialogueID: comediantes
+    action: 0
+    questRelatedId: hunting
   onCombatDialogues:
-  - hello
+  - hack
+  - running
+  - betis
+  - "espa\xF1ita"
+  - comediantes
+  - text
   damageable: {fileID: 8534021698849315508}
   npcTalkSound: {fileID: 8300000, guid: fdd092ba6ec4cb441b1aa6b22169b850, type: 3}
   itemsToGive:

@@ -29,6 +29,7 @@ MonoBehaviour:
   completedDialogues: []
   onCombatDialogues: []
   damageable: {fileID: 2045779576280092543}
+  npcTalkSound: {fileID: 0}
   itemsToGive: []
   favoriteFood: {fileID: 0}
   monsterSound: {fileID: 8300000, guid: e55f98304c190cc4295f00cf5b97932f, type: 3}
@@ -84,7 +85,15 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2882905726245286256, guid: 30d98f9ea5b76a819add923134390759, type: 3}
+      propertyPath: m_Size.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2882905726245286256, guid: 30d98f9ea5b76a819add923134390759, type: 3}
       propertyPath: m_Size.y
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2882905726245286256, guid: 30d98f9ea5b76a819add923134390759, type: 3}
+      propertyPath: m_Size.z
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2882905726245286256, guid: 30d98f9ea5b76a819add923134390759, type: 3}

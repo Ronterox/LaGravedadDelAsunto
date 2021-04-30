@@ -98,7 +98,6 @@ namespace NPCs
 
         public override void Interact()
         {
-            SoundManager.Instance.PlayNonDiegeticRandomPitchSound(npcTalkSound);
             if (m_IsFirstInteraction)
             {
                 Write($"Hello I'm {npcName}, I'm {description}");
@@ -130,6 +129,10 @@ namespace NPCs
             else Debug.LogError($"Dialogue Id {dialogueID} doesn't exist!");
         }
 
-        public void Write(string text) => GameManager.Instance.dialogueManager.Type(text, textPosition);
+        public void Write(string text)
+        {
+            GameManager.Instance.dialogueManager.Type(text, textPosition);
+            SoundManager.Instance.PlayNonDiegeticRandomPitchSound(npcTalkSound);
+        }
     }
 }

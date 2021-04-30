@@ -22,7 +22,7 @@ namespace Karma_System
 
         public void ChangeKarma(int increment)
         {
-            SoundManager.Instance.PlaySound(karmaSound, transform.position, 1, false, 1, 10);
+            SoundManager.Instance.PlayNonDiegeticSound(karmaSound);
             
             int oldKarmaQuantity = karma;
 

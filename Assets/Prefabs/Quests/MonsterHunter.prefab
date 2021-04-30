@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53f73f881779fc0bb8c52747a7b42de1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  questID: hunter
+  questID: hunting
   questInfo: {fileID: 11400000, guid: 48a63672808be135abbfcc5fd4968097, type: 2}
   questState: 0
   questEndType: 2
@@ -106,7 +106,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2928196131608004763}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 9.3, y: 0, z: 202.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7603069787058904078}
@@ -141,7 +141,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5982128288688827628}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.9766545, y: 3.1976633, z: -1.6549201}
+  m_LocalPosition: {x: 194.3, y: 3.1976633, z: 108.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6526432525151653376}
@@ -176,7 +176,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6593833292062829791}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.9766545, y: 3.1976633, z: -1.6549201}
+  m_LocalPosition: {x: -399.6, y: 48.5, z: 112.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7826169013976329695}
@@ -211,7 +211,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6941160524748253976}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 47.5, y: 1, z: -216}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3701557849340482380}
@@ -750,7 +750,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5021003021585448859, guid: ef3e2c44b1ec582f7910d82c3c2f8843, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 98.7
       objectReference: {fileID: 0}
     - target: {fileID: 5021003021585448859, guid: ef3e2c44b1ec582f7910d82c3c2f8843, type: 3}
       propertyPath: m_LocalPosition.y
@@ -758,7 +758,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5021003021585448859, guid: ef3e2c44b1ec582f7910d82c3c2f8843, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -194.3
       objectReference: {fileID: 0}
     - target: {fileID: 5021003021585448859, guid: ef3e2c44b1ec582f7910d82c3c2f8843, type: 3}
       propertyPath: m_LocalRotation.w

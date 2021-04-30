@@ -67,6 +67,7 @@ namespace GUI
         {
             PlayAudio(pressAudio);
             LevelLoadManager.Instance.LoadScene(scene);
+            SoundManager.Instance.StopBackgroundMusic();
         }
 
         private void PlayAudio(AudioClip audioClip) => SoundManager.Instance.PlayNonDiegeticSound(audioClip);
