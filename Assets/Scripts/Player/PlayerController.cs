@@ -200,9 +200,9 @@ namespace Player
             dataSettings.type = persistenceType;
         }
 
-        public Data SaveData() => new Data<Vector3>(transform.position);
+        public Data SaveData() => new Data<SerializableVector3>(transform.position);
 
-        public void LoadData(Data data) => transform.position = ((Data<Vector3>)data).value;
+        public void LoadData(Data data) => transform.position = ((Data<SerializableVector3>)data).value;
 
         #endregion
     }

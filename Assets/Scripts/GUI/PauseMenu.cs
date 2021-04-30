@@ -42,6 +42,7 @@ namespace GUI
         
         private void Load(string scene)
         {
+            DataManager.Instance.Serialize();
             PlayAudio(pressAudio);
             LevelLoadManager.Instance.LoadScene(scene);
         }

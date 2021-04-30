@@ -726,9 +726,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Main menu
-
-'
+  m_text: Save and go To Menu
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6337d6842ec01234890e7413575ce59a, type: 2}
   m_sharedMaterial: {fileID: 8433996884194012212, guid: 6337d6842ec01234890e7413575ce59a, type: 2}
@@ -937,7 +935,7 @@ GameObject:
   - component: {fileID: 5873792242391444695}
   - component: {fileID: 4321519024769468190}
   m_Layer: 5
-  m_Name: MainMenuButton
+  m_Name: SaveMenuButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

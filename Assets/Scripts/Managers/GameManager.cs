@@ -2,30 +2,29 @@ using Inventory_System;
 using Karma_System;
 using Player;
 using Plugins.Tools;
-using Plugins.Tools.Events;
 
 namespace Managers
 {
-    public class GameManager : Singleton<GameManager>, MMEventListener<MMGameEvent>
+    public class GameManager : Singleton<GameManager>
     {
         public KarmaController karmaController;
         public QuestManager questManager;
 
         public DialogueManager dialogueManager;
         public Inventory inventory;
-        
+
         public bool GameIsPaused { get; private set; }
+
+        private LevelLoadManager m_LevelLoadManager;
+
+        private void Start() => m_LevelLoadManager = LevelLoadManager.Instance;
 
         private void Update()
         {
+            if (m_LevelLoadManager.SceneIsGUI) return;
+
             if (!PlayerInput.Instance.Pause) return;
             PauseGame();
-        }
-
-        public void OnMMEvent(MMGameEvent eventType)
-        {
-            if (m_Instance || !eventType.Equals(MMGameEvent.LOAD)) return;
-            if (LevelLoadManager.Instance.SceneIsGUI) Destroy(m_Instance.gameObject);
         }
 
         public void PauseGame()
@@ -33,9 +32,5 @@ namespace Managers
             if (GameIsPaused) GUIManager.Instance.CloseGUIMenu();
             else GUIManager.Instance.OpenPauseMenu(() => GameIsPaused = true, () => GameIsPaused = false);
         }
-
-        public void OnEnable() => this.MMEventStartListening();
-
-        public void OnDisable() => this.MMEventStopListening();
     }
 }
