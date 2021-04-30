@@ -15,143 +15,94 @@ MonoBehaviour:
   dialogues:
   - groupName: Things
     dialogues:
-    - id: hello
+    - id: kon
       line: Konichiwa
       options: []
-    - id: random
+    - id: hack
       line: WTF DOINB RYZE HACK
       options: []
     - id: bambino
       line: Bambino is looking for someone to help him, maybe you should go
       options: []
-    - id: Move
+    - id: runnning
       line: Why are you running
       options: []
   - groupName: Things
     dialogues:
-    - id: hello
+    - id: hola
       line: Hola como estas
       options: []
-    - id: random
+    - id: betis
       line: Viva el betis
       options: []
-    - id: bambino
-      line: Bambino is looking for someone to help him, maybe you should go
-      options: []
-    - id: Move
+    - id: "espa\xF1ita"
       line: "Aparta que no escucho el himno de mi espa\xF1ita"
       options: []
   - groupName: Things
     dialogues:
-    - id: hello
+    - id: hi
       line: Hiiii
       options: []
-    - id: random
+    - id: week
       line: What a week, huh
       options: []
-    - id: bambino
-      line: Bambino is looking for someone to help him, maybe you should go
-      options: []
-    - id: Move
+    - id: bye
       line: Bye
       options: []
   - groupName: Things
     dialogues:
-    - id: hello
+    - id: how
       line: Hiiii, how are you
       options: []
-    - id: random
+    - id: wednesday
       line: Captain it's wednesday
       options: []
-    - id: bambino
-      line: Bambino is looking for someone to help him, maybe you should go
-      options: []
-    - id: Move
+    - id: byebye
       line: Bye Bye
       options: []
   - groupName: Things
     dialogues:
-    - id: hello
-      line: Hiiii, how are you
-      options: []
-    - id: random
-      line: Captain it's wednesday
-      options: []
-    - id: bambino
-      line: Bambino is looking for someone to help him, maybe you should go
-      options: []
-    - id: Move
-      line: Bye Bye
-      options: []
-  - groupName: Things
-    dialogues:
-    - id: hello
+    - id: jamau
       line: Let's goooo jamau
       options: []
-    - id: random
+    - id: furgol
       line: furgol
       options: []
-    - id: bambino
-      line: Bambino is looking for someone to help him, maybe you should go
-      options: []
-    - id: Move
+    - id: noites
       line: Boas noites
       options: []
   - groupName: Things
     dialogues:
-    - id: hello
-      line: Let's goooo jamau
-      options: []
-    - id: random
-      line: furgol
-      options: []
-    - id: bambino
-      line: Bambino is looking for someone to help him, maybe you should go
-      options: []
-    - id: Move
-      line: Boas noites
-      options: []
-  - groupName: Things
-    dialogues:
-    - id: hello
+    - id: no good days
       line: There are no good days only days
       options: []
-    - id: random
+    - id: comediantes
       line: "Comediantes son las personas que comen un d\xEDa antes"
       options: []
-    - id: bambino
-      line: Bambino is looking for someone to help him, maybe you should go
-      options: []
-    - id: Move
+    - id: war
       line: 'The war the war never changes....
 
 '
       options: []
   - groupName: Things
     dialogues:
-    - id: hello
-      line: I want to ve alone
+    - id: alone
+      line: I want to be alone
       options: []
-    - id: random
+    - id: people die
       line: People die if they are killed
       options: []
-    - id: bambino
-      line: Bambino is looking for someone to help him, maybe you should go
-      options: []
-    - id: Move
-      line: let me alone
+    - id: leave
+      line: leave me alone
       options: []
   - groupName: Things
     dialogues:
-    - id: hello
+    - id: king
       line: Altoke my king
       options: []
-    - id: random
+    - id: text
       line: too much text
       options: []
-    - id: bambino
-      line: Bambino is looking for someone to help him, maybe you should go
-      options: []
-    - id: Move
+    - id: excuse
       line: if you excuse me im gonna proceed to xDDDDD
       options: []

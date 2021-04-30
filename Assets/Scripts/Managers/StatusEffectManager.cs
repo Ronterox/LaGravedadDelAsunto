@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Managers
 {
-    public class StatusEffectManager : PersistentSingleton<StatusEffectManager>
+    public class StatusEffectManager : Singleton<StatusEffectManager>
     {
         public float speedAffection, damageAffection, karmaAffection;
 
