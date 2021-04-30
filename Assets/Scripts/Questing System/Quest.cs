@@ -120,6 +120,7 @@ namespace Questing_System
             }
             
             GameManager.Instance.questManager.UpdateQuests();
+            ArchievementsManager.Instance.UpdateAchievement("achievement2", 1);
             gameObject.SetActive(false);
             m_JustStarted = false;
         }
