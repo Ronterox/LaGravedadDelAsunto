@@ -76,12 +76,12 @@ MonoBehaviour:
       current: 0
       goal: 1
       unlocked: 0
-  - id: achievement3
+  - id: mountain
     image: {fileID: 21300000, guid: e9693e667ff5c364786205cdf58d2798, type: 3}
     title: Really Do you come too far?
     description: You go to the mountain for nothing
     status:
-      relatedId: achievement3
+      relatedId: 1
       current: 0
       goal: 1
       unlocked: 0

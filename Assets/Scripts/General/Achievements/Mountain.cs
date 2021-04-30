@@ -9,7 +9,7 @@ namespace General.Achievements
         {
             if (other.CompareTag("Player"))
             {
-                ArchievementsManager.Instance.UpdateAchievement("achievement2", 1);
+                ArchievementsManager.Instance.UpdateAchievement("achievement", 1);
                 gameObject.SetActive(false);
             }
         }
