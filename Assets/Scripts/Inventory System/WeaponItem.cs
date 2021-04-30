@@ -13,9 +13,13 @@ namespace Inventory_System
             CharacterCombat combat = CharacterCombat.Instance;
             Inventory inventory = GameManager.Instance.inventory;
 
-            if (!inventory.Add(combat.sword.weaponItem)) inventory.SpawnItem(combat.sword.weaponItem, combat.transform.position);
+            if (combat.weapon)
+            {
+                Destroy(combat.weapon.gameObject);
+                if (!inventory.Add(combat.weapon.weaponItem)) inventory.SpawnItem(combat.weapon.weaponItem, combat.transform.position);
+            }
 
-            combat.sword = Instantiate(itemRef).GetComponent<Weapon>();
+            combat.weapon = Instantiate(itemRef).GetComponent<Weapon>();
 
             combat.SetWeapon();
 

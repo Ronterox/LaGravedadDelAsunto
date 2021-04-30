@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Speed Buff
   m_EditorClassIdentifier: 
   statAffected: 1
-  valueOfAffection: 10
+  valueOfAffection: 5
   isTemporal: 1
   secondsAffected: 60
   sprite: {fileID: 21300000, guid: e9693e667ff5c364786205cdf58d2798, type: 3}

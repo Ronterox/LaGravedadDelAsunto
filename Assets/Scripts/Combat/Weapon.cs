@@ -13,7 +13,6 @@ namespace Combat
         public Collider attackCollider;
         public int damage;
 
-
         public Damageable myDamageable;
         public AudioClip hitAudio;
         public ParticleSystem swordParticle;
@@ -22,6 +21,8 @@ namespace Combat
         private StatusEffectManager m_StatusEffectManager;
 
         public WeaponItem weaponItem;
+
+        public Collider[] extraColliders;
 
         private void Awake()
         {
@@ -35,6 +36,8 @@ namespace Combat
         }
 
         public void Attack(CharacterHealth targetHealth) => targetHealth.TakeDamage(damage + (int)m_StatusEffectManager.damageAffection);
+
+        public void DisableExtraColliders() => extraColliders.ForEach(collider1 => collider1.enabled = false);
 
         public void SetCollider(bool isEnable)
         {

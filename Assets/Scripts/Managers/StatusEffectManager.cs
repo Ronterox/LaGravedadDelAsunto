@@ -16,7 +16,10 @@ namespace Managers
         
         public GameObject statusTemplate;
 
-        private void Start() => m_HolderInstance = GUIManager.Instance.InstantiateUI(statusHolder);
+        private void Start()
+        {
+            if(m_HolderInstance) m_HolderInstance = GUIManager.Instance.InstantiateUI(statusHolder);
+        }
 
         public void LimitSpeedBy(StatusEffect statusEffect)
         {
