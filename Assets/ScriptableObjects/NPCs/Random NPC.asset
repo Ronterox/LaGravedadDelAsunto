@@ -12,54 +12,146 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 868c84339560e3f8fb67d0daef7c2c66, type: 3}
   m_Name: Random NPC
   m_EditorClassIdentifier: 
-  npcName: Random
-  description: Just say random things
-  dialoguesIds:
-  - hello
-  - random
-  - bambino
-  - Move
-  - hello
-  - random
-  - bambino
-  - Move
-  - hello
-  - random
-  - bambino
-  - Move
-  - hello
-  - random
-  - bambino
-  - Move
-  - hello
-  - random
-  - bambino
-  - Move
-  - hello
-  - random
-  - bambino
-  - Move
-  - hello
-  - random
-  - bambino
-  - Move
-  - hello
-  - random
-  - bambino
-  - Move
-  campaignID: 
   dialogues:
   - groupName: Things
     dialogues:
     - id: hello
-      line: Hello, I like turtles
+      line: Konichiwa
       options: []
     - id: random
-      line: How is it going?
+      line: WTF DOINB RYZE HACK
       options: []
     - id: bambino
       line: Bambino is looking for someone to help him, maybe you should go
       options: []
     - id: Move
-      line: Move away, I'm walking here
+      line: Why are you running
+      options: []
+  - groupName: Things
+    dialogues:
+    - id: hello
+      line: Hola como estas
+      options: []
+    - id: random
+      line: Viva el betis
+      options: []
+    - id: bambino
+      line: Bambino is looking for someone to help him, maybe you should go
+      options: []
+    - id: Move
+      line: "Aparta que no escucho el himno de mi espa\xF1ita"
+      options: []
+  - groupName: Things
+    dialogues:
+    - id: hello
+      line: Hiiii
+      options: []
+    - id: random
+      line: What a week, huh
+      options: []
+    - id: bambino
+      line: Bambino is looking for someone to help him, maybe you should go
+      options: []
+    - id: Move
+      line: Bye
+      options: []
+  - groupName: Things
+    dialogues:
+    - id: hello
+      line: Hiiii, how are you
+      options: []
+    - id: random
+      line: Captain it's wednesday
+      options: []
+    - id: bambino
+      line: Bambino is looking for someone to help him, maybe you should go
+      options: []
+    - id: Move
+      line: Bye Bye
+      options: []
+  - groupName: Things
+    dialogues:
+    - id: hello
+      line: Hiiii, how are you
+      options: []
+    - id: random
+      line: Captain it's wednesday
+      options: []
+    - id: bambino
+      line: Bambino is looking for someone to help him, maybe you should go
+      options: []
+    - id: Move
+      line: Bye Bye
+      options: []
+  - groupName: Things
+    dialogues:
+    - id: hello
+      line: Let's goooo jamau
+      options: []
+    - id: random
+      line: furgol
+      options: []
+    - id: bambino
+      line: Bambino is looking for someone to help him, maybe you should go
+      options: []
+    - id: Move
+      line: Boas noites
+      options: []
+  - groupName: Things
+    dialogues:
+    - id: hello
+      line: Let's goooo jamau
+      options: []
+    - id: random
+      line: furgol
+      options: []
+    - id: bambino
+      line: Bambino is looking for someone to help him, maybe you should go
+      options: []
+    - id: Move
+      line: Boas noites
+      options: []
+  - groupName: Things
+    dialogues:
+    - id: hello
+      line: There are no good days only days
+      options: []
+    - id: random
+      line: "Comediantes son las personas que comen un d\xEDa antes"
+      options: []
+    - id: bambino
+      line: Bambino is looking for someone to help him, maybe you should go
+      options: []
+    - id: Move
+      line: 'The war the war never changes....
+
+'
+      options: []
+  - groupName: Things
+    dialogues:
+    - id: hello
+      line: I want to ve alone
+      options: []
+    - id: random
+      line: People die if they are killed
+      options: []
+    - id: bambino
+      line: Bambino is looking for someone to help him, maybe you should go
+      options: []
+    - id: Move
+      line: let me alone
+      options: []
+  - groupName: Things
+    dialogues:
+    - id: hello
+      line: Altoke my king
+      options: []
+    - id: random
+      line: too much text
+      options: []
+    - id: bambino
+      line: Bambino is looking for someone to help him, maybe you should go
+      options: []
+    - id: Move
+      line: if you excuse me im gonna proceed to xDDDDD
       options: []
