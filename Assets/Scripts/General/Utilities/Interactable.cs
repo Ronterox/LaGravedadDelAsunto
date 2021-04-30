@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace General.Utilities
 {
+    [RequireComponent(typeof(Rigidbody))]
     public abstract class Interactable : MonoBehaviour
     {
         [Header("Interaction Settings")]
