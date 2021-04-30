@@ -24,7 +24,7 @@ MonoBehaviour:
     - id: bambino
       line: Bambino is looking for someone to help him, maybe you should go
       options: []
-    - id: runnning
+    - id: running
       line: Why are you running
       options: []
   - groupName: Things

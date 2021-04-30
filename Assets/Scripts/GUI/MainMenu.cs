@@ -55,7 +55,7 @@ namespace GUI
 
         public void TestZone() => Load(testZone);
 
-        public void OpenSettings() => Load(settings);
+        public void OpenSettings() { }
 
         public void QuitGame()
         {

@@ -46,6 +46,3 @@ MonoBehaviour:
     - id: compensate
       line: I will compensate you
       options: []
-    - id: ...
-      line: ...
-      options: []
