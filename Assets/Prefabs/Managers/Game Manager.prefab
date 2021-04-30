@@ -121,6 +121,7 @@ MonoBehaviour:
   karmaBarGameObject: {fileID: 1145169208871114706, guid: df2d22378e120a06d8d04c917dc365ab, type: 3}
   maxKarmaValue: 50
   karma: 0
+  karmaSound: {fileID: 8300000, guid: 38d53b06ce50dec4c9a11cc2af83aaeb, type: 3}
 --- !u!114 &1017325481
 MonoBehaviour:
   m_ObjectHideFlags: 0

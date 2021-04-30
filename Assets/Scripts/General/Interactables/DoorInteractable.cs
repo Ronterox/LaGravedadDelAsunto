@@ -1,5 +1,6 @@
 using Managers;
 using Minigames;
+using Plugins.Audio;
 using Plugins.Persistence;
 using Plugins.Properties;
 using UnityEngine;
@@ -14,6 +15,9 @@ namespace General.Interactables
         public bool isUnlock;
 
         public DataSettings dataSettings;
+        
+        [Header("Audio")]
+        public AudioClip openDoorSound;
 
         protected override void Awake()
         {
@@ -23,7 +27,7 @@ namespace General.Interactables
 
         public override void Interact()
         {
-            if (isUnlock) LevelLoadManager.Instance.LoadScene(roomScene);
+            if (isUnlock) LoadRoom();
             else base.Interact();
         }
 
@@ -44,7 +48,13 @@ namespace General.Interactables
         public override void OnQTEStop(int correctPresses, int wrongPresses)
         {
             isUnlock = correctPresses > wrongPresses;
-            if (isUnlock) LevelLoadManager.Instance.LoadScene(roomScene);
+            if (isUnlock) LoadRoom();
+        }
+
+        private void LoadRoom()
+        {
+            LevelLoadManager.Instance.LoadScene(roomScene);
+            SoundManager.Instance.PlaySound(openDoorSound, transform.position, 1, false, 1, 10);
         }
 
         #region PERSISTENCE

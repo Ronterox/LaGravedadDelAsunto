@@ -2,6 +2,7 @@ using System;
 using General.Utilities;
 using Inventory_System;
 using Managers;
+using Plugins.Audio;
 using Plugins.Persistence;
 using Plugins.Tools;
 using UnityEngine;
@@ -16,6 +17,9 @@ namespace General.Interactables
         public bool isUnlock;
 
         public DataSettings dataSettings;
+        
+        [Header("Audio")]
+        public AudioClip openChest;
 
         protected override void Awake()
         {
@@ -33,10 +37,15 @@ namespace General.Interactables
 
         public override void Interact()
         {
-            GameManager.Instance.inventory.SpawnItem(items.GetRandom(), transform.position);
+            Vector3 position = transform.position;
+            
+            GameManager.Instance.inventory.SpawnItem(items.GetRandom(), position);
             ArchievementsManager.Instance.UpdateAchievement("achievement4", 1);
+            
             Action deactivate = () => gameObject.SetActive(false);
             deactivate.DelayAction(2f);
+            
+            SoundManager.Instance.PlaySound(openChest, position, 1, false, 1, 10);
         }
 
         protected override void OnEnterTrigger(Collider other) => GameManager.Instance.dialogueManager.Type("Press \"E\" to interact!", helpMessagePosition.position);

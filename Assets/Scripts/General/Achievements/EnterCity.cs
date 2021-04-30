@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace General.Achievements
 {
-    public class Exitcity : MonoBehaviour
+    public class EnterCity : MonoBehaviour
     {
         private void OnTriggerEnter(Collider other)
         {

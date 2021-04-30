@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Plugins.Audio;
 using Plugins.Tools;
 using TMPro;
 using UnityEngine;
@@ -31,6 +32,9 @@ namespace Managers
         public Achievement[] achievements;
 
         public GameObject achievementObjTemplate;
+        
+        [Header("Audio")]
+        public AudioClip achievementSound;
 
         protected override void Awake()
         {
@@ -72,6 +76,8 @@ namespace Managers
 
             status.current = status.goal;
             status.unlocked = true;
+
+            SoundManager.Instance.PlaySound(achievementSound, transform.position, 1, false, 1, 10);
             
             StartCoroutine(ShowAchievement(achievement, 3));
         }

@@ -78,6 +78,11 @@ MonoBehaviour:
   attackCollider: {fileID: 6533899910747937757}
   damage: 50
   myDamageable: {fileID: 0}
+  hitAudio: {fileID: 0}
+  swordParticle: {fileID: 0}
+  isPlayer: 0
+  weaponItem: {fileID: 0}
+  extraColliders: []
 --- !u!1 &8449316514445687481
 GameObject:
   m_ObjectHideFlags: 0
@@ -320,6 +325,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf112b79f4708a2468836da36c762481, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitSound: {fileID: 8300000, guid: c6572569510cf574dbabb7ee2d7378e5, type: 3}
 --- !u!114 &5262963706950080009
 MonoBehaviour:
   m_ObjectHideFlags: 0

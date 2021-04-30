@@ -111,6 +111,7 @@ MonoBehaviour:
   dataSettings:
     dataId: 24750
     type: 3
+  openChest: {fileID: 8300000, guid: ef7be275a49826fa78da20be59560db9, type: 3}
 --- !u!54 &4344748588775606383
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 using Combat;
+using Plugins.Audio;
 
 namespace NPCs
 {
@@ -15,6 +16,9 @@ namespace NPCs
         private readonly int SPEED_ANIMATION_HASH = Animator.StringToHash("Speed");
         private readonly int HIT_ANIMATION_HASH = Animator.StringToHash("Hit");
 
+        [Header("Audio")]
+        public AudioClip hitSound;
+
         protected void Awake()
         {
             m_Animator = GetComponent<Animator>();
@@ -28,7 +32,11 @@ namespace NPCs
 
         private void FixedUpdate() => AnimateNPC();
 
-        private void HitAnimation() => m_Animator.SetTrigger(HIT_ANIMATION_HASH);
+        private void HitAnimation()
+        {
+            m_Animator.SetTrigger(HIT_ANIMATION_HASH);
+            SoundManager.Instance.PlaySound(hitSound, transform.position, 1, false, 1, 10);
+        }
 
         private void AnimateNPC()
         {
