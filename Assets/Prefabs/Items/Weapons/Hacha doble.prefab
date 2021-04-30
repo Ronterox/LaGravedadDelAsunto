@@ -116,7 +116,7 @@ MonoBehaviour:
   weaponItem: {fileID: 11400000, guid: 7c57b0a1997caa744a7eee363b3ae075, type: 2}
   extraColliders:
   - {fileID: -9170781264192492002}
-  - {fileID: 0}
+  - {fileID: 763722643593573154}
 --- !u!114 &-7068777147256222088
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -133,6 +133,10 @@ MonoBehaviour:
   infiniteInteractions: 0
   item: {fileID: 11400000, guid: 7c57b0a1997caa744a7eee363b3ae075, type: 2}
   pickSfx: {fileID: 8300000, guid: 38d53b06ce50dec4c9a11cc2af83aaeb, type: 3}
+  dataSettings:
+    dataId: 31058
+    type: 3
+  isPicked: 0
 --- !u!54 &5183118665255308571
 Rigidbody:
   m_ObjectHideFlags: 0

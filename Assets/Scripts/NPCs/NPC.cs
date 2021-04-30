@@ -98,23 +98,28 @@ namespace NPCs
 
         public override void Interact()
         {
-            if (m_IsFirstInteraction)
+            Quest npcQuest = null;
+            
+            if (npcScriptable)
             {
-                Write($"Hello I'm {npcName}, I'm {description}");
-                m_IsFirstInteraction = false;
-                m_InteractTimes = 0;
-                return;
-            }
-
-            Quest npcQuest = string.IsNullOrEmpty(questID) ? GameManager.Instance.questManager.GetQuestRandom() : GameManager.Instance.questManager.GetQuest(questID);
-            if (npcQuest && npcQuest.IsCompleted)
-            {
-                if (infiniteCompletedEventCall || !m_CalledQuestEventOnce)
+                if (m_IsFirstInteraction)
                 {
-                    m_CalledQuestEventOnce = true;
-                    OnQuestCompletedInteraction(npcQuest);
-                    onQuestCompletedInteraction?.Invoke();
+                    Write($"Hello I'm {npcName}, I'm {description}");
+                    m_IsFirstInteraction = false;
+                    m_InteractTimes = 0;
+                    return;
                 }
+
+                npcQuest = string.IsNullOrEmpty(questID) ? GameManager.Instance.questManager.GetQuestRandom() : GameManager.Instance.questManager.GetQuest(questID);
+                if (npcQuest && npcQuest.IsCompleted)
+                {
+                    if (infiniteCompletedEventCall || !m_CalledQuestEventOnce)
+                    {
+                        m_CalledQuestEventOnce = true;
+                        OnQuestCompletedInteraction(npcQuest);
+                        onQuestCompletedInteraction?.Invoke();
+                    }
+                }   
             }
             OnInteraction(npcQuest);
         }
@@ -132,7 +137,7 @@ namespace NPCs
         public void Write(string text)
         {
             GameManager.Instance.dialogueManager.Type(text, textPosition);
-            SoundManager.Instance.PlayNonDiegeticRandomPitchSound(npcTalkSound);
+            if(npcTalkSound) SoundManager.Instance.PlayNonDiegeticRandomPitchSound(npcTalkSound);
         }
     }
 }
