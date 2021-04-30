@@ -16,6 +16,6 @@ namespace Behaviours
         [Help("Select whether to check if is greater, or lesser")]
         public bool isGreater;
 
-        public override bool Check() => isGreater ? karma > GameManager.Instance.karmaController.karma : karma < GameManager.Instance.karmaController.karma;
+        public override bool Check() => isGreater ? GameManager.Instance.karmaController.karma >= karma : GameManager.Instance.karmaController.karma <= karma;
     }
 }
